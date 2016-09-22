@@ -13,6 +13,16 @@
 use App\Helpers;
 Route::get('/', 'IndexController@index');
 Route::post('login','IndexController@login');
+Route::get('register','IndexController@register');
+Route::get('logout','IndexController@logout');
+Route::post('postregister','IndexController@postregister');
 
 Route::get('payment','UserController@testing');
 Route::post('indipay/response','UserController@response');
+
+Route::get('/home', 'UserDashboardController@home');
+Route::get('/home/{sub_name}/{class}', 'UserDashboardController@chap_name');
+Route::get('/home/{sub_name}/{class}/{chap_name}', 'UserDashboardController@chap_page');
+Route::get('/home/askadoubt','UserDashboardController@ask_a_doubt');
+
+
