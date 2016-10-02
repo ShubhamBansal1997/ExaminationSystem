@@ -98,7 +98,7 @@
                     
                     @if( Session::get('Login_status')==TRUE)
                     <li class="hide phn-block"><a target="_blank" href="{{ URL::to('home')}}" class="-strk">Dashboard</a></li>
-                    <li class="hide phn-block"><a target="_blank" href="{{ URL::to('') }}" class="-ref-strk">Sign Out</a></li>
+                    <li class="hide phn-block"><a target="_blank" href="{{ URL::to('logout') }}" class="-ref-strk">Sign Out</a></li>
                     @else
                     <li class="hide phn-block"><a target="_blank" href="{{ URL::to('register')}}" class="-strk">Signup</a></li>
                     <li class="hide phn-block"><a target="_blank" href="{{ URL::to('login') }}" class="-ref-strk">Login</a></li>
@@ -108,10 +108,16 @@
                 </ul>
                 
                 <div class="buttonsBlock">
-                    <a target="_blank" href="http://portal.neetgurumantra.com/user/login"  class="button button-small button-grey disable-text-select phn-hide -ct -trk -strk">Login</a>
+                    @if( Session::get('Login_status')==TRUE)
+                    <a target="_blank" href="{{ URL::to('home') }}"  class="button button-small button-grey disable-text-select phn-hide -ct -trk -strk">Home</a>
 
-                    <a href="http://portal.neetgurumantra.com/user/register" class="button button-small button-green disable-text-select phn-hide -ct -trk ml-10 -strk">Signup</a>
-						                    <a href="http://portal.neetgurumantra.com/user/register" class="button button-small button-green disable-text-select phn-hide -ct -trk ml-10 -strk">Contact Us</a>
+                    <a href="{{ URL::to('logout') }}" class="button button-small button-green disable-text-select phn-hide -ct -trk ml-10 -strk">Sign Out</a>
+                    @else
+                    <a target="_blank" href="{{ URL::to('login') }}"  class="button button-small button-grey disable-text-select phn-hide -ct -trk -strk">Login</a>
+
+                    <a href="{{ URL::to('register') }}" class="button button-small button-green disable-text-select phn-hide -ct -trk ml-10 -strk">Signup</a>
+					@endif
+                    <a href="#" class="button button-small button-green disable-text-select phn-hide -ct -trk ml-10 -strk">Contact Us</a>
 					
 
                    

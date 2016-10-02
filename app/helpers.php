@@ -37,5 +37,5 @@ function s31($url) {
 /*assets function for rest website*/
 function s32($url)
 {
-    return "https://s3-us-west-2.amazonaws.com/neetgurumantra/assets1/" . $url;   
+    return "https://s3-us-west-2.amazonaws.com/neetgurumantra/assets2/" . $url;   
 }

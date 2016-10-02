@@ -12,17 +12,38 @@
 */
 use App\Helpers;
 Route::get('/', 'IndexController@index');
-Route::post('login','IndexController@login');
+Route::get('login','IndexController@login');
+Route::post('login','IndexController@postLogin');
 Route::get('register','IndexController@register');
 Route::get('logout','IndexController@logout');
-Route::post('postregister','IndexController@postregister');
+Route::post('register','IndexController@postregister');
 
 Route::get('payment','UserController@testing');
 Route::post('indipay/response','UserController@response');
 
-Route::get('/home', 'UserDashboardController@home');
-Route::get('/home/{sub_name}/{class}', 'UserDashboardController@chap_name');
-Route::get('/home/{sub_name}/{class}/{chap_name}', 'UserDashboardController@chap_page');
-Route::get('/home/askadoubt','UserDashboardController@ask_a_doubt');
+Route::get('home', 'UserDashboardController@home');
+Route::get('home/{sub_id}/{std}', 'UserDashboardController@chap_name');
+Route::get('home/{sub_id}/{std}/{chap_id}', 'UserDashboardController@chap_page');
+Route::get('home/askadoubt','UserDashboardController@ask_a_doubt');
+
+Route::get('/form', function() {
+    return View::make('form');
+});
+ 
+
+Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
+	
+	Route::get('/', 'IndexController@index');
+	
+	Route::get('login', 'IndexController@index');
+	Route::post('login', 'IndexController@postLogin');
+	Route::get('logout', 'IndexController@logout');
+	Route::get('addques/{sub_id}/{chap_id}', 'QuestionController@question');
+	 
+	
+	 
+});
+
+
 
 
