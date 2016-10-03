@@ -171,7 +171,7 @@
               <li class="dropdown" id="user-header">
                 <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                 <img src="{{ s32('images/avatars/user1.png') }}" alt="user image">
-                <span class="username">Hi, {{ \App\Admin::userName() }}</span>
+                <span class="username">Hi, {{ \App\Admins::userName() }}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <li>
@@ -194,7 +194,7 @@
         </div>
         <!-- END TOPBAR -->
           
-        @yield("content")
+        @yield('content')
         <div class="footer">
             <div class="copyright">
               <p class="pull-left sm-pull-reset">
@@ -241,7 +241,7 @@ $('#message').summernote({
         $.ajax({
             data: data,
             type: "POST",
-            url: "/image/upload",
+            url: "admin/image/upload",
             cache: false,
             contentType: false,
             processData: false,
@@ -257,6 +257,10 @@ $('#message').summernote({
 });
    
 </script>
+<script>
+   $('#editor').summernote();
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="{{ s32('plugins/jquery/jquery-1.11.1.min.js') }}"></script>
 <script src="{{ s32('plugins/jquery/jquery-migrate-1.2.1.min.js') }}"></script>
 <script src="{{ s32('plugins/gsap/main-gsap.min.js') }}"></script> <!-- HTML Animations -->

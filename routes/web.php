@@ -34,11 +34,13 @@ Route::get('/form', function() {
 Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
 	
 	Route::get('/', 'IndexController@index');
-	
+	Route::get('home','AdminDashboardController@index');
 	Route::get('login', 'IndexController@index');
 	Route::post('login', 'IndexController@postLogin');
 	Route::get('logout', 'IndexController@logout');
 	Route::get('addques/{sub_id}/{chap_id}', 'QuestionController@question');
+	Route::post('image/upload','QuestionController@upload_image');
+	Route::post('admin/addques','QuestionController@addquestion');
 	 
 	
 	 

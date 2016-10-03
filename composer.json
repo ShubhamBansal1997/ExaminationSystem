@@ -13,7 +13,9 @@
         "laravel/homestead": "^3.0",
         "aws/aws-sdk-php-laravel": "~3.0",
         "league/flysystem-aws-s3-v3": "^1.0",
-        "laravelcollective/html": "~5.0"
+        "laravelcollective/html": "~5.0",
+        "intervention/image": "^2.3",
+        "intervention/imagecache": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

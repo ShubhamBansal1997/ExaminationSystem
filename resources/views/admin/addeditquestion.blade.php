@@ -8,20 +8,21 @@
             <div class="panel">
                 <h3><i class="icon-note"></i> <strong>Enter New Question-Biology</h3>
                   
-        {!! Form::open(array('url' => 'admin/addques', id'=>'','role'=>'form')) !!}          
+        {!! Form::open(array('url' => 'admin/addques','role'=>'form')) !!}          
                     <div class="panel-content">
 		                <div class="row">
         		            <div class="col-md-12">
                 		        <div class="form-group">
                         		  <label>Chapter Name</label>
-                          			<select class="form-control form-white" data-style="white" data-placeholder="Select a chapter..." name="chap_id" id="chap_id" value="{{ isset($question->id) ? $question->id : null }}" >
+                          			<!-- <select class="form-control form-white" data-style="white" data-placeholder="Select a chapter..." name="chap_id" id="chap_id" value="{{ isset($question->id) ? $question->id : null }}" >
                           			@foreach(\App\Chapters::where('sub_id',$sub_id)->where('std',$std)->get() as $chapters)
-			                            <option value="{{ $chapters->chap_id }}">{{ $chapters->chap_name }}</option>   
-			                          </select>
+			                            <option value="{{ $chapters->chap_id }}">{{ $chapters->chap_name }}</option>
+			                        @endforeach   
+			                          </select> -->
 			                        </div>
 			                        <h4>Question</h4>
-			                        <textarea id="message" name="ques_exp" value="{{ isset($question->ques_exp) ? $question->ques_exp : null }}" ></textarea>
-									<h4>Answer1</h4>
+			                        <textarea id="editor" name="ques_exp" value="{{ isset($question->ques_exp) ? $question->ques_exp : null }}" ></textarea>
+									<!-- <h4>Answer1</h4>
 									<textarea id="message" name="ques_ans1" value="{{ isset($question->ques_ans1) ? $question->ques_ans1 : null }}" ></textarea>
 									<br />
 									<h4>Answer2</h4>
@@ -63,10 +64,10 @@
 			                            <option value="3">Difficult</option>
 			                          
 			                          </select>
-			                        </div>
+			                        </div> -->
 									
 									<button type="submit" name="submit" id="quessubmit" value="Submit" class="btn btn-lg btn-dark btn-rounded" data-style="expand-left">Submit</button>
-									{{form::close}}
+									{!! Form::close() !!}
 
 
 

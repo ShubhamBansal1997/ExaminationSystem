@@ -14,7 +14,7 @@ class IndexController extends Controller
     public function index()
     {
     	if(Session::get('admin_status')==TRUE)
-    		return redirect('admin.home');
+    		return redirect('admin/home');
     	else
     		return view("admin.index");
     }
@@ -32,10 +32,11 @@ class IndexController extends Controller
         
             $email = $request->email;
             $password = $request->password;
-            $password = bcrypt($password);
+            $password = md5($password);
+            //dd($password);
             //dd($password);
             $query = Admins::where('email',$email)->where('password',$password)->where('a_status','1');  
-            if($query->count())
+            if($query->count()>=1)
             {
                 $query= $query->get();
                 foreach($query as $data)
@@ -64,18 +65,5 @@ class IndexController extends Controller
         Session::flash('flash_message', 'You have been successfully Logout');
         return redirect('admin');
     }
-    public function upload_image(ImageRequest $request)
-	{
-	    if($request->hasFile('image')){
-	        $filename = str_random(20).'_'.$request->file('image')->getClientOriginalName();
-	        $image_path = base_path() . '/public/images/thread/';
-	        $request->file('image')->move(
-	            $image_path, $filename
-	        );
-	        echo $filename;    
-	    }
-	    else{
-	        echo 'Oh No! Uploading your image has failed.';
-	    }
-	}
+    
 }
