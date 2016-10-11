@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
-
+use App\Questions;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Session;
@@ -14,49 +14,50 @@ class QuestionController extends Controller
     
     public function question($sub_id,$std)
     {
-    	return view('admin.addeditquestion',compact('sub_id','std'));
+    	return view('admin.pages.addeditquestion',compact('sub_id','std'));
     }
     public function addquestion(Request $request)
     {
-    	$message = $request->ques_exp; // Summernote input field
-		
-		$dom = new DomDocument();
-		$dom->loadHtml( mb_convert_encoding($message, 'HTML-ENTITIES', "UTF-8"), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-    
-		$images = $dom->getElementsByTagName('img');
-		
-		
-		
-		// foreach <img> in the submited message
-		foreach($images as $img){
-			$src = $img->getAttribute('src');
-			
-			// if the img source is 'data-url'
-			if(preg_match('/data:image/', $src)){
-				
-				// get the mimetype
-				preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
-				$mimetype = $groups['mime'];
-				
-				// Generating a random filename
-				$filename = uniqid();
-				$filepath = "/images/$filename . '.' . $mimetype";
-	
-				// @see http://image.intervention.io/api/
-				$image = Image::make($src)
-				  // resize if required
-				  /* ->resize(300, 200) */
-				  ->encode($mimetype, 100) 	// encode file to the specified mimetype
-				  ->save(public_path($filepath));
-				
-				$new_src = asset($filepath);
-				$img->removeAttribute('src');
-				$img->setAttribute('src', $new_src);
-			} // <!--endif
-		} // <!--endforeach
-		
-		$post->message = $dom->saveHTML();
-		$post->save();
+    	$this->validate($request, [
+                'chap_id' => 'required',
+                'ques_exp' => 'required',
+                'ques_ans1' => 'required',
+                'ques_ans2' => 'required',
+                'ques_ans3' => 'required',
+                'ques_ans4' => 'required',
+                'ques_sol' => 'required',
+                'ques_imp' =>'required',
+                'sub_id' => 'required',
+                ]);
+    	$question = new Questions;
+    	$question->chap_id = $request->chap_id;
+    	$question->sub_id = $request->sub_id;
+    	$question->ques_exp = $request->ques_exp;
+    	$question->ques_ans1 = $request->ques_ans1;
+    	$question->ques_ans2 = $request->ques_ans2;
+    	$question->ques_ans3 = $request->ques_ans3;
+    	$question->ques_ans4 = $request->ques_ans4;
+    	$question->ques_ans = $request->ques_ans;
+    	$question->ques_sol = $request->ques_sol;
+    	$question->ques_imp = $request->ques_imp;
+    	$question->ques_level = $request->ques_level;
+    	$question->save();
+    	Session::flash('flash_message', 'Your Question has been successfully added');
+    	return redirect()->back();
+    }
+    public function viewquestion($sub_id,$std)
+    {
+    	return view('admin.pages.view_ques',compact('sub_id','std')); 
+    }
+
+    public function viewquestionlist(Request $request)
+    {
+        $questions = Questions::where('chap_id',$request->chap_id)
+                            ->where('ques_level',$request->ques_level)
+                            ->where('ques_imp',$request->ques_imp)
+                            ->get();
+        //dd($questions);
+        return view('admin.pages.viewquestion',compact('questions'));
     }
     public function upload_image(ImageRequest $request)
 	{

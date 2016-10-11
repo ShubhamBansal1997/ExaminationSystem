@@ -15,7 +15,8 @@
 <link href="{{ s32('plugins/slider-pips/jquery-ui-slider-pips.css') }}" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/summernote/0.7.0/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>  
+  <script src="{{URL::asset('templateEditor/ckeditor/ckeditor.js')}}"></script>
  
 </head>
 <!-- LAYOUT: Apply "submenu-hover" class to body element to have sidebar submenu show on mouse hover -->
@@ -69,9 +70,9 @@
                 <ul class="children collapse">
                    <li><a href="{{ URL::to('admin/addques/1/11') }}">Physics-11th</a></li>
                    <li><a href="{{ URL::to('admin/addques/1/12') }}">Physics-12th</a></li>
-                   <li><a href="{{ URL::to('admin/addques/2/11') }}">Chemistry-12th</a></li>
+                   <li><a href="{{ URL::to('admin/addques/2/11') }}">Chemistry-11th</a></li>
                    <li><a href="{{ URL::to('admin/addques/2/12') }}">Chemistry-12th</a></li>
-                   <li><a href="{{ URL::to('admin/addques/3/11') }}">Biology-12th</a></li>
+                   <li><a href="{{ URL::to('admin/addques/3/11') }}">Biology-11th</a></li>
                    <li><a href="{{ URL::to('admin/addques/3/12') }}">Biology-12th</a></li>
                 </ul>
             </li>
@@ -80,10 +81,10 @@
               <ul class="children collapse">
                    <li><a href="{{ URL::to('admin/viewques/1/11') }}">Physics-11th</a></li>
                    <li><a href="{{ URL::to('admin/viewques/1/12') }}">Physics-12th</a></li>
-                   <li><a href="{{ URL::to('admin/viewques/2/11') }}">Chemistry-12th</a></li>
+                   <li><a href="{{ URL::to('admin/viewques/2/11') }}">Chemistry-11th</a></li>
                    <li><a href="{{ URL::to('admin/viewques/2/12') }}">Chemistry-12th</a></li>
-                   <li><a href="{{ URL::to('admin/viewques/3/11') }}">Biology-12th</a></li>
-                   <li><a href="{{ URL::to('admin/viewques/3/12') }}">Biology-12th</a></view
+                   <li><a href="{{ URL::to('admin/viewques/3/11') }}">Biology-11th</a></li>
+                   <li><a href="{{ URL::to('admin/viewques/3/12') }}">Biology-12th</a>
                 </ul>
             </li>
             <li class="tm nav-parent nav-active">
@@ -225,7 +226,24 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/summernote/0.7.0/summernote.js"></script>
-
+<script type="text/javascript">  
+     CKEDITOR.replace( 'editor' );  
+</script>
+<script type="text/javascript">  
+     CKEDITOR.replace( 'editor1' );  
+</script>
+<script type="text/javascript">  
+     CKEDITOR.replace( 'editor2' );  
+</script>
+<script type="text/javascript">  
+     CKEDITOR.replace( 'editor3' );  
+</script>
+<script type="text/javascript">  
+     CKEDITOR.replace( 'editor4' );  
+</script>
+<script type="text/javascript">  
+     CKEDITOR.replace( 'editor5' );  
+</script>  
 <script>
 $(document).ready(function() {
 var IMAGE_PATH = 'http://localhost:8000/images/thread/';
@@ -257,9 +275,7 @@ $('#message').summernote({
 });
    
 </script>
-<script>
-   $('#editor').summernote();
-</script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="{{ s32('plugins/jquery/jquery-1.11.1.min.js') }}"></script>
 <script src="{{ s32('plugins/jquery/jquery-migrate-1.2.1.min.js') }}"></script>

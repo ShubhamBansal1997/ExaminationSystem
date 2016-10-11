@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,14 +39,46 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
 	Route::get('login', 'IndexController@index');
 	Route::post('login', 'IndexController@postLogin');
 	Route::get('logout', 'IndexController@logout');
-	Route::get('addques/{sub_id}/{chap_id}', 'QuestionController@question');
 	Route::post('image/upload','QuestionController@upload_image');
-	Route::post('admin/addques','QuestionController@addquestion');
+	Route::post('addques','QuestionController@addquestion');
+	Route::get('addques/{sub_id}/{std}','QuestionController@question');
+    Route::get('viewques/{sub_id}/{std}','QuestionController@viewquestion');
+    Route::post('viewques','QuestionController@viewquestionlist');
+
+
 	 
 	
 	 
 });
-
+Route::get('/form', function() {
+    return View::make('form');
+});
+ 
+Route::get('upload/image', function() {
+    $allowed = array('png', 'jpg', 'gif');
+    $rules = [
+        'file' => 'required|image|mimes:jpeg,jpg,png,gif'
+    ];
+    $data = Input::all();
+    $validator = Validator::make($data, $rules);
+    if ($validator->fails()) {
+        return '{"status":"Invalid File type"}';
+    }
+    if(Input::hasFile('file')){
+        $extension = Input::file('file')->getClientOriginalExtension();
+        if(!in_array(strtolower($extension), $allowed)){
+            return '{"status":"Invalid File type"}';
+        } else {
+            $filename = uniqid() . '_attachment.' . $extension;
+            if (Input::file('file')->move('source/', $filename)) {
+                echo url('source/' . $filename);
+                exit;
+            }
+        }
+    } else {
+        return '{"status":"Invalid File type"}';
+    }
+});
 
 
 

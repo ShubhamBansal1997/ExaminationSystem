@@ -12,7 +12,7 @@ class AdminDashboardController extends Controller
     public function index()
     {
     	if(Session::get('admin_status')==TRUE)
-    		return view('admin.home');
+    		return view('admin.pages.home');
     	else
     		return redirect('login');
     }
