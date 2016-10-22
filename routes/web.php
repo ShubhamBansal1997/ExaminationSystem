@@ -42,6 +42,8 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
 	Route::post('image/upload','QuestionController@upload_image');
 	Route::post('addques','QuestionController@addquestion');
 	Route::get('addques/{sub_id}/{std}','QuestionController@question');
+    Route::get('editques/{ques_id}/{sub_id}/{std}','QuestionController@editquestion');
+    Route::get('deleteques/{ques_id}','QuestionController@deletequestion');
     Route::get('viewques/{sub_id}/{std}','QuestionController@viewquestion');
     Route::post('viewques','QuestionController@viewquestionlist');
 

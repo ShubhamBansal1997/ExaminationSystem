@@ -8,11 +8,19 @@
                   <h3><i class="fa fa-table"></i> <strong>Editable</strong> Tables</h3>
                 </div>
                 <div class="panel-content">
-                  <p>Here you can manage your table easily: add new row, edit or remove existing data. You can export your table in PDF, Excel, CSV or just print it.</p>
+                  <p>
+        @if(Session::has('flash_message'))
+        <div class="alert alert-success fade in">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>{{ Session::get('flash_message') }}
+      
+              </div>
+              @endif
+      </p>
                   <div class="m-b-20">
-                    <div class="btn-group">
+                    <!-- <div class="btn-group">
                       <button id="table-edit_new" class="btn btn-sm btn-dark"><i class="fa fa-plus"></i> Add New Line</button>
-                    </div>
+                    </div> -->
                   </div>
                   <table class="table table-hover dataTable" id="table-editable">
                     <thead>
@@ -35,7 +43,7 @@
                         <td>{{ $question->ques_ans }}</td>
                         <td>{{ $question->ques_level }}</td>
                         <td>{{ $question->ques_imp }}</td>
-                        <td class="text-right"><a class="edit btn btn-sm btn-default" href="javascript:;"><i class="icon-note"></i></a>  <a class="delete btn btn-sm btn-danger" href="javascript:;"><i class="icons-office-52"></i></a>
+                        <td class="text-right"><a class="edit btn btn-sm btn-default" href=" {{ URL::to('admin/editques') }}/{{ $question->ques_id }}/{{ $sub_id }}/{{ $std }} "><i class="icon-note"></i></a>  <a class="delete btn btn-sm btn-danger" href="{{ URL::to('admin/deleteques') }}/{{ $question->ques_id }} "><i class="icons-office-52"></i></a>
                         </td>
                       </tr>
                     @endforeach

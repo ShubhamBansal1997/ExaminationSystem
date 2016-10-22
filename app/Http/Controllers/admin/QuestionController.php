@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Questions;
+use App\Chapters;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Session;
@@ -29,20 +31,41 @@ class QuestionController extends Controller
                 'ques_imp' =>'required',
                 'sub_id' => 'required',
                 ]);
-    	$question = new Questions;
-    	$question->chap_id = $request->chap_id;
-    	$question->sub_id = $request->sub_id;
-    	$question->ques_exp = $request->ques_exp;
-    	$question->ques_ans1 = $request->ques_ans1;
-    	$question->ques_ans2 = $request->ques_ans2;
-    	$question->ques_ans3 = $request->ques_ans3;
-    	$question->ques_ans4 = $request->ques_ans4;
-    	$question->ques_ans = $request->ques_ans;
-    	$question->ques_sol = $request->ques_sol;
-    	$question->ques_imp = $request->ques_imp;
-    	$question->ques_level = $request->ques_level;
-    	$question->save();
-    	Session::flash('flash_message', 'Your Question has been successfully added');
+    	if($request->ques_id==NULL)
+        {
+            $question = new Questions;
+        	$question->chap_id = $request->chap_id;
+        	$question->sub_id = $request->sub_id;
+        	$question->ques_exp = $request->ques_exp;
+        	$question->ques_ans1 = $request->ques_ans1;
+        	$question->ques_ans2 = $request->ques_ans2;
+        	$question->ques_ans3 = $request->ques_ans3;
+        	$question->ques_ans4 = $request->ques_ans4;
+        	$question->ques_ans = $request->ques_ans;
+        	$question->ques_sol = $request->ques_sol;
+        	$question->ques_imp = $request->ques_imp;
+        	$question->ques_level = $request->ques_level;
+        	$question->save();
+        	Session::flash('flash_message', 'Your Question has been successfully added');
+        }
+        else
+        {
+            
+            $question = Questions::where('ques_id',$request->ques_id)->first();
+            $question->chap_id = $request->chap_id;
+            $question->sub_id = $request->sub_id;
+            $question->ques_exp = $request->ques_exp;
+            $question->ques_ans1 = $request->ques_ans1;
+            $question->ques_ans2 = $request->ques_ans2;
+            $question->ques_ans3 = $request->ques_ans3;
+            $question->ques_ans4 = $request->ques_ans4;
+            $question->ques_ans = $request->ques_ans;
+            $question->ques_sol = $request->ques_sol;
+            $question->ques_imp = $request->ques_imp;
+            $question->ques_level = $request->ques_level;
+            $question->save();
+            Session::flash('flash_message', 'Your Question has been successfully edited');
+        }
     	return redirect()->back();
     }
     public function viewquestion($sub_id,$std)
@@ -57,7 +80,26 @@ class QuestionController extends Controller
                             ->where('ques_imp',$request->ques_imp)
                             ->get();
         //dd($questions);
-        return view('admin.pages.viewquestion',compact('questions'));
+        $sub_id=$request->sub_id;
+        $std=$request->std;
+        return view('admin.pages.viewquestion',compact('questions','sub_id','std'));
+    }
+
+    public function editquestion($ques_id,$sub_id,$std)
+    {
+        $question = Questions::where('ques_id',$ques_id)->first();
+        $chap = Chapters::where('chap_id',$question->chap_id)->first();
+        $chap_id=$chap->chap_id;
+        $chap_name=$chap->chap_name;
+        return view('admin.pages.addeditquestion',compact('sub_id','std','question','chap_id','chap_name'));   
+    }
+    public function deletequestion($ques_id)
+    {
+        $question = Questions::where('ques_id',$ques_id)->first();
+        $question->delete();
+        \Session::flash('flash_message', 'Question Deleted');
+        return redirect()->back();
+           
     }
     public function upload_image(ImageRequest $request)
 	{
