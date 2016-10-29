@@ -82,13 +82,13 @@ class QuestionController extends Controller
             $questions = Questions::where('chap_id',$request->chap_id)
                         ->get();    
         }
-        else if($request->ques_level=="NULL")
+        else if($request->ques_level=="NULL"&&$request->ques_imp!="NULL")
         {
             $questions = Questions::where('chap_id',$request->chap_id)
                         ->where('ques_imp',$request->ques_imp)
                         ->get();   
         }
-        else if($request->ques_imp=="NULL")
+        else if($request->ques_imp=="NULL"&&$request->ques_level!="NULL")
         {
             $questions = Questions::where('chap_id',$request->chap_id)
                         ->where('ques_imp',$request->ques_imp)
