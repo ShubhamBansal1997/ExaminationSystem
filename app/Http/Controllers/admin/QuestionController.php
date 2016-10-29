@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Questions;
 use App\Chapters;
+use Illuminate\Support\Facades\Redirect;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -75,11 +76,33 @@ class QuestionController extends Controller
 
     public function viewquestionlist(Request $request)
     {
-        $questions = Questions::where('chap_id',$request->chap_id)
+        
+        if($request->ques_level=="NULL"&&$request->ques_imp=="NULL")
+        {
+            $questions = Questions::where('chap_id',$request->chap_id)
+                        ->get();    
+        }
+        else if($request->ques_level=="NULL")
+        {
+            $questions = Questions::where('chap_id',$request->chap_id)
+                        ->where('ques_imp',$request->ques_imp)
+                        ->get();   
+        }
+        else if($request->ques_imp=="NULL")
+        {
+            $questions = Questions::where('chap_id',$request->chap_id)
+                        ->where('ques_imp',$request->ques_imp)
+                        ->get();      
+        }
+        else
+        {
+            $questions = Questions::where('chap_id',$request->chap_id)
                             ->where('ques_level',$request->ques_level)
                             ->where('ques_imp',$request->ques_imp)
                             ->get();
-        //dd($questions);
+    
+        }
+                //dd($questions);
         $sub_id=$request->sub_id;
         $std=$request->std;
         return view('admin.pages.viewquestion',compact('questions','sub_id','std'));
@@ -98,7 +121,7 @@ class QuestionController extends Controller
         $question = Questions::where('ques_id',$ques_id)->first();
         $question->delete();
         \Session::flash('flash_message', 'Question Deleted');
-        return redirect()->back();
+        return Redirect::back();
            
     }
     public function upload_image(ImageRequest $request)
@@ -115,5 +138,10 @@ class QuestionController extends Controller
 	        echo 'Oh No! Uploading your image has failed.';
 	    }
 	}
+    public function view_look($ques_id)
+    {
+        $question = Questions::where('ques_id',$ques_id)->first();
+        return view('admin.pages.qpage',compact('question'));
+    }
     
 }

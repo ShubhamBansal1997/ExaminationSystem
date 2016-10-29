@@ -46,6 +46,8 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
     Route::get('deleteques/{ques_id}','QuestionController@deletequestion');
     Route::get('viewques/{sub_id}/{std}','QuestionController@viewquestion');
     Route::post('viewques','QuestionController@viewquestionlist');
+    Route::get('view_look/{ques_id}','QuestionController@view_look');
+
 
 
 	 

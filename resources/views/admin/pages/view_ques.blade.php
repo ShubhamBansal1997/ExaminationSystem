@@ -48,6 +48,7 @@
 									<label>Imp Ques</label>
 			                          <select class="form-control form-white" data-style="white" data-placeholder="Select a correct answer" name="ques_imp" id="imp_ques" value="{{ isset($question->ques_imp) ? $question->ques_imp : null }}" required>
 			                            <!-- <option>ALL</option> -->
+			                            <option value="NULL">All</option>
 			                            <option value="1">Yes</option>
 			                            <option value="0">No</option>
 			                          
@@ -57,6 +58,7 @@
 									<label>Ques Level</label>
 			                          <select class="form-control form-white" data-style="white" data-placeholder="Select a correct answer" name="ques_level" id="ques_level" value="{{ isset($question->ques_level) ? $question->ques_level : null }}" required>
 			                            <!-- <option>All</option> -->
+			                            <option value="NULL">All</option>
 			                            <option value="1">Easy</option>
 			                            <option value="2">Medium</option>
 			                            <option value="3">Difficult</option>

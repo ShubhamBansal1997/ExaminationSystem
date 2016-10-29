@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-12 portlets">
             <div class="panel">
-                <h3><i class="icon-note"></i> <strong>Enter New Question-Biology</h3>
+                <h3><i class="icon-note"></i> <strong>{{ isset($question->ques_exp) ? "EDIT" : "ENTER" }} Question</h3>
                   
         {!! Form::open(array('url' => 'admin/addques','role'=>'form')) !!} 
                <div class="message">
@@ -68,11 +68,13 @@
 			                          <select class="form-control form-white" data-style="white" data-placeholder="Select a correct answer" name="ques_ans" id="ques_ans" value="">
 			                            @if(isset($question->ques_ans))  
                               		<option value="{{$question->ques_ans}}" selected >{{$question->ques_ans}}</option>
+                               			
+                               			@endif
                                			<option value="1">1</option>
 			                            <option value="2">2</option>
 			                            <option value="3">3</option>
 			                            <option value="4">4</option>
-                            			@endif 
+                            			 
 			                          </select>
 			                    	</div>
 

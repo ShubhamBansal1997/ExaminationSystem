@@ -38,12 +38,22 @@
                     @foreach($questions as $question)
                       <tr>
                         <td>{{ isset($question->o_id)?$question->o_id:"NULL"}}</td>
-                        <td>{{ $question->ques_exp }}</td>
-                        <td>{{ $question->ques_ans1 }}</td>
+                        <td>{!! $question->ques_exp !!}</td>
+                        <td>{!! $question->ques_ans1 !!}</td>
                         <td>{{ $question->ques_ans }}</td>
-                        <td>{{ $question->ques_level }}</td>
-                        <td>{{ $question->ques_imp }}</td>
-                        <td class="text-right"><a class="edit btn btn-sm btn-default" href=" {{ URL::to('admin/editques') }}/{{ $question->ques_id }}/{{ $sub_id }}/{{ $std }} "><i class="icon-note"></i></a>  <a class="delete btn btn-sm btn-danger" href="{{ URL::to('admin/deleteques') }}/{{ $question->ques_id }} "><i class="icons-office-52"></i></a>
+                        <td>@if($question->ques_level==1)
+                            {{ "E" }}
+                            @elseif($question->ques_level==2)
+                            {{ "M" }}
+                            @else
+                            {{ "D" }}
+                            @endif</td>
+                        <td>@if($question->ques_imp==1)
+                              {{ "Y" }}
+                            @else
+                              {{ "N" }}
+                            @endif</td>
+                        <td class="text-right"><a class="edit btn btn-sm btn-default" href=" {{ URL::to('admin/editques') }}/{{ $question->ques_id }}/{{ $sub_id }}/{{ $std }} "><i class="icon-note"></i></a>  <a class="delete btn btn-sm btn-danger" href="{{ URL::to('admin/view_look') }}/{{ $question->ques_id }} "><i class="icons-office-52"></i></a>
                         </td>
                       </tr>
                     @endforeach
