@@ -85,7 +85,11 @@
 									<label>Imp Ques</label>
 			                          <select class="form-control form-white" data-style="white" data-placeholder="Select a correct answer" name="ques_imp" id="imp_ques" value="" required>
 			                          @if(isset($question->ques_imp))  
-                              		<option value="{{$question->ques_imp}}" selected >{{isset($question->ques_imp)==1?"YES":"NO"}}</option>
+                              		<option value="{{$question->ques_imp}}" selected >@if($question->ques_imp==1)
+                              					{{ "Yes" }}
+                            				@else
+                              					{{ "No" }}
+                            				@endif</option>
                               		@endif
                               		<option value="1">Yes</option>
 			                            <option value="0">No</option>
@@ -98,7 +102,13 @@
 									<label>Ques Level</label>
 			                          <select class="form-control form-white" data-style="white" data-placeholder="Select a correct answer" name="ques_level" id="ques_level" value="" required>
 			                            @if(isset($question->ques_level))  
-                              		<option value="{{$question->ques_level}}" selected >{{isset($question->ques_level)==1?"Easy":(isset($question->ques_level)?"Medium":"Difficult")}}</option>
+                              		<option value="{{$question->ques_level}}" selected >@if($question->ques_level==1)
+                            				{{ "Easy" }}
+                            				@elseif($question->ques_level==2)
+                            				{{ "Medium" }}
+                            				@else
+                            				{{ "Difficult" }}
+                            				@endif</option>
                                			@endif
                                			<option value="1">Easy</option>
 			                            <option value="2">Medium</option>
