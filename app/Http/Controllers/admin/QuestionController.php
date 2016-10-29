@@ -91,7 +91,7 @@ class QuestionController extends Controller
         else if($request->ques_imp=="NULL"&&$request->ques_level!="NULL")
         {
             $questions = Questions::where('chap_id',$request->chap_id)
-                        ->where('ques_imp',$request->ques_imp)
+                        ->where('ques_level',$request->ques_level)
                         ->get();      
         }
         else
