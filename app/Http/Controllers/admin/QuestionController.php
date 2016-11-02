@@ -116,12 +116,13 @@ class QuestionController extends Controller
         $chap_name=$chap->chap_name;
         return view('admin.pages.addeditquestion',compact('sub_id','std','question','chap_id','chap_name'));   
     }
-    public function deletequestion($ques_id)
+    public function deletequestion($ques_id,$sub_id,$std)
     {
         $question = Questions::where('ques_id',$ques_id)->first();
         $question->delete();
         \Session::flash('flash_message', 'Question Deleted');
-        return Redirect::back();
+        $route = 'admin/viewques/'. $sub_id . '/' . $std;
+        return redirect($route);
            
     }
     public function upload_image(ImageRequest $request)
