@@ -6,7 +6,14 @@
     <div class="row">
         <div class="col-md-12 portlets">
             <div class="panel">
-                <h3><i class="icon-note"></i> <strong>Enter New Question-Biology</h3>
+                <h3><i class="icon-note"></i> <strong>Enter New Question-
+                @if($sub_id==1)
+                	Physics
+                @elseif($sub_id==2)
+                	Chemistry
+                @else
+                	Biology
+                @endif</h3>
                   
         {!! Form::open(array('url' => 'admin/viewques','role'=>'form')) !!} 
                <div class="message">
