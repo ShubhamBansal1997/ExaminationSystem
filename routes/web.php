@@ -30,6 +30,9 @@ Route::get('home/askadoubt','UserDashboardController@ask_a_doubt');
 Route::get('/form', function() {
     return View::make('form');
 });
+Route::get('get_question','QuestionController@get_question');
+Route::post('submit_question','QuestionController@submit_question');
+Route::post('ques_prev_sub','QuestionController@ques_prev_sub');
  
 
 Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
@@ -43,7 +46,7 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
 	Route::post('addques','QuestionController@addquestion');
 	Route::get('addques/{sub_id}/{std}','QuestionController@question');
     Route::get('editques/{ques_id}/{sub_id}/{std}','QuestionController@editquestion');
-    Route::get('deleteques/{ques_id}','QuestionController@deletequestion');
+    Route::get('deleteques/{ques_id}/{sub_id}/{std}','QuestionController@deletequestion');
     Route::get('viewques/{sub_id}/{std}','QuestionController@viewquestion');
     Route::post('viewques','QuestionController@viewquestionlist');
     Route::get('view_look/{ques_id}','QuestionController@view_look');

@@ -13,6 +13,9 @@
   <link href="{{ s32('css/ui.css') }}" rel="stylesheet"> <!-- MANDATORY -->
   <link href="{{ s32('plugins/datatables/dataTables.min.css') }}" rel="stylesheet">
 <link href="{{ s32('plugins/slider-pips/jquery-ui-slider-pips.css') }}" rel="stylesheet">
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
  
 </head>
 <!-- LAYOUT: Apply "submenu-hover" class to body element to have sidebar submenu show on mouse hover -->

@@ -53,7 +53,7 @@
                             @else
                               {{ "N" }}
                             @endif</td>
-                        <td class="text-right"><a class="edit btn btn-sm btn-default" href=" {{ URL::to('admin/editques') }}/{{ $question->ques_id }}/{{ $sub_id }}/{{ $std }} "><i class="icon-note"></i></a>  <a target="_blank" class="delete btn btn-sm btn-danger" href="{{ URL::to('admin/view_look') }}/{{ $question->ques_id }} "><i class="icons-office-52"></i></a>
+                        <td class="text-right"><a class="edit btn btn-sm btn-default" href=" {{ URL::to('admin/editques') }}/{{ $question->ques_id }}/{{ $sub_id }}/{{ $std }} "><i class="icon-note"></i></a>  <a class="edit btn btn-sm btn-default" href=" {{ URL::to('admin/deleteques') }}/{{ $question->ques_id }}/{{ $sub_id }}/{{ $std }} "><i class="icon-note"></i></a> <a target="_blank" class="delete btn btn-sm btn-danger" href="{{ URL::to('admin/view_look') }}/{{ $question->ques_id }} "><i class="icons-office-52"></i></a>
                         </td>
                       </tr>
                     @endforeach
