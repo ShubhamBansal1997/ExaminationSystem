@@ -9,7 +9,7 @@ class Users extends Model
 {
     protected $table = 'users';
 
-    protected $fillable = ['name','email','phoneno'];
+    protected $fillable = ['name','email','mobile','type'];
 
     public static function checkUserStatus()
     {
