@@ -35,25 +35,26 @@ class Questions extends Model
     {
     	$total = Questions::a_ques($chap_id);
     	$easy = Questions::e_ques($chap_id);
-    	return ($easy/$total)*100;
+    	return ($total==0)?0:(($easy/$total)*100);
     }
     public static function m_quesp($chap_id)
     {
     	$total =Questions::a_ques($chap_id);
     	$med = Questions::m_ques($chap_id);
-    	return ($med/$total)*100;
+    	
+    	return ($total==0)?0:(($med/$total)*100);
     }
     public static function d_quesp($chap_id)
     {
     	$total = Questions::a_ques($chap_id);
     	$diff = Questions::d_ques($chap_id);
-    	return ($diff/$total)*100;
+    	return ($total==0)?0:(($diff/$total)*100);
     }
     public static function i_quesp($chap_id)
     {
     	$total = Questions::a_ques($chap_id);
     	$imp = Questions::i_ques($chap_id);
-    	return ($imp/$total)*100;
+    	return ($total==0)?0:(($imp/$total)*100);
     }
 
 }
