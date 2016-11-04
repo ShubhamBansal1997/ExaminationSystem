@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Session;
 use App\Http\Requests;
 use App\Questions;
 use App\Questions_attempt;
+use App\Chapters;
 
 class QuestionController extends Controller
 {
@@ -126,4 +127,12 @@ class QuestionController extends Controller
                           ->get();
         return response()->json($query);
     } 
+    public function question_page($sub_id,$chap_id,$ques_cat)
+    {   
+        $email = Session::get('email');
+        $query = Chapters::where('chap_id',$chap_id)->first();
+        $chap_name = $query->chap_name;
+        return view('pages.qpage',compact('sub_id','chap_id','ques_cat','email','chap_name'));
+
+    }
 }
