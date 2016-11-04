@@ -117,6 +117,6 @@
       window.user_email = "{{ $email }}";
     });
   </script>
-  <script src="{{ URL::asset('js/bundle.js')}}"></script>
+  <script type="text/javascript" src="{{ URL::asset('js/bundle.js') }}"></script>
 </body>
 </html>
