@@ -1,6 +1,7 @@
 .env
 /node_modules
-/public/storage
+/public
+/storage
 /.idea
 /vendor
 Homestead.json
