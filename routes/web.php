@@ -51,6 +51,8 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
     Route::get('viewques/{sub_id}/{std}','QuestionController@viewquestion');
     Route::post('viewques','QuestionController@viewquestionlist');
     Route::get('view_look/{ques_id}','QuestionController@view_look');
+    Route::get('view_look1/{ques_id}','QuestionController@view_look1');
+    Route::get('view_look2/{ques_id}','QuestionController@view_look2');
 
 
 

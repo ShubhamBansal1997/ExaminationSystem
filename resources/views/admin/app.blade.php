@@ -15,11 +15,12 @@
 <link href="{{ s32('plugins/slider-pips/jquery-ui-slider-pips.css') }}" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>  
   <script src="{{URL::asset('templateEditor/ckeditor/ckeditor.js')}}"></script>
  <script type="text/javascript" async
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
+
 </head>
 <!-- LAYOUT: Apply "submenu-hover" class to body element to have sidebar submenu show on mouse hover -->
 <!-- LAYOUT: Apply "sidebar-collapsed" class to body element to have collapsed sidebar -->
@@ -278,8 +279,8 @@ $('#message').summernote({
    
 </script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="{{ s32('plugins/jquery/jquery-1.11.1.min.js') }}"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+<!-- <script src="{{ s32('plugins/jquery/jquery-1.11.1.min.js') }}"></script> -->
 <script src="{{ s32('plugins/jquery/jquery-migrate-1.2.1.min.js') }}"></script>
 <script src="{{ s32('plugins/gsap/main-gsap.min.js') }}"></script> <!-- HTML Animations -->
 <script src="{{ s32('plugins/jquery-ui/jquery-ui-1.11.2.min.js') }}"></script>
