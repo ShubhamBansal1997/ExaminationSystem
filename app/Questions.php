@@ -30,31 +30,11 @@ class Questions extends Model
     public static function i_ques($chap_id)
     {
     	return Questions::where('chap_id',$chap_id)->where('ques_imp',1)->count();
-    }
-    public static function e_quesp($chap_id)
+    }    
+    public function question_attempt()
     {
-    	$total = Questions::a_ques($chap_id);
-    	$easy = Questions::e_ques($chap_id);
-    	return ($total==0)?0:(($easy/$total)*100);
+        return $this->hasMany('App\Questions_attempt','ques_id','ques_id');
     }
-    public static function m_quesp($chap_id)
-    {
-    	$total =Questions::a_ques($chap_id);
-    	$med = Questions::m_ques($chap_id);
-    	
-    	return ($total==0)?0:(($med/$total)*100);
-    }
-    public static function d_quesp($chap_id)
-    {
-    	$total = Questions::a_ques($chap_id);
-    	$diff = Questions::d_ques($chap_id);
-    	return ($total==0)?0:(($diff/$total)*100);
-    }
-    public static function i_quesp($chap_id)
-    {
-    	$total = Questions::a_ques($chap_id);
-    	$imp = Questions::i_ques($chap_id);
-    	return ($total==0)?0:(($imp/$total)*100);
-    }
+    
 
 }

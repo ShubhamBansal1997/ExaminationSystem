@@ -34,7 +34,8 @@
 <link rel="icon" type="image/png" href="{{ s31('static/v2/images/brand/favicon/favicon-16x16.png')}}" sizes="16x16" />
 <meta name="msapplication-TileColor" content="#FFFFFF" />
 <meta name="msapplication-TileImage" content="{{ s31('static/v2/images/brand/favicon/mstile-144x144.png')}}" />
-    <link rel="shortcut icon" href="{{ s31('static/v2/images/brand/favicon/favicon.ico')}}">
+<link rel="shortcut icon" href="{{ s31('static/v2/images/brand/favicon/favicon.ico')}}">
+<script src="https://use.fontawesome.com/5402b643ce.js"></script>
   
     <!--[if lt IE 9]>
     <script src="{{ s31('static/topprweb/js/html5shiv.min.js')}}"></script>
@@ -117,7 +118,7 @@
 
                     <a href="{{ URL::to('register') }}" class="button button-small button-green disable-text-select phn-hide -ct -trk ml-10 -strk">Signup</a>
 					@endif
-                    <a href="#" class="button button-small button-green disable-text-select phn-hide -ct -trk ml-10 -strk">Contact Us</a>
+                    <a href="#" class="button button-small button-green disable-text-select phn-hide -ct -trk ml-10 -strk"><i class="fa fa-phone fa-lg">9582448819</i></a>
 					
 
                    
@@ -491,7 +492,7 @@
         <div class="container">
             <div class="grid-one-fourth alpha tab-grid-one-fourth phn-grid-full pv-20 phn-pv-15">
                 <p class="ldg-sectionTopprStats_itemCount mb-5" id="ldg-footer-stats-user-count">
-                    0
+                    {{ \App\Users::all()->count() }}
                 </p>
                 <p class="ldg-sectionTopprStats_itemName uc">
                     Happy Students
@@ -499,7 +500,7 @@
             </div>
             <div class="grid-one-fourth tab-grid-one-fourth phn-grid-full pv-20 phn-pv-15">
                 <p class="ldg-sectionTopprStats_itemCount mb-5" id="ldg-footer-stats-ques-count">
-                    0
+                    {{ \App\Questions_attempt::all()->count() }}
                 </p>
                 <p class="ldg-sectionTopprStats_itemName uc">
                     Questions attempted

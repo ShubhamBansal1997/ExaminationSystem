@@ -10,6 +10,10 @@
 </head>
 <body>
   <div data-reactroot="">
+    <!-- react-text: 2 -->
+    <!-- /react-text -->
+    <!-- react-text: 3 -->
+    <!-- /react-text -->
     <div class="testTool_logoBlock"><img src="http://www.neetgurumantra.com/v2/topprweb/images/logo_hor.png" alt="Neet-guru-mantra Logo" style="height: 35px; margin-top: 12.5px;"></div>
     <div class="testTool_sideBar testTool_sideBar-tillBottom js-sidebar">
       <div class="goalsList mt-15 testTool_goalList js-goals-list pl-30">
@@ -67,7 +71,7 @@
               <!-- react-text: 49 -->:
               <!-- /react-text --><span class="js-test-timer-minutes">2</span>
               <!-- react-text: 51 -->:
-              <!-- /react-text --><span class="js-test-timer-seconds">57</span></div>
+              <!-- /react-text --><span class="js-test-timer-seconds">11</span></div>
           </div><button class="testTool_topBar_stateBtn -strk js-btn-finish-assessment difficulty-btn">@if($question->ques_level==1) EASY @elseif($question->ques_level==2) MEDIUM @else DIFFICULT @endif</button><button class="testTool_topBar_stateBtn -strk js-btn-finish-assessment difficulty-btn">@if($question->ques_imp==1) IMPORTANT @endif</button>
           <h1 class="testTool_topBar_title"><!-- react-text: 56 -->Biological Classification<!-- /react-text --><!-- react-text: 57 --> — Practice<!-- /react-text --></h1></div>
       </div>
@@ -75,7 +79,7 @@
     <div class="testTool_contentArea js-content-area">
       <div class="testTool_quesWrapper pv-60 js-ques-wrapper">
         <div class="ques_item fade-out js-question fade-in" id="ques-1" data-id="250772" data-style="single correct" data-solution-available="0" data-already-attempted="0" data-correctly-answered="0" data-seen="0" data-action="true" data-n-selected-choices="0">
-          <div class="ques m-0 js-question-tile null is-correct" data-id="250772" data-style="single correct">
+          <div class="ques m-0 js-question-tile is-attempted is-correct" data-id="250772" data-style="single correct">
             <div class="ques_content">
               <form method="post" class="js-question-form">
                 <div class="ques_header cf">
@@ -89,10 +93,10 @@
                   </div>
                 </div>
                 <div class="ques_text apply-mathjax">
-                  {!! $question->ques_exp !!}
+					{!! $question->ques_exp !!}
                 </div>
                 <div>
-                  <div class="ques_option is-clickable apply-mathjax js-ques-list-option-item   " data-choice_id="<p><span style='font-size:18px'>(a), (b) and (d)</span></p> "><span class="ques_option_label fl">A</span>
+                  <div class="ques_option is-clickable apply-mathjax js-ques-list-option-item is-correct is-selected is-wrong" data-choice_id="<p><span style='font-size:18px'>(a), (b) and (d)</span></p> "><span class="ques_option_label fl">A</span>
                     <div class="ques_option_content">
                       <div class="ques_option_content_text">
                         <p><span style="font-size:18px">{!! $question->ques_ans1 !!}</span></p>
@@ -107,8 +111,14 @@
                       <div class="clr"></div>
                     </div><input type="checkbox" class="hide" name="choices" value="825133">
                     <div class="clr"></div>
-                    <!-- react-text: 85 -->
-                    <!-- /react-text -->
+                    <div class="solution_text_container js-solution-text">
+                      <div class="solution_heading">Solution</div>
+                      <div class="js-solution-content">
+                        <div class="testTool_qSolution_text solution_text">
+                          {!! $question->ques_sol !!}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div class="ques_option is-clickable apply-mathjax js-ques-list-option-item   " data-choice_id="<p><span style='font-size:18px'>(a) and (d)</span></p> "><span class="ques_option_label fl">B</span>
                     <div class="ques_option_content">
@@ -172,7 +182,7 @@
     </div>
     <div class="testTool_qNav"><a class="testTool_qNav_arrow testTool_qNav_arrow-left js-qnav-prev "><i class="fa fa-angle-left"></i></a><a class="testTool_qNav_arrow testTool_qNav_arrow-right js-qnav-next"><i class="fa fa-angle-right"></i></a></div>
     <div class="testTool_btmBar">
-      <div class="testTool_btmBar_actionBtn testTool_btmBar_actionBtn_primary testTool_btmBar_actionBtn_primary-fullWidth js-primary-btn-bottom grey">Skip</div>
+      <div class="testTool_btmBar_actionBtn testTool_btmBar_actionBtn_primary testTool_btmBar_actionBtn_primary-fullWidth js-primary-btn-bottom ">Next</div>
       <div class="testTool_btmBar_loadingView hide js-loading-view-bottom">
         <div class="loadingDots loadingDots-h15 ma testTool_btmBar_loadingView_dots"><span class="loadingDots_dot loadingDots_dot-d1"></span><span class="loadingDots_dot loadingDots_dot-d2"></span><span class="loadingDots_dot loadingDots_dot-d3"></span>
           <div class="clr"></div>

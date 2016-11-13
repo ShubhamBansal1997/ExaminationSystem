@@ -10,7 +10,7 @@
   <link href="http://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet" type="text/css">
   <link href="{{ s32('css/style.css') }}" rel="stylesheet"> <!-- MANDATORY -->
   <link href="{{ s32('css/theme.css') }}" rel="stylesheet"> <!-- MANDATORY -->
-  <link href="{{ s32('css/ui.css') }}" rel="stylesheet"> <!-- MANDATORY -->
+  <link href="{{ URL::asset('css/ui.css') }}" rel="stylesheet"> <!-- MANDATORY -->
   <link href="{{ s32('plugins/datatables/dataTables.min.css') }}" rel="stylesheet">
 <link href="{{ s32('plugins/slider-pips/jquery-ui-slider-pips.css') }}" rel="stylesheet">
 <script type="text/javascript" async

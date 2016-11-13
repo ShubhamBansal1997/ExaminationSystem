@@ -144,5 +144,13 @@ class QuestionController extends Controller
         $question = Questions::where('ques_id',$ques_id)->first();
         return view('admin.pages.qpage',compact('question'));
     }
-    
+    public function view_look1($ques_id)
+    {
+        $question = Questions::where('ques_id',$ques_id)->first();
+        return view('admin.pages.qpage1',compact('question'));
+    }public function view_look2($ques_id)
+    {
+        $question = Questions::where('ques_id',$ques_id)->first();
+        return view('admin.pages.qpage2',compact('question'));
+    }
 }
