@@ -8,6 +8,7 @@
  */
 
 'use strict';
+config.mathJaxLib = '//cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS_HTML';
 
 
 ( function() {
