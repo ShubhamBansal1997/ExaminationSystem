@@ -104,7 +104,7 @@
                     <li class="hide phn-block"><a target="_blank" href="{{ URL::to('register')}}" class="-strk">Signup</a></li>
                     <li class="hide phn-block"><a target="_blank" href="{{ URL::to('login') }}" class="-ref-strk">Login</a></li>
                     @endif
-					<li class="hide phn-block"><a target="_blank" href="#" class="-ref-strk">Contact Us</a></li>
+					<li class="hide phn-block"><a target="_blank" href="#" class="-ref-strk"><i class="fa fa-phone fa-lg">9582448819</i></a></li>
                     
                 </ul>
                 
