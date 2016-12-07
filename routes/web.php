@@ -53,6 +53,9 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
     Route::get('view_look/{ques_id}','QuestionController@view_look');
     Route::get('view_look1/{ques_id}','QuestionController@view_look1');
     Route::get('view_look2/{ques_id}','QuestionController@view_look2');
+    Route::get('content','EmployeeController@list_content');
+    Route::get('market','EmployeeController@list_market');
+    Route::get('view_users','AdminDashboardController@u_list');
 
 
 

@@ -16,4 +16,8 @@ class AdminDashboardController extends Controller
     	else
     		return redirect('login');
     }
+    public function u_list()
+    {
+    	return view('admin.pages.u_list');
+    }
 }

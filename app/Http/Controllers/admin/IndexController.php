@@ -42,9 +42,11 @@ class IndexController extends Controller
                 foreach($query as $data)
                 {
                     $email = $data->email;
+                    $a_status = $data->a_status;
                 }
                 Session::set('admin_status',TRUE);
                 Session::set('aemail',$email);
+                Session::set('a_status',$a_status);
                 return redirect('admin');
             }
             else
