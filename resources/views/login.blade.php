@@ -51,7 +51,7 @@
               {{ Session::get('flash_message') }}
               </div>
               @endif
-                    <h3><strong>Sign in</strong> to your account</h3>
+                    <h3><strong>LOGIN</strong> to your account</h3>
  
                     <div class="append-icon">
                         <input type="text" name="mobile" id="mobile"  class="form-control form-white username" placeholder="Mobile Number" required>
@@ -59,7 +59,7 @@
                     </div>
                     
                     
-                    <button type="submit" class="btn btn-lg btn-dark btn-rounded ladda-button" data-style="expand-left" name="btn_login" value="Login">Sign In</button>
+                    <button type="submit" class="btn btn-lg btn-dark btn-rounded ladda-button" data-style="expand-left" name="btn_login" value="Login">Log In</button>
                     
                     <div class="form-footer">
 					<!--
@@ -69,7 +69,7 @@
                         </div>
 						-->
                         <div class="clearfix">
-                            <p class="new-here"><a href="{{ URL::to('register') }}">New here? Sign up</a></p>
+                            <p class="new-here"><a href="{{ URL::to('register') }}">New here? Register</a></p>
                         </div>
                     </div>
                 {!! Form::close() !!}

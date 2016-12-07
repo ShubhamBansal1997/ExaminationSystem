@@ -141,7 +141,7 @@
         <p align="center" class="ldg-pageHeader_tagline bold color-black mt-20 mb-100">
               Initiative by a team of medical students from top medical colleges of India to guide and assist pre-medical aspirants to crack different medical entrance exams.
         </p>
-        <a href="http://www.neetgurumantra.com/register" class="button button-bigger button-arrowed button-white button-white-noBorder button-white-hoverGrey button-white-hoverWhiteArrow -ct -trk -strk">
+        <a href="{{ URL::to('register') }}" class="button button-bigger button-arrowed button-white button-white-noBorder button-white-hoverGrey button-white-hoverWhiteArrow -ct -trk -strk">
             Start Learning Now <span class="arrowRight hoverArrowBlack inline-block ml-30 phn-ml-20"></span>
         </a>
         
@@ -477,7 +477,7 @@
 
                 <a href="http://www.neetgurumantra.com/user/register" class="button button-big button-arrowed button-hollow button-hollow-green block bd-2 semi-bold -ct -strk" >
 
-                    Signup now <span class="arrowRight green inline-block ml-30 phn-ml-20"></span>
+                    Connect <span class="arrowRight green inline-block ml-30 phn-ml-20"></span>
                 </a>
             </div>
         </div>
