@@ -66,11 +66,7 @@
                             </li>
                             <li class="dd-item"  style="font-size: 20px;" data-id="8">
                               <a target="_blank" href="#"  style="padding: 5px;" ><div class="dd3-content" style=" border: 2px solid #000000;height: 35px;padding: 5px 0px 5px 5px;">Unattempted (120)</div></a>
-                              <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                                  <span class="sr-only">20% Complete</span> 
-                                </div>
-                              </div>
+                              
                             </li>
                           </ol>
                         </li>

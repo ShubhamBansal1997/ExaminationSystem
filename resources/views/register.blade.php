@@ -82,7 +82,7 @@
                         </label>  
                     </div>
                     <div class="m-t-20">
-                        <button type="submit" name="submit" class="btn btn-lg btn-dark btn-rounded" data-style="expand-left">Sign Up</button>
+                        <button type="submit" name="submit" class="btn btn-lg btn-dark btn-rounded" data-style="expand-left">Register</button>
                     </div>
 					
                 {!! Form::close() !!}
@@ -93,7 +93,7 @@
                         <button type="button" class="btn btn-lg btn-block btn-blue btn-square"><i class="fa fa-twitter pull-left"></i>Login with Twitter</button>
                     </div> -->
                     <div class="clearfix">
-                        <p class="new-here"><a href="{{ URL::to('login')}}">Already have an account? Sign In</a></p>
+                        <p class="new-here"><a href="{{ URL::to('login')}}">Already have an account? Log In</a></p>
                     </div>
                 </div>
             </div>
