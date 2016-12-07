@@ -89,7 +89,7 @@
 							<li><a href="#" class="medical -ref -strk" data-ref="medtop" data-strk='{"e":"ui.tapped", "ui_element_name":"aiims", "ui_context":"courses_site_header"}'>EAMCET</a></li>                        </ul>
                     </li>
                     <li class="has_dropdown">
-                        <a href="http://portal.neetgurumantra.com/user/register"class="-ref -strk" data-ref="pricingtop" data-strk='{"e":"ui.tapped", "ui_element_name":"pricing", "ui_context":"site_header"}'>Pricing<span class="arrowDown"></span></a>
+                        <a href="http://www.neetgurumantra.com/register" class="-ref -strk" data-ref="pricingtop" data-strk='{"e":"ui.tapped", "ui_element_name":"pricing", "ui_context":"site_header"}'>Pricing<span class="arrowDown"></span></a>
                         <ul class="topHeaderDropdownMenu phn-hide">
                             <li class="subItem"><a href="#" class="medical -ref -strk" data-ref="medtop" data-strk='{"e":"ui.tapped", "ui_element_name":"pre_medical", "ui_context":"courses_site_header"}'>Test Series</a></li>
                             <li class="subItem"><a href="#" class="medical -ref -strk" data-ref="medtop" data-strk='{"e":"ui.tapped", "ui_element_name":"pre_medical", "ui_context":"courses_site_header"}'>PCB Package</a></li>
@@ -104,7 +104,7 @@
                     <li class="hide phn-block"><a target="_blank" href="{{ URL::to('register')}}" class="-strk">Signup</a></li>
                     <li class="hide phn-block"><a target="_blank" href="{{ URL::to('login') }}" class="-ref-strk">Login</a></li>
                     @endif
-					<li class="hide phn-block"><a target="_blank" href="#" class="-ref-strk"><i class="fa fa-phone fa-lg">9582448819</i></a></li>
+					<li class="hide phn-block"><a target="_blank" href="#" class="-ref-strk"><i class="fa fa-phone fa-lg">+91-9582448819</i></a></li>
                     
                 </ul>
                 
@@ -118,7 +118,7 @@
 
                     <a href="{{ URL::to('register') }}" class="button button-small button-green disable-text-select phn-hide -ct -trk ml-10 -strk">Signup</a>
 					@endif
-                    <a href="#" class="button button-small button-green disable-text-select phn-hide -ct -trk ml-10 -strk"><i class="fa fa-phone fa-lg">9582448819</i></a>
+                    <a href="#" class="button button-small button-green disable-text-select phn-hide -ct -trk ml-10 -strk"><i class="fa fa-phone fa-lg">+91-9582448819</i></a>
 					
 
                    
@@ -141,7 +141,7 @@
         <p align="center" class="ldg-pageHeader_tagline bold color-black mt-20 mb-100">
               Initiative by a team of medical students from top medical colleges of India to guide and assist pre-medical aspirants to crack different medical entrance exams.
         </p>
-        <a href="http://portal.neetgurumantra.com/user/register" class="button button-bigger button-arrowed button-white button-white-noBorder button-white-hoverGrey button-white-hoverWhiteArrow -ct -trk -strk">
+        <a href="http://www.neetgurumantra.com/register" class="button button-bigger button-arrowed button-white button-white-noBorder button-white-hoverGrey button-white-hoverWhiteArrow -ct -trk -strk">
             Start Learning Now <span class="arrowRight hoverArrowBlack inline-block ml-30 phn-ml-20"></span>
         </a>
         
@@ -197,7 +197,7 @@
                         
                         
                     </div>
-                    <a href="http://portal.neetgurumantra.com/user/login" class="ldg-sectionAvailableCourses_getStarted ldg-sectionAvailableCourses_getStarted-red block uc ta-c -ref -strk" data-ref="learn_more_eng" data-strk='{"e":"ui.tapped", "ui_element_name":"learn_more", "exam_slug":"iit_jee"}'>Start Free Trial</a>
+                    <a href="http://www.neetgurumantra.com/login" class="ldg-sectionAvailableCourses_getStarted ldg-sectionAvailableCourses_getStarted-red block uc ta-c -ref -strk" data-ref="learn_more_eng" data-strk='{"e":"ui.tapped", "ui_element_name":"learn_more", "exam_slug":"iit_jee"}'>Start Free Trial</a>
                 </div>
             </div>
             
@@ -227,7 +227,7 @@
 
 												
                     </div>
-                    <a href="http://portal.neetgurumantra.com/user/login" class="ldg-sectionAvailableCourses_getStarted ldg-sectionAvailableCourses_getStarted-green block uc ta-c -ref -strk" data-ref="learn_more_med" data-strk='{"e":"ui.tapped", "ui_element_name":"learn_more", "exam_slug":"pre_medical"}'>Start Free Trial</a>
+                    <a href="http://www.neetgurumantra.com/login" class="ldg-sectionAvailableCourses_getStarted ldg-sectionAvailableCourses_getStarted-green block uc ta-c -ref -strk" data-ref="learn_more_med" data-strk='{"e":"ui.tapped", "ui_element_name":"learn_more", "exam_slug":"pre_medical"}'>Start Free Trial</a>
                 </div>
             </div>
             
@@ -269,7 +269,7 @@
 
 						
                     </div>
-                    <a href="http://portal.neetgurumantra.com/user/login" class="ldg-sectionAvailableCourses_getStarted ldg-sectionAvailableCourses_getStarted-yellow block uc ta-c -ref -strk" data-ref="learn_more_fnd" data-strk='{"e":"ui.tapped", "ui_element_name":"learn_more", "exam_slug":"foundation"}'>Start Free Trial</a>
+                    <a href="http://www.neetgurumantra.com/login" class="ldg-sectionAvailableCourses_getStarted ldg-sectionAvailableCourses_getStarted-yellow block uc ta-c -ref -strk" data-ref="learn_more_fnd" data-strk='{"e":"ui.tapped", "ui_element_name":"learn_more", "exam_slug":"foundation"}'>Start Free Trial</a>
                 </div>
             </div>
             

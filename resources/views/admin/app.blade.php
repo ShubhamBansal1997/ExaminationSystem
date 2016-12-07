@@ -67,7 +67,7 @@
             </div>  -->
           </div>
           <ul class="nav nav-sidebar">
-            <li class="tm nav-active"><a href="http://portal.neetgurumantra.com/user/dashboard"><i class="icon-home"></i><span>Home</span></a></li>
+            <li class="tm nav-active"><a href="http://www.neetgurumantra.com/admin/dashboard"><i class="icon-home"></i><span>Home</span></a></li>
             <li class="tm nav-parent nav-active">
                 <a href="#"><i class="icon-puzzle"></i><span>Add Questions</span> <span class="fa arrow"></span></a>
                 <ul class="children collapse">
@@ -90,13 +90,17 @@
                    <li><a href="{{ URL::to('admin/viewques/3/12') }}">Biology-12th</a>
                 </ul>
             </li>
+            @if(Session::get('a_status')=='1')
+            <li class="tm nav-active"><a href="{{ URL::to('admin/view_users') }}"><i class="icon-home"></i><span>Users</span></a></li>
             <li class="tm nav-parent nav-active">
-              <a href="#"><i class="icon-bulb"></i><span>Biology</span> <span class="fa arrow"></span></a>
+
+              <a href="#"><i class="icon-bulb"></i><span>Add Employees</span> <span class="fa arrow"></span></a>
               <ul class="children collapse">
-                   <li><a href="{{ URL::to('home/3/11') }}">11th</a></li>
-                   <li><a href="{{ URL::to('home/3/12') }}">12th</a></li>
+                   <li><a href="{{ URL::to('admin/content') }}">Content</a></li>
+                   <li><a href="{{ URL::to('admin/marketers') }}">Marketers</a></li>
                 </ul>
             </li>
+            @endif
             <li class="tm nav-parent nav-active">
               <a href="#"><i class="icon-screen-desktop"></i><span>Test Series</span> <span class="fa arrow"></span></a>
               <ul class="children collapse">
