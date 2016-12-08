@@ -33,11 +33,12 @@ Route::get('/form', function() {
 Route::get('get_question','QuestionController@get_question');
 Route::post('submit_question','QuestionController@submit_question');
 Route::post('ques_prev_sub','QuestionController@ques_prev_sub');
-Route::get('qpage/{sub_id}/{chap_id}/{ques_cat}','QuestionController@question_page');
- 
+//Route::get('qpage/{sub_id}/{chap_id}/{ques_cat}','QuestionController@question_page');
+Route::get('qpage?','QuestionController@question_page');
+
 
 Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
-	
+
 	Route::get('/', 'IndexController@index');
 	Route::get('home','AdminDashboardController@index');
 	Route::get('login', 'IndexController@index');
@@ -59,14 +60,14 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
 
 
 
-	 
-	
-	 
+
+
+
 });
 Route::get('/form', function() {
     return View::make('form');
 });
- 
+
 Route::get('upload/image', function() {
     $allowed = array('png', 'jpg', 'gif');
     $rules = [
@@ -92,6 +93,3 @@ Route::get('upload/image', function() {
         return '{"status":"Invalid File type"}';
     }
 });
-
-
-
