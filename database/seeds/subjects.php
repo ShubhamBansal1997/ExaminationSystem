@@ -13,15 +13,15 @@ class subjects extends Seeder
     {
         DB::table('subjects')->insert([
         	'sub_id' => 1,
-            'sub_name' => 'Physics'
+            'sub_name' => 'Physics',
         ]);
         DB::table('subjects')->insert([
         	'sub_id' => 2,
-            'sub_name' => 'Chemistry'
+            'sub_name' => 'Chemistry',
         ]);
         DB::table('subjects')->insert([
         	'sub_id' => 3,
-            'sub_name' => 'Biology'
+            'sub_name' => 'Biology',
         ]);
     }
 }

@@ -16,7 +16,7 @@
 <script type="text/javascript" async
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
- 
+
 </head>
 <!-- LAYOUT: Apply "submenu-hover" class to body element to have sidebar submenu show on mouse hover -->
 <!-- LAYOUT: Apply "sidebar-collapsed" class to body element to have collapsed sidebar -->
@@ -50,9 +50,9 @@
           <div class="sidebar-top"></div>
           <div class="menu-title">
             <!--
-             <span>Navigation</span> 
+             <span>Navigation</span>
             <div class="pull-right menu-settings">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" data-delay="300"> 
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" data-delay="300">
               <i class="icon-settings"></i>
               </a>
               <ul class="dropdown-menu">
@@ -129,10 +129,10 @@
             </div>
           </div>
 </div>
-          
+
           <div class="sidebar-footer clearfix" style="">
-            
-          </div>  
+
+          </div>
         </div>
       </div>
       <!-- END SIDEBAR -->
@@ -154,16 +154,16 @@
             <ul class="header-menu nav navbar-nav">
               <!-- END USER DROPDOWN -->
               <!-- BEGIN NOTIFICATION DROPDOWN -->
-              
+
               <!-- END NOTIFICATION DROPDOWN -->
               <!-- BEGIN MESSAGES DROPDOWN -->
-              
+
               <!-- END MESSAGES DROPDOWN -->
               <!-- BEGIN USER DROPDOWN -->
               <li class="dropdown" id="user-header">
                 <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                 <img src="{{ s32('images/avatars/user1.png') }}" alt="user image">
-                <span class="username">Hi, {{ \App\Users::userName() }}</span>
+                <span class="username">{{ \App\Users::userName() }}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <li>
@@ -179,13 +179,13 @@
               </li>
               <!-- END USER DROPDOWN -->
               <!-- CHAT BAR ICON -->
-              
+
             </ul>
           </div>
           <!-- header-right -->
         </div>
         <!-- END TOPBAR -->
-          
+
         @yield("content")
         <div class="footer">
             <div class="copyright">

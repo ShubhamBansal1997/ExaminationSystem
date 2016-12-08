@@ -5616,9 +5616,9 @@ body.DTTT_Print {
 }
 .panel-heading .panel-title > a:after {
   color: #DFE5E9;
-  
+
   float: right;
-  
+
 }
 .panel-heading h4 > a {
   -webkit-transition: all 0.4s ease-out;
@@ -5635,9 +5635,9 @@ body.DTTT_Print {
 }
 .panel-heading h4 > a.collapsed:after {
   color: #7E7E7E;
-  
+
   float: right;
-  
+
   font-size: 18px;
   margin-top: 4px;
   opacity: 0.5;
@@ -6023,7 +6023,7 @@ ul.nav ul.dropdown-menu li.placeholder:before {
   display: block;
   font-weight: 500;
   height: 30px;
-  margin: 5px 0;
+  margin: 0px 0;
   padding: 5px 10px 5px 10px;
   text-decoration: none;
   -webkit-border-radius: 3px;
