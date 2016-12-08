@@ -13,7 +13,7 @@
         <div class="alert alert-success fade in">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>{{ Session::get('flash_message') }}
-      
+
               </div>
               @endif
       </p>
@@ -49,40 +49,11 @@
                             @else
                               {{ "N" }}
                             @endif</td>
-                        <div id="dialog" title="Confirmation Required">
-  Are you sure about this?
-</div>
-<script type="text/javascript">$('.delete').click(function () {
-    confirm('Are you sure you want to delete this?');
-});
 
-
-$('.confirmLink delete btn btn-sm btn-danger').click(function (event) {
-    event.preventDefault();
-
-    if (confirm("Really want to delete this?")) {
-    
-
-    $.ajax({
-        type:"POST",
-        url: $(this).attr('href'),
-        data: "",
-        asynchronous: true,
-        cashe: false,
-        data: {
-            // data stuff here
-        },
-        success: function () {
-            // does some stuff here...
-        }
-    });
-  }
-});
-</script>
 
 
                         <td class="text-right">
-                        <a class="edit btn btn-sm btn-default" href=" {{ URL::to('admin/editques') }}/{{ $question->ques_id }}/{{ $sub_id }}/{{ $std }} "><i class="icon-note"></i></a> 
+                        <a class="edit btn btn-sm btn-default" href=" {{ URL::to('admin/editques') }}/{{ $question->ques_id }}/{{ $sub_id }}/{{ $std }} "><i class="icon-note"></i></a>
                         <!-- <a class="confirmLink delete btn btn-sm btn-danger" href=" {{ URL::to('admin/deleteques') }}/{{ $question->ques_id }}/{{ $sub_id }}/{{ $std }} "><i class="icons-office-52"></i></a> -->
                         <a target="_blank" class="edit btn btn-sm btn-default" href="{{ URL::to('admin/view_look') }}/{{ $question->ques_id }} "><i class="icon-note"></i></a>
                         <a target="_blank" class="edit btn btn-sm btn-default" href="{{ URL::to('admin/view_look1') }}/{{ $question->ques_id }} "><i class="icon-note"></i></a>
@@ -96,5 +67,5 @@ $('.confirmLink delete btn btn-sm btn-danger').click(function (event) {
               </div>
             </div>
           </div>
-          
+
 @endsection
