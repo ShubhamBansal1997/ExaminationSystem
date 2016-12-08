@@ -2,26 +2,26 @@
 <html lang="en">
 <head><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script>
 
-    
+
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>NeetGurumantra</title>
     <meta name="keywords" content="aipmt, aipmt 2016, aiims, aiims 2016, jee main 2017, aiims 2017, neet question paper, neet 2015 paper, neet entrance exam 2016, iit aiims 2016, aiims physics, aiims books, neet preparation, aiims paper 2015, neet sample papers, neet 2016 application form, neet 2016 exam date, neet 2016 news, neet application form 2016, neet 2016 date, neet form, neet 2016 syllabus, neet application form 2016, neet form 2016, aipmt 2016 application form, aipmt 2016 exam date, aipmt 2016 syllabus, aipmt2016, aipmt application form 2016, aipmt form 2016, aipmt 2016 exam pattern, aipmt syllabus 2016, aipmt 2016 preparation tips, aipmt exam date 2016, pmt 2016, aipmt 2016 date, cbse aipmt 2016, aipmt 2016 form, aipmt, aipmt 2016, ecamet, cpmt 2016, cpmt, dpmt, rpmt 2016 application form, jipmer application form 2016, jipmer admission 2016, jipmer application form 2016, cpmt admission, upcmet application form 2016, ipu entrance exam 2016, aiims entrance exam 2016 cpmt 2018, aieee,"/>
     <meta name="description" content="Talk to a Medical Student a Be a medical student"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
-    
+
         <link rel="canonical" href="http://www.neetgurumantra.com/">
-    
-    
-    
+
+
+
     <meta property="og:title" content="NeetGurumantra"/>
     <meta property="og:description" content="Intiative by a team of medical studets from top medical colleges of India to gudie and assist medical aspirants to crack pre-medical entrance exams" />
 
-    
+
     <link rel="stylesheet" type="text/css" href="{{ s31('static/topprweb/plugins/bx_slider/jquery.bxslider.min.css') }}">
 
     <link rel="stylesheet" type="text/css" href="{{ s31('v2/css/landing.css') }}" media="all" />
-    
+
 
 <link rel="shortcut icon" href="{{ s31('static/v2/images/brand/favicon/favicon.ico') }}">
 <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{ s31('static/v2/images/brand/favicon/apple-touch-icon-57x57.png') }}" />
@@ -36,22 +36,22 @@
 <meta name="msapplication-TileImage" content="{{ s31('static/v2/images/brand/favicon/mstile-144x144.png')}}" />
 <link rel="shortcut icon" href="{{ s31('static/v2/images/brand/favicon/favicon.ico')}}">
 <script src="https://use.fontawesome.com/5402b643ce.js"></script>
-  
+
     <!--[if lt IE 9]>
     <script src="{{ s31('static/topprweb/js/html5shiv.min.js')}}"></script>
     <![endif]-->
-    
-    
 
 
 
-    
 
 
 
-    
 
-    
+
+
+
+
+
 
 
 
@@ -61,23 +61,23 @@
 </head>
 
 <body class="ldg-body">
-    
+
 
     <header class="js-page-header ldg-homeHeader pb-60 phn-pb-30">
-        
-            
+
+
                 <div class="ldg-topHeader" id="top_header">
     <div class="content">
         <div class="container">
             <div class="blockLeft">
                 <a href="/" class="logo hide-text -gat -ref -strk" data-ref="logotop" data-strk='{"e":"ui.tapped", "ui_element_name":"site_header"}'>NeetGurumantra</a>
                 <a class="navButton clickable js-mob-nav-trigger">
-                    <span class="buttonText js-button-text">Menu</span><i 
-                    class="icon-menu js-icon-menu"></i><i 
+                    <span class="buttonText js-button-text">Menu</span><i
+                    class="icon-menu js-icon-menu"></i><i
                     class="icon-cancel hide js-icon-cancel"></i>
                 </a>
             </div>
-            
+
             <nav class="navWrapper">
                 <ul class="navigation">
                     <li class="has_dropdown">
@@ -96,7 +96,7 @@
                             <li class="subItem"><a href="#" class="medical -ref -strk" data-ref="medtop" data-strk='{"e":"ui.tapped", "ui_element_name":"pre_medical", "ui_context":"courses_site_header"}'>Advanced Package</a></li>
                         </ul>
                     </li>
-                    
+
                     @if( Session::get('Login_status')==TRUE)
                     <li class="hide phn-block"><a target="_blank" href="{{ URL::to('home')}}" class="-strk">Dashboard</a></li>
                     <li class="hide phn-block"><a target="_blank" href="{{ URL::to('logout') }}" class="-ref-strk">Sign Out</a></li>
@@ -105,9 +105,9 @@
                     <li class="hide phn-block"><a target="_blank" href="{{ URL::to('login') }}" class="-ref-strk">Login</a></li>
                     @endif
 					<li class="hide phn-block"><a target="_blank" href="#" class="-ref-strk"><i class="fa fa-phone fa-lg">+91-9582448819</i></a></li>
-                    
+
                 </ul>
-                
+
                 <div class="buttonsBlock">
                     @if( Session::get('Login_status')==TRUE)
                     <a target="_blank" href="{{ URL::to('home') }}"  class="button button-small button-grey disable-text-select phn-hide -ct -trk -strk">Home</a>
@@ -119,22 +119,22 @@
                     <a href="{{ URL::to('register') }}" class="button button-small button-green disable-text-select phn-hide -ct -trk ml-10 -strk">Signup</a>
 					@endif
                     <a href="#" class="button button-small button-green disable-text-select phn-hide -ct -trk ml-10 -strk"><i class="fa fa-phone fa-lg">+91-9582448819</i></a>
-					
 
-                   
+
+
                 </div>
-                
+
                 <div class="clr"></div>
             </nav>
-            
+
             <div class="clr"></div>
         </div>
     </div>
 </div>
 
-            
-            
-            
+
+
+
     <div class="container phn-ta-c">
         <h2 class="h2 color-black lighter mt-100 mb-20 phn-mt-30"><center>PMT Preparation by NEET/AIIMS Toppers</center></h2>
         <div class="hr"></div>
@@ -144,14 +144,14 @@
         <a href="{{ URL::to('register') }}" class="button button-bigger button-arrowed button-white button-white-noBorder button-white-hoverGrey button-white-hoverWhiteArrow -ct -trk -strk">
             Start Learning Now <span class="arrowRight hoverArrowBlack inline-block ml-30 phn-ml-20"></span>
         </a>
-        
+
         <a class="ldg-pageHeader_scrollIndicator js-header-scroll-icon -strk" data-strk='{"e":"ui.tapped", "ui_element_name":"arrow_down", "ui_context":"first_fold"}'></a>
     </div>
 
-        
+
     </header>
 
-	
+
     <section class="ldg-section ldg-sectionAvailableCourses js-courses-section" id="courses">
         <div class="container">
             <div class="ta-c phn-mb-30">
@@ -162,11 +162,11 @@
             <p class="ldg-section_tagline ta-c mt-10 mb-60 phn-mb-30">
                 Pick the right package to start preparing.
             </p>
-            
 
-            
-            
-            
+
+
+
+
             <div class="grid-one-third alpha phn-tab-grid-full phn-tab-mb-30">
                 <div class="l-tile l-tile-white pt-40">
                     <a href="#" class="-ref -strk" data-ref="learn_more_eng" data-strk='{"e":"ui.tapped", "ui_element_name":"iit_jee", "ui_context":"courses_fold"}'>
@@ -177,32 +177,32 @@
 						Complete PCB Package @ Rs. 500/-
                     </p>
                     <div class="l-pillsWrapper l-pillsWrapper-verticalGap ac pv-20 ph-20">
-                        
+
                         <span class="l-pill">Physics | Chemistry | Biology</span>
-						
+
 						<span class="l-pill">Phy + Chem | Phy + Bio | Chem + Bio</span>
-						
+
 						<span class="l-pill">Physics + Chemistry + Biology</span>
-						
 
-						
 
-						
 
-						
 
-						
 
-                        
-                        
-                        
+
+
+
+
+
+
+
+
                     </div>
                     <a href="http://www.neetgurumantra.com/login" class="ldg-sectionAvailableCourses_getStarted ldg-sectionAvailableCourses_getStarted-red block uc ta-c -ref -strk" data-ref="learn_more_eng" data-strk='{"e":"ui.tapped", "ui_element_name":"learn_more", "exam_slug":"iit_jee"}'>Start Free Trial</a>
                 </div>
             </div>
-            
-            
-            
+
+
+
             <div class="grid-one-third phn-tab-grid-full phn-tab-mb-30">
                 <div class="l-tile l-tile-white pt-40">
                     <a href="#" class="-ref -strk" data-ref="learn_more_med" data-strk='{"e":"ui.tapped", "ui_element_name":"pre_medical", "ui_context":"courses_fold"}'>
@@ -213,28 +213,28 @@
                         Complete PCB Package @ Rs. 900/-
                     </p>
                     <div class="l-pillsWrapper l-pillsWrapper-verticalGap ac pv-20 ph-20">
-                        
+
                         <span class="l-pill">Physics | Chemistry | Biology</span>
-						
+
 						<span class="l-pill">Phy + Chem | Phy + Bio | Chem + Bio</span>
-						
+
 						<span class="l-pill">Physics + Chemistry + Biology</span>
-						
 
-						
 
-						
 
-												
+
+
+
+
                     </div>
                     <a href="http://www.neetgurumantra.com/login" class="ldg-sectionAvailableCourses_getStarted ldg-sectionAvailableCourses_getStarted-green block uc ta-c -ref -strk" data-ref="learn_more_med" data-strk='{"e":"ui.tapped", "ui_element_name":"learn_more", "exam_slug":"pre_medical"}'>Start Free Trial</a>
                 </div>
             </div>
-            
-            
-            
-            
-            
+
+
+
+
+
             <div class="grid-one-third omega phn-tab-grid-full phn-tab-mb-30">
                 <div class="l-tile l-tile-white pt-40">
                     <a href="#" class="-ref -strk" data-ref="learn_more_fnd" data-strk='{"e":"ui.tapped", "ui_element_name":"foundation", "ui_context":"courses_fold"}'>
@@ -249,41 +249,41 @@
                     </p>
                     <div class="l-pillsWrapper l-pillsWrapper-verticalGap ac pv-20 ph-20">
            <!--          <span class="l-pill">Physics</span>
-						
+
 						<span class="l-pill">Chemistry</span>
-						
+
 						<span class="l-pill">Biology</span>
-						
+
 						<span class="l-pill">Physics + Chemistry</span>
-						
+
 						<span class="l-pill">Physics + Biology</span>
-						
+
 						<span class="l-pill">Biology + Chemistry</span>
-						
+
 						<span class="l-pill">Physics + Chemistry + Biology</span>
-						
 
-				-->		
 
-						
+				-->
 
-						
+
+
+
                     </div>
                     <a href="http://www.neetgurumantra.com/login" class="ldg-sectionAvailableCourses_getStarted ldg-sectionAvailableCourses_getStarted-yellow block uc ta-c -ref -strk" data-ref="learn_more_fnd" data-strk='{"e":"ui.tapped", "ui_element_name":"learn_more", "exam_slug":"foundation"}'>Start Free Trial</a>
                 </div>
             </div>
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
+
+
+
+
+
+
             <div class="clr"></div>
         </div>
     </section>
@@ -298,11 +298,11 @@
                 TALK TO MEDICAL STUDENT, BE A MEDICAL STUDENT
             </p>
 
-            
-        
+
+
 
     </section>
-    
+
     <section class="ldg-sectionTestimonials js-sectionTestimonials">
     <div class="ldg-sectionTestimonials_wrapper js-testimonials_wrapper">
         <div class="ldg-sectionTestimonials_slide js-testimonial-slide-item">
@@ -324,7 +324,7 @@
             <div class="ldg-sectionTestimonials_image nimish"></div>
         </div>
 
-        
+
 
         <div class="ldg-sectionTestimonials_slide js-testimonial-slide-item">
             <div class="container">
@@ -356,7 +356,7 @@
                             Sahil Bansal, AIIMS, New Delhi, Batch 2015
                         </p>
                         <div class="ldg-sectionTestimonials_userItem uc mt-5">
-                            
+
                         </div>
                     </div>
                     <div class="clr"></div>
@@ -376,7 +376,7 @@
                             Rahul Bansal, AIIMS, New Delhi, Batch 2015
                         </p>
                         <div class="ldg-sectionTestimonials_userItem uc mt-5">
-                            
+
                         </div>
                     </div>
                     <div class="clr"></div>
@@ -384,7 +384,7 @@
             </div>
             <div class="ldg-sectionTestimonials_image serenaparve"></div>
         </div>
-   <!--     
+   <!--
         <div class="ldg-sectionTestimonials_slide js-testimonial-slide-item">
             <div class="container">
                 <div class="ldg-sectionTestimonials_textWrapper pl-30 pt-20 pb-20 phn-tab-pl-20 phn-tab-pt-10">
@@ -396,7 +396,7 @@
                             Param Malhotra, Class XII, IIT JEE Aspirant
                         </p>
                         <div class="ldg-sectionTestimonials_userItem uc mt-5">
-                            
+
                         </div>
                     </div>
                     <div class="clr"></div>
@@ -416,7 +416,7 @@
                             Atish Sharma, Class XI, IIT JEE Aspirant
                         </p>
                         <div class="ldg-sectionTestimonials_userItem uc mt-5">
-                            
+
                         </div>
                     </div>
                     <div class="clr"></div>
@@ -453,14 +453,14 @@
 </section>
 
 
-    
 
 
 
 
-    
 
-    
+
+
+
 
 <section class="ldg-section ldg-sectionFreeTrail bg-grey">
     <div class="container">
@@ -472,12 +472,12 @@
         </div>
         <div class="grid-half omega ta-c phn-tab-grid-full phn-tab-ta-c">
 
-            
+
             <div class="buttonWrapper ma mt-25">
 
                 <a href="http://www.neetgurumantra.com/user/register" class="button button-big button-arrowed button-hollow button-hollow-green block bd-2 semi-bold -ct -strk" >
 
-                    Connect <span class="arrowRight green inline-block ml-30 phn-ml-20"></span>
+                    Signup now <span class="arrowRight green inline-block ml-30 phn-ml-20"></span>
                 </a>
             </div>
         </div>
@@ -495,7 +495,7 @@
                     {{ \App\Users::all()->count() }}
                 </p>
                 <p class="ldg-sectionTopprStats_itemName uc">
-                    Happy Students
+                    Registered Users
                 </p>
             </div>
             <div class="grid-one-fourth tab-grid-one-fourth phn-grid-full pv-20 phn-pv-15">
@@ -503,7 +503,7 @@
                     {{ \App\Questions_attempt::all()->count() }}
                 </p>
                 <p class="ldg-sectionTopprStats_itemName uc">
-                    Questions attempted
+                    Questions solved
                 </p>
             </div>
             <div class="grid-one-fourth tab-grid-one-fourth phn-grid-full pv-20 phn-pv-15">
@@ -531,16 +531,16 @@
     <div id="modals_overlay" class="mdOverlay"></div>
     <div id="modals_wrapper"></div>
 
-    
-        
-  
 
-        
 
-    
+
+
+
+
+
 
     <div id="landing-modals-wrapper hide" style="display:none;">
-        
+
 <div class="md mdLogin" data-init="login_modal_init">
     <div class="md_content">
 
@@ -627,7 +627,7 @@
     </div>
 </div>
 
-        
+
 
 <div class="md mdSignup" data-init="signup_modal_init">
     <div class="md_content">
@@ -684,7 +684,7 @@
 
         <a href="#" class="md_btn md_btn-left mdSignup_btnBack"></a>
         <a href="#" class="md_btn md_btn-right md_btnClose"></a>
-        
+
         <div class="ta-c pv-15">
             <div class="ldg-sectionSignup_courseName engineering">
                 Engineering
@@ -783,7 +783,7 @@
     </div>
 </div>
 
-        
+
 
 <div class="modal modal-signup signup-process js-modal-signup-test-series" data-init="signup_test_series_modal_init" data-close="signup_test_series_modal_close" data-course_input="#course_inp">
     <div class="content">
@@ -829,7 +829,7 @@
     </div>
 </div>
 
-        
+
 <div class="modal modal-explore signup-process" data-init="explore_modal_init" data-close="explore_modal_close">
     <div class="content">
         <i class="icon-left-open button-icon button-back js-button-back"></i>
@@ -863,7 +863,7 @@
     </div>
 </div>
 
-        
+
 <div class="md mdForgotPassword" data-init="">
     <div class="md_content">
 
@@ -895,11 +895,11 @@
     </div>
 
     <!-- Prefetch dashboard image if not signed in to use in onboarding process -->
-    
-        <link rel="prefetch" href="{{ s31('static/v2/images/onboarding/dashboard.jpg')}}" />
-    
 
-    
+        <link rel="prefetch" href="{{ s31('static/v2/images/onboarding/dashboard.jpg')}}" />
+
+
+
     <footer class="ldg-footer pt-60 pb-20 phn-pv-20 ">
         <div class="container">
             <div class="grid-one-fourth alpha tab-grid-one-fourth phn-grid-full phn-hide">
@@ -910,10 +910,10 @@
             <div class="grid-three-fourth omega tab-grid-three-fourth phn-grid-full">
                 <div class="ldg-footer__column">
                     <div class="title--small bold color-white">NeetGurumantra &copy; 2016 Neetgurumantra</div>
-                    
+
                     <div class="clr"></div>
                 </div>
-                
+
             </div>
             <div class="clr"></div>
 
@@ -924,7 +924,7 @@
                 <a class="-ref -strk" href="#" data-ref="tosbtm" data-strk='{"e":"ui.tapped", "ui_element_name":"terms_of_service", "ui_context":"site_footer"}'>Terms of Service</a>
                 <a class="-ref -strk" href="#" data-ref="ppbtm" data-strk='{"e":"ui.tapped", "ui_element_name":"privacy_policy", "ui_context":"site_footer"}'>Privacy Policy</a>
             </div>
-			
+
  <div class="ldg-social fr phn-fn">
                 <a href="https://www.facebook.com/neetgurumantra" target="_blank"><img src="{{ s31('v2/images/f.png')}}" height="50px" width="50px"></a>
                 <!-- <a href=""><i class="icon-gplus-circled gplus"></i></a> -->
@@ -934,7 +934,7 @@
             <div class="clr"></div>
         </div>
     </footer>
-    
+
     <div class="hr"></div>
 
 
@@ -943,7 +943,7 @@
     <script type="text/javascript" src="{{ s31('v2/js/dist/tpr.landing.min.js')}}"></script>
 
     <script type='text/javascript'>
-        
+
     </script>
 
     <script type="text/javascript">
@@ -951,35 +951,35 @@
         $(document).ready(function(){
 
             // Testimonial
-            var $testimonialSection = $('.js-sectionTestimonials'); 
+            var $testimonialSection = $('.js-sectionTestimonials');
             var $slidesContainer = $testimonialSection.find('.js-testimonials_wrapper');
-            var $slides =  $slidesContainer.find('.js-testimonial-slide-item') ;      
-            var $slidesLink = $testimonialSection.find(".js-testimonial_nav_link"); 
+            var $slides =  $slidesContainer.find('.js-testimonial-slide-item') ;
+            var $slidesLink = $testimonialSection.find(".js-testimonial_nav_link");
             var numberOfSlides = $slides.length;
-            var slidesLinkIndex = 0;    
+            var slidesLinkIndex = 0;
             var setTimeInterval;
             // TODO  REMOVE ONLY FOR TESTING
             $slidesContainer.css({"width":numberOfSlides*100+'%' });
             $slides.css({"width":(100/numberOfSlides)+'%' });
-            
+
             $slidesLink.click(function(e){
                 e.preventDefault();
                 slidesLinkIndex = $(this).data('slide');
                 sliderEffect(slidesLinkIndex);
             });
-            
+
             $testimonialSection.hover(function(e) {
                 slidesLinkIndex = $slidesLink.index($(this).find(".active"));
                 sliderEffect(slidesLinkIndex);
                 return e.type.match('t') ? clearInterval(setTimeInterval) : auto_slide();
-            });     
+            });
 
-            function sliderEffect(slidesLinkIndex) { 
+            function sliderEffect(slidesLinkIndex) {
                 slidesLinkIndex = slidesLinkIndex % numberOfSlides;
                 slideShiftPercent = -(100/numberOfSlides) * slidesLinkIndex + "%";
-                $slides.animate({left:slideShiftPercent} ); 
+                $slides.animate({left:slideShiftPercent} );
                 $slidesLink.removeClass("active");
-                $slidesLink.eq(slidesLinkIndex).addClass("active"); 
+                $slidesLink.eq(slidesLinkIndex).addClass("active");
             }
             function auto_slide() {
                 setTimeInterval = setInterval(function(){
@@ -1034,14 +1034,14 @@
             {
                 $(this).removeClass("open active");
         });
-        
+
     </script>
 
-    
+
     <script type="text/javascript" src="{{ s31('static/topprweb/plugins/bx_slider/jquery.bxslider.min.js')}}"></script>
-    
-            
-    
+
+
+
     <script type="text/javascript">
         $("#slides").bxSlider({
             buildPager: function(slideIndex){
@@ -1060,25 +1060,25 @@
     </script>
 
 
-    
-    
-    
+
+
+
     <script type="text/javascript"> (function () { var a73 = document.createElement('script'); a73.type = 'text/javascript'; a73.async = true; a73.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'az686941.vo.msecnd.net/assets/8_a73.min.js'; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(a73, s); })();
     </script>
-    
-    
-        
-        
-    
-        
-    
 
-    
-    
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
 <script type="text/javascript">if(!NREUMQ.f){NREUMQ.f=function(){NREUMQ.push(["load",new Date().getTime()]);var e=document.createElement("script");e.type="text/javascript";e.src=(("http:"===document.location.protocol)?"http:":"https:")+"//"+"js-agent.newrelic.com/nr-100.js";document.body.appendChild(e);if(NREUMQ.a)NREUMQ.a();};NREUMQ.a=window.onload;window.onload=NREUMQ.f;};NREUMQ.push(["nrfj","bam.nr-data.net","64f039be37","6705054","MQEBZ0YECEdSB0YPXwhLJUZaBhJdXAodEUcRShVaURIVDlsLXwM=",0,47,new Date().getTime(),"","","","",""]);</script></body>
 </html>
