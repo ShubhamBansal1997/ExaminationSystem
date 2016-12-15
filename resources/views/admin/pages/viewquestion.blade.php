@@ -35,7 +35,7 @@
 
                         <div class="panel-body">
                             <div class="table-responsive">
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
                                         <th>Order</th>
@@ -52,18 +52,18 @@
 
                                      @foreach($questions as $question)
                                     <tr  class="odd gradeX">
-                                      <td>{{ isset($question->o_id)?$question->o_id:"NULL"}}</td>
-                                      <td>{!! $question->ques_exp !!}</td>
-                                      <td>{!! $question->ques_ans1 !!}</td>
-                                      <td>{{ $question->ques_ans }}</td>
-                                      <td>@if($question->ques_level==1)
+                                      <td  style ="word-break:break-all;">{{ isset($question->o_id)?$question->o_id:"NULL"}}</td>
+                                      <td  style ="word-break:break-all;">{!! $question->ques_exp !!}</td>
+                                      <td  style ="word-break:break-all;">{!! $question->ques_ans1 !!}</td>
+                                      <td  style ="word-break:break-all;">{{ $question->ques_ans }}</td>
+                                      <td  style ="word-break:break-all;">@if($question->ques_level==1)
                                           {{ "E" }}
                                           @elseif($question->ques_level==2)
                                           {{ "M" }}
                                           @else
                                           {{ "D" }}
                                           @endif</td>
-                                      <td>@if($question->ques_imp==1)
+                                      <td style ="word-break:break-all;">@if($question->ques_imp==1)
                                             {{ "Y" }}
                                           @else
                                             {{ "N" }}
@@ -71,7 +71,7 @@
 
 
 
-                                      <td>
+                                      <td  style ="word-break:break-all;" class="text-right">
                                       <a href=" {{ URL::to('admin/editques') }}/{{ $question->ques_id }}/{{ $sub_id }}/{{ $std }} "><i class="fa fa-edit"></i></a>
                                       <!-- <a class="confirmLink delete btn btn-sm btn-danger" href=" {{ URL::to('admin/deleteques') }}/{{ $question->ques_id }}/{{ $sub_id }}/{{ $std }} "><i class="icons-office-52"></i></a> -->
                                       <a target="_blank" href="{{ URL::to('admin/view_look') }}/{{ $question->ques_id }} "><i class="fa fa-edit"></i></a>
@@ -88,7 +88,7 @@
                                                                                       
                                 </tbody>
                             </table>
-                          </div>
+                            </div>
                         </div>
                     </div>
                 </div>
