@@ -62,6 +62,9 @@
                     <button type="submit" class="btn btn-lg btn-dark btn-rounded ladda-button" data-style="expand-left" name="btn_login" value="Login">Log In</button>
                     
                     <div class="form-footer">
+                    <a class="btn btn-primary" href="{{ route('social.login', ['github']) }}">Github</a>
+                    <a class="btn btn-primary" href="{{ route('social.login', ['facebook']) }}">Facebook</a>
+                    <a class="btn btn-primary" href="{{ route('social.login', ['google']) }}">Google</a>
 					<!--
                         <div class="social-btn">
                             <button type="button" class="btn-fb btn btn-lg btn-block btn-square"><i class="fa fa-facebook pull-left"></i>Connect with Facebook</button>

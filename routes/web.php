@@ -34,7 +34,10 @@ Route::get('get_question','QuestionController@get_question');
 Route::post('submit_question','QuestionController@submit_question');
 Route::post('ques_prev_sub','QuestionController@ques_prev_sub');
 //Route::get('qpage/{sub_id}/{chap_id}/{ques_cat}','QuestionController@question_page');
-Route::get('qpage?','QuestionController@question_page');
+Route::get('qpage','QuestionController@question_page');
+
+Route::get('social/login/redirect/{provider}', ['uses' => 'Auth\AuthController@redirectToProvider', 'as' => 'social.login']);
+Route::get('social/login/{provider}', 'Auth\AuthController@handleProviderCallback');
 
 
 Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
