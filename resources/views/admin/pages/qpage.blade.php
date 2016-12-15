@@ -7,6 +7,9 @@
   <title>Document</title>
   <link rel="stylesheet" href="{{ URL::asset('css/web.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 </head>
 <body>
   <div data-reactroot="">
