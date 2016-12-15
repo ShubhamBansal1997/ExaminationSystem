@@ -109,9 +109,9 @@
       }
 
 
-      window.subId = {{ $sub_id }};
-      window.chapId = {{ $chap_id }};
-      window.quesCat = {{ $ques_cat }};
+      window.subCode = $.urlParam('sub_id');
+      window.chapCode = $.urlParam('chap_id');
+      window.quesCat = $.urlParam('ques_cat');
       window.chapName = {{ $chap_name }};
       
       window.user_email = "{{ $email }}";

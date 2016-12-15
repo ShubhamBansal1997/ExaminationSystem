@@ -127,9 +127,13 @@ class QuestionController extends Controller
                           ->get();
         return response()->json($query);
     } 
-    public function question_page($sub_id,$chap_id,$ques_cat)
+    public function question_page(Request $request)
     {   
-        $email = Session::get('email');
+        
+        $sub_id = $request->input('sub_id');
+        $chap_id = $request->input('chap_id');
+        $ques_cat = $request->input('ques_cat');
+        $email = "shubhambansal17@hotmail.com";
         $query = Chapters::where('chap_id',$chap_id)->first();
         $chap_name = $query->chap_name;
         return view('pages.qpage',compact('sub_id','chap_id','ques_cat','email','chap_name'));
