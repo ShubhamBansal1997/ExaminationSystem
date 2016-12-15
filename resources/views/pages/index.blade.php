@@ -99,9 +99,9 @@
 
                     @if( Session::get('Login_status')==TRUE)
                     <li class="hide phn-block"><a target="_blank" href="{{ URL::to('home')}}" class="-strk">Dashboard</a></li>
-                    <li class="hide phn-block"><a target="_blank" href="{{ URL::to('logout') }}" class="-ref-strk">Sign Out</a></li>
+                    <li class="hide phn-block"><a target="_blank" href="{{ URL::to('logout') }}" class="-ref-strk">Logout</a></li>
                     @else
-                    <li class="hide phn-block"><a target="_blank" href="{{ URL::to('register')}}" class="-strk">Signup</a></li>
+                    <li class="hide phn-block"><a target="_blank" href="{{ URL::to('register')}}" class="-strk">Sign Up</a></li>
                     <li class="hide phn-block"><a target="_blank" href="{{ URL::to('login') }}" class="-ref-strk">Login</a></li>
                     @endif
 					<li class="hide phn-block"><a target="_blank" href="#" class="-ref-strk"><i class="fa fa-phone fa-lg">+91-9582448819</i></a></li>
@@ -110,11 +110,11 @@
 
                 <div class="buttonsBlock">
                     @if( Session::get('Login_status')==TRUE)
-                    <a target="_blank" href="{{ URL::to('home') }}"  class="button button-small button-grey disable-text-select phn-hide -ct -trk -strk">Home</a>
+                    <a target="_blank" href="{{ URL::to('home') }}"  class="button button-small button-green disable-text-select phn-hide -ct -trk -strk">Home</a>
 
-                    <a href="{{ URL::to('logout') }}" class="button button-small button-green disable-text-select phn-hide -ct -trk ml-10 -strk">Sign Out</a>
+                    <a href="{{ URL::to('logout') }}" class="button button-small button-green disable-text-select phn-hide -ct -trk ml-10 -strk">Logout</a>
                     @else
-                    <a target="_blank" href="{{ URL::to('login') }}"  class="button button-small button-grey disable-text-select phn-hide -ct -trk -strk">Login</a>
+                    <a target="_blank" href="{{ URL::to('login') }}"  class="button button-small button-green disable-text-select phn-hide -ct -trk -strk">Login</a>
 
                     <a href="{{ URL::to('register') }}" class="button button-small button-green disable-text-select phn-hide -ct -trk ml-10 -strk">Signup</a>
 					@endif
@@ -467,7 +467,7 @@
         <div class="grid-half alpha phn-tab-grid-full phn-tab-ta-c phn-tab-mt-0 phn-tab-mb-20">
             <h3 class="h3">Sign up</h3>
             <p class="ldg-sectionFreeTrail_text mt-10">
-                Start your preparation under the guidance of Toppers.
+                Start your preparation under the guidance of toppers.
             </p>
         </div>
         <div class="grid-half omega ta-c phn-tab-grid-full phn-tab-ta-c">
@@ -475,9 +475,9 @@
 
             <div class="buttonWrapper ma mt-25">
 
-                <a href="http://www.neetgurumantra.com/user/register" class="button button-big button-arrowed button-hollow button-hollow-green block bd-2 semi-bold -ct -strk" >
+                <a href="{{ URL::to('register')}}" class="button button-big button-arrowed button-hollow button-hollow-green block bd-2 semi-bold -ct -strk" >
 
-                    Signup now <span class="arrowRight green inline-block ml-30 phn-ml-20"></span>
+                    Sign up now <span class="arrowRight green inline-block ml-30 phn-ml-20"></span>
                 </a>
             </div>
         </div>
@@ -907,29 +907,40 @@
                     <img src="{{ s31('static/topprweb/images/logo_footer_white.png')}}" data-2x="true" data-2x-skip-phone="true"/>
                 </a>
             </div>
-            <div class="grid-three-fourth omega tab-grid-three-fourth phn-grid-full">
-                <div class="ldg-footer__column">
-                    <div class="title--small bold color-white">NeetGurumantra &copy; 2016 Neetgurumantra</div>
-
-                    <div class="clr"></div>
+            <div class="grid-one-fourth alpha tab-grid-one-fourth phn-grid-full">
+                <div class="ldg-footer__copyright fl mt-10 phn-fn ">
+                    <br/><div style="font-size:20px;">&copy; 2016 NeetGurumantra</div>
+                
                 </div>
-
+    
             </div>
-            <div class="clr"></div>
-
+<!--             <div class="grid-one-fourth alpha tab-grid-one-fourth phn-grid-full">
+                <div class="ldg-footer__copyright fl mt-10 phn-fn">
+                
+                
+                </div>
+                
+                
+            </div> -->
+            <div class="grid-one-fourth alpha tab-grid-one-fourth phn-grid-full">
+                    <br/><div style="font-size:20px;position: relative;top: -18px;"><i class="fa fa-phone fa-lg"></i>+91-9582448819
+                <a href="https://www.facebook.com/neetgurumantra" target="_blank" ><img src="{{ s31('v2/images/f.png')}}" height="50px" width="50px" style="position: relative;right:-100px;top: 18px"></a></div>
+            </div>
+            
+<!-- 
             <div class="ldg-footer_hr mt-20 mb-10"></div>
 
             <div class="ldg-footer__copyright fl mt-10 phn-fn">
                 &copy; 2016 NeetGurumantra
                 <a class="-ref -strk" href="#" data-ref="tosbtm" data-strk='{"e":"ui.tapped", "ui_element_name":"terms_of_service", "ui_context":"site_footer"}'>Terms of Service</a>
                 <a class="-ref -strk" href="#" data-ref="ppbtm" data-strk='{"e":"ui.tapped", "ui_element_name":"privacy_policy", "ui_context":"site_footer"}'>Privacy Policy</a>
-            </div>
+            </div> -->
 
- <div class="ldg-social fr phn-fn">
+ <!-- <div class="ldg-social fr phn-fn">
                 <a href="https://www.facebook.com/neetgurumantra" target="_blank"><img src="{{ s31('v2/images/f.png')}}" height="50px" width="50px"></a>
                 <!-- <a href=""><i class="icon-gplus-circled gplus"></i></a> -->
                 <div class="clr"></div>
-            </div>
+            </div> 
 
             <div class="clr"></div>
         </div>

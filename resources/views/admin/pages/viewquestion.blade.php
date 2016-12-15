@@ -2,7 +2,7 @@
 @section('content')
 <div id="page-wrapper">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-md-12">
                     <h1 class="page-header">Tables</h1>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -75,11 +75,15 @@
                                       <!-- <a class="confirmLink delete btn btn-sm btn-danger" href=" {{ URL::to('admin/deleteques') }}/{{ $question->ques_id }}/{{ $sub_id }}/{{ $std }} "><i class="icons-office-52"></i></a> -->
                                       <a target="_blank" href="{{ URL::to('admin/view_look') }}/{{ $question->ques_id }} "><i class="fa fa-edit"></i></a>
                                       <a target="_blank" href="{{ URL::to('admin/view_look1') }}/{{ $question->ques_id }} "><i class="fa fa-edit"></i></a>
+                                      
                                       <a target="_blank" href="{{ URL::to('admin/view_look2') }}/{{ $question->ques_id }} "><i class="fa fa-edit"></i></a>
-                                      <button onclick="confirm()" class="delete">Delete</a>
+                                      
+                              
+                                       <button onclick="deleteques({{ $question->ques_id }},{{ $question->sub_id }},{{ $std }})" class="delete" href="http://asdfasda" >Delete</a>
                                       </button>
                                     </tr>
                                   @endforeach
+
                                                                                       
                                 </tbody>
                             </table>
