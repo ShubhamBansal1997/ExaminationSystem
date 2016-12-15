@@ -34,6 +34,7 @@
                         <!-- 'order_id','cust_name', 'cust_add', 'cust_pincode','cust_state','cust_city','user_id','del_date','complete_price','is_completed' -->
 
                         <div class="panel-body">
+                            <div class="table-responsive">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
@@ -79,14 +80,15 @@
                                       <a target="_blank" href="{{ URL::to('admin/view_look2') }}/{{ $question->ques_id }} "><i class="fa fa-edit"></i></a>
                                       
                               
-                                       <button onclick="deleteques({{ $question->ques_id }},{{ $question->sub_id }},{{ $std }})" class="delete" href="http://asdfasda" >Delete</a>
-                                      </button>
+                                       <button onclick="deleteques({{ $question->ques_id }},{{ $sub_id }},{{ $std }})" class="delete" href="http://asdfasda" >Delete</a>
+                                      </button></td>
                                     </tr>
                                   @endforeach
 
                                                                                       
                                 </tbody>
                             </table>
+                            </div>
                         </div>
                     </div>
                 </div>
