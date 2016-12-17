@@ -91,11 +91,11 @@
                                     <tr>
                                         <th>Order</th>
                                         <th>Question</th>
-                                        <th>Option1</th>
+                                        <th>Action</th>
                                         <th>Answer</th>
                                         <th>Level</th>
                                         <th>Imp</th>
-                                        <th>Action</th>
+                                        <th>Option1</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -116,7 +116,6 @@
                               
                                        <button onclick="deleteques({{ $question->ques_id }},{{ $sub_id }},{{ $std }})" class="delete" href="http://asdfasda" >Delete</a>
                                       </button></td>
-                                      <td>{!! $question->ques_ans1 !!}</td>
                                       <td>{{ $question->ques_ans }}</td>
                                       <td>@if($question->ques_level==1)
                                           {{ "E" }}
@@ -130,6 +129,8 @@
                                           @else
                                             {{ "N" }}
                                           @endif</td>
+                                      <td>{!! $question->ques_ans1 !!}</td>
+
 
 
 
