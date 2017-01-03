@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Session;
 use App\Http\Requests;
 use App\Chapters;
+use Illuminate\Support\Facades\Redirect;
 
 class UserDashboardController extends Controller
 {
@@ -16,6 +17,22 @@ class UserDashboardController extends Controller
          else
             return redirect('login');
    	}
+      public function ask_a_doubt(Request $request)
+      {
+         if(Session::get('Login_status')==true)
+         {
+            $this->validate($request, [
+                'name' => 'required',
+                'email' => 'required|email',
+                'phoneno' => 'required|max:10|min:10',
+                'doubt' => 'required'
+                 ]);
+            dd($request);
+            //a mail function is goinng to be put here 
+         }
+         else
+            return Redirect::back();
+      }
    	public function chap_name($sub_id,$std)
    	{
    		if(Session::get('Login_status')==true)
@@ -50,5 +67,18 @@ class UserDashboardController extends Controller
    			// ask a doubt feature needs to be made here
    		}
    	}
+      public function packages($id)
+      {
+         dd($id);
+         if($id==NULL)
+         {
+            return view('pages.pricingpage');
+         }
+         else
+         {
+            //dd("great");
+            return view('pages.year1');
+         }
+      }
 
 }

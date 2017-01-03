@@ -6,6 +6,7 @@ use Session;
 use Illuminate\Http\Request;
 use App\Users;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Redirect;
 
 class IndexController extends Controller
 {
@@ -20,11 +21,11 @@ class IndexController extends Controller
     	$login_status = Session::get('Login_status');
     	if($login_status==true)
     	{
-    		return redirect('home');
+    		return redirect('pages.home');
     	}
     	else
     	{
-    		return view('login');
+    		return view('pages.login');
 	    }
     }
 
@@ -39,44 +40,69 @@ class IndexController extends Controller
                  ]);
         
         
-            $mobile = $request->mobile;
-            $query = Users::where('mobile',$mobile);  
-            if($query->count())
+            $phone = $request->mobile;
+            $query = Users::where('mobile',$phone);
+            $query= $query->first();           //comment the code and uncomment the if lines
+            $email = $query->email;            //comment the code and uncomment the if lines
+            Session::set('email',$email);      //comment the code and uncomment the if lines
+            Session::set('Login_status',TRUE); //comment the code and uncomment the if lines
+            return redirect('home');           //comment the code and uncomment the if lines
+            /*if($query->count())
             {
-                $query= $query->get();
-                foreach($query as $data)
-                {
-                    $email = $data->email;
-                }
-                Session::set('Login_status',TRUE);
+                $query= $query->first();
+                $email = $query->email;
                 Session::set('email',$email);
-                return redirect('home');
+                $baseUrl = "https://sendotp.msg91.com/api";
+                $cc = +91;
+                $data = array("countryCode" => $cc, "mobileNumber" => $phone,"getGeneratedOTP" => true);
+                $data_string = json_encode($data);
+                $ch = curl_init($baseUrl.'/generateOTP');
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_AUTOREFERER, true);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                      'Content-Type: application/json',
+                      'Content-Length: ' . strlen($data_string),
+                      'application-Key: JTEZ7KpKkxYqQdpMlujrjFaVojcxl5C7UqmCbvp8g80OO9aDlUlSeR4i7W5o1zjZo0GMhA6np5JNaka4jVYip5iUJEqAnf8fhII056m1hcuVPvE6IPiemhKl6q44dmTrHbvb8CFKmB_GVfARu5h8VQ==',
+                  ));
+                $result = curl_exec($ch);
+                curl_close($ch);
+                $response=json_decode($result);
+                //dd($response->status);
+                if($response->status=="success")
+                {
+                  $otp = $response->response->oneTimePassword;
+                  //dd($otp);
+                  Session::set('otp',$otp);
+                  return view('pages.verifyotp',compact('phone'));
+                }
+                else
+                {
+                  return Redirect::back();
+                }                  
             }
             else
             {
-                Session::flash('flash_message', 'Your Phone No is not registered');
-                return view('login');
-            }
-       
-            
-            
-
-                    
+                return Redirect::back();
+            }*/
         }   
     }
 
     public function register()
     {
     	if(Session::get('Login_status')==TRUE)
-    		return redirect('home');
+    		return Redirect::back();
     	else
-    		return view('register');
+    		return view('pages.register');
 
     }
     public function postRegister(Request $request)
     {
 		if(Session::get('Login_status')==TRUE)
-    		return redirect('home');
+    		return redirect('pages.home');
     	else
     	{
     		  $this->validate($request, [
@@ -101,17 +127,67 @@ class IndexController extends Controller
             $user->mobile = $request->mobile;      
              
             $user->save();
-            Session::flash('flash_message', 'You have been successfully registered');
-            return view('register');
-
-        	    	
+            $phone = $request->mobile;
+            $email = $request->email;
+            Session::set('email',$email);
+            $baseUrl = "https://sendotp.msg91.com/api";
+            $cc = +91;
+            $data = array("countryCode" => $cc, "mobileNumber" => $phone,"getGeneratedOTP" => true);
+              
+            $data_string = json_encode($data);
+            $ch = curl_init($baseUrl.'/generateOTP');
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_AUTOREFERER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                  'Content-Type: application/json',
+                  'Content-Length: ' . strlen($data_string),
+                  'application-Key: JTEZ7KpKkxYqQdpMlujrjFaVojcxl5C7UqmCbvp8g80OO9aDlUlSeR4i7W5o1zjZo0GMhA6np5JNaka4jVYip5iUJEqAnf8fhII056m1hcuVPvE6IPiemhKl6q44dmTrHbvb8CFKmB_GVfARu5h8VQ==',
+              ));
+              $result = curl_exec($ch);
+              curl_close($ch);
+              $response=json_decode($result);
+              //dd($response->status);
+              if($response->status=="success")
+              {
+                $otp = $response->response->oneTimePassword;
+                //dd($otp);
+                Session::set('otp',$otp);
+                return view('pages.verifyotp',compact('phone'));
+              }
+              else
+              {
+                return Redirect::back();
+              }        	    	
         }
+    }
+    public function verifyotp(Request $request)
+    {
+        
+            $this->validate($request, [
+                'otp' => 'required',
+                ]);
+            $email = Session::get('email');
+            $otp = $request->input('otp');
+            if(Session::get('otp')==$otp)
+            {
+                Session::forget('otp');
+                $user = Users::where('email',$email)->first();
+                $user->status = TRUE;
+                Session::set('Login_status',TRUE);
+                return redirect('home');
+            }
+            else
+                return Redirect::back();    
     }
     public function logout()
     {
         Session::flush();
         Session::flash('flash_message', 'You have been successfully Logout');
-        return redirect('login');
+        return redirect('pages.login');
     }
     
 }

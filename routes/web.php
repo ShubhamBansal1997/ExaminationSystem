@@ -14,10 +14,11 @@ use Illuminate\Support\Facades\Input;
 use App\Helpers;
 Route::get('/', 'IndexController@index');
 Route::get('login','IndexController@login');
-Route::post('login','IndexController@postLogin');
+Route::post('login','IndexController@postLogin')->middleware('web');
 Route::get('register','IndexController@register');
 Route::get('logout','IndexController@logout');
-Route::post('register','IndexController@postregister');
+Route::post('register','IndexController@postregister')->middleware('web');
+Route::post('verifyotp','IndexController@verifyotp')->middleware('web');
 
 Route::get('payment','UserController@testing');
 Route::post('indipay/response','UserController@response');
@@ -25,7 +26,31 @@ Route::post('indipay/response','UserController@response');
 Route::get('home', 'UserDashboardController@home');
 Route::get('home/{sub_id}/{std}', 'UserDashboardController@chap_name');
 Route::get('home/{sub_id}/{std}/{chap_id}', 'UserDashboardController@chap_page');
-Route::get('home/askadoubt','UserDashboardController@ask_a_doubt');
+Route::get('home/askadoubt',function(){
+    return view('pages.askadoubt');
+});
+Route::post('home/askadoubt','UserDashboardController@ask_a_doubt')->middleware('web');
+Route::get('package/{pname?}',function($pname=NULL){
+    
+        
+        if($pname==NULL)
+            return view('pages.pricingpage');
+        else if($pname=='1year')
+            return view('pages.1year');
+        else if($pname=='2year')
+            return view('pages.2year');
+        else if($pname=='2test')
+            return view('pages.2test');
+        else if($pname=='1adv')
+            return view('pages.1adv');
+        else if($pname=='2adv')
+            return view('pages.2adv');
+        else
+            return view('pages.pricingpage');
+    // }
+    // else
+    //     return Redirect::back();
+});
 
 Route::get('/form', function() {
     return View::make('form');
@@ -60,17 +85,13 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
     Route::get('content','EmployeeController@list_content');
     Route::get('market','EmployeeController@list_market');
     Route::get('view_users','AdminDashboardController@u_list');
-
-
-
-
-
-
 });
 Route::get('/form', function() {
     return View::make('form');
 });
-
+Route::get('/test',function() {
+    return view('pages.chap_name1');
+});
 Route::get('upload/image', function() {
     $allowed = array('png', 'jpg', 'gif');
     $rules = [
@@ -96,3 +117,7 @@ Route::get('upload/image', function() {
         return '{"status":"Invalid File type"}';
     }
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
