@@ -159,25 +159,22 @@
                             <!-- /.nav-second-level -->
                         <!-- </li> --> 
                         <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Order <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a class="active" href="{{ URL::to('admin/dashboard/orders')}}">All</a>
-                                </li>
-                                <li>
-                                    <a class="active" href="{{ URL::to('admin/dashboard/orders')}}/month">This Month</a>
-                                </li>
-                                <li>
-                                    <a class="active" href="{{ URL::to('admin/dashboard/orders')}}/today">Today</a>
-                                </li>
-                                <li>
-                                    <a class="active" href="{{ URL::to('admin/dashboard/orders')}}/tomorrow">Tomorrow</a>
-                                </li>
-                                <li>
-                                    <a class="active" href="{{ URL::to('admin/dashboard/orders')}}/thenextday">Next Day</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                            <a href="{{ URL::to('admin/coupons') }}"><i class="fa fa-files-o fa-fw"></i> Coupons <span class="fa arrow"></span></a>
+                        </li>
+                        <li>
+                            <a href="{{ URL::to('admin/couponactivity') }}"><i class="fa fa-files-o fa-fw"></i> Coupons Activity<span class="fa arrow"></span></a>
+                        </li>
+                        <li>
+                            <a href="{{ URL::to('admin/payouts') }}"><i class="fa fa-files-o fa-fw"></i> Payouts<span class="fa arrow"></span></a>
+                        </li>
+                        <li>
+                            <a href="{{ URL::to('admin/allcoupons') }}"><i class="fa fa-files-o fa-fw"></i> All Coupons <span class="fa arrow"></span></a>
+                        </li>
+                        <li>
+                            <a href="{{ URL::to('admin/allcouponactivity') }}"><i class="fa fa-files-o fa-fw"></i> All Coupons Activity<span class="fa arrow"></span></a>
+                        </li>
+                        <li>
+                            <a href="{{ URL::to('admin/allpayouts') }}"><i class="fa fa-files-o fa-fw"></i> All Payouts<span class="fa arrow"></span></a>
                         </li>
                     </ul>
                 </div>

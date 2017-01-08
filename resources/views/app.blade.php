@@ -261,7 +261,9 @@
     <!--custom-script.js - Add your own theme custom JS-->
     <script type="text/javascript" src="{{ asset('home_asset/js/custom-script.js') }}"></script>
     <!-- Toast Notification -->
+    @yield('script')
     <script type="text/javascript">
+
     // Toast Notification
     /*$(window).load(function() {
         setTimeout(function() {

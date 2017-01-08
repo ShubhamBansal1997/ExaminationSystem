@@ -27,6 +27,7 @@
             <div class="row">
               
 
+              <!-- <form action="" method="post"> -->
               <section class="plans-container" id="plans">
                 <article class="col s12 m6 l4">
                   <div class="card hoverable">
@@ -41,7 +42,7 @@
                       </ul>
                     </div>
                     <div class="card-action center-align">                      
-                      <button class="waves-effect waves-light  btn">Buy Now</button>
+                      <a id="buynow" class="waves-effect waves-light modal-trigger btn" data="p1" price="200" href="{{ URL::to('buypackage/p1')}}">Buy Now</a>
                     </div>
                   </div>
                 </article>
@@ -58,7 +59,7 @@
                       </ul>
                     </div>
                     <div class="card-action center-align">                      
-                      <button class="waves-effect waves-light  btn">Buy Now</button>
+                      <button id="buynow" class="waves-effect waves-light  btn" data="p2" price="200" href="{{ URL::to('buypackage/p2')}}">Buy Now</button>
                     </div>
                   </div>
                 </article>
@@ -75,7 +76,7 @@
                       </ul>
                     </div>
                     <div class="card-action center-align">                      
-                      <button class="waves-effect waves-light  btn">Buy Now</button>
+                      <button id="buynow" class="waves-effect waves-light  btn" data="p3" price="200" href="{{ URL::to('buypackage/p3')}}">Buy Now</button>
                     </div>
                   </div>
                 </article>
@@ -99,7 +100,7 @@
                       </ul>
                     </div>
                     <div class="card-action center-align">                      
-                      <button class="waves-effect waves-light light-blue btn">Buy Now</button>
+                      <button id="buynow" class="waves-effect waves-light light-blue btn" data="p4" price="350" href="{{ URL::to('buypackage/p4')}}">Buy Now</button>
                     </div>
                   </div>
                 </article>
@@ -118,7 +119,7 @@
                       </ul>
                     </div>
                     <div class="card-action center-align">                      
-                      <button class="waves-effect waves-light light-blue btn">Buy Now</button>
+                      <button id="buynow" class="waves-effect waves-light light-blue btn" data="p5" price="350" href="{{ URL::to('buypackage/p5')}}">Buy Now</button>
                     </div>
                   </div>
                 </article>
@@ -137,7 +138,7 @@
                       </ul>
                     </div>
                     <div class="card-action center-align">                      
-                      <button class="waves-effect waves-light light-blue btn">Buy Now</button>
+                      <button id="buynow" class="waves-effect waves-light light-blue btn" data="p6" price="350" href="{{ URL::to('buypackage/p6')}}">Buy Now</button>
                     </div>
                   </div>
                 </article>
@@ -159,7 +160,7 @@
                       </ul>
                     </div>
                     <div class="card-action center-align">                      
-                      <button class="waves-effect waves-light light-blue btn">Buy Now</button>
+                      <button id="buynow" class="waves-effect waves-light light-blue btn" data="p7" price="500" href="{{ URL::to('buypackage/p7')}}">Buy Now</button>
                     </div>
                   </div>
                 </article>
@@ -177,4 +178,16 @@
         <!--end container-->
       </section>
       <!-- END CONTENT -->
+@endsection
+@section('script')
+<script>
+  $(document).ready(function(){
+    $(".event-box").on("click", function(e){
+      $(".event-box").removeClass("selected-event");
+      $(e.target).addClass("selected-event");
+      $("input[name=event]").val($(e.target).attr("data"));
+      console.log($(e.target).attr("data"));
+      });
+  });
+</script>
 @endsection

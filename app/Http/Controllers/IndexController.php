@@ -21,7 +21,7 @@ class IndexController extends Controller
     	$login_status = Session::get('Login_status');
     	if($login_status==true)
     	{
-    		return redirect('pages.home');
+    		return redirect('home');
     	}
     	else
     	{

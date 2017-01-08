@@ -1,56 +1,5 @@
 @extends('admin.app')
 @section('content')
-<style>
-@media only screen and (max-width: 800px) {
-    
-    /* Force table to not be like tables anymore */
-  #no-more-tables table, 
-  #no-more-tables thead, 
-  #no-more-tables tbody, 
-  #no-more-tables th, 
-  #no-more-tables td, 
-  #no-more-tables tr { 
-    display: block; 
-  }
- 
-  /* Hide table headers (but not display: none;, for accessibility) */
-  #no-more-tables thead tr { 
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-  }
- 
-  #no-more-tables tr { border: 1px solid #ccc; }
- 
-  #no-more-tables td { 
-    /* Behave  like a "row" */
-    border: none;
-    border-bottom: 1px solid #eee; 
-    position: relative;
-    padding-left: 50%; 
-    white-space: normal;
-    text-align:left;
-  }
- 
-  #no-more-tables td:before { 
-    /* Now like a table header */
-    position: absolute;
-    /* Top/left values mimic padding */
-    top: 6px;
-    left: 6px;
-    width: 45%; 
-    padding-right: 10px; 
-    white-space: nowrap;
-    text-align:left;
-    font-weight: bold;
-  }
- 
-  /*
-  Label the data
-  */
-  #no-more-tables td:before { content: attr(data-title); }
-}
-</style>
 <div id="page-wrapper">
             <div class="row">
                 <div class="col-md-12">
@@ -79,14 +28,36 @@
                                             <h4 class="modal-title" id="myModalLabel">Add Coupon</h4>
                                         </div>
                                         <div class="modal-body">
-                                        <form method="post" action="">    
+                                        @if (count($errors) > 0)
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+                                        <form method="post" action="{{ URL::to('admin/addcoupon') }}">    
+                                            {{ csrf_field() }}
                                             <div class="form-group">
                                                 <label>Coupon Name</label>
                                                 <input class="form-control" name="coupon_name">
                                             </div>
                                             <div class="form-group">
-                                                <label>Coupon Percentage(Maximum 50%)</label>
-                                                <input class="form-control" name="coupon_percentage">
+                                                 <label>Coupon Percentage(Maximum 50%)</label>
+                                                <select name="coupon_percent" class="form-control">
+                                                    <option value="5">5</option>
+                                                    <option value="10">10</option>
+                                                    <option value="15">15</option>
+                                                    <option value="20">20</option>
+                                                    <option value="25">25</option>
+                                                    <option value="30">30</option>
+                                                    <option value="35">35</option>
+                                                    <option value="40">40</option>
+                                                    <option value="45">45</option>
+                                                    <option value="50">50</option>
+                                                </select>
+                                                
                                             </div>
                                             <div class="form-group">
                                                 <label>Coupon Number</label>
@@ -112,8 +83,8 @@
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                       <span aria-hidden="true">&times;</span></button>{{ Session::get('flash_message') }}
 
-                                  </div>
-                                  @endif
+                            </div>
+                            @endif
                           </p>
                             <!-- <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
                                 Orders
@@ -131,54 +102,27 @@
                             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>Order</th>
-                                        <th>Question</th>
+                                        <th>S No</th>
+                                        <th>Coupon Name</th>
+                                        <th>Discount</th>
+                                        <th>Number</th>
                                         <th>Action</th>
-                                        <th>Answer</th>
-                                        <th>Level</th>
-                                        <th>Imp</th>
-                                        <th>Option1</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                
 
-                                     @foreach($questions as $question)
+                                     @foreach(\App\Coupons::where('admin_email',$email)->where('coupon_active',TRUE)->orderBy('created_at', 'DESC')->get() as $i => $coupon)
                                     <tr  class="odd gradeX">
-                                      <td>{{ isset($question->o_id)?$question->o_id:"NULL"}}</td>
-                                      <td>{!! $question->ques_exp !!}</td>
+                                      <td>{{ $i }}</td>
+                                      <td>{{ $coupon->coupon_name }}</td>
+                                      <td>{{ $coupon->coupon_percent }}</td>
+                                      <td>{{ $coupon->coupon_number }}</td>
                                       <td>
-                                      <a href=" {{ URL::to('admin/editques') }}/{{ $question->ques_id }}/{{ $sub_id }}/{{ $std }} "><i class="fa fa-edit"></i></a>
-                                      <!-- <a class="confirmLink delete btn btn-sm btn-danger" href=" {{ URL::to('admin/deleteques') }}/{{ $question->ques_id }}/{{ $sub_id }}/{{ $std }} "><i class="icons-office-52"></i></a> -->
-                                      <a target="_blank" href="{{ URL::to('admin/view_look') }}/{{ $question->ques_id }} "><i class="fa fa-edit"></i></a>
-                                      <a target="_blank" href="{{ URL::to('admin/view_look1') }}/{{ $question->ques_id }} "><i class="fa fa-edit"></i></a>
-                                      
-                                      <a target="_blank" href="{{ URL::to('admin/view_look2') }}/{{ $question->ques_id }} "><i class="fa fa-edit"></i></a>
-                                      
-                              
-                                       <button onclick="deleteques({{ $question->ques_id }},{{ $sub_id }},{{ $std }})" class="delete" href="http://asdfasda" >Delete</a>
-                                      </button></td>
-                                      <td>{{ $question->ques_ans }}</td>
-                                      <td>@if($question->ques_level==1)
-                                          {{ "E" }}
-                                          @elseif($question->ques_level==2)
-                                          {{ "M" }}
-                                          @else
-                                          {{ "D" }}
-                                          @endif</td>
-                                      <td>@if($question->ques_imp==1)
-                                            {{ "Y" }}
-                                          @else
-                                            {{ "N" }}
-                                          @endif</td>
-                                      <td>{!! $question->ques_ans1 !!}</td>
-
-
-
-
-                                      
+                                      <a href="{{ URL::to('admin/deletecoupon')}}/{{ $coupon->id }}" class="delete">Delete</a>
+                                      </td>
                                     </tr>
-                                  @endforeach
+                                    @endforeach
 
                                                                                       
                                 </tbody>

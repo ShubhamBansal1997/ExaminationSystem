@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Input;
 |
 */
 use App\Helpers;
+use App\Coupons;
 Route::get('/', 'IndexController@index');
 Route::get('login','IndexController@login');
 Route::post('login','IndexController@postLogin')->middleware('web');
@@ -21,7 +22,8 @@ Route::post('register','IndexController@postregister')->middleware('web');
 Route::post('verifyotp','IndexController@verifyotp')->middleware('web');
 
 Route::get('payment','UserController@testing');
-Route::post('indipay/response','UserController@response');
+Route::post('indipay/response','PaymentController@response');
+Route::get('paymentgateway/{price}/{couponcode?}','PaymentController@paymentgateway');
 
 Route::get('home', 'UserDashboardController@home');
 Route::get('home/{sub_id}/{std}', 'UserDashboardController@chap_name');
@@ -29,6 +31,22 @@ Route::get('home/{sub_id}/{std}/{chap_id}', 'UserDashboardController@chap_page')
 Route::get('home/askadoubt',function(){
     return view('pages.askadoubt');
 });
+Route::post('checkcouponcode',function(Request $request){
+    $coupon_code = $request->input('coupon_code');
+    $coupon = Coupons::where('coupon_code',$coupon_code);
+    if($coupon->count())
+        return FALSE;
+    else
+        $coupon->coupon_percent;
+
+});
+Route::post('applycouponcode','PaymentController@applycouponcode');
+Route::post('payment',function()
+    {
+        dd("fail");
+    });
+Route::get('buypackage/{packagename}','PaymentController@package');
+
 Route::post('home/askadoubt','UserDashboardController@ask_a_doubt')->middleware('web');
 Route::get('package/{pname?}',function($pname=NULL){
     
@@ -85,6 +103,24 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
     Route::get('content','EmployeeController@list_content');
     Route::get('market','EmployeeController@list_market');
     Route::get('view_users','AdminDashboardController@u_list');
+    Route::post('addcoupon','CouponController@addcoupon')->middleware('web');
+    Route::get('deletecoupon/{id}','CouponController@deletecoupon');
+    Route::get('coupons',function()
+        {
+            $email = Session::get('aemail');
+            return view('admin.pages.coupon',compact('email'));
+        });
+    Route::get('couponactivity',function()
+        {
+            $email = Session::get('aemail');
+            return view('admin.pages.couponactivity',compact('email'));
+        });
+    Route::get('payoutinitiate','CouponController@payoutinitiate');
+    Route::get('payouts',function()
+        {
+            $email = Session::get('aemail');
+            return view('admin.pages.payout',compact('email'));
+        });
 });
 Route::get('/form', function() {
     return View::make('form');
@@ -118,6 +154,3 @@ Route::get('upload/image', function() {
     }
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
