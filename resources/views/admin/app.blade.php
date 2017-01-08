@@ -176,6 +176,9 @@
                         <li>
                             <a href="{{ URL::to('admin/allpayouts') }}"><i class="fa fa-files-o fa-fw"></i> All Payouts<span class="fa arrow"></span></a>
                         </li>
+                        <li>
+                            <a href="{{ URL::to('admin/allusertransaction') }}"><i class="fa fa-files-o fa-fw"></i> All Payouts<span class="fa arrow"></span></a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
