@@ -18,23 +18,23 @@
     <meta property="og:description" content="Intiative by a team of medical studets from top medical colleges of India to gudie and assist medical aspirants to crack pre-medical entrance exams" />
 
 
-    <link rel="stylesheet" type="text/css" href="{{ s31('static/topprweb/plugins/bx_slider/jquery.bxslider.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('home/static/topprweb/plugins/bx_slider/jquery.bxslider.min.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="{{ s31('v2/css/landing.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('home/v2/css/landing.css') }}" media="all" />
 
 
-<link rel="shortcut icon" href="{{ s31('static/v2/images/brand/favicon/favicon.ico') }}">
-<link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{ s31('static/v2/images/brand/favicon/apple-touch-icon-57x57.png') }}" />
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ s31('static/v2/images/brand/favicon/apple-touch-icon-114x114.png')}}" />
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ s31('static/v2/images/brand/favicon/apple-touch-icon-72x72.png')}}" />
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ s31('static/v2/images/brand/favicon/apple-touch-icon-144x144.png')}}" />
-<link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ s31('static/v2/images/brand/favicon/apple-touch-icon-120x120.png')}}" />
-<link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ s31('static/v2/images/brand/favicon/apple-touch-icon-152x152.png')}}" />
-<link rel="icon" type="image/png" href="{{ s31('static/v2/images/brand/favicon/favicon-32x32.png')}}" sizes="32x32" />
-<link rel="icon" type="image/png" href="{{ s31('static/v2/images/brand/favicon/favicon-16x16.png')}}" sizes="16x16" />
+<link rel="shortcut icon" href="{{ asset('home/static/v2/images/brand/favicon/favicon.ico') }}">
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{ asset('home/static/v2/images/brand/favicon/apple-touch-icon-57x57.png') }}" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('home/static/v2/images/brand/favicon/apple-touch-icon-114x114.png')}}" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('home/static/v2/images/brand/favicon/apple-touch-icon-72x72.png')}}" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('home/static/v2/images/brand/favicon/apple-touch-icon-144x144.png')}}" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset('home/static/v2/images/brand/favicon/apple-touch-icon-120x120.png')}}" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset('home/static/v2/images/brand/favicon/apple-touch-icon-152x152.png')}}" />
+<link rel="icon" type="image/png" href="{{ asset('home/static/v2/images/brand/favicon/favicon-32x32.png')}}" sizes="32x32" />
+<link rel="icon" type="image/png" href="{{ asset('home/static/v2/images/brand/favicon/favicon-16x16.png')}}" sizes="16x16" />
 <meta name="msapplication-TileColor" content="#FFFFFF" />
-<meta name="msapplication-TileImage" content="{{ s31('static/v2/images/brand/favicon/mstile-144x144.png')}}" />
-<link rel="shortcut icon" href="{{ s31('static/v2/images/brand/favicon/favicon.ico')}}">
+<meta name="msapplication-TileImage" content="{{ asset('home/static/v2/images/brand/favicon/mstile-144x144.png')}}" />
+<link rel="shortcut icon" href="{{ asset('home/static/v2/images/brand/favicon/favicon.ico')}}">
 <script src="https://use.fontawesome.com/5402b643ce.js"></script>
 
     <!--[if lt IE 9]>
@@ -896,7 +896,7 @@
 
     <!-- Prefetch dashboard image if not signed in to use in onboarding process -->
 
-        <link rel="prefetch" href="{{ s31('static/v2/images/onboarding/dashboard.jpg')}}" />
+        <link rel="prefetch" href="{{ asset('home/static/v2/images/onboarding/dashboard.jpg')}}" />
 
 
 
@@ -904,7 +904,7 @@
         <div class="container">
             <div class="grid-one-fourth alpha tab-grid-one-fourth phn-grid-full phn-hide">
                 <a href="/" data-ref="logobtm" class="ldg-footer__logo mt-30 phn-mt-0 phn-mb-20 -ref -strk" data-strk='{"e":"ui.tapped", "ui_element_name":"home", "ui_context":"site_footer"}'>
-                    <img src="{{ s31('static/topprweb/images/logo_footer_white.png')}}" data-2x="true" data-2x-skip-phone="true"/>
+                    <img src="{{ asset('home/static/topprweb/images/logo_footer_white.png')}}" data-2x="true" data-2x-skip-phone="true"/>
                 </a>
             </div>
             <div class="grid-one-fourth alpha tab-grid-one-fourth phn-grid-full">
@@ -924,7 +924,7 @@
             </div> -->
             <div class="grid-one-fourth alpha tab-grid-one-fourth phn-grid-full">
                     <br/><div style="font-size:20px;position: relative;top: -18px;"><i class="fa fa-phone fa-lg"></i>+91-9582448819
-                <a href="https://www.facebook.com/neetgurumantra" target="_blank" ><img src="{{ s31('v2/images/f.png')}}" height="50px" width="50px" style="position: relative;right:-100px;top: 18px"></a></div>
+                <a href="https://www.facebook.com/neetgurumantra" target="_blank" ><img src="{{ asset('home/v2/images/f.png')}}" height="50px" width="50px" style="position: relative;right:-100px;top: 18px"></a></div>
             </div>
             
 <!-- 
@@ -949,9 +949,9 @@
     <div class="hr"></div>
 
 
-    <script type="text/javascript" src="{{ s31('static/v2/js/vendor/jquery-1.9.1.min.js')}}"></script>
-    <script type="text/javascript" src="{{ s31('v2/js/dist/libs.essential.min.js')}}"></script>
-    <script type="text/javascript" src="{{ s31('v2/js/dist/tpr.landing.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('home/static/v2/js/vendor/jquery-1.9.1.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('home/v2/js/dist/libs.essential.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('home/v2/js/dist/tpr.landing.min.js')}}"></script>
 
     <script type='text/javascript'>
 
