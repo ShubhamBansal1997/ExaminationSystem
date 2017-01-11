@@ -1049,7 +1049,7 @@
     </script>
 
 
-    <script type="text/javascript" src="{{ s31('static/topprweb/plugins/bx_slider/jquery.bxslider.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('home/static/topprweb/plugins/bx_slider/jquery.bxslider.min.js')}}"></script>
 
 
 
@@ -1063,7 +1063,7 @@
                 if (!img)
                     return '';
 
-                return '<img src="{{ s31('static/topprweb/images/testimonials/')}}' + img + '" height="24" width="24">';
+                return '<img src="{{ asset('home/static/topprweb/images/testimonials/')}}' + img + '" height="24" width="24">';
             },
             controls: false
         });
