@@ -503,7 +503,7 @@
                     {{ \App\Questions_attempt::all()->count() }}
                 </p>
                 <p class="ldg-sectionTopprStats_itemName uc">
-                    Questions solved
+                    Questions Attempted
                 </p>
             </div>
             <div class="grid-one-fourth tab-grid-one-fourth phn-grid-full pv-20 phn-pv-15">
@@ -511,7 +511,7 @@
                     0
                 </p>
                 <p class="ldg-sectionTopprStats_itemName uc">
-                    Tests taken
+                    Tests Solved
                 </p>
             </div>
             <div class="grid-one-fourth omega tab-grid-one-fourth phn-grid-full pv-20 phn-pv-15">

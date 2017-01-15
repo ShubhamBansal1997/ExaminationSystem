@@ -97,7 +97,7 @@
         </div>
         <div class="row">
           <div class="input-field col s6 m6 l6">
-            <p class="margin medium-small"><a href="{{ URL::to('register') }}">Register Now!</a></p>
+            <p class="margin medium-small"><a href="{{ URL::to('register') }}">New here? Register Now!</a></p>
           </div>
                     
         </div>

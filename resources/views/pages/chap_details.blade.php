@@ -51,6 +51,7 @@
                   <div class="collection-item" style="font-size: 25px;">Difficult ({{ \App\Questions::d_ques($chap_id) }}/{{ \App\Questions::a_ques($chap_id) }})<a href="{{ URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/difficult" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;">Start</a>
                   </div>
                   <div class="collection-item" style="font-size: 25px;">Important ({{ \App\Questions::i_ques($chap_id) }}/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/imp" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;">Start</a>
+                  
                   </div>
                                 
                   

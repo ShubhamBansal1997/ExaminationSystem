@@ -81,7 +81,7 @@
                                             <textarea id="editor4" class="form-control" name="ques_ans4" value="" >{{ isset($question->ques_ans4) ? $question->ques_ans4 : null }}</textarea>
                                         </div>
                                         <div class="form-group">
-                                        	<label>Correct Anwser</label>
+                                        	<label>Correct Answer</label>
 					                          <select class="form-control" data-style="white" data-placeholder="Select a correct answer" name="ques_ans" id="ques_ans" value="">
 					                            @if(isset($question->ques_ans))  
 		                              		<option value="{{$question->ques_ans}}" selected >{{$question->ques_ans}}</option>

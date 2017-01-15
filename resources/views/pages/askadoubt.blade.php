@@ -82,7 +82,7 @@
                           <div class="row">
                             <div class="input-field col s12">
                               <input id="mobile" name="phoneno" type="text">
-                              <label for="Phoneno">Phoneno</label>
+                              <label for="Phoneno">Mobile Number</label>
                             </div>
                           </div>
                           <div class="row">

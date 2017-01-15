@@ -12978,7 +12978,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
 .ques.is-attempted .ques_option .solution_text_container {
     margin: 20px 0 20px 12px;
     padding-left: 30px;
-    border-left: 2px solid #4caf79
+    border-left: 0px solid #4caf79
 }
 
 .ques.is-attempted .ques_option .solution_heading {
