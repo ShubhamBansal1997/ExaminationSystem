@@ -42,17 +42,23 @@
                 
                 <div class="collection waves-color-demo">
                   
-                  <div class="collection-item" style="font-size: 25px;">All Questions ({{ \App\Questions::a_ques($chap_id) }}/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/allques" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;">Start</a>
+                  <div class="collection-item" style="font-size: 20px;">All Questions ({{ \App\Questions::a_ques($chap_id) }}/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/allques" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;">Start</a>
                   </div>
-                  <div class="collection-item" style="font-size: 25px;">Easy ({{ \App\Questions::e_ques($chap_id) }}/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/easy" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;">Start</a>
+                  <div class="collection-item" style="font-size: 20px;">Easy ({{ \App\Questions::e_ques($chap_id) }}/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/easy" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;">Start</a>
                   </div>
-                  <div class="collection-item" style="font-size: 25px;">Medium ({{ \App\Questions::m_ques($chap_id) }}/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/medium" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;">Start</a>
+                  <div class="collection-item" style="font-size: 20px;">Medium ({{ \App\Questions::m_ques($chap_id) }}/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/medium" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;">Start</a>
                   </div>
-                  <div class="collection-item" style="font-size: 25px;">Difficult ({{ \App\Questions::d_ques($chap_id) }}/{{ \App\Questions::a_ques($chap_id) }})<a href="{{ URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/difficult" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;">Start</a>
+                  <div class="collection-item" style="font-size: 20px;">Difficult ({{ \App\Questions::d_ques($chap_id) }}/{{ \App\Questions::a_ques($chap_id) }})<a href="{{ URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/difficult" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;">Start</a>
                   </div>
-                  <div class="collection-item" style="font-size: 25px;">Important ({{ \App\Questions::i_ques($chap_id) }}/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/imp" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;">Start</a>
-                  
-                  </div>
+                  <div class="collection-item" style="font-size: 20px;">Important ({{ \App\Questions::i_ques($chap_id) }}/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/imp" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;">Start</a></div>
+                  <div class="collection-item" style="font-size: 20px;">Assertion-Reason Question (0/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/imp" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;">Start</a></div>
+                  <div class="collection-item" style="font-size: 20px;">Unattempted (0/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/imp" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;">Start</a></div>
+                  <div class="collection-item" style="font-size: 20px;">Correct (0/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/imp" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;">View</a></div>
+                  <div class="collection-item" style="font-size: 20px;">Incorrect (0/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/imp" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;">View</a></div>
+                  <div class="collection-item" style="font-size: 20px;">Questions Marked for Review (0/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/imp" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;">View</a></div>
+                  <div class="collection-item" style="font-size: 20px;"><a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/imp" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;">Attempt The Whole Chapter Again</a></div>
+
+
                                 
                   
                   
