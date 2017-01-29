@@ -9,7 +9,7 @@
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
-                <h2 class="breadcrumbs-title">Packages</h2>
+                <h2 class="breadcrumbs-title" style="font-size: 40px;"><center><b>Purchase</b></center></h2>
                 <!-- <ol class="breadcrumbs">
                   <li><a href="index.html">Dashboard</a>
                   </li>
