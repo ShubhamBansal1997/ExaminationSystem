@@ -10,7 +10,7 @@
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
-                <h1 class="breadcrumbs-title" style="font-size: 35px; margin-bottom: 12px">{{ \App\Chapters::chap_name($chap_id) }}</h1>
+                <h1 class="breadcrumbs-title" style="font-size: 35px; margin-bottom: 12px;text-align: center;">{{ \App\Chapters::chap_name($chap_id) }}</h1>
                 <!-- <ol class="breadcrumbs">
                   <li><a href="index.html">Dashboard</a>
                   </li>
