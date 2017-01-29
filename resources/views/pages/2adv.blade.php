@@ -9,7 +9,7 @@
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
-                <h5 class="breadcrumbs-title">Advance Packages for 2 Years</h5>
+                <h5 class="breadcrumbs-title">2 Year Advanced Packages</h5>
                 
               </div>
             </div>
