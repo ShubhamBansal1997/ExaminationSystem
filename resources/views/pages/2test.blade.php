@@ -9,7 +9,7 @@
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
-                <h5 class="breadcrumbs-title">Test Series (Valid for 2 Years)</h5>
+                <h5 class="breadcrumbs-title"><div style="margin-bottom: 10px; text-align: center;">Test Series (Valid for 2 Years)</div></h5>
                 
               </div>
             </div>
