@@ -131,10 +131,9 @@
                                 </ul>
                             </div>
                         </li>
-                    </ul>
-                </li>
-                <li class="no-padding">
-                    <ul class="collapsible collapsible-accordion">
+                    
+                
+                
                         <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-av-my-library-books"></i>Chemistry</a>
                             <div class="collapsible-body">
                                 <ul>
@@ -145,10 +144,6 @@
                                 </ul>
                             </div>
                         </li>
-                    </ul>
-                </li>
-                <li class="no-padding">
-                    <ul class="collapsible collapsible-accordion">
                         <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-av-my-library-books"></i>Biology</a>
                             <div class="collapsible-body">
                                 <ul>
@@ -159,10 +154,7 @@
                                 </ul>
                             </div>
                         </li>
-                    </ul>
-                </li>
-                <li class="no-padding">
-                    <ul class="collapsible collapsible-accordion">
+            
                         <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-av-my-library-books"></i>Test Series</a>
                             <div class="collapsible-body">
                                 <ul>
