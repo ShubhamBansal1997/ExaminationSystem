@@ -170,7 +170,7 @@
                                     </li>
                                     <li><a href="#">AIIMS </a>
                                     </li>
-                                    <li><a href="#">EACMET </a>
+                                    <li><a href="#">EAMCET </a>
                                     </li>
                                 </ul>
                             </div>
