@@ -41,16 +41,16 @@
                 
                 <div class="collection waves-color-demo">
                   
-                  <div class="collection-item" style="font-size: 20px;">1 Year Packages<a href="{{ URL::to('package/1year') }}" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;margin-top: 5px;">Buy Now</a>
+                  <div class="collection-item" style="font-size: 20px;">1 Year Packages<a href="{{ URL::to('package/1year') }}" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;margin-top: 10px;">Buy Now</a>
                   </div>
-                  <div class="collection-item" style="font-size: 20px;">2 Year Packages<a href="{{ URL::to('package/2year') }}" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;margin-top: 5px;">Buy Now</a>
+                  <div class="collection-item" style="font-size: 20px;">2 Year Packages<a href="{{ URL::to('package/2year') }}" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;margin-top: 10px;">Buy Now</a>
                   </div>
                   <div class="collection-item" style="font-size: 20px;">Test Series (Valid 
-                  for 2 Years)<a href="{{ URL::to('package/2test') }}" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;margin-top: 5px;">Buy Now</a>
+                  for 2 Years)<a href="{{ URL::to('package/2test') }}" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;margin-top: 10px;">Buy Now</a>
                   </div>
-                  <div class="collection-item" style="font-size: 20px;">1 Year Advanced Packages<a href="{{ URL::to('package/1adv') }}" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;margin-top: 5px;">Buy Now</a>
+                  <div class="collection-item" style="font-size: 20px;">1 Year Advanced Packages<a href="{{ URL::to('package/1adv') }}" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;margin-top: 10px;">Buy Now</a>
                   </div>
-                  <div class="collection-item" style="font-size: 20px;">2 Year Advanced Packages<a href="{{ URL::to('package/2adv') }}" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;margin-top: 5px;">Buy Now</a>
+                  <div class="collection-item" style="font-size: 20px;">2 Year Advanced Packages<a href="{{ URL::to('package/2adv') }}" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;margin-top: 10px;">Buy Now</a>
                   </div>
                                 
                   
