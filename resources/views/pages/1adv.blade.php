@@ -9,7 +9,7 @@
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
-                <h5 class="breadcrumbs-title"><div style="margin-bottom: 10px; text-align: center;">1 Year Advanced Packages</div></h5>
+                <h5 class="breadcrumbs-title" style="font-size: 40px; margin-bottom: 12px"><center>1 Year Advanced Packages</center></h5>
                 
               </div>
             </div>
