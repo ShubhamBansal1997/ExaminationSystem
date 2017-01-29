@@ -10,7 +10,7 @@
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
-                <h5 class="breadcrumbs-title">@if($sub_id==1) {{ "Physics" }} @elseif($sub_id==2) {{ "Chemistry" }} @else {{ "Biology" }} @endif - {{ $std }}th</h5>
+                <h5 class="breadcrumbs-title"><center>@if($sub_id==1) {{ "Physics" }} @elseif($sub_id==2) {{ "Chemistry" }} @else {{ "Biology" }} @endif - {{ $std }}th</center></h5>
                 <!-- <ol class="breadcrumbs">
                   <li><a href="index.html">Dashboard</a>
                   </li>
