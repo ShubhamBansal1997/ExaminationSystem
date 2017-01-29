@@ -46,7 +46,7 @@
                   <div class="collection-item">{{ str_limit($chapters->chap_name, $limit = 41, $end = '...') }}<a href="{{ URL::to('home') }}/{{ $sub_id }}/{{ $std }}/{{ $chapters->chap_id }}" class="waves-effect waves-light btn secondary-content" style="margin-right:7px;margin-top: 10px;">Start</a>
                   </div>
                   @else
-                  <div class="collection-item">{{ str_limit($chapters->chap_name, $limit = 41, $end = '...') }}<a href="#" class="waves-effect btn secondary-content white black-text" style="margin-top: 10px;">Unlock</a>
+                  <div class="collection-item">{{ str_limit($chapters->chap_name, $limit = 41, $end = '...') }}<a href="#" class="waves-effect btn secondary-content purple darken-4" style="margin-top: 10px;">Unlock</a>
                   </div>
                   @endif
                   @endforeach
