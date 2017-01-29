@@ -45,7 +45,8 @@
                   </div>
                   <div class="collection-item" style="font-size: 20px;">2 Year Packages<a href="{{ URL::to('package/2year') }}" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;">Buy Now</a>
                   </div>
-                  <div class="collection-item" style="font-size: 20px;">Test Series (For 2 Years)<a href="{{ URL::to('package/2test') }}" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;">Buy Now</a>
+                  <div class="collection-item" style="font-size: 20px;">Test Series (Valid 
+                  for 2 Years)<a href="{{ URL::to('package/2test') }}" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;">Buy Now</a>
                   </div>
                   <div class="collection-item" style="font-size: 20px;">1 Year Advanced Packages<a href="{{ URL::to('package/1adv') }}" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;">Buy Now</a>
                   </div>
