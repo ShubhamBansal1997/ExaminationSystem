@@ -43,10 +43,10 @@
                 <div class="collection waves-color-demo">
                   @foreach(\App\Chapters::where('sub_id',$sub_id)->where('std',$std)->get() as $i=>$chapters)
                   @if($i==0)
-                  <div class="collection-item">{{ str_limit($chapters->chap_name, $limit = 42, $end = '...') }}<a href="{{ URL::to('home') }}/{{ $sub_id }}/{{ $std }}/{{ $chapters->chap_id }}" class="waves-effect waves-light btn secondary-content" style="margin-right:7px;margin-top: 10px;">Start</a>
+                  <div class="collection-item">{{ str_limit($chapters->chap_name, $limit = 41, $end = '...') }}<a href="{{ URL::to('home') }}/{{ $sub_id }}/{{ $std }}/{{ $chapters->chap_id }}" class="waves-effect waves-light btn secondary-content" style="margin-right:7px;margin-top: 10px;">Start</a>
                   </div>
                   @else
-                  <div class="collection-item">{{ str_limit($chapters->chap_name, $limit = 42, $end = '...') }}<a href="#" class="waves-effect btn secondary-content white black-text" style="margin-top: 10px;">Unlock</a>
+                  <div class="collection-item">{{ str_limit($chapters->chap_name, $limit = 41, $end = '...') }}<a href="#" class="waves-effect btn secondary-content white black-text" style="margin-top: 10px;">Unlock</a>
                   </div>
                   @endif
                   @endforeach
