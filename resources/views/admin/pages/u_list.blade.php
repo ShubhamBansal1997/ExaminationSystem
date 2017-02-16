@@ -121,7 +121,7 @@
                                         <tr class="odd gradeX">
                                             <td>{{ isset($user->id)?$user->id:"NULL" }}</td>
                                             <td>{{ $user->name }}</td>
-                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->email }}<br/>{{ $user->mobile }}</td>
                                             <td>{{ $user->mobile }}</td>
                                             <td class="center">
                                             @if($user->status==1)
