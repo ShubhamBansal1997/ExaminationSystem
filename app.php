@@ -1,3 +1,9 @@
+/**
+ * @Author: Shubham Bansal
+ * @Date:   2017-05-30 23:44:51
+ * @Last Modified by:   Shubham Bansal
+ * @Last Modified time: 2017-05-30 23:46:41
+ */
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,11 +16,10 @@
     <meta name="author" content="">
 
     <title>Neetgurumantra-Admin</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('admin_assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.0.1/jquery-confirm.min.css" />
 
 
     <!-- MetisMenu CSS -->
@@ -29,7 +34,7 @@
 
     <!-- Custom Fonts -->
     <link href="{{ asset('admin_assets/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.0.1/jquery-confirm.min.js"></script>
     <script src="{{URL::asset('templateEditor/ckeditor/ckeditor.js')}}"></script>
  <script type="text/javascript" async
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
@@ -139,7 +144,6 @@
                             <ul class="nav nav-second-level">
                                 <li><a href="{{ URL::to('admin/content') }}">Content</a></li>
                                 <li><a href="{{ URL::to('admin/marketers') }}">Marketers</a></li>
-                                <li><a href="{{ URL::to('admin/marketing-payouts') }}">Marketing Payouts</a></li>
 
                             </ul>
                             <!-- /.nav-second-level -->
@@ -188,10 +192,9 @@
             <!-- /.navbar-static-side -->
         </nav>
 @yield('content')
-	</div>
-@yield('modal')
+  </div>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.0.1/jquery-confirm.min.js"></script>
 <script>
 function deleteques(ques_id,sub_id,std)
 {
@@ -224,14 +227,31 @@ else
 
 <!-- Morris Charts JavaScript -->
 <script src="{{ asset('admin_assets/vendor/raphael/raphael.min.js') }}"></script>
-<!-- <script src="{{ asset('admin_assets/vendor/morrisjs/morris.min.js') }}"></script>
-<script src="{{ asset('admin_assets/data/morris-data.js') }}"></script> -->
+<script src="{{ asset('admin_assets/vendor/morrisjs/morris.min.js') }}"></script>
+<script src="{{ asset('admin_assets/data/morris-data.js') }}"></script>
 
 <!-- DataTables JavaScript -->
 <script src="{{asset('admin_assets/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('admin_assets/vendor/datatables-plugins/dataTables.bootstrap.min.js') }}"></script>
 <script src="{{ asset('admin_assets/vendor/datatables-responsive/dataTables.responsive.js') }}"></script>
-
+<script type="text/javascript">
+     CKEDITOR.replace( 'editor' );
+</script>
+<script type="text/javascript">
+     CKEDITOR.replace( 'editor1' );
+</script>
+<script type="text/javascript">
+     CKEDITOR.replace( 'editor2' );
+</script>
+<script type="text/javascript">
+     CKEDITOR.replace( 'editor3' );
+</script>
+<script type="text/javascript">
+     CKEDITOR.replace( 'editor4' );
+</script>
+<script type="text/javascript">
+     CKEDITOR.replace( 'editor5' );
+</script>
 
  <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
@@ -241,8 +261,9 @@ else
         });
     });
     </script>
-@yield('script')
+
 <!-- Custom Theme JavaScript -->
+<script src="{{ asset('admin_assets/dist/js/sb-admin-2.js') }}"></script>
 
 </body>
 

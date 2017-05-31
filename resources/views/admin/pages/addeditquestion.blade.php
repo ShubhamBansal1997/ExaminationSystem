@@ -21,7 +21,7 @@
 
                                             {!! csrf_field() !!}
                                     <div class="message">
-                         
+
                       				@if (count($errors) > 0)
                           			<div class="alert alert-danger">
                            				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -33,7 +33,7 @@
                               			</ul>
                           			</div>
                       				@endif
-                                    
+
               						</div>
               						@if(Session::has('flash_message'))
 
@@ -48,21 +48,21 @@
 
                                             <label>Chapter Name</label>
                                             <select class="form-control" data-style="white" data-placeholder="Select a chapter..." name="chap_id" id="chap_id" value="{{ isset($question->id) ? $question->id : null }}" >
-		                          			@if(isset($chap_id))  
+		                          			@if(isset($chap_id))
 		                              		<option value="{{$chap_id}}" selected >{{$chap_name}}</option>
 		                              		@endif
 		                          			@foreach(\App\Chapters::where('sub_id',$sub_id)->where('std',$std)->get() as $i=>$chapters)
-		                          				
+
 					                            <option value="{{ $chapters->chap_id }}">{{ $chapters->chap_name }}</option>
-					  
-					                        @endforeach   
+
+					                        @endforeach
 					                          </select>
                                     </div>
 
                                         <div class="form-group">
                                             <label>Question</label>
                                             <textarea class="form-control" id="editor" name="ques_exp" value="" >{{ isset($question->ques_exp) ? $question->ques_exp : null }}</textarea>
-                                            
+
                                         </div>
                                         <div class="form-group">
                                             <label>Answer1</label>
@@ -83,17 +83,17 @@
                                         <div class="form-group">
                                         	<label>Correct Answer</label>
 					                          <select class="form-control" data-style="white" data-placeholder="Select a correct answer" name="ques_ans" id="ques_ans" value="">
-					                            @if(isset($question->ques_ans))  
+					                            @if(isset($question->ques_ans))
 		                              		<option value="{{$question->ques_ans}}" selected >{{$question->ques_ans}}</option>
-		                               			
+
 		                               			@endif
 		                               			<option value="1">1</option>
 					                            <option value="2">2</option>
 					                            <option value="3">3</option>
 					                            <option value="4">4</option>
-		                            			 
+
 					                          </select>
-                                            
+
                                         </div>
                                         <div class="form-group">
                                             <label>Solution</label>
@@ -103,7 +103,7 @@
                                         <div class="form-group">
                                             <label>Imp Ques</label>
 					                          <select class="form-control" data-style="white" data-placeholder="Select a correct answer" name="ques_imp" id="imp_ques" value="" required>
-					                          @if(isset($question->ques_imp))  
+					                          @if(isset($question->ques_imp))
 		                              		<option value="{{$question->ques_imp}}" selected >@if($question->ques_imp==1)
 		                              					{{ "Yes" }}
 		                            				@else
@@ -112,16 +112,16 @@
 		                              		@endif
 		                              		<option value="1">Yes</option>
 					                            <option value="0">No</option>
-		                               
-		                            			
-					                            
+
+
+
 					                          </select>
-                                            
+
                                         </div>
                                         <div class="form-group">
                                         	<label>Ques Level</label>
 					                          <select class="form-control" data-style="white" data-placeholder="Select a correct answer" name="ques_level" id="ques_level" value="" required>
-					                            @if(isset($question->ques_level))  
+					                            @if(isset($question->ques_level))
 		                              		<option value="{{$question->ques_level}}" selected >@if($question->ques_level==1)
 		                            				{{ "Easy" }}
 		                            				@elseif($question->ques_level==2)
@@ -133,23 +133,23 @@
 		                               			<option value="1">Easy</option>
 					                            <option value="2">Medium</option>
 					                            <option value="3">Difficult</option>
-		                            			
+
 			                          			</select>
-                                            
+
                                         </div>
-                                        
+
                                         <input value="{{ $sub_id }}" name="sub_id" hidden>
 										<input value="{{ isset($question->ques_id) ? $question->ques_id:null }}" name="ques_id" hidden>
-                                        
+
                                         </div>
                                         <div class="modal-footer">
-                                            
+
                                             <button type="submit" class="btn btn-primary">{{ isset($question->ques_id) ? "Edit":"Submit" }}</button>
-                                        </div>s
+                                        </div>
                                     {!! Form::close() !!}
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
-                                
+
                             </div>
                             <!-- /.row (nested) -->
                         </div>
@@ -162,5 +162,26 @@
             <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
+@endsection
+
+@section('script')
+<script type="text/javascript">
+     CKEDITOR.replace( 'editor' );
+</script>
+<script type="text/javascript">
+     CKEDITOR.replace( 'editor1' );
+</script>
+<script type="text/javascript">
+     CKEDITOR.replace( 'editor2' );
+</script>
+<script type="text/javascript">
+     CKEDITOR.replace( 'editor3' );
+</script>
+<script type="text/javascript">
+     CKEDITOR.replace( 'editor4' );
+</script>
+<script type="text/javascript">
+     CKEDITOR.replace( 'editor5' );
+</script>
 @endsection
 

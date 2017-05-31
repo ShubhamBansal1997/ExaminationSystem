@@ -1,0 +1,339 @@
+# Logfile created on 2017-04-10 00:02:52 +0530 by logger.rb/47272
+  INFO ---------------------------------------------------------------------------
+  INFO START 2017-04-10 00:02:52 +0530 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [fb93c57a] Running /usr/bin/env mkdir -p /tmp as ubuntu@35.160.105.75
+ DEBUG [fb93c57a] Command: /usr/bin/env mkdir -p /tmp
+  INFO ---------------------------------------------------------------------------
+  INFO START 2017-04-10 00:05:22 +0530 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [16f312d5] Running /usr/bin/env mkdir -p /tmp as ubuntu@35.160.105.75
+ DEBUG [16f312d5] Command: /usr/bin/env mkdir -p /tmp
+  INFO ---------------------------------------------------------------------------
+  INFO START 2017-04-10 00:08:20 +0530 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [8dbac11c] Running /usr/bin/env mkdir -p /tmp as ubuntu@35.160.105.75
+ DEBUG [8dbac11c] Command: /usr/bin/env mkdir -p /tmp
+  INFO ---------------------------------------------------------------------------
+  INFO START 2017-04-10 00:12:38 +0530 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [0f53ff65] Running /usr/bin/env mkdir -p /tmp as ubuntu@35.160.105.75
+ DEBUG [0f53ff65] Command: /usr/bin/env mkdir -p /tmp
+  INFO ---------------------------------------------------------------------------
+  INFO START 2017-04-10 00:15:56 +0530 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [ace05bd3] Running /usr/bin/env mkdir -p /tmp as ubuntu@35.160.105.75
+ DEBUG [ace05bd3] Command: /usr/bin/env mkdir -p /tmp
+  INFO ---------------------------------------------------------------------------
+  INFO START 2017-04-10 00:17:26 +0530 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [1b82ce17] Running /usr/bin/env mkdir -p /tmp as ubuntu@35.160.105.75
+ DEBUG [1b82ce17] Command: /usr/bin/env mkdir -p /tmp
+  INFO ---------------------------------------------------------------------------
+  INFO START 2017-04-10 00:20:07 +0530 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [ac8482c7] Running /usr/bin/env mkdir -p /tmp as ubuntu@35.160.105.75
+ DEBUG [ac8482c7] Command: /usr/bin/env mkdir -p /tmp
+  INFO ---------------------------------------------------------------------------
+  INFO START 2017-04-10 00:22:42 +0530 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [af3ed789] Running /usr/bin/env mkdir -p /tmp as ubuntu@35.160.105.75
+ DEBUG [af3ed789] Command: /usr/bin/env mkdir -p /tmp
+  INFO ---------------------------------------------------------------------------
+  INFO START 2017-04-10 00:23:06 +0530 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [85c67267] Running /usr/bin/env mkdir -p /tmp as ubuntu@35.160.105.75
+ DEBUG [85c67267] Command: /usr/bin/env mkdir -p /tmp
+  INFO [85c67267] Finished in 5.552 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh 0.0%
+  INFO Uploading /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh 100.0%
+  INFO [5fab3a46] Running /usr/bin/env chmod 700 /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh as ubuntu@35.160.105.75
+ DEBUG [5fab3a46] Command: /usr/bin/env chmod 700 /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh
+  INFO [5fab3a46] Finished in 0.819 seconds with exit status 0 (successful).
+  INFO [47e1031c] Running /usr/bin/env git ls-remote https://ShubhamBansal@bitbucket.org/ShubhamBansal/neetgurumantra.git HEAD as ubuntu@35.160.105.75
+ DEBUG [47e1031c] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh" ; /usr/bin/env git ls-remote https://ShubhamBansal@bitbucket.org/ShubhamBansal/neetgurumantra.git HEAD )
+ DEBUG [47e1031c] 	remote: Invalid username or password. If you log in via a third party service you must ensure you have an account password set in your account profile.
+ DEBUG [47e1031c] 	f
+ DEBUG [47e1031c] 	atal: 
+ DEBUG [47e1031c] 	A
+ DEBUG [47e1031c] 	uthentication failed for '
+ DEBUG [47e1031c] 	h
+ DEBUG [47e1031c] 	ttps://ShubhamBansal@bitbucket.org/ShubhamBansal/neetgurumantra.git/
+ DEBUG [47e1031c] 	'
+ DEBUG [47e1031c] 	
+  INFO ---------------------------------------------------------------------------
+  INFO START 2017-04-10 00:25:22 +0530 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [93bae547] Running /usr/bin/env mkdir -p /tmp as ubuntu@35.160.105.75
+ DEBUG [93bae547] Command: /usr/bin/env mkdir -p /tmp
+  INFO [93bae547] Finished in 4.792 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh 0.0%
+  INFO Uploading /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh 100.0%
+  INFO [c6288cfc] Running /usr/bin/env chmod 700 /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh as ubuntu@35.160.105.75
+ DEBUG [c6288cfc] Command: /usr/bin/env chmod 700 /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh
+  INFO [c6288cfc] Finished in 0.794 seconds with exit status 0 (successful).
+  INFO [ce90266e] Running /usr/bin/env git ls-remote https://ShubhamBansal@bitbucket.org/ShubhamBansal/neetgurumantra.git HEAD as ubuntu@35.160.105.75
+ DEBUG [ce90266e] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh" ; /usr/bin/env git ls-remote https://ShubhamBansal@bitbucket.org/ShubhamBansal/neetgurumantra.git HEAD )
+ DEBUG [ce90266e] 	remote: Invalid username or password. If you log in via a third party service you must ensure you have an account password set in your account profile.
+ DEBUG [ce90266e] 	f
+ DEBUG [ce90266e] 	atal: 
+ DEBUG [ce90266e] 	A
+ DEBUG [ce90266e] 	uthentication failed for '
+ DEBUG [ce90266e] 	h
+ DEBUG [ce90266e] 	ttps://ShubhamBansal@bitbucket.org/ShubhamBansal/neetgurumantra.git/
+ DEBUG [ce90266e] 	'
+ DEBUG [ce90266e] 	
+  INFO ---------------------------------------------------------------------------
+  INFO START 2017-04-10 00:26:56 +0530 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [6fa5d619] Running /usr/bin/env mkdir -p /tmp as ubuntu@35.160.105.75
+ DEBUG [6fa5d619] Command: /usr/bin/env mkdir -p /tmp
+  INFO [6fa5d619] Finished in 4.821 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh 0.0%
+  INFO Uploading /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh 100.0%
+  INFO [e90ee853] Running /usr/bin/env chmod 700 /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh as ubuntu@35.160.105.75
+ DEBUG [e90ee853] Command: /usr/bin/env chmod 700 /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh
+  INFO [e90ee853] Finished in 0.819 seconds with exit status 0 (successful).
+  INFO [19138f95] Running /usr/bin/env git ls-remote https://ShubhamBansal@bitbucket.org/ShubhamBansal/neetgurumantra.git HEAD as ubuntu@35.160.105.75
+ DEBUG [19138f95] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh" ; /usr/bin/env git ls-remote https://ShubhamBansal@bitbucket.org/ShubhamBansal/neetgurumantra.git HEAD )
+ DEBUG [19138f95] 	remote: Invalid username or password. If you log in via a third party service you must ensure you have an account password set in your account profile.
+ DEBUG [19138f95] 	f
+ DEBUG [19138f95] 	atal: 
+ DEBUG [19138f95] 	A
+ DEBUG [19138f95] 	uthentication failed for '
+ DEBUG [19138f95] 	h
+ DEBUG [19138f95] 	ttps://ShubhamBansal@bitbucket.org/ShubhamBansal/neetgurumantra.git/
+ DEBUG [19138f95] 	'
+ DEBUG [19138f95] 	
+  INFO ---------------------------------------------------------------------------
+  INFO START 2017-04-10 00:32:58 +0530 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [79b2534d] Running /usr/bin/env mkdir -p /tmp as ubuntu@35.160.105.75
+ DEBUG [79b2534d] Command: /usr/bin/env mkdir -p /tmp
+  INFO [79b2534d] Finished in 5.184 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh 0.0%
+  INFO Uploading /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh 100.0%
+  INFO [a9b962f5] Running /usr/bin/env chmod 700 /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh as ubuntu@35.160.105.75
+ DEBUG [a9b962f5] Command: /usr/bin/env chmod 700 /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh
+  INFO [a9b962f5] Finished in 0.816 seconds with exit status 0 (successful).
+  INFO [183bd6a5] Running /usr/bin/env git ls-remote git@bitbucket.org:ShubhamBansal/neetgurumantra.git HEAD as ubuntu@35.160.105.75
+ DEBUG [183bd6a5] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh" ; /usr/bin/env git ls-remote git@bitbucket.org:ShubhamBansal/neetgurumantra.git HEAD )
+ DEBUG [183bd6a5] 	Warning: Permanently added 'bitbucket.org,104.192.143.1' (RSA) to the list of known hosts.
+ DEBUG [183bd6a5] 	ec4cbc23881d4ec08421f2bce0bb29a746eeaaaf	HEAD
+  INFO [183bd6a5] Finished in 2.196 seconds with exit status 0 (successful).
+  INFO [16bf1257] Running /usr/bin/env mkdir -p /var/www/html/shared /var/www/html/releases as ubuntu@35.160.105.75
+ DEBUG [16bf1257] Command: /usr/bin/env mkdir -p /var/www/html/shared /var/www/html/releases
+ DEBUG [16bf1257] 	mkdir: 
+ DEBUG [16bf1257] 	cannot create directory ‘/var/www/html/shared’
+ DEBUG [16bf1257] 	: Permission denied
+ DEBUG [16bf1257] 	
+ DEBUG [16bf1257] 	mkdir: 
+ DEBUG [16bf1257] 	cannot create directory ‘/var/www/html/releases’
+ DEBUG [16bf1257] 	: Permission denied
+ DEBUG [16bf1257] 	
+  INFO ---------------------------------------------------------------------------
+  INFO START 2017-04-10 00:38:34 +0530 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [73135263] Running /usr/bin/env mkdir -p /tmp as ubuntu@35.160.105.75
+ DEBUG [73135263] Command: /usr/bin/env mkdir -p /tmp
+  INFO [73135263] Finished in 5.710 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh 0.0%
+  INFO Uploading /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh 100.0%
+  INFO [0883177a] Running /usr/bin/env chmod 700 /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh as ubuntu@35.160.105.75
+ DEBUG [0883177a] Command: /usr/bin/env chmod 700 /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh
+  INFO [0883177a] Finished in 0.707 seconds with exit status 0 (successful).
+  INFO [b181c3fc] Running /usr/bin/env git ls-remote git@bitbucket.org:ShubhamBansal/neetgurumantra.git HEAD as ubuntu@35.160.105.75
+ DEBUG [b181c3fc] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh" ; /usr/bin/env git ls-remote git@bitbucket.org:ShubhamBansal/neetgurumantra.git HEAD )
+ DEBUG [b181c3fc] 	ec4cbc23881d4ec08421f2bce0bb29a746eeaaaf	HEAD
+  INFO [b181c3fc] Finished in 2.149 seconds with exit status 0 (successful).
+  INFO [567adf5e] Running /usr/bin/env mkdir -p /var/www/html/shared /var/www/html/releases as ubuntu@35.160.105.75
+ DEBUG [567adf5e] Command: /usr/bin/env mkdir -p /var/www/html/shared /var/www/html/releases
+ DEBUG [567adf5e] 	mkdir: 
+ DEBUG [567adf5e] 	cannot create directory ‘/var/www/html/shared’
+ DEBUG [567adf5e] 	: Permission denied
+ DEBUG [567adf5e] 	
+ DEBUG [567adf5e] 	mkdir: 
+ DEBUG [567adf5e] 	cannot create directory ‘/var/www/html/releases’
+ DEBUG [567adf5e] 	: Permission denied
+ DEBUG [567adf5e] 	
+  INFO ---------------------------------------------------------------------------
+  INFO START 2017-04-10 00:39:15 +0530 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [714cfa43] Running /usr/bin/env mkdir -p /tmp as ubuntu@35.160.105.75
+ DEBUG [714cfa43] Command: /usr/bin/env mkdir -p /tmp
+  INFO [714cfa43] Finished in 4.558 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh 0.0%
+  INFO Uploading /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh 100.0%
+  INFO [20ef534c] Running /usr/bin/env chmod 700 /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh as ubuntu@35.160.105.75
+ DEBUG [20ef534c] Command: /usr/bin/env chmod 700 /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh
+  INFO [20ef534c] Finished in 0.798 seconds with exit status 0 (successful).
+  INFO [c6a14c59] Running /usr/bin/env git ls-remote git@bitbucket.org:ShubhamBansal/neetgurumantra.git HEAD as ubuntu@35.160.105.75
+ DEBUG [c6a14c59] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh" ; /usr/bin/env git ls-remote git@bitbucket.org:ShubhamBansal/neetgurumantra.git HEAD )
+ DEBUG [c6a14c59] 	ec4cbc23881d4ec08421f2bce0bb29a746eeaaaf	HEAD
+  INFO [c6a14c59] Finished in 2.047 seconds with exit status 0 (successful).
+  INFO [a7b45677] Running /usr/bin/env mkdir -p /var/www/html/shared /var/www/html/releases as ubuntu@35.160.105.75
+ DEBUG [a7b45677] Command: /usr/bin/env mkdir -p /var/www/html/shared /var/www/html/releases
+ DEBUG [a7b45677] 	mkdir: 
+ DEBUG [a7b45677] 	cannot create directory ‘/var/www/html/shared’
+ DEBUG [a7b45677] 	: Permission denied
+ DEBUG [a7b45677] 	
+ DEBUG [a7b45677] 	mkdir: 
+ DEBUG [a7b45677] 	cannot create directory ‘/var/www/html/releases’
+ DEBUG [a7b45677] 	: Permission denied
+ DEBUG [a7b45677] 	
+  INFO ---------------------------------------------------------------------------
+  INFO START 2017-04-10 00:40:37 +0530 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [747349c9] Running /usr/bin/env mkdir -p /tmp as ubuntu@35.160.105.75
+ DEBUG [747349c9] Command: /usr/bin/env mkdir -p /tmp
+  INFO [747349c9] Finished in 4.585 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh 0.0%
+  INFO Uploading /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh 100.0%
+  INFO [d34b5be8] Running /usr/bin/env chmod 700 /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh as ubuntu@35.160.105.75
+ DEBUG [d34b5be8] Command: /usr/bin/env chmod 700 /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh
+  INFO [d34b5be8] Finished in 0.819 seconds with exit status 0 (successful).
+  INFO [09ec08aa] Running /usr/bin/env git ls-remote git@bitbucket.org:ShubhamBansal/neetgurumantra.git HEAD as ubuntu@35.160.105.75
+ DEBUG [09ec08aa] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh" ; /usr/bin/env git ls-remote git@bitbucket.org:ShubhamBansal/neetgurumantra.git HEAD )
+ DEBUG [09ec08aa] 	ec4cbc23881d4ec08421f2bce0bb29a746eeaaaf	HEAD
+  INFO [09ec08aa] Finished in 2.153 seconds with exit status 0 (successful).
+  INFO [c76f9c19] Running /usr/bin/env mkdir -p /var/www/html/shared /var/www/html/releases as ubuntu@35.160.105.75
+ DEBUG [c76f9c19] Command: /usr/bin/env mkdir -p /var/www/html/shared /var/www/html/releases
+ DEBUG [c76f9c19] 	mkdir: 
+ DEBUG [c76f9c19] 	cannot create directory ‘/var/www/html/shared’
+ DEBUG [c76f9c19] 	: Permission denied
+ DEBUG [c76f9c19] 	
+ DEBUG [c76f9c19] 	mkdir: 
+ DEBUG [c76f9c19] 	cannot create directory ‘/var/www/html/releases’
+ DEBUG [c76f9c19] 	: Permission denied
+ DEBUG [c76f9c19] 	
+  INFO ---------------------------------------------------------------------------
+  INFO START 2017-04-10 00:44:36 +0530 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [44fc174b] Running /usr/bin/env mkdir -p /tmp as ubuntu@35.160.105.75
+ DEBUG [44fc174b] Command: /usr/bin/env mkdir -p /tmp
+  INFO [44fc174b] Finished in 4.771 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh 0.0%
+  INFO Uploading /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh 100.0%
+  INFO [a37bb4d8] Running /usr/bin/env chmod 700 /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh as ubuntu@35.160.105.75
+ DEBUG [a37bb4d8] Command: /usr/bin/env chmod 700 /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh
+  INFO [a37bb4d8] Finished in 0.640 seconds with exit status 0 (successful).
+  INFO [d435fef7] Running /usr/bin/env git ls-remote git@bitbucket.org:ShubhamBansal/neetgurumantra.git HEAD as ubuntu@35.160.105.75
+ DEBUG [d435fef7] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh" ; /usr/bin/env git ls-remote git@bitbucket.org:ShubhamBansal/neetgurumantra.git HEAD )
+ DEBUG [d435fef7] 	Warning: Permanently added the RSA host key for IP address '104.192.143.3' to the list of known hosts.
+ DEBUG [d435fef7] 	ec4cbc23881d4ec08421f2bce0bb29a746eeaaaf	HEAD
+  INFO [d435fef7] Finished in 2.080 seconds with exit status 0 (successful).
+  INFO [7475aa32] Running /usr/bin/env mkdir -p /var/www/html/shared /var/www/html/releases as ubuntu@35.160.105.75
+ DEBUG [7475aa32] Command: /usr/bin/env mkdir -p /var/www/html/shared /var/www/html/releases
+ DEBUG [7475aa32] 	mkdir: 
+ DEBUG [7475aa32] 	cannot create directory ‘/var/www/html/shared’
+ DEBUG [7475aa32] 	: Permission denied
+ DEBUG [7475aa32] 	
+ DEBUG [7475aa32] 	mkdir: 
+ DEBUG [7475aa32] 	cannot create directory ‘/var/www/html/releases’
+ DEBUG [7475aa32] 	: Permission denied
+ DEBUG [7475aa32] 	
+  INFO ---------------------------------------------------------------------------
+  INFO START 2017-04-10 00:45:15 +0530 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [cc74122e] Running /usr/bin/env mkdir -p /tmp as ubuntu@35.160.105.75
+ DEBUG [cc74122e] Command: /usr/bin/env mkdir -p /tmp
+  INFO [cc74122e] Finished in 4.818 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh 0.0%
+  INFO Uploading /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh 100.0%
+  INFO [d719219d] Running /usr/bin/env chmod 700 /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh as ubuntu@35.160.105.75
+ DEBUG [d719219d] Command: /usr/bin/env chmod 700 /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh
+  INFO [d719219d] Finished in 0.818 seconds with exit status 0 (successful).
+  INFO [53208cac] Running /usr/bin/env git ls-remote git@bitbucket.org:ShubhamBansal/neetgurumantra.git HEAD as ubuntu@35.160.105.75
+ DEBUG [53208cac] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh" ; /usr/bin/env git ls-remote git@bitbucket.org:ShubhamBansal/neetgurumantra.git HEAD )
+ DEBUG [53208cac] 	ec4cbc23881d4ec08421f2bce0bb29a746eeaaaf	HEAD
+  INFO [53208cac] Finished in 2.048 seconds with exit status 0 (successful).
+  INFO [1586f266] Running /usr/bin/env mkdir -p /var/www/html/shared /var/www/html/releases as ubuntu@35.160.105.75
+ DEBUG [1586f266] Command: /usr/bin/env mkdir -p /var/www/html/shared /var/www/html/releases
+ DEBUG [1586f266] 	mkdir: 
+ DEBUG [1586f266] 	cannot create directory ‘/var/www/html/shared’
+ DEBUG [1586f266] 	: Permission denied
+ DEBUG [1586f266] 	
+ DEBUG [1586f266] 	mkdir: 
+ DEBUG [1586f266] 	cannot create directory ‘/var/www/html/releases’
+ DEBUG [1586f266] 	: Permission denied
+ DEBUG [1586f266] 	
+  INFO ---------------------------------------------------------------------------
+  INFO START 2017-04-10 00:46:49 +0530 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [ef6a7158] Running /usr/bin/env mkdir -p /tmp as ubuntu@35.160.105.75
+ DEBUG [ef6a7158] Command: /usr/bin/env mkdir -p /tmp
+  INFO [ef6a7158] Finished in 4.880 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh 0.0%
+  INFO Uploading /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh 100.0%
+  INFO [f3720242] Running /usr/bin/env chmod 700 /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh as ubuntu@35.160.105.75
+ DEBUG [f3720242] Command: /usr/bin/env chmod 700 /tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh
+  INFO [f3720242] Finished in 0.921 seconds with exit status 0 (successful).
+  INFO [1aa0c61c] Running /usr/bin/env git ls-remote git@bitbucket.org:ShubhamBansal/neetgurumantra.git HEAD as ubuntu@35.160.105.75
+ DEBUG [1aa0c61c] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh" ; /usr/bin/env git ls-remote git@bitbucket.org:ShubhamBansal/neetgurumantra.git HEAD )
+ DEBUG [1aa0c61c] 	ec4cbc23881d4ec08421f2bce0bb29a746eeaaaf	HEAD
+  INFO [1aa0c61c] Finished in 2.587 seconds with exit status 0 (successful).
+  INFO [9ff6c091] Running /usr/bin/env mkdir -p /var/www/html/shared /var/www/html/releases as ubuntu@35.160.105.75
+ DEBUG [9ff6c091] Command: /usr/bin/env mkdir -p /var/www/html/shared /var/www/html/releases
+  INFO [9ff6c091] Finished in 0.789 seconds with exit status 0 (successful).
+ DEBUG [624879be] Running [ -f /var/www/html/current/REVISION ] as ubuntu@35.160.105.75
+ DEBUG [624879be] Command: [ -f /var/www/html/current/REVISION ]
+ DEBUG [624879be] Finished in 0.817 seconds with exit status 1 (failed).
+ DEBUG [8aefff58] Running [ -f /var/www/html/repo/HEAD ] as ubuntu@35.160.105.75
+ DEBUG [8aefff58] Command: [ -f /var/www/html/repo/HEAD ]
+ DEBUG [8aefff58] Finished in 0.819 seconds with exit status 1 (failed).
+ DEBUG [51304d2b] Running if test ! -d /var/www/html; then echo "Directory does not exist '/var/www/html'" 1>&2; false; fi as ubuntu@35.160.105.75
+ DEBUG [51304d2b] Command: if test ! -d /var/www/html; then echo "Directory does not exist '/var/www/html'" 1>&2; false; fi
+ DEBUG [51304d2b] Finished in 0.641 seconds with exit status 0 (successful).
+  INFO [302c7771] Running /usr/bin/env git clone --mirror git@bitbucket.org:ShubhamBansal/neetgurumantra.git /var/www/html/repo as ubuntu@35.160.105.75
+ DEBUG [302c7771] Command: cd /var/www/html && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh" ; /usr/bin/env git clone --mirror git@bitbucket.org:ShubhamBansal/neetgurumantra.git /var/www/html/repo )
+ DEBUG [302c7771] 	Cloning into bare repository '/var/www/html/repo'...
+  INFO [302c7771] Finished in 34.414 seconds with exit status 0 (successful).
+ DEBUG [defc9589] Running if test ! -d /var/www/html/repo; then echo "Directory does not exist '/var/www/html/repo'" 1>&2; false; fi as ubuntu@35.160.105.75
+ DEBUG [defc9589] Command: if test ! -d /var/www/html/repo; then echo "Directory does not exist '/var/www/html/repo'" 1>&2; false; fi
+ DEBUG [defc9589] Finished in 0.818 seconds with exit status 0 (successful).
+  INFO [13e700bc] Running /usr/bin/env git remote set-url origin git@bitbucket.org:ShubhamBansal/neetgurumantra.git as ubuntu@35.160.105.75
+ DEBUG [13e700bc] Command: cd /var/www/html/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh" ; /usr/bin/env git remote set-url origin git@bitbucket.org:ShubhamBansal/neetgurumantra.git )
+  INFO [13e700bc] Finished in 0.818 seconds with exit status 0 (successful).
+  INFO [4d799b9b] Running /usr/bin/env git remote update --prune as ubuntu@35.160.105.75
+ DEBUG [4d799b9b] Command: cd /var/www/html/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [4d799b9b] 	Fetching origin
+ DEBUG [4d799b9b] 	Warning: Permanently added the RSA host key for IP address '104.192.143.2' to the list of known hosts.
+  INFO [4d799b9b] Finished in 2.149 seconds with exit status 0 (successful).
+ DEBUG [6b5b92b5] Running if test ! -d /var/www/html/repo; then echo "Directory does not exist '/var/www/html/repo'" 1>&2; false; fi as ubuntu@35.160.105.75
+ DEBUG [6b5b92b5] Command: if test ! -d /var/www/html/repo; then echo "Directory does not exist '/var/www/html/repo'" 1>&2; false; fi
+ DEBUG [6b5b92b5] Finished in 0.819 seconds with exit status 0 (successful).
+  INFO [31325537] Running /usr/bin/env mkdir -p /var/www/html/releases/20170409191701 as ubuntu@35.160.105.75
+ DEBUG [31325537] Command: cd /var/www/html/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh" ; /usr/bin/env mkdir -p /var/www/html/releases/20170409191701 )
+  INFO [31325537] Finished in 0.794 seconds with exit status 0 (successful).
+  INFO [e818456a] Running /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /var/www/html/releases/20170409191701 as ubuntu@35.160.105.75
+ DEBUG [e818456a] Command: cd /var/www/html/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh" ; /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /var/www/html/releases/20170409191701 )
+  INFO [e818456a] Finished in 0.935 seconds with exit status 0 (successful).
+ DEBUG [3df9d80b] Running if test ! -d /var/www/html/repo; then echo "Directory does not exist '/var/www/html/repo'" 1>&2; false; fi as ubuntu@35.160.105.75
+ DEBUG [3df9d80b] Command: if test ! -d /var/www/html/repo; then echo "Directory does not exist '/var/www/html/repo'" 1>&2; false; fi
+ DEBUG [3df9d80b] Finished in 0.642 seconds with exit status 0 (successful).
+ DEBUG [21f27952] Running /usr/bin/env git rev-list --max-count=1 master as ubuntu@35.160.105.75
+ DEBUG [21f27952] Command: cd /var/www/html/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-Neetgurumantra-production-shubhambansal.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [21f27952] 	ec4cbc23881d4ec08421f2bce0bb29a746eeaaaf
+ DEBUG [21f27952] Finished in 0.639 seconds with exit status 0 (successful).
+ DEBUG [e0c6a77b] Running if test ! -d /var/www/html/releases/20170409191701; then echo "Directory does not exist '/var/www/html/releases/20170409191701'" 1>&2; false; fi as ubuntu@35.160.105.75
+ DEBUG [e0c6a77b] Command: if test ! -d /var/www/html/releases/20170409191701; then echo "Directory does not exist '/var/www/html/releases/20170409191701'" 1>&2; false; fi
+ DEBUG [e0c6a77b] Finished in 0.771 seconds with exit status 0 (successful).
+  INFO [de7ece54] Running /usr/bin/env echo "ec4cbc23881d4ec08421f2bce0bb29a746eeaaaf" >> REVISION as ubuntu@35.160.105.75
+ DEBUG [de7ece54] Command: cd /var/www/html/releases/20170409191701 && /usr/bin/env echo "ec4cbc23881d4ec08421f2bce0bb29a746eeaaaf" >> REVISION
+  INFO [de7ece54] Finished in 0.820 seconds with exit status 0 (successful).
+  INFO [d20427bd] Running /usr/bin/env ln -s /var/www/html/releases/20170409191701 /var/www/html/releases/current as ubuntu@35.160.105.75
+ DEBUG [d20427bd] Command: /usr/bin/env ln -s /var/www/html/releases/20170409191701 /var/www/html/releases/current
+  INFO [d20427bd] Finished in 0.816 seconds with exit status 0 (successful).
+  INFO [091b7203] Running /usr/bin/env mv /var/www/html/releases/current /var/www/html as ubuntu@35.160.105.75
+ DEBUG [091b7203] Command: /usr/bin/env mv /var/www/html/releases/current /var/www/html
+  INFO [091b7203] Finished in 0.835 seconds with exit status 0 (successful).
+ DEBUG [d7a3134b] Running /usr/bin/env ls -x /var/www/html/releases as ubuntu@35.160.105.75
+ DEBUG [d7a3134b] Command: /usr/bin/env ls -x /var/www/html/releases
+ DEBUG [d7a3134b] 	20170409191701
+ DEBUG [d7a3134b] Finished in 0.709 seconds with exit status 0 (successful).
+ DEBUG [f10b2bb5] Running if test ! -d /var/www/html/releases; then echo "Directory does not exist '/var/www/html/releases'" 1>&2; false; fi as ubuntu@35.160.105.75
+ DEBUG [f10b2bb5] Command: if test ! -d /var/www/html/releases; then echo "Directory does not exist '/var/www/html/releases'" 1>&2; false; fi
+ DEBUG [f10b2bb5] Finished in 0.810 seconds with exit status 0 (successful).
+  INFO [3b5b3128] Running /usr/bin/env echo "Branch master (at ec4cbc23881d4ec08421f2bce0bb29a746eeaaaf) deployed as release 20170409191701 by shubhambansal" >> /var/www/html/revisions.log as ubuntu@35.160.105.75
+ DEBUG [3b5b3128] Command: cd /var/www/html/releases && /usr/bin/env echo "Branch master (at ec4cbc23881d4ec08421f2bce0bb29a746eeaaaf) deployed as release 20170409191701 by shubhambansal" >> /var/www/html/revisions.log
+  INFO [3b5b3128] Finished in 0.802 seconds with exit status 0 (successful).

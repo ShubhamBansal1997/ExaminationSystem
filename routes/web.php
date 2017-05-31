@@ -49,8 +49,8 @@ Route::get('buypackage/{packagename}','PaymentController@package');
 
 Route::post('home/askadoubt','UserDashboardController@ask_a_doubt')->middleware('web');
 Route::get('package/{pname?}',function($pname=NULL){
-    
-        
+
+
         if($pname==NULL)
             return view('pages.pricingpage');
         else if($pname=='1year')
@@ -101,7 +101,7 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
     Route::get('view_look1/{ques_id}','QuestionController@view_look1');
     Route::get('view_look2/{ques_id}','QuestionController@view_look2');
     Route::get('content','EmployeeController@list_content');
-    Route::get('market','EmployeeController@list_market');
+    Route::get('market','MarketingController@index');
     Route::get('view_users','AdminDashboardController@u_list');
     Route::post('addcoupon','CouponController@addcoupon')->middleware('web');
     Route::get('deletecoupon/{id}','CouponController@deletecoupon');
@@ -121,13 +121,32 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
             $email = Session::get('aemail');
             return view('admin.pages.payout',compact('email'));
         });
+    // function for the marketing
+    Route::post('/addpayout','MarketingController@makepayout')->middleware('web');
+  Route::post('/adduser','MarketingController@adduser')->middleware('web');
+  Route::get('/getmarketdata/{marketid}','MarketingController@getuser');
+  Route::get('/marketstatus/{marketid}','MarketingController@changestatus');
+  Route::get('/deletemarket/{marketid}','MarketingController@deleteuser');
+  Route::post('/editmarketuser','MarketingController@editmarketuser')->middleware('web');
 });
+
+Route::group(['namespace' => 'market', 'prefix' => 'market'], function () {
+
+  Route::get('login','IndexController@index');
+  Route::post('login','IndexController@postLogin')->middleware('web');
+  Route::get('home','DashboardController@index');
+  Route::get('logout','IndexController@logout');
+
+
+});
+
 Route::get('/form', function() {
     return View::make('form');
 });
 Route::get('/test',function() {
     return view('pages.chap_name1');
 });
+Route::get('/firstquestion','QuestionController@get_first_question');
 Route::get('upload/image', function() {
     $allowed = array('png', 'jpg', 'gif');
     $rules = [
@@ -153,4 +172,6 @@ Route::get('upload/image', function() {
         return '{"status":"Invalid File type"}';
     }
 });
+
+Route::get('/questions','QuestionController@get_all_questions')->middleware(['api','cors']);
 

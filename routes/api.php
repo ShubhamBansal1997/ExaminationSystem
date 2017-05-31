@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+// functions for the marketing
+Route::group(['namespace' => 'admin', 'prefix' => 'admin', 'middleware' => 'auth:api'], function () {
+
+
+});
+
