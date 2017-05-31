@@ -101,7 +101,7 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
     Route::get('view_look1/{ques_id}','QuestionController@view_look1');
     Route::get('view_look2/{ques_id}','QuestionController@view_look2');
     Route::get('content','EmployeeController@list_content');
-    Route::get('market','MarketingController@index');
+    Route::get('marketers','MarketingController@index');
     Route::get('view_users','AdminDashboardController@u_list');
     Route::post('addcoupon','CouponController@addcoupon')->middleware('web');
     Route::get('deletecoupon/{id}','CouponController@deletecoupon');
@@ -123,19 +123,27 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
         });
     // function for the marketing
     Route::post('/addpayout','MarketingController@makepayout')->middleware('web');
-  Route::post('/adduser','MarketingController@adduser')->middleware('web');
-  Route::get('/getmarketdata/{marketid}','MarketingController@getuser');
-  Route::get('/marketstatus/{marketid}','MarketingController@changestatus');
-  Route::get('/deletemarket/{marketid}','MarketingController@deleteuser');
-  Route::post('/editmarketuser','MarketingController@editmarketuser')->middleware('web');
+    Route::post('/adduser','MarketingController@adduser')->middleware('web');
+    Route::get('/getmarketdata/{marketid}','MarketingController@getuser');
+    Route::get('/marketstatus/{marketid}','MarketingController@changestatus');
+    Route::get('/deletemarket/{marketid}','MarketingController@deleteuser');
+    Route::post('/editmarketuser','MarketingController@editmarketuser')->middleware('web');
+    Route::get('/marketingpayouts','MarketingController@marketingpayouts');
 });
 
-Route::group(['namespace' => 'market', 'prefix' => 'market'], function () {
+// marketing login page
+Route::get('/marketing','market\IndexController@index');
 
-  Route::get('login','IndexController@index');
+Route::group(['namespace' => 'market', 'prefix' => 'marketing'], function () {
+
+  //Route::get('login','IndexController@index');
   Route::post('login','IndexController@postLogin')->middleware('web');
   Route::get('home','DashboardController@index');
   Route::get('logout','IndexController@logout');
+  Route::get('coupons','DashboardController@coupons');
+  Route::post('addcoupon','DashboardController@addcoupon')->middleware('web');
+  Route::get('couponstatus/{id}','DashboardController@couponstatus');
+  Route::get('deletecoupon/{id}','DashboardController@deletecoupon');
 
 
 });

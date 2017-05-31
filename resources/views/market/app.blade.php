@@ -53,7 +53,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Neetgurumantra - Admin</a>
+                <a class="navbar-brand" href="index.html">Neetgurumantra - Marketing</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -74,7 +74,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li> -->
                         <li class="divider"></li>
-                        <li><a href="{{ URL::to('/admin/logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="{{ URL::to('/marketing/logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -98,87 +98,24 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="{{ URL::to('/admin/dashboard') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="{{ URL::to('/marketing/home') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-tasks fa-fw"></i>  Add Questions<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li><a href="{{ URL::to('admin/addques/1/11') }}">Physics-11th</a></li>
-                               <li><a href="{{ URL::to('admin/addques/1/12') }}">Physics-12th</a></li>
-                               <li><a href="{{ URL::to('admin/addques/2/11') }}">Chemistry-11th</a></li>
-                               <li><a href="{{ URL::to('admin/addques/2/12') }}">Chemistry-12th</a></li>
-                               <li><a href="{{ URL::to('admin/addques/3/11') }}">Biology-11th</a></li>
-                               <li><a href="{{ URL::to('admin/addques/3/12') }}">Biology-12th</a></li>
-
-                            </ul>
+                            <a href="{{ URL::to('marketing/coupons') }}"><i class="fa fa-tasks fa-fw"></i>  Coupons<span class="fa arrow"></span></a>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-tasks fa-fw"></i>  View Questions<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li><a href="{{ URL::to('admin/viewques/1/11') }}">Physics-11th</a></li>
-                               <li><a href="{{ URL::to('admin/viewques/1/12') }}">Physics-12th</a></li>
-                               <li><a href="{{ URL::to('admin/viewques/2/11') }}">Chemistry-11th</a></li>
-                               <li><a href="{{ URL::to('admin/viewques/2/12') }}">Chemistry-12th</a></li>
-                               <li><a href="{{ URL::to('admin/viewques/3/11') }}">Biology-11th</a></li>
-                               <li><a href="{{ URL::to('admin/viewques/3/12') }}">Biology-12th</a>
-
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-
-                        @if(Session::get('a_status')=='1')
-                        <li>
-                            <a href="{{ URL::to('admin/view_users') }}"><i class="fa fa-wrench fa-fw"></i> Users<span class="fa arrow"></span></a>
+                            <a href="{{ URL::to('marketing/couponconversion') }}"><i class="fa fa-tasks fa-fw"></i>  Coupons Conversion<span class="fa arrow"></span></a>
 
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Add Employees<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li><a href="{{ URL::to('admin/content') }}">Content</a></li>
-                                <li><a href="{{ URL::to('admin/marketers') }}">Marketers</a></li>
+                            <a href="{{ URL::to('marketing/payouts') }}"><i class="fa fa-tasks fa-fw"></i>  Payouts<span class="fa arrow"></span></a>
 
-                            </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        @endif
-                       <!--  <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Location<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">State</a>
-                                </li>
-                                <li>
-                                    <a href="#">City</a>
-                                </li>
-                                <li>
-                                    <a href="#">Area</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        <!-- </li> -->
-                        <li>
-                            <a href="{{ URL::to('admin/coupons') }}"><i class="fa fa-files-o fa-fw"></i> Coupons <span class="fa arrow"></span></a>
-                        </li>
-                        <li>
-                            <a href="{{ URL::to('admin/couponactivity') }}"><i class="fa fa-files-o fa-fw"></i> Coupons Activity<span class="fa arrow"></span></a>
-                        </li>
-                        <li>
-                            <a href="{{ URL::to('admin/payouts') }}"><i class="fa fa-files-o fa-fw"></i> Payouts<span class="fa arrow"></span></a>
-                        </li>
-                        <li>
-                            <a href="{{ URL::to('admin/allcoupons') }}"><i class="fa fa-files-o fa-fw"></i> All Coupons <span class="fa arrow"></span></a>
-                        </li>
-                        <li>
-                            <a href="{{ URL::to('admin/allcouponactivity') }}"><i class="fa fa-files-o fa-fw"></i> All Coupons Activity<span class="fa arrow"></span></a>
-                        </li>
-                        <li>
-                            <a href="{{ URL::to('admin/allpayouts') }}"><i class="fa fa-files-o fa-fw"></i> All Payouts<span class="fa arrow"></span></a>
-                        </li>
-                        <li>
-                            <a href="{{ URL::to('admin/allusertransaction') }}"><i class="fa fa-files-o fa-fw"></i> All Payouts<span class="fa arrow"></span></a>
-                        </li>
+
+
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -228,24 +165,6 @@ else
 <script src="{{asset('admin_assets/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('admin_assets/vendor/datatables-plugins/dataTables.bootstrap.min.js') }}"></script>
 <script src="{{ asset('admin_assets/vendor/datatables-responsive/dataTables.responsive.js') }}"></script>
-<script type="text/javascript">
-     CKEDITOR.replace( 'editor' );
-</script>
-<script type="text/javascript">
-     CKEDITOR.replace( 'editor1' );
-</script>
-<script type="text/javascript">
-     CKEDITOR.replace( 'editor2' );
-</script>
-<script type="text/javascript">
-     CKEDITOR.replace( 'editor3' );
-</script>
-<script type="text/javascript">
-     CKEDITOR.replace( 'editor4' );
-</script>
-<script type="text/javascript">
-     CKEDITOR.replace( 'editor5' );
-</script>
 
  <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>

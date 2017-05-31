@@ -60,7 +60,7 @@
                           </div>
                       @endif
                     <div class="panel-body">
-                        <form role="form" method="post" action="{{ URL::to('admin/login') }}">
+                        <form role="form" method="post" action="{{ URL::to('marketing/login') }}">
                             <fieldset>
                                 {!! csrf_field() !!}
                                 <div class="form-group">

@@ -77,7 +77,7 @@ class MarketingController extends Controller
       ]);
       $payout = new Market_Payout;
       $user = Market::where('id',$request->id)->first();
-
+      $user->total += $user->unpaid;
 
       $payout->name = $user->fname;
       $payout->email = $user->email;
@@ -86,8 +86,9 @@ class MarketingController extends Controller
       $payout->bank_ifsc_code = $request->bank_ifsc_code;
       $payout->bank_acc_no = $request->bank_acc_no;
       $payout->phoneno = $user->phoneno;
-
+      $payout->active = true;
       $payout->save();
+      $user->save();
       $msg = array(
         'status' => 'success',
         'msg' => 'Payout added Succesfully' );
@@ -112,7 +113,11 @@ class MarketingController extends Controller
     public function changestatus($marketid)
     {
       $user = Market::where('id',$marketid)->first();
-      $user->active = false;
+      if($user->active==false){
+        $user->active=true;
+      }else{
+        $user->active=false;
+      }
       $user->save();
       $msg = array(
         'status' => 'success',
@@ -152,5 +157,11 @@ class MarketingController extends Controller
         'status' => 'success',
         'msg' => 'User edit successfully' );
       return response()->json($msg, 200);
+    }
+
+    public function marketingpayouts()
+    {
+      $payouts = Market_Payout::all();
+      return view('admin.pages.marketingpayouts',compact('payouts'));
     }
 }

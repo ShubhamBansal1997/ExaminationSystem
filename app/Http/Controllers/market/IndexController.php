@@ -16,8 +16,8 @@ class IndexController extends Controller
 {
     public function index()
     {
-      if(Session::get('market_status')==TRUE)
-        return redirect('market/home');
+      if(Session::get('m_status')==TRUE)
+        return view('market.home');
       else
         return view("market.login");
     }
@@ -38,19 +38,13 @@ class IndexController extends Controller
             $password = md5($password);
             //dd($password);
             //dd($password);
-            $query = Market::where('email',$email)->where('password',$password)->where('a_status','1');
-            if($query->count()>=1)
-            {
-                $query= $query->get();
-                foreach($query as $data)
-                {
-                    $email = $data->email;
-                    $a_status = $data->a_status;
-                }
-                Session::set('market_status',TRUE);
-                Session::set('memail',$email);
-                Session::set('m_status',$a_status);
-                return redirect('admin/login');
+            $query = Market::where('email',$email)->where('password',$password)->where('active','1')->first();
+            //dd($query);
+            if($query!=null){
+                //var_dump("asdasda");
+                Session::set('m_status',TRUE);
+                Session::set('memail',$query->email);
+                return redirect('marketing/home');
             }
             else
             {
@@ -68,7 +62,7 @@ class IndexController extends Controller
     {
         Session::flush();
         Session::flash('flash_message', 'You have been successfully Logout');
-        return redirect('market/login');
+        return redirect('marketing');
     }
 
 }

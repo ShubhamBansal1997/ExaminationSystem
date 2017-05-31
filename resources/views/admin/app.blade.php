@@ -20,6 +20,8 @@
     <!-- MetisMenu CSS -->
     <link href="{{ asset('admin_assets/vendor/metisMenu/metisMenu.min.css') }}" rel="stylesheet">
 
+    <link href="{{ asset('admin_assets/dist/css/sb-admin-2.css') }}" rel="stylesheet">
+
 
     <!-- Morris Charts CSS -->
     <link href="{{ asset('admin_assets/vendor/morrisjs/morris.css') }}" rel="stylesheet">
@@ -139,7 +141,7 @@
                             <ul class="nav nav-second-level">
                                 <li><a href="{{ URL::to('admin/content') }}">Content</a></li>
                                 <li><a href="{{ URL::to('admin/marketers') }}">Marketers</a></li>
-                                <li><a href="{{ URL::to('admin/marketing-payouts') }}">Marketing Payouts</a></li>
+                                <li><a href="{{ URL::to('admin/marketingpayouts') }}">Marketing Payouts</a></li>
 
                             </ul>
                             <!-- /.nav-second-level -->
@@ -224,8 +226,8 @@ else
 
 <!-- Morris Charts JavaScript -->
 <script src="{{ asset('admin_assets/vendor/raphael/raphael.min.js') }}"></script>
-<!-- <script src="{{ asset('admin_assets/vendor/morrisjs/morris.min.js') }}"></script>
-<script src="{{ asset('admin_assets/data/morris-data.js') }}"></script> -->
+<script src="{{ asset('admin_assets/vendor/morrisjs/morris.min.js') }}"></script>
+<script src="{{ asset('admin_assets/data/morris-data.js') }}"></script>
 
 <!-- DataTables JavaScript -->
 <script src="{{asset('admin_assets/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
