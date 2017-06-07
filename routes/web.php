@@ -103,26 +103,36 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
     Route::get('content','EmployeeController@list_content');
     Route::get('marketers','MarketingController@index');
     Route::get('view_users','AdminDashboardController@u_list');
-    Route::post('addcoupon','CouponController@addcoupon')->middleware('web');
-    Route::get('deletecoupon/{id}','CouponController@deletecoupon');
+
     Route::get('coupons',function()
         {
             $email = Session::get('aemail');
             return view('admin.pages.coupon',compact('email'));
         });
+
     Route::get('couponactivity',function()
         {
             $email = Session::get('aemail');
             return view('admin.pages.couponactivity',compact('email'));
         });
-    Route::get('payoutinitiate','CouponController@payoutinitiate');
+
     Route::get('payouts',function()
         {
             $email = Session::get('aemail');
             return view('admin.pages.payout',compact('email'));
         });
-    // function for the marketing
-    Route::post('/addpayout','MarketingController@makepayout')->middleware('web');
+
+    Route::get('allcoupons',function(){
+      return view('admin.pages.allcoupons');
+    });
+    Route::get('allcouponactivity',function(){
+      return view('admin.pages.allcouponactivity');
+    });
+    Route::get('allpayouts',function(){
+      return view('admin.pages.allpayouts');
+    });
+    Route::get('paythepayout/{id}','MarketingController@paythepayout');
+
     Route::post('/adduser','MarketingController@adduser')->middleware('web');
     Route::get('/getmarketdata/{marketid}','MarketingController@getuser');
     Route::get('/marketstatus/{marketid}','MarketingController@changestatus');
@@ -142,8 +152,11 @@ Route::group(['namespace' => 'market', 'prefix' => 'marketing'], function () {
   Route::get('logout','IndexController@logout');
   Route::get('coupons','DashboardController@coupons');
   Route::post('addcoupon','DashboardController@addcoupon')->middleware('web');
+  Route::get('getmarketuser/{id}','DashboardController@getmarketuser')->middleware('web');
+  Route::post('updatemarketuser','DashboardController@updatemarketuser')->middleware('web');
   Route::get('couponstatus/{id}','DashboardController@couponstatus');
   Route::get('deletecoupon/{id}','DashboardController@deletecoupon');
+  Route::post('requestpayout','DashboardController@requestpayout')->middleware('web');
 
 
 });

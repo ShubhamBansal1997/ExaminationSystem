@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeInCoupons extends Migration
+class ChangeInCouponActiveitye extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class ChangeInCoupons extends Migration
      */
     public function up()
     {
-        Schema::table('coupons', function (Blueprint $table) {
-            $table->boolean('coupon_delete')->default(0);
-          });
+        Schema::table('coupon_activities', function (Blueprint $table) {
+          $table->string('user_name');
+          $table->string('coupon_type');
+          $table->string('activity_status')->default('UNPAID');
+          $table->boolean('active')->default(0);
+        });
     }
 
     /**

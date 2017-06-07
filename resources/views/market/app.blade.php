@@ -13,7 +13,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('admin_assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.0.1/jquery-confirm.min.css" />
+
 
 
     <!-- MetisMenu CSS -->
@@ -28,7 +28,7 @@
 
     <!-- Custom Fonts -->
     <link href="{{ asset('admin_assets/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.0.1/jquery-confirm.min.js"></script>
+
     <script src="{{URL::asset('templateEditor/ckeditor/ckeditor.js')}}"></script>
  <script type="text/javascript" async
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
@@ -125,7 +125,6 @@
 @yield('content')
   </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.0.1/jquery-confirm.min.js"></script>
 <script>
 function deleteques(ques_id,sub_id,std)
 {
@@ -148,6 +147,9 @@ else
 
 <!-- jQuery -->
 <script src="{{ asset('admin_assets/vendor/jquery/jquery.min.js') }}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.0.1/jquery-confirm.min.js"></script>
+
 
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ asset('admin_assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>

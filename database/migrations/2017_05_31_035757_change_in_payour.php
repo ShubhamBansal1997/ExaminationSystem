@@ -13,8 +13,8 @@ class ChangeInPayour extends Migration
      */
     public function up()
     {
-         Schema::create('market_payouts', function (Blueprint $table) {
-            $table->boolean('active');
+         Schema::table('market_payouts', function (Blueprint $table) {
+            $table->boolean('active')->default(1);
           });
 
     }

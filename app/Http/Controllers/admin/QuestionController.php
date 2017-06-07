@@ -14,7 +14,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class QuestionController extends Controller
 {
-    
+
     public function question($sub_id,$std)
     {
     	return view('admin.pages.addeditquestion',compact('sub_id','std'));
@@ -34,7 +34,7 @@ class QuestionController extends Controller
                 ]);
     	if($request->ques_id==NULL)
         {
-            $question = new Questions;
+          $question = new Questions;
         	$question->chap_id = $request->chap_id;
         	$question->sub_id = $request->sub_id;
         	$question->ques_exp = $request->ques_exp;
@@ -46,12 +46,13 @@ class QuestionController extends Controller
         	$question->ques_sol = $request->ques_sol;
         	$question->ques_imp = $request->ques_imp;
         	$question->ques_level = $request->ques_level;
+          $question->ques_ar = $request->ques_ar;
         	$question->save();
         	Session::flash('flash_message', 'Your Question has been successfully added');
         }
         else
         {
-            
+
             $question = Questions::where('ques_id',$request->ques_id)->first();
             $question->chap_id = $request->chap_id;
             $question->sub_id = $request->sub_id;
@@ -64,6 +65,7 @@ class QuestionController extends Controller
             $question->ques_sol = $request->ques_sol;
             $question->ques_imp = $request->ques_imp;
             $question->ques_level = $request->ques_level;
+            $question->ques_ar = $request->ques_ar;
             $question->save();
             Session::flash('flash_message', 'Your Question has been successfully edited');
         }
@@ -71,28 +73,28 @@ class QuestionController extends Controller
     }
     public function viewquestion($sub_id,$std)
     {
-    	return view('admin.pages.view_ques',compact('sub_id','std')); 
+    	return view('admin.pages.view_ques',compact('sub_id','std'));
     }
 
     public function viewquestionlist(Request $request)
     {
-        
+
         if($request->ques_level=="NULL"&&$request->ques_imp=="NULL")
         {
             $questions = Questions::where('chap_id',$request->chap_id)
-                        ->get();    
+                        ->get();
         }
         else if($request->ques_level=="NULL"&&$request->ques_imp!="NULL")
         {
             $questions = Questions::where('chap_id',$request->chap_id)
                         ->where('ques_imp',$request->ques_imp)
-                        ->get();   
+                        ->get();
         }
         else if($request->ques_imp=="NULL"&&$request->ques_level!="NULL")
         {
             $questions = Questions::where('chap_id',$request->chap_id)
                         ->where('ques_level',$request->ques_level)
-                        ->get();      
+                        ->get();
         }
         else
         {
@@ -100,7 +102,7 @@ class QuestionController extends Controller
                             ->where('ques_level',$request->ques_level)
                             ->where('ques_imp',$request->ques_imp)
                             ->get();
-    
+
         }
                 //dd($questions);
         $sub_id=$request->sub_id;
@@ -114,7 +116,7 @@ class QuestionController extends Controller
         $chap = Chapters::where('chap_id',$question->chap_id)->first();
         $chap_id=$chap->chap_id;
         $chap_name=$chap->chap_name;
-        return view('admin.pages.addeditquestion',compact('sub_id','std','question','chap_id','chap_name'));   
+        return view('admin.pages.addeditquestion',compact('sub_id','std','question','chap_id','chap_name'));
     }
     public function deletequestion($ques_id,$sub_id,$std)
     {
@@ -123,7 +125,7 @@ class QuestionController extends Controller
         \Session::flash('flash_message', 'Question Deleted');
         $route = 'admin/viewques/'. $sub_id . '/' . $std;
         return redirect($route);
-           
+
     }
     public function upload_image(ImageRequest $request)
 	{
@@ -133,7 +135,7 @@ class QuestionController extends Controller
 	        $request->file('image')->move(
 	            $image_path, $filename
 	        );
-	        echo $filename;    
+	        echo $filename;
 	    }
 	    else{
 	        echo 'Oh No! Uploading your image has failed.';

@@ -11,7 +11,6 @@
 
     <title>Neetgurumantra-Admin</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('admin_assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
@@ -19,8 +18,6 @@
 
     <!-- MetisMenu CSS -->
     <link href="{{ asset('admin_assets/vendor/metisMenu/metisMenu.min.css') }}" rel="stylesheet">
-
-    <link href="{{ asset('admin_assets/dist/css/sb-admin-2.css') }}" rel="stylesheet">
 
 
     <!-- Morris Charts CSS -->
@@ -36,7 +33,6 @@
  <script type="text/javascript" async
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -180,9 +176,6 @@
                         <li>
                             <a href="{{ URL::to('admin/allpayouts') }}"><i class="fa fa-files-o fa-fw"></i> All Payouts<span class="fa arrow"></span></a>
                         </li>
-                        <li>
-                            <a href="{{ URL::to('admin/allusertransaction') }}"><i class="fa fa-files-o fa-fw"></i> All Payouts<span class="fa arrow"></span></a>
-                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -192,7 +185,6 @@
 @yield('content')
 	</div>
 @yield('modal')
-
 
 <script>
 function deleteques(ques_id,sub_id,std)
@@ -217,6 +209,9 @@ else
 <!-- jQuery -->
 <script src="{{ asset('admin_assets/vendor/jquery/jquery.min.js') }}"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.0.1/jquery-confirm.min.js"></script>
+
+
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ asset('admin_assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 
@@ -234,7 +229,6 @@ else
 <script src="{{ asset('admin_assets/vendor/datatables-plugins/dataTables.bootstrap.min.js') }}"></script>
 <script src="{{ asset('admin_assets/vendor/datatables-responsive/dataTables.responsive.js') }}"></script>
 
-
  <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
     $(document).ready(function() {
@@ -243,9 +237,9 @@ else
         });
     });
     </script>
-@yield('script')
+
 <!-- Custom Theme JavaScript -->
-
+<script src="{{ asset('admin_assets/dist/js/sb-admin-2.js') }}"></script>
+@yield('script')
 </body>
-
 </html>

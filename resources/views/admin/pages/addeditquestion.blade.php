@@ -100,8 +100,8 @@
                                             <textarea id="editor5" class="form-control" name="ques_sol" value="" >{{ isset($question->ques_sol) ? $question->ques_sol : null }}</textarea>
 
                                         </div>
-                                        <div class="form-group">
-                                            <label>Imp Ques</label>
+                                  <div class="form-group">
+                                    <label>Imp Ques</label>
 					                          <select class="form-control" data-style="white" data-placeholder="Select a correct answer" name="ques_imp" id="imp_ques" value="" required>
 					                          @if(isset($question->ques_imp))
 		                              		<option value="{{$question->ques_imp}}" selected >@if($question->ques_imp==1)
@@ -112,12 +112,39 @@
 		                              		@endif
 		                              		<option value="1">Yes</option>
 					                            <option value="0">No</option>
-
-
-
 					                          </select>
+                                  </div>
 
-                                        </div>
+                                  <div class="form-group">
+                                    <label>Assertion and Reason</label>
+                                    <select class="form-control" data-style="white" data-placeholder="Select a correct answer" name="ques_ar" id="ques_ar" value="" required>
+                                    @if(isset($question->ques_ar))
+                                      <option value="{{$question->ques_ar}}" selected >@if($question->ques_ar==1)
+                                            {{ "Yes" }}
+                                        @else
+                                            {{ "No" }}
+                                        @endif
+                                        </option>
+                                      @endif
+                                      <option value="1">Yes</option>
+                                      <option value="0">No</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group">
+                                    <label>Imp Ques</label>
+                                    <select class="form-control" data-style="white" data-placeholder="Select a correct answer" name="ques_imp" id="imp_ques" value="" required>
+                                    @if(isset($question->ques_imp))
+                                      <option value="{{$question->ques_imp}}" selected >@if($question->ques_imp==1)
+                                            {{ "Yes" }}
+                                        @else
+                                            {{ "No" }}
+                                        @endif</option>
+                                      @endif
+                                      <option value="1">Yes</option>
+                                      <option value="0">No</option>
+                                    </select>
+                                  </div>
+
                                         <div class="form-group">
                                         	<label>Ques Level</label>
 					                          <select class="form-control" data-style="white" data-placeholder="Select a correct answer" name="ques_level" id="ques_level" value="" required>
