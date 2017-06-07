@@ -4,7 +4,6 @@ language: php
 # Versions of PHP you want your project run with
 php:
   - 7.0
-  - hhvm
 
 # Commands to be run before your environment runs
 before_script:
@@ -19,7 +18,6 @@ script: phpunit
 matrix:
   allow_failures:
     - php: 7.0
-    - php: hhvm
   fast_finish: true
 
 # Customize when the notification emails are sent
