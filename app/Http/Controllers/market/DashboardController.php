@@ -38,18 +38,22 @@ class DashboardController extends Controller
   {
     $this->validate($request, [
         'coupon_name' => 'required|unique:coupons',
-        'coupon_discount' => 'required',
         'coupon_number' => 'required',
         'coupon_type' => 'required',
       ]);
     //dd($request);
-        $user = Market::where('email',Session::get('memail'))->first();
+        if(Session::get('memail')!=NULL)
+          $user = Market::where('email',Session::get('memail'))->first();
+
         $coupon = new Coupons;
         $coupon->coupon_name = strtoupper($request->coupon_name);
-        $coupon->coupon_percent = $request->coupon_discount;
+        $coupon->coupon_discount = $request->coupon_percent;
         $coupon->coupon_number = $request->coupon_number;
         $coupon->coupon_active = true;
-        $coupon->admin_email = $user->email;
+        if($user!=NULL)
+          $coupon->admin_email = $user->email;
+        else
+          $coupon->admin_email = Session::set('aemail');
         $coupon->coupon_type = $request->coupon_type;
         if($request->coupon_type=='PACKAGE'){
           if($user->max_discount_package>=$request->coupon_discount){
