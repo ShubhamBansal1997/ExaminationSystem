@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
 
-use App\Http\Requests;
+
 
 use Session;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -40,20 +41,21 @@ class MarketingController extends Controller
         'password' => 'required'
         ]);
       $user = new Market;
+      //dd($request);
       $user->fname = $request->fname;
       $user->lname = $request->lname;
       $user->email = $request->email;
       $user->max_discount_package = $request->max_discount_package;
       $user->max_discount_expert = $request->max_discount_expert;
       $user->id_proof = $request->id_proof;
-
-      $user->id_proof_file = $request->id_proof . '.' . $request->file('id_proof_file')->getClientExtension();
-      $request->file('id_proof_file')->move(base_path() . '/public/images/id_proof/', $imageName);
+      //dd($request->file('id_proof_file'));
+      $user->id_proof_file = $request->id_proof . '.' . $request->file('id_proof_file')->getClientOriginalName();
+      $request->file('id_proof_file')->move(base_path() . '/public/images/id_proof/', $user->id_proof_file);
       $user->phoneno = $request->phoneno;
       $user->password = md5($request->password);
       $user->bank_acc_no = $request->bank_acc_no;
       $user->bank_ifsc_code = $request->bank_ifsc_code;
-      $user->description = $request->description;
+      $user->description = $request->descrption;
       $user->active = true;
       $user->delete = false;
       $user->save();
@@ -108,30 +110,37 @@ class MarketingController extends Controller
         'email' => 'required',
         'fname' => 'required',
         'lname' => 'required',
-        'max_discount' => 'required',
+        'max_discount_package' => 'required',
+        'max_discount_expert' => 'required',
         'id_proof' => 'required',
         'bank_acc_no' => 'required',
         'bank_ifsc_code' => 'required',
         'phoneno' =>'required',
-        'comission' => 'required',
         ]);
       $user = Market::where('id',$request->id)->first();
+      //dd($request);
       $user->fname = $request->fname;
       $user->lname = $request->lname;
       $user->email = $request->email;
-      $user->max_discount = $request->max_discount;
+      $user->max_discount_package = $request->max_discount_package;
+      $user->max_discount_expert = $request->max_discount_expert;
       $user->id_proof = $request->id_proof;
+      //dd($request->file('id_proof_file'));
+      if($request->file('id_proof_file')!=NULL){
+        $user->id_proof_file = $request->id_proof . '.' . $request->file('id_proof_file')->getClientOriginalName();
+        $request->file('id_proof_file')->move(base_path() . '/public/images/id_proof/', $user->id_proof_file);
+      }
+      $user->phoneno = $request->phoneno;
+      if($request->password!=NULL){
+        $user->password = md5($request->password);
+      }
       $user->bank_acc_no = $request->bank_acc_no;
       $user->bank_ifsc_code = $request->bank_ifsc_code;
-      $user->phoneno = $request->phoneno;
-      $user->comission = $request->comission;
-      if($request->password!=NULL)
-        $user->password = md5($user->password);
+      $user->description = $request->descrption;
+      $user->active = true;
+      $user->delete = false;
       $user->save();
-      $msg = array(
-        'status' => 'success',
-        'msg' => 'User edit successfully' );
-      return response()->json($msg, 200);
+      return Redirect::back();
     }
 
     public function marketingpayouts()

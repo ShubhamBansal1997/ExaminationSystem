@@ -17,17 +17,28 @@
                         <div class="panel-body">
 
                             <div class="row">
-                              <div class="col-lg-3">
-                                <b>Maximum Discount:</b>{{ isset($user->max_discount)?$user->max_discount:null }}
+                              <div class="col-lg-4">
+                                <b>Maximum Discount Expert:</b>{{ isset($user->max_discount_expert)?$user->max_discount_expert:null }}</br>
+                                <b>Maximum Discount Pakcage:</b>{{ isset($user->max_discount_package)?$user->max_discount_package:null }}
                               </div>
-                              <div class="col-lg-3">
-                                <b>Comission:</b>{{ isset($user->comission)?$user->comission:null }}
+                              <div class="col-lg-4">
+                                <h4>Total Amount Remaining:
+                                Rs.{{ \App\Coupon_Activity::where('admin_email',$user->email)->where('activity_status','UNPAID')->sum('admin_share') }}
+                                </h4>
+                                <h4>Tax Percentage:
+                                  2%
+                                </h4>
+                                <h4>Amount at Payout:
+                                Rs.{{ \App\Coupon_Activity::where('admin_email',$user->email)->where('activity_status','UNPAID')->sum('admin_share') * 0.98 }}
+                                </h4>
+
                               </div>
-                              <div class="col-lg-3">
-                                <b>Unpaid: </b>{{ isset($user->unpaid)?$user->unpaid:null }}
-                              </div>
-                              <div class="col-lg-3">
-                                <b>Total: </b>{{ isset($user->total)?$user->total:null }}
+                              <div class="col-lg-4">
+                              <h4>Total Earning:
+
+                                  Rs. {{ \App\Coupon_Activity::where('admin_email',$user->email)->sum('admin_share') }}
+
+                                  </h4>
                               </div>
                             </div>
                             <!-- Coupon Error Modal -->
@@ -101,34 +112,38 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Date</th>
-                                        <th>CouponName(%)</th>
+                                        <th>Type</th>
+                                        <th>Coupon Name</th>
                                         <th>Amount</th>
+                                        <th>Discount</th>
                                         <th>Benefit</th>
-                                        <th>Payout Amount(after Tax Deduction)</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
 
-                                     @foreach($coupons as $i => $coupon)
+                                     @foreach(\App\Coupon_Activity::where('admin_email',$user->email)->where('active',1)->orderBy('created_at', 'DESC')->get() as $i => $coupon_act)
                                     <tr  class="odd gradeX">
-                                      <td>{{ $i }}</td>
-                                      <td>{{ $coupon->coupon_name }}</td>
-                                      <td>{{ $coupon->coupon_percent }}</td>
-                                      <td>{{ $coupon->coupon_number }}</td>
+                                      <td>{{ ++$i }}</td>
+                                      <td>{{ $coupon_act->user_name }}</td>
+                                      <td>{{ $coupon_act->user_email }}%</td>
+                                      <td>{{ $coupon_act->created_at }}</td>
+                                      <td>{{ $coupon_act->coupon_type }}</td>
+                                      <td>{{ $coupon_act->coupon_name }}</td>
+                                      <td>Rs.{{ $coupon_act->price }}</td>
+                                      <td>{{ $coupon_act->coupon_percent }} %</td>
+                                      <td>Rs.{{ $coupon_act->admin_share }} </td>
                                       <td>
-                                      @if($coupon->coupon_active==true)
-                                        <button id="activeinactivestatus" data-id="{{ $coupon->id }}" class="btn btn-xs btn-success">Active</button>
-                                      @else
-                                        <button id="activeinactivestatus" data-id="{{ $coupon->id }}" class="btn btn-xs btn-danger">Inactive</button>
+                                      @if($coupon_act->activity_status=='PAID')
+                                        <button class="btn btn-xs btn-success">PAID</button>
+                                      @elseif($coupon_act->activity_status=='UNPAID')
+                                        <button class="btn btn-xs btn-danger">UNPAID</button>
                                       @endif
-                                      </td>
-                                      <td>
-                                        <button id="deletecoupon" data-id="{{ $coupon->id }}" class="btn btn-xs btn-danger">Delete</button>
                                       </td>
                                     </tr>
                                     @endforeach
+
 
 
                                 </tbody>

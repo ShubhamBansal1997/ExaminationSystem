@@ -142,7 +142,7 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        @endif
+
                        <!--  <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Location<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -176,6 +176,7 @@
                         <li>
                             <a href="{{ URL::to('admin/allpayouts') }}"><i class="fa fa-files-o fa-fw"></i> All Payouts<span class="fa arrow"></span></a>
                         </li>
+                        @endif
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -219,10 +220,6 @@ else
 <script src="{{ asset('admin_assets/vendor/metisMenu/metisMenu.min.js') }}"></script>
 
 
-<!-- Morris Charts JavaScript -->
-<script src="{{ asset('admin_assets/vendor/raphael/raphael.min.js') }}"></script>
-<script src="{{ asset('admin_assets/vendor/morrisjs/morris.min.js') }}"></script>
-<script src="{{ asset('admin_assets/data/morris-data.js') }}"></script>
 
 <!-- DataTables JavaScript -->
 <script src="{{asset('admin_assets/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>

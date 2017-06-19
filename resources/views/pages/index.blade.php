@@ -37,9 +37,7 @@
 <link rel="shortcut icon" href="{{ asset('home/static/v2/images/brand/favicon/favicon.ico')}}">
 <script src="https://use.fontawesome.com/5402b643ce.js"></script>
 
-    <!--[if lt IE 9]>
-    <script src="{{ s31('static/topprweb/js/html5shiv.min.js')}}"></script>
-    <![endif]-->
+
 
 
 
@@ -910,37 +908,25 @@
             <div class="grid-one-fourth alpha tab-grid-one-fourth phn-grid-full">
                 <div class="ldg-footer__copyright fl mt-10 phn-fn ">
                     <br/><div style="font-size:20px;">&copy; 2016 NeetGurumantra</div>
-                
+
                 </div>
-    
+
             </div>
 <!--             <div class="grid-one-fourth alpha tab-grid-one-fourth phn-grid-full">
                 <div class="ldg-footer__copyright fl mt-10 phn-fn">
-                
-                
+
+
                 </div>
-                
-                
+
+
             </div> -->
             <div class="grid-one-fourth alpha tab-grid-one-fourth phn-grid-full">
                     <br/><div style="font-size:20px;position: relative;top: -18px;"><i class="fa fa-phone fa-lg"></i>+91-9582448819
                 <a href="https://www.facebook.com/neetgurumantra" target="_blank" ><img src="{{ asset('home/v2/images/f.png')}}" height="50px" width="50px" style="position: relative;right:-100px;top: 18px"></a></div>
             </div>
-            
-<!-- 
-            <div class="ldg-footer_hr mt-20 mb-10"></div>
 
-            <div class="ldg-footer__copyright fl mt-10 phn-fn">
-                &copy; 2016 NeetGurumantra
-                <a class="-ref -strk" href="#" data-ref="tosbtm" data-strk='{"e":"ui.tapped", "ui_element_name":"terms_of_service", "ui_context":"site_footer"}'>Terms of Service</a>
-                <a class="-ref -strk" href="#" data-ref="ppbtm" data-strk='{"e":"ui.tapped", "ui_element_name":"privacy_policy", "ui_context":"site_footer"}'>Privacy Policy</a>
-            </div> -->
-
- <!-- <div class="ldg-social fr phn-fn">
-                <a href="https://www.facebook.com/neetgurumantra" target="_blank"><img src="{{ s31('v2/images/f.png')}}" height="50px" width="50px"></a>
-                <!-- <a href=""><i class="icon-gplus-circled gplus"></i></a> -->
                 <div class="clr"></div>
-            </div> 
+            </div>
 
             <div class="clr"></div>
         </div>

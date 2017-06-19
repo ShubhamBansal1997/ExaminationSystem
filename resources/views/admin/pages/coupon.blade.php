@@ -4,7 +4,7 @@
 <div id="page-wrapper">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="page-header">Tables</h1>
+                    <h1 class="page-header">Coupons</h1>
 
                 </div>
                 <!-- /.col-lg-12 -->

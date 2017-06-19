@@ -48,7 +48,7 @@
                                       <td>IFSC CODE:{{ $payout->bank_ifsc_code }}
                                           Acc. No: {{ $payout->bank_acc_no }}</td>
                                       <td>{{ $payout->phoneno }}</td>
-                                      <td>{{ $payout->created_at }} %</td>
+                                      <td>{{ $payout->created_at }} </td>
                                       <td>
                                         @if($payout->active==true)
                                         <button class="btn btn-xs btn-danger">UNPAID</button>

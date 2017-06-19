@@ -151,6 +151,8 @@ Route::group(['namespace' => 'market', 'prefix' => 'marketing'], function () {
   Route::get('home','DashboardController@index');
   Route::get('logout','IndexController@logout');
   Route::get('coupons','DashboardController@coupons');
+  Route::get('couponconversion','DashboardController@couponconversion');
+  Route::get('payouts','DashboardController@payouts');
   Route::post('addcoupon','DashboardController@addcoupon')->middleware('web');
   Route::get('getmarketuser/{id}','DashboardController@getmarketuser')->middleware('web');
   Route::post('updatemarketuser','DashboardController@updatemarketuser')->middleware('web');

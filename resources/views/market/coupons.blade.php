@@ -3,7 +3,7 @@
 <div id="page-wrapper">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="page-header">Tables</h1>
+                    <h1 class="page-header">Coupons</h1>
 
                 </div>
                 <!-- /.col-lg-12 -->
@@ -22,20 +22,20 @@
                                 Add coupon
                                 </button>
                                 <br/>
-                                <b>Maximum Discount:</b>{{ isset($user->max_discount)?$user->max_discount:null }}
+                                <b>Maximum Discount Package:</b>{{ isset($user->max_discount_package)?$user->max_discount_package:null }}
                               </div>
                               <div class="col-lg-3">
                                 <button class="btn btn-primary btn-lg" id="editprofile">
                                 Update Profile
                                 </button>
                                 <br/>
-                                <b>Comission:</b>{{ isset($user->comission)?$user->comission:null }}
+                                <b>Maximum Discount Expert :</b>{{ isset($user->max_discount_expert)?$user->max_discount_expert:null }}
                               </div>
                               <div class="col-lg-3">
-                                <b>Unpaid: </b>{{ isset($user->unpaid)?$user->unpaid:null }}
+                                <b>Unpaid: </b>{{ \App\Coupon_Activity::where('user_email',$user->email)->where('activity_status','UNPAID')->sum('admin_share') }}
                               </div>
                               <div class="col-lg-3">
-                                <b>Total: </b>{{ isset($user->total)?$user->total:null }}
+                                <b>Total: </b>{{ \App\Coupon_Activity::where('user_email',$user->email)->sum('admin_share') }}
                               </div>
                             </div>
                             <!-- Add Coupon Modal -->
@@ -72,6 +72,13 @@
                                                 <label>Coupon Number</label>
                                                 <input class="form-control" name="coupon_number">
                                             </div>
+                                            <div class="form-group">
+                                              <label>Coupon Type</label>
+                                              <select name="coupon_type" class="form-control">
+                                                <option value="PACKAGE">PACKAGE</option>
+                                                <option value="EXPERT">EXPERT</option>
+                                              </select>
+                                            </div>
 
                                         </div>
                                         <div class="modal-footer">
@@ -103,43 +110,61 @@
                                                 </ul>
                                             </div>
                                         @endif
-                                        <form method="post" id="editprofileform">
-
-                                            {{ csrf_field() }}
-                                            <input type="hidden" name="id" value="{{ $user->id }}">
-                                            <div class="form-group">
-                                                <label>First Name</label>
-                                                <input class="form-control" name="fname" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Last Name</label>
-                                                <input class="form-control" name="lname" required>
-                                            </div>
-                                            <div class="form-group">
-                                              <label>Email</label>
-                                              <input class="form-control" name="email" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Aadhaar Card No.</label>
-                                                <input class="form-control" name="id_proof" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Bank Account Number</label>
-                                                <input class="form-control" name="bank_acc_no" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Bank IFSC Code</label>
-                                                <input class="form-control" name="bank_ifsc_code" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Phone Number</label>
-                                                <input class="form-control" name="phoneno" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Description</label>
-                                                <input class="form-control" name="description" required>
-                                            </div>
-
+                                        <form role="form" action="{{ URL::to('marketing/updatemarketuser')}}" method="POST" enctype=multipart/form-data >
+                                        {{ csrf_field() }}
+                                        <div class="modal-body">
+                                              <div class="panel-body">
+                                                <div class="row">
+                                                  <div class="col-lg-12">
+                                                    <input type="hidden" name="id" value="{{ $user->id }}">
+                                                    <div class="form-group">
+                                                      <label>First Name:</label>
+                                                      <input class="form-control" name='fname' value="{{ $user->fname }}" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label>Last Name</label>
+                                                      <input class="form-control" name="lname" value="{{ $user->lname }}" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label>Email</label>
+                                                      <input class="form-control" type="text" name="email" value="{{ $user->email }}" readonly>
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label>Max Discount Package(0-60)</label>
+                                                      <input class="form-control" name="max_discount_package" value="{{ $user->max_discount_package }}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label>Max Discount Expert(0-60)</label>
+                                                      <input class="form-control" name="max_discount_expert" value="{{ $user->max_discount_expert }}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label>ID Proof Number</label>
+                                                      <input class="form-control" name="id_proof" value="{{ $user->id_proof }}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label>ID Proof File</label>
+                                                      <input class="form-control" type="file" name="id_proof_file" value="" >
+                                                      <a href="{{ URL::to('images/id_proof') }}/{{ $user->id_proof_file }}" target="_blank">Previous File</a>
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label>Bank Account Number</label>
+                                                      <input class="form-control" name="bank_acc_no" value="{{ $user->bank_acc_no }}"  >
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label>Bank IFSC Code</label>
+                                                      <input class="form-control" name="bank_ifsc_code" value="{{ $user->bank_ifsc_code }}" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label>Phone No</label>
+                                                      <input class="form-control" name="phoneno" placeholder="without +91" value="{{ $user->phoneno }}" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label>Descrption</label>
+                                                      <input class="form-control" name="descrption" value="{{ $user->descrption }}">
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -223,6 +248,7 @@
                                         <th>Coupon Name</th>
                                         <th>Discount</th>
                                         <th>Number</th>
+                                        <th>Type</th>
                                         <th>Active</th>
                                         <th>Action</th>
                                     </tr>
@@ -236,6 +262,7 @@
                                       <td>{{ $coupon->coupon_name }}</td>
                                       <td>{{ $coupon->coupon_percent }}</td>
                                       <td>{{ $coupon->coupon_number }}</td>
+                                      <td>{{ $coupon->coupon_type }}</td>
                                       <td>
                                       @if($coupon->coupon_active==true)
                                         <button id="activeinactivestatus" data-id="{{ $coupon->id }}" class="btn btn-xs btn-success">Active</button>
@@ -268,7 +295,7 @@
 <script type="text/javascript">
   $(document).ready(function(){
     $('#addcoupon').click(function(e){
-      var value = 'Maximum Discount allowed ' + '{{ $user->max_discount }}'  + ':';
+      var value = 'Maximum Discount allowed ' + '{{ $user->max_discount_expert }} (for expert) {{ $user->max_discount_package }} (for package)'  + ':';
 
       $('#maximum_discount').text(value);
       $('#addcouponmodal').modal('toggle');
@@ -277,9 +304,6 @@
     $('#addcouponform').submit(function(e){
       e.preventDefault();
       var discount = $('#addcouponform input[name=coupon_discount]').val();
-      if(discount > {{ $user->max_discount }} ){
-        $('#errormodal').modal('toggle');
-      }
       //console.log(response);
       var data = $(this).serialize();
       console.log(data);
@@ -304,32 +328,7 @@
     /** show the edit profile form */
     $('#editprofile').click(function(e){
       e.preventDefault();
-      $.ajax({
-        url: '{{ URL::to('marketing/getmarketuser')}}'+'/'+{{ $user->id }},
-        data: null,
-        type: "GET",
-        context: this,
-        headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr("content")
-        },
-        success: function(response){
-
-          $('#editprofileform input[name=fname]').val(response['fname']);
-          //$('$editprofileform input[name=lname]').val(response['lname']);
-          $('#editprofileform input[name=max_discount]').val(response['max_discount']);
-          $('#editprofileform input[name=lname]').val(response['lname']);
-          $('#editprofileform input[name=email]').val(response['email']);
-          $('#editprofileform input[name=id_proof]').val(response['id_proof']);
-          $('#editprofileform input[name=bank_acc_no]').val(response['bank_acc_no']);
-          $('#editprofileform input[name=bank_ifsc_code]').val(response['bank_ifsc_code']);
-          $('#editprofileform input[name=phoneno]').val(response['phoneno']);
-          $('#editprofileform input[name=descrption]').val(response['descrption']);
-          $('#editprofilemodal').modal('toggle');
-        },
-        error: function(response){
-          $('#errormodal').modal('toggle');
-        },
-      });
+      $('#editprofilemodal').modal('toggle');
     });
     /** end of profile form */
 

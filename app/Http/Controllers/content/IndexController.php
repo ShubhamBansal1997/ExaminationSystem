@@ -1,30 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\market;
+namespace App\Http\Controllers\content;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
-
-use App\Http\Requests;
-
-use Session;
-use App\Admins;
-use App\Market;
 
 class IndexController extends Controller
 {
     public function index()
     {
-      if(Session::get('m_status')==TRUE)
-        return view('market.home');
+      if(Session::get('content_status')==TRUE)
+        return redirect('content/home');
       else
-        return view("market.login");
+        return view("admin.index");
     }
     public function postLogin(Request $request)
     {
-      if(Session::get('market_status')==TRUE)
-            return redirect('market/home');
+      if(Session::get('content_status')==TRUE)
+            return redirect('content');
         else
         {
               $this->validate($request, [
@@ -36,18 +29,24 @@ class IndexController extends Controller
             $password = md5($password);
             //dd($password);
             //dd($password);
-            $query = Market::where('email',$email)->where('password',$password)->where('active','1')->first();
-            //dd($query);
-            if($query!=null){
-                //var_dump("asdasda");
-                Session::set('m_status',TRUE);
-                Session::set('memail',$query->email);
-                return redirect('marketing/home');
+            $query = Content::where('email',$email)->where('password',$password);
+            if($query->count()>=1)
+            {
+                $query= $query->get();
+                foreach($query as $data)
+                {
+                    $email = $data->email;
+                    $a_status = $data->a_status;
+                }
+                Session::set('content_status',TRUE);
+                Session::set('cemail',$email);
+                Session::set('c_status',$a_status);
+                return redirect('content');
             }
             else
             {
                 Session::flash('flash_message', 'Your Email or password is incorrect');
-                return view('market.login');
+                return view('admin.index');
             }
         }
     }
@@ -55,7 +54,6 @@ class IndexController extends Controller
     {
         Session::flush();
         Session::flash('flash_message', 'You have been successfully Logout');
-        return redirect('marketing');
+        return redirect('content');
     }
-
 }

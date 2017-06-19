@@ -28,14 +28,12 @@ class IndexController extends Controller
                 'email' => 'required|email',
                 'password' => 'required'
                  ]);
-        
-        
             $email = $request->email;
             $password = $request->password;
             $password = md5($password);
             //dd($password);
             //dd($password);
-            $query = Admins::where('email',$email)->where('password',$password)->where('a_status','1');  
+            $query = Admins::where('email',$email)->where('password',$password)->where('a_status','1');
             if($query->count()>=1)
             {
                 $query= $query->get();
@@ -54,12 +52,7 @@ class IndexController extends Controller
                 Session::flash('flash_message', 'Your Email or password is incorrect');
                 return view('admin.index');
             }
-       
-            
-            
-
-                    
-        }   
+        }
     }
     public function logout()
     {
@@ -67,5 +60,4 @@ class IndexController extends Controller
         Session::flash('flash_message', 'You have been successfully Logout');
         return redirect('admin');
     }
-    
 }

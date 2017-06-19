@@ -42,7 +42,6 @@
                                         <th>Unpaid </th>
                                         <th>Total </th>
                                         <th>Actions</th>
-                                        <th>Active</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -51,24 +50,22 @@
                                       <td>{{ $i++ }}</td>
                                       <td>{{ $market->fname }}  {{ $market->lname }}</td>
                                       <td>{{ $market->email }}</td>
-                                      <td>{{ $market->descrption }}</td>
+                                      <td>{{ $market->description }}</td>
                                       <td>{{ $market->phoneno }}</td>
                                       <td> Acc no: {{ $market->bank_acc_no }} <br/>
                                           Bank Ifsc Code: {{ $market->bank_ifsc_code }}</td>
                                       <td>{{ $market->id_proof }}</td>
                                       <td>{{ $market->max_discount }}</td>
-                                      <td>Rs.{{ $market->unpaid }}</td>
-                                      <td>Rs.{{ $market->total }}</td>
+                                      <td>Rs.{{ \App\Coupon_Activity::where('user_email',$market->email)->where('activity_status','UNPAID')->sum('admin_share') }}</td>
+                                      <td>Rs.{{ \App\Coupon_Activity::where('user_email',$market->email)sum('admin_share') }}</td>
                                       <td>
                                           <button id="make_payout" data-id="{{ $market->id }}" class="btn btn-xs btn-success">Make Payout</button>
                                           <button id="edit_market" data-id="{{ $market->id }}" class="btn btn-xs btn-primary">Edit</button>
                                           <button id="delete_market" data-id="{{ $market->id }}" class="btn btn-xs btn-danger">Delete</button>
-                                      </td>
-                                      <td>
                                         @if($market->active==true)
-                                        <button id="activeinactivestatus" var-id="{{ $market->id }}" class="btn btn-xs btn-success">Active</button>
+                                        <button id="active_status" data-id="{{ $market->id }}" class="btn btn-xs btn-success">Active</button>
                                         @else
-                                        <button id="activeincativestatus" var-id="{{ $market->id }}" class="btn btn-xs btn-danger">Inactive</button>
+                                        <button id="active_status" data-id="{{ $market->id }}" class="btn btn-xs btn-danger">Inactive</button>
                                         @endif
                                       </td>
                                     </tr>
@@ -147,7 +144,7 @@
             </div>
 
             <div class="modal-body">
-            <form role="form" method="POST" action="{{ URL::to('admin/adduser') }}">
+            <form role="form" method="POST" action="{{ URL::to('admin/adduser') }}" enctype='multipart/form-data' >
                   <div class="panel-body">
                     <div class="row">
                       <div class="col-lg-12">
@@ -222,15 +219,16 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Add User </h4>
+                <h4 class="modal-title" id="myModalLabel">Edit User </h4>
             </div>
-            <form role="form" id="usereditform" method="POST">
+            <form role="form" action="{{ URL::to('admin/editmarketuser')}}" method="POST" id="usereditform">
+            {{ csrf_field() }}
             <div class="modal-body">
                   <div class="panel-body">
                     <div class="row">
                       <div class="col-lg-12">
+                        <input type="hidden" name="id" value="">
                         <div class="form-group">
-                          <input type="hidden" name='id' value="">
                           <label>First Name:</label>
                           <input class="form-control" name='fname' value="" required>
                         </div>
@@ -244,15 +242,23 @@
                         </div>
                         <div class="form-group">
                           <label>Password</label>
-                          <input class="form-control" name="password" type="password" value="" placeholder="Keep it blank if donot want to change">
+                          <input class="form-control" name="password" type="password" value="" >
                         </div>
                         <div class="form-group">
-                          <label>Max Discount(0-60)</label>
-                          <input class="form-control" name="max_discount" value="" required>
+                          <label>Max Discount Package(0-60)</label>
+                          <input class="form-control" name="max_discount_package" value="" required>
                         </div>
                         <div class="form-group">
-                          <label>Aadhar Number</label>
+                          <label>Max Discount Expert(0-60)</label>
+                          <input class="form-control" name="max_discount_expert" value="" required>
+                        </div>
+                        <div class="form-group">
+                          <label>ID Proof Number</label>
                           <input class="form-control" name="id_proof" value="" required>
+                        </div>
+                        <div class="form-group">
+                          <label>ID Proof File</label>
+                          <input class="form-control" type="file" name="id_proof_file" value="" >
                         </div>
                         <div class="form-group">
                           <label>Bank Account Number</label>
@@ -268,11 +274,7 @@
                         </div>
                         <div class="form-group">
                           <label>Descrption</label>
-                          <input class="form-control" name="descrption" value="" >
-                        </div>
-                        <div class="form-group">
-                          <label>Comission</label>
-                          <input class="form-control" name="comission" value="" >
+                          <input class="form-control" name="descrption" value="">
                         </div>
                       </div>
                     </div>
@@ -303,11 +305,11 @@
     });
 
     /** function to change the status of the marketing user */
-    $('#dataTables-example').on('click','#activeincativestatus', function(e){
+    $('#dataTables-example').on('click','#active_status', function(e){
       e.preventDefault();
-      var id = $(this).attr('var-id');
-      //console.log(marketid);
-      var classname = $(this).attr('class');
+      var id = $(this).attr("data-id");
+      console.log(id);
+      var classname = $(this).attr("class");
       $.ajax({
         url: '{{ URL::to('admin/marketstatus')}}'+'/'+id,
         data: null,
@@ -317,19 +319,19 @@
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success: function(response){
-          if(classname==='btn btn-xs btn-success')
+          if(classname=='btn btn-xs btn-success')
           $(this).removeClass('btn btn-xs btn-success').addClass('btn btn-xs btn-danger').text('Inactive');
           else
           $(this).removeClass('btn btn-xs btn-danger').addClass('btn btn-xs btn-success').text('Active');
         }
-      })
+      });
     });
 
     /** function to delete the marketing user  */
 
     $('#dataTables-example').on('click','#delete_market', function(e){
       e.preventDefault();
-      var id = $(this).attr('data-id');
+      var id = $(this).attr("data-id");
       var parent = $(this).parent();
       $.ajax({
         url: '{{ URL::to('admin/deletemarket')}}'+'/'+id,
@@ -350,7 +352,7 @@
     /** function to toogle the edit marketing user form */
     $('#dataTables-example').on('click','#edit_market', function(e){
       e.preventDefault();
-      var marketid = $(this).attr('data-id');
+      var marketid = $(this).attr("data-id");
       //var response = getuserdata(marketid);
       //console.log(response);
 
@@ -365,44 +367,28 @@
         success: function(response){
           console.log(response);
           $('#usereditform input[name=id]').val(marketid);
-          $('#usereditform input[name=fname]').val(response['fname']);
-          //$('$usereditform input[name=lname]').val(response['lname']);
-          $('#usereditform input[name=max_discount]').val(response['max_discount']);
-          $('#usereditform input[name=lname]').val(response['lname']);
           $('#usereditform input[name=email]').val(response['email']);
+          $('#usereditform input[name=fname]').val(response['fname']);
+          $('#usereditform input[name=lname]').val(response['lname']);
+          $('#usereditform input[name=max_discount_package]').val(response['max_discount_package']);
+          $('#usereditform input[name=max_discount_expert]').val(response['max_discount_expert']);
           $('#usereditform input[name=id_proof]').val(response['id_proof']);
           $('#usereditform input[name=bank_acc_no]').val(response['bank_acc_no']);
           $('#usereditform input[name=bank_ifsc_code]').val(response['bank_ifsc_code']);
           $('#usereditform input[name=phoneno]').val(response['phoneno']);
-          $('#usereditform input[name=descrption]').val(response['descrption']);
-          $('#usereditform input[name=comission]').val(response['comission']);
+          $('#userdeitform input[name=descrption]').val(response['description']);
           $('#usereditmodal').modal('toggle');
         }
       });
     });
 
-    /** function to save the edit  marketing user form */
-    $('#usereditform').submit(function(e){
-      e.preventDefault();
-      var data = $(this).serialize();
-      $.ajax({
-        url: '{{ URL::to('admin/editmarketuser')}}',
-        data: data,
-        type: "POST",
-        headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        success: function(response){
-          location.reload();
-        }
-      });
-    });
+
 
     /** function for making the payout the user */
     $('#dataTables-example').on('click','#make_payout',function(e){
 
       e.preventDefault();
-      var marketid = $(this).attr('data-id');
+      var marketid = $(this).attr("data-id");
       //var response = getuserdata(marketid);
       //console.log(response);
       $.ajax({
