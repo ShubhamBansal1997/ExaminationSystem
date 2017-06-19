@@ -47,7 +47,7 @@ class DashboardController extends Controller
 
         $coupon = new Coupons;
         $coupon->coupon_name = strtoupper($request->coupon_name);
-        $coupon->coupon_discount = $request->coupon_percent;
+        $coupon->coupon_percent = $request->coupon_percent;
         $coupon->coupon_number = $request->coupon_number;
         $coupon->coupon_active = true;
         if(Session::get('memail')!=NULL)
@@ -55,37 +55,52 @@ class DashboardController extends Controller
         else
           $coupon->admin_email = Session::get('aemail');
         $coupon->coupon_type = $request->coupon_type;
-        if($request->coupon_type=='PACKAGE'){
-          if($user->max_discount_package>=$request->coupon_discount){
-            $coupon->save();
-            $msg = array(
-            'status' => 'success',
-            'message' => 'new coupon added successfully' );
-            return response()->json($msg,200);
-          }
-          else{
-            $msg = array(
-              'status' => 'failure',
-              'message' => 'coupon not added successfully' );
-            return response()->json($msg,404);
-          }
-        }
-        elseif($request->coupon_type=='EXPERT'){
-          if($user->max_discount_expert>=$request->coupon_discount){
-            $coupon->save();
-            $msg = array(
+        if(Session::get('memail')!=NULL){
+          if($request->coupon_type=='PACKAGE'){
+            if($user->max_discount_package>=$request->coupon_percent){
+              $coupon->save();
+              $msg = array(
               'status' => 'success',
               'message' => 'new coupon added successfully' );
-            return response()->json($msg,200);
+              return response()->json($msg,200);
+            }
+            else{
+              $msg = array(
+                'status' => 'failure',
+                'message' => 'coupon not added successfully' );
+              return response()->json($msg,404);
+            }
           }
-          else{
+          elseif($request->coupon_type=='EXPERT'){
+            if($user->max_discount_expert>=$request->coupon_percent){
+              $coupon->save();
+              $msg = array(
+                'status' => 'success',
+                'message' => 'new coupon added successfully' );
+              return response()->json($msg,200);
+            }
+            else{
+              $msg = array(
+                'status' => 'failure',
+                'message' => 'coupon not added successfully' );
+              return response()->json($msg,404);
+            }
+          }
+        } else{
+          if($request->coupon_percent<=100){
             $msg = array(
-              'status' => 'failure',
-              'message' => 'coupon not added successfully' );
-            return response()->json($msg,404);
+              'status' => 'success',
+              'message' => 'Coupon added successfully' );
+            return response()->json($msg, 200);
+          } else{
+            $msg = array(
+              'status' => 'faliure',
+              'message' => 'max discount cannot excced 100' );
+            return response()->json($msg, 404);
           }
         }
   }
+
 
   /** function  to change the status of the coupon*/
   public function couponstatus($id)
