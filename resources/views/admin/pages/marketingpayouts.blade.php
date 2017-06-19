@@ -109,7 +109,7 @@
                                       <td> Rs. {{ $payout->amount }}</td>
                                       <td>{{ $payout->type }}</td>
                                       <td> {{ $payout->bank_ifsc_code }}</td>
-                                      <td>{{ $payout->back_acc_no }}</td>
+                                      <td>{{ $payout->bank_acc_no }}</td>
                                       <td>Rs.{{ $payout->phoneno }}</td>
                                     </tr>
                                   @endforeach
