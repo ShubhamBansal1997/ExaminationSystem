@@ -54,10 +54,10 @@
                                                 <input class="form-control" name="coupon_number">
                                             </div>
                                             <div class="form-group">
-                                              <label>Coupon Type</label>
+                                              <label>Coupon Sale Type</label>
                                               <select name="coupon_type" class="form-control">
                                                 <option value="PACKAGE">PACKAGE</option>
-                                                <option value="EXPERT">EXPERT</option>
+                                                <option value="EXPERT">GUIDANCE SESSION</option>
                                               </select>
                                             </div>
                                         </div>
