@@ -50,10 +50,10 @@ class DashboardController extends Controller
         $coupon->coupon_discount = $request->coupon_percent;
         $coupon->coupon_number = $request->coupon_number;
         $coupon->coupon_active = true;
-        if($user!=NULL)
+        if(Session::get('memail')!=NULL)
           $coupon->admin_email = $user->email;
         else
-          $coupon->admin_email = Session::set('aemail');
+          $coupon->admin_email = Session::get('aemail');
         $coupon->coupon_type = $request->coupon_type;
         if($request->coupon_type=='PACKAGE'){
           if($user->max_discount_package>=$request->coupon_discount){
