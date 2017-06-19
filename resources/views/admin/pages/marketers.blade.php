@@ -56,8 +56,8 @@
                                           Bank Ifsc Code: {{ $market->bank_ifsc_code }}</td>
                                       <td>{{ $market->id_proof }}</td>
                                       <td>{{ $market->max_discount }}</td>
-                                      <td>Rs.{{ \App\Coupon_Activity::where('user_email',$market->email)->where('activity_status','UNPAID')->sum('admin_share') }}</td>
-                                      <td>Rs.{{ \App\Coupon_Activity::where('user_email',$market->email)sum('admin_share') }}</td>
+                                      <td>Rs. {{ \App\Coupon_Activity::where('user_email',$market->email)->where('activity_status','UNPAID')->sum('admin_share') }}</td>
+                                      <td>Rs. {{ \App\Coupon_Activity::where('user_email',$market->email)->sum('admin_share') }}</td>
                                       <td>
                                           <button id="make_payout" data-id="{{ $market->id }}" class="btn btn-xs btn-success">Make Payout</button>
                                           <button id="edit_market" data-id="{{ $market->id }}" class="btn btn-xs btn-primary">Edit</button>
