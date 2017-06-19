@@ -88,6 +88,7 @@ class DashboardController extends Controller
           }
         } else{
           if($request->coupon_percent<=100){
+            $coupon->save();
             $msg = array(
               'status' => 'success',
               'message' => 'Coupon added successfully' );
