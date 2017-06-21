@@ -2,49 +2,49 @@
 @section('content')
 <style>
 @media only screen and (max-width: 800px) {
-    
+
     /* Force table to not be like tables anymore */
-  #no-more-tables table, 
-  #no-more-tables thead, 
-  #no-more-tables tbody, 
-  #no-more-tables th, 
-  #no-more-tables td, 
-  #no-more-tables tr { 
-    display: block; 
+  #no-more-tables table,
+  #no-more-tables thead,
+  #no-more-tables tbody,
+  #no-more-tables th,
+  #no-more-tables td,
+  #no-more-tables tr {
+    display: block;
   }
- 
+
   /* Hide table headers (but not display: none;, for accessibility) */
-  #no-more-tables thead tr { 
+  #no-more-tables thead tr {
     position: absolute;
     top: -9999px;
     left: -9999px;
   }
- 
+
   #no-more-tables tr { border: 1px solid #ccc; }
- 
-  #no-more-tables td { 
+
+  #no-more-tables td {
     /* Behave  like a "row" */
     border: none;
-    border-bottom: 1px solid #eee; 
+    border-bottom: 1px solid #eee;
     position: relative;
-    padding-left: 50%; 
+    padding-left: 50%;
     white-space: normal;
     text-align:left;
   }
- 
-  #no-more-tables td:before { 
+
+  #no-more-tables td:before {
     /* Now like a table header */
     position: absolute;
     /* Top/left values mimic padding */
     top: 6px;
     left: 6px;
-    width: 45%; 
-    padding-right: 10px; 
+    width: 45%;
+    padding-right: 10px;
     white-space: nowrap;
     text-align:left;
     font-weight: bold;
   }
- 
+
   /*
   Label the data
   */
@@ -78,7 +78,6 @@
                             </button> -->
 
                             <!-- Modal -->
-                            
                             <!-- /.modal -->
                         </div>
                         <!-- /.panel-heading -->
@@ -99,7 +98,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                               
 
                                      @foreach($questions as $question)
                                     <tr  class="odd gradeX">
@@ -110,10 +108,7 @@
                                       <!-- <a class="confirmLink delete btn btn-sm btn-danger" href=" {{ URL::to('admin/deleteques') }}/{{ $question->ques_id }}/{{ $sub_id }}/{{ $std }} "><i class="icons-office-52"></i></a> -->
                                       <a target="_blank" href="{{ URL::to('admin/view_look') }}/{{ $question->ques_id }} "><i class="fa fa-edit"></i></a>
                                       <a target="_blank" href="{{ URL::to('admin/view_look1') }}/{{ $question->ques_id }} "><i class="fa fa-edit"></i></a>
-                                      
                                       <a target="_blank" href="{{ URL::to('admin/view_look2') }}/{{ $question->ques_id }} "><i class="fa fa-edit"></i></a>
-                                      
-                              
                                        <button onclick="deleteques({{ $question->ques_id }},{{ $sub_id }},{{ $std }})" class="delete" href="http://asdfasda" >Delete</a>
                                       </button></td>
                                       <td>{{ $question->ques_ans }}</td>
@@ -130,23 +125,14 @@
                                             {{ "N" }}
                                           @endif</td>
                                       <td>{!! $question->ques_ans1 !!}</td>
-
-
-
-
-                                      
                                     </tr>
                                   @endforeach
-
-                                                                                      
                                 </tbody>
                             </table>
                             </div>
                         </div>
                     </div>
                 </div>
-                                    
-            
             </div>
             <!-- /.row -->
         </div>

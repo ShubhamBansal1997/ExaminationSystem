@@ -1,41 +1,42 @@
 @extends('admin.app')
 @section('content')
-<div id="page-wrapper">
+           <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">{{ isset($question->ques_exp) ? "EDIT" : "ENTER" }} Question</h1>
+                  <h1 class="page-header">{{ isset($question->ques_exp) ? "EDIT" : "ENTER" }} Question</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
+              <div class="col-lg-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
                              Question Details
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    {!! Form::open(array('url' => 'admin/addques','role'=>'form')) !!}
+                  </div>
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-lg-12">
+                              {!! Form::open(array('url' => 'admin/addques','role'=>'form')) !!}
 
-                                            {!! csrf_field() !!}
-                                    <div class="message">
+                                      {!! csrf_field() !!}
+                        <div class="message">
 
-                      				@if (count($errors) > 0)
-                          			<div class="alert alert-danger">
-                           				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                						<span aria-hidden="true">&times;</span></button>
-                              			<ul style="list-style: none;">
-                                  		@foreach ($errors->all() as $error)
-                                      		<li>{{ $error }}</li>
-                                  		@endforeach
-                              			</ul>
-                          			</div>
-                      				@endif
+                  				@if (count($errors) > 0)
+                      	<div class="alert alert-danger">
+                       		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            						    <span aria-hidden="true">&times;</span>
+                          </button>
+                          <ul style="list-style: none;">
+                              		@foreach ($errors->all() as $error)
+                                  		<li>{{ $error }}</li>
+                              		@endforeach
+                          </ul>
+                      	 </div>
+                  				@endif
 
-              						</div>
-              						@if(Session::has('flash_message'))
+          						  </div>
+        						@if(Session::has('flash_message'))
 
 						              <div class="alert alert-success fade in">
 						                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -125,20 +126,6 @@
                                             {{ "No" }}
                                         @endif
                                         </option>
-                                      @endif
-                                      <option value="1">Yes</option>
-                                      <option value="0">No</option>
-                                    </select>
-                                  </div>
-                                  <div class="form-group">
-                                    <label>Imp Ques</label>
-                                    <select class="form-control" data-style="white" data-placeholder="Select a correct answer" name="ques_imp" id="imp_ques" value="" required>
-                                    @if(isset($question->ques_imp))
-                                      <option value="{{$question->ques_imp}}" selected >@if($question->ques_imp==1)
-                                            {{ "Yes" }}
-                                        @else
-                                            {{ "No" }}
-                                        @endif</option>
                                       @endif
                                       <option value="1">Yes</option>
                                       <option value="0">No</option>

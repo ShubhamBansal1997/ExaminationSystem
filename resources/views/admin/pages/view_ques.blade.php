@@ -28,7 +28,7 @@
 
                                             {!! csrf_field() !!}
                                     <div class="message">
-                         
+
                       				@if (count($errors) > 0)
                           			<div class="alert alert-danger">
                            				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -40,7 +40,7 @@
                               			</ul>
                           			</div>
                       				@endif
-                                    
+
               						</div>
               						@if(Session::has('flash_message'))
 
@@ -57,9 +57,8 @@
                                             <select class="form-control" data-style="white" data-placeholder="Select a chapter..." name="chap_id" id="chap_id" value="{{ isset($question->id) ? $question->id : null }}" >
 		                          			@foreach(\App\Chapters::where('sub_id',$sub_id)->where('std',$std)->get() as $chapters)
 					                            <option value="{{ $chapters->chap_id }}">{{ $chapters->chap_name }}</option>
-					                        @endforeach   
+					                        @endforeach
 					                          </select>
-                                            
                                     	</div>
 
                                         <div class="form-group">
@@ -69,9 +68,7 @@
 					                            <option value="NULL">All</option>
 					                            <option value="1">Yes</option>
 					                            <option value="0">No</option>
-					                          
 					                          </select>
-                                            
                                         </div>
                                         <div class="form-group">
 
@@ -82,21 +79,20 @@
 					                            <option value="1">Easy</option>
 					                            <option value="2">Medium</option>
 					                            <option value="3">Difficult</option>
-					                          
 					                          </select>
                                         </div>
                                         <input value="{{ $sub_id }}" name="sub_id" hidden>
 									<input value="{{ $std }}" name="std" hidden>
-									
+
                                         </div>
                                         <div class="modal-footer">
-                                            
+
                                             <button type="submit" id="quessubmit" value="Submit" class="btn btn-primary">Submit</button>
                                         </div>
                                     {!! Form::close() !!}
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
-                                
+
                             </div>
                             <!-- /.row (nested) -->
                         </div>
