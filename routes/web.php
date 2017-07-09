@@ -93,52 +93,63 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
 	Route::post('image/upload','QuestionController@upload_image');
 	Route::post('addques','QuestionController@addquestion');
 	Route::get('addques/{sub_id}/{std}','QuestionController@question');
-    Route::get('editques/{ques_id}/{sub_id}/{std}','QuestionController@editquestion');
-    Route::get('deleteques/{ques_id}/{sub_id}/{std}','QuestionController@deletequestion');
-    Route::get('viewques/{sub_id}/{std}','QuestionController@viewquestion');
-    Route::post('viewques','QuestionController@viewquestionlist');
-    Route::get('view_look/{ques_id}','QuestionController@view_look');
-    Route::get('view_look1/{ques_id}','QuestionController@view_look1');
-    Route::get('view_look2/{ques_id}','QuestionController@view_look2');
-    Route::get('content','EmployeeController@list_content');
-    Route::get('marketers','MarketingController@index');
-    Route::get('view_users','AdminDashboardController@u_list');
+  Route::get('editques/{ques_id}/{sub_id}/{std}','QuestionController@editquestion');
+  Route::get('deleteques/{ques_id}/{sub_id}/{std}','QuestionController@deletequestion');
+  Route::get('viewques/{sub_id}/{std}','QuestionController@viewquestion');
+  Route::post('viewques','QuestionController@viewquestionlist');
+  Route::get('view_look/{ques_id}','QuestionController@view_look');
+  Route::get('view_look1/{ques_id}','QuestionController@view_look1');
+  Route::get('view_look2/{ques_id}','QuestionController@view_look2');
+  Route::get('content','EmployeeController@list_content');
+  Route::get('marketers','MarketingController@index');
+  Route::get('view_users','AdminDashboardController@u_list');
 
-    Route::get('coupons',function()
-        {
-            $email = Session::get('aemail');
-            return view('admin.pages.coupon',compact('email'));
-        });
+  Route::get('coupons',function()
+      {
+          $email = Session::get('aemail');
+          return view('admin.pages.coupon',compact('email'));
+      });
 
-    Route::get('couponactivity',function()
-        {
-            $email = Session::get('aemail');
-            return view('admin.pages.couponactivity',compact('email'));
-        });
+  Route::get('couponactivity',function()
+      {
+          $email = Session::get('aemail');
+          return view('admin.pages.couponactivity',compact('email'));
+      });
 
-    Route::get('payouts',function()
-        {
-            $email = Session::get('aemail');
-            return view('admin.pages.payout',compact('email'));
-        });
+  Route::get('payouts',function()
+      {
+          $email = Session::get('aemail');
+          return view('admin.pages.payout',compact('email'));
+      });
 
-    Route::get('allcoupons',function(){
-      return view('admin.pages.allcoupons');
-    });
-    Route::get('allcouponactivity',function(){
-      return view('admin.pages.allcouponactivity');
-    });
-    Route::get('allpayouts',function(){
-      return view('admin.pages.allpayouts');
-    });
-    Route::get('paythepayout/{id}','MarketingController@paythepayout');
+  Route::get('allcoupons',function(){
+    return view('admin.pages.allcoupons');
+  });
+  Route::get('allcouponactivity',function(){
+    return view('admin.pages.allcouponactivity');
+  });
+  Route::get('allpayouts',function(){
+    return view('admin.pages.allpayouts');
+  });
+  Route::get('paythepayout/{id}','MarketingController@paythepayout');
 
-    Route::post('/adduser','MarketingController@adduser')->middleware('web');
-    Route::get('/getmarketdata/{marketid}','MarketingController@getuser');
-    Route::get('/marketstatus/{marketid}','MarketingController@changestatus');
-    Route::get('/deletemarket/{marketid}','MarketingController@deleteuser');
-    Route::post('/editmarketuser','MarketingController@editmarketuser')->middleware('web');
-    Route::get('/marketingpayouts','MarketingController@marketingpayouts');
+  Route::post('/adduser','MarketingController@adduser')->middleware('web');
+  Route::get('/getmarketdata/{marketid}','MarketingController@getuser');
+  Route::get('/marketstatus/{marketid}','MarketingController@changestatus');
+  Route::get('/deletemarket/{marketid}','MarketingController@deleteuser');
+  Route::post('/editmarketuser','MarketingController@editmarketuser')->middleware('web');
+  Route::get('/marketingpayouts','MarketingController@marketingpayouts');
+
+  // experts page routes
+  Route::get('/addexpert','ExpertController@list_experts');
+  Route::get('/getexperts/{id}','ExpertController@index_experts');
+  Route::post('/createexpert','ExpertController@store_expert');
+  Route::delete('/deleteexpert/{id}','ExpertController@destroy_expert');
+  Route::put('/updateexpert/{id}','ExpertController@update_expert');
+
+
+  Route::get('/expertdescrption','ExpertController@list_expert_descrption');
+  Route::get('/expertpayouts','ExpertController@list_expert_payouts');
 });
 
 // marketing login page

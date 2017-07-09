@@ -30,9 +30,6 @@
     <link href="{{ asset('admin_assets/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 
     <script src="{{URL::asset('templateEditor/ckeditor/ckeditor.js')}}"></script>
- <script type="text/javascript" async
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -143,21 +140,20 @@
                             <!-- /.nav-second-level -->
                         </li>
 
-                       <!--  <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Location<span class="fa arrow"></span></a>
+                       <li>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Experts<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">State</a>
+                                    <a href="{{ URL::to('admin/addexpert') }}">Add Expert</a>
                                 </li>
                                 <li>
-                                    <a href="#">City</a>
+                                    <a href="{{ URL::to('admin/expertdescrption') }}">Expert Description</a>
                                 </li>
                                 <li>
-                                    <a href="#">Area</a>
+                                    <a href="{{ URL::to('admin/expertpayouts')}}">Expert Payouts</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
-                        <!-- </li> -->
+                        </li>
                         <li>
                             <a href="{{ URL::to('admin/coupons') }}"><i class="fa fa-files-o fa-fw"></i> Coupons <span class="fa arrow"></span></a>
                         </li>
@@ -208,13 +204,19 @@ else
 </script>
 
 <!-- jQuery -->
-<script src="{{ asset('admin_assets/vendor/jquery/jquery.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.0.1/jquery-confirm.min.js"></script>
 
 
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ asset('admin_assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/vue.resource/0.9.3/vue-resource.min.js"></script>
+<script type="text/javascript" src='/js/item.js'></script>
 
 <!-- Metis Menu Plugin JavaScript -->
 <script src="{{ asset('admin_assets/vendor/metisMenu/metisMenu.min.js') }}"></script>
