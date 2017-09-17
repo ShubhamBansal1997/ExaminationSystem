@@ -35,6 +35,10 @@ class Questions extends Model
     {
         return $this->hasMany('App\Questions_attempt','ques_id','ques_id');
     }
+    public static function ar_ques($chap_id)
+    {
+      return Questions::where('chap_id', $chap_id)->where('ques_ar',1)->count();
+    }
 
 
 }

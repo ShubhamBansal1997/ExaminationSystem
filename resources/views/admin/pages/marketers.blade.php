@@ -34,11 +34,11 @@
                                         <th>Order</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <td>Descrption</td>
+                                        <th>Descrption</th>
                                         <th>Phone no</th>
                                         <th>Bank Details</th>
-                                        <td>Aaddhar Number</td>
-                                        <td>Max Discount</td>
+                                        <th>Aaddhar Number</th>
+                                        <th>Max Discount</th>
                                         <th>Unpaid </th>
                                         <th>Total </th>
                                         <th>Actions</th>
@@ -52,16 +52,15 @@
                                       <td>{{ $market->email }}</td>
                                       <td>{{ $market->description }}</td>
                                       <td>{{ $market->phoneno }}</td>
-                                      <td> Acc no: {{ $market->bank_acc_no }} <br/>
-                                          Bank Ifsc Code: {{ $market->bank_ifsc_code }}</td>
+                                      <td> <b>Acc no: </b>{{ $market->bank_acc_no }} <br/>
+                                          <b>Bank Ifsc Code:</b> {{ $market->bank_ifsc_code }}</td>
                                       <td>{{ $market->id_proof }}</td>
-                                      <td>{{ $market->max_discount }}</td>
+                                      <td><b>Package:</b> {{ $market->max_discount_package }} % <br/> <b>Expert:</b> {{ $market->max_discount_expert }} %</td>
                                       <td>Rs. {{ \App\Coupon_Activity::where('user_email',$market->email)->where('activity_status','UNPAID')->sum('admin_share') }}</td>
                                       <td>Rs. {{ \App\Coupon_Activity::where('user_email',$market->email)->sum('admin_share') }}</td>
                                       <td>
-                                          <button id="make_payout" data-id="{{ $market->id }}" class="btn btn-xs btn-success">Make Payout</button>
-                                          <button id="edit_market" data-id="{{ $market->id }}" class="btn btn-xs btn-primary">Edit</button>
-                                          <button id="delete_market" data-id="{{ $market->id }}" class="btn btn-xs btn-danger">Delete</button>
+                                          <button id="edit_market" data-id="{{ $market->id }}" class="btn btn-xs btn-primary">Edit</button><br/>
+                                          <button id="delete_market" data-id="{{ $market->id }}" class="btn btn-xs btn-danger">Delete</button><br/>
                                         @if($market->active==true)
                                         <button id="active_status" data-id="{{ $market->id }}" class="btn btn-xs btn-success">Active</button>
                                         @else
@@ -89,51 +88,6 @@
 @endsection
 
 @section('modal')
-<!-- Payout Modal -->
-<div class="modal fade" id="payoutmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Payout </h4>
-            </div>
-            <form role="form" id="payoutform" method="POST">
-            <div class="modal-body">
-                <div class="panel-body">
-                  <div class="row">
-                    <div class="col-lg-12">
-
-                        <div class="form-group">
-                          <input type="hidden" name="id" value="" id="payoutmarketid">
-                          <label>Name:</label>
-                          <input class="form-control" name='name' disabled="true" value="">
-                        </div>
-                        <div class="form-group">
-                          <label>Amount</label>
-                          <input class="form-control" type="text" name="amount" disabled="true" id="payoutamount" value="" >
-                        </div>
-                        <div class="form-group">
-                          <label>Method</label>
-                          <select class="form-control" data-style="white" data-placeholder="Choose the Payment Method" name="method" value="" required>
-                            <option value="paytm">Paytm</option>
-                            <option value="bank">Bank</option>
-                          </select>
-                        </div>
-                      </div>
-                  </div>
-                </div>
-              </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
-            </form>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- /.Payout modal -->
 <!-- User Add  Modal -->
 <div class="modal fade" id="useraddmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -148,6 +102,10 @@
                   <div class="panel-body">
                     <div class="row">
                       <div class="col-lg-12">
+                        <div class="form-group">
+                          <label>Profile Pic:</label>
+                          <input class="form-control" type="file" name="profile_pic" >
+                        </div>
                         <div class="form-group">
                           <label>First Name:</label>
                           <input class="form-control" name='fname' required>
@@ -221,13 +179,17 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">Edit User </h4>
             </div>
-            <form role="form" action="{{ URL::to('admin/editmarketuser')}}" method="POST" id="usereditform">
+            <form role="form" action="{{ URL::to('admin/editmarketuser')}}" method="POST" id="usereditform" enctype='multipart/form-data'>
             {{ csrf_field() }}
             <div class="modal-body">
                   <div class="panel-body">
                     <div class="row">
                       <div class="col-lg-12">
                         <input type="hidden" name="id" value="">
+                        <div class="form-group">
+                          <label>Profile Pic:</label>
+                          <input class="form-control" name="profile_pic" type="file" >
+                        </div>
                         <div class="form-group">
                           <label>First Name:</label>
                           <input class="form-control" name='fname' value="" required>
@@ -274,7 +236,7 @@
                         </div>
                         <div class="form-group">
                           <label>Descrption</label>
-                          <input class="form-control" name="descrption" value="">
+                          <input class="form-control" name="descrption" value="" />
                         </div>
                       </div>
                     </div>

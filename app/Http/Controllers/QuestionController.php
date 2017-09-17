@@ -18,7 +18,7 @@ class QuestionController extends Controller
         Session::set('chap_id',1);
         Session::set('ques_cat','allques');
         Session::set('id',1);
-        
+
         $sub_id = Session::get('sub_id');
         $chap_id = Session::get('chap_id');
         $ques_cat = Session::get('ques_cat');
@@ -31,7 +31,7 @@ class QuestionController extends Controller
                             ->where('chap_id',$chap_id)
                             ->get();
             }
-            
+
             else
             {
                 if($ques_cat='easy')
@@ -68,7 +68,7 @@ class QuestionController extends Controller
                 			->where('chap_id',$chap_id)
                             ->get();
             }
-            
+
             else
             {
                 if($ques_cat='easy')
@@ -117,7 +117,7 @@ class QuestionController extends Controller
             $ques["user_email"] = Session::get('email');
             $ques["ques_cat"] = Session::get('ques_cat');
             $ques["ques_input"] = null;
-            
+
 
         }
         return response()->json($query);
@@ -139,22 +139,22 @@ class QuestionController extends Controller
 		//dd($query);
         if($query!=NULL)
         {
-            
+
             $data = array(
                 'ques_attempt' => TRUE,
                 'ques_status' => $query->ques_status,
                 'ques_input' => $query->ques_input
             );
-            
-            
+
+
         }
         else
         {
             $data = array(
                 'ques_attempt' => FALSE,
             );
-            
-        }	                        
+
+        }
 		return response()->json($data);
     }
 
@@ -177,7 +177,7 @@ class QuestionController extends Controller
     	$ques_attempt->ques_cat = $ques_cat;
     	$ques_attempt->ques_input = $ques_input;
     	$ques_attempt->save();
-    	
+
     	return response()->json(TRUE);
 
 
@@ -200,10 +200,10 @@ class QuestionController extends Controller
                           ->where('ques_status','incorrect')
                           ->get();
         return response()->json($query);
-    } 
+    }
     public function question_page(Request $request)
-    {   
-        
+    {
+
         $sub_id = $request->input('sub_id');
         $chap_id = $request->input('chap_id');
         $ques_cat = $request->input('ques_cat');
@@ -225,9 +225,12 @@ class QuestionController extends Controller
                             ->where('chap_id',$chap_id)
                             ->get();
         $user = Users::where('email',$user_email)->first();
+        $i=1;
         foreach($query as $question)
         {
             $ques = array();
+            $ques["s_no"] = $i;
+            $i++;
             $ques["ques_id"] = $question->ques_id;
             if($question->o_id!=NULL)
                 $ques["o_id"] = $question->o_id;
@@ -262,7 +265,15 @@ class QuestionController extends Controller
             }
             array_push($data, $ques);
         }
-        return response()->json($data);
+        $response = [
+          'data' => $data,
+          'basic' => [
+            'chap_name' => $chap_name,
+            'subject' => 'Physics',
+            'type' => 'Easy',
+          ],
+        ];
+        return response()->json($response);
 
 
     }

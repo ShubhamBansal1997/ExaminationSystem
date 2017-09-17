@@ -54,7 +54,7 @@
 <div id="page-wrapper">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="page-header">Marketing Payouts</h1>
+                    <h1 class="page-header">Marketing Payouts (Requested)</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -93,11 +93,12 @@
                                         <th>Order</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <td>Amount</td>
+                                        <th>Amount(After Deduction)</th>
                                         <th>Type</th>
                                         <th>Bank IFSC Code</th>
-                                        <td>Bank Account Number</td>
-                                        <td>Phone no</td>
+                                        <th>Bank Account Number</th>
+                                        <th>Phone no</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -111,6 +112,7 @@
                                       <td> {{ $payout->bank_ifsc_code }}</td>
                                       <td>{{ $payout->bank_acc_no }}</td>
                                       <td>Rs.{{ $payout->phoneno }}</td>
+                                      <td><button class="btn btn-xs btn-primary" >Make Payout</button></td>
                                     </tr>
                                   @endforeach
 
@@ -128,5 +130,30 @@
         </div>
         <!-- /#page-wrapper -->
 
+@endsection
 
+@section('script')
+<script type="text/javascript">
+  $(document).ready(function(){
+    /** function to change the status of the marketing user */
+    $('#dataTables-example').on('click','#active_status', function(e){
+      e.preventDefault();
+      var id = $(this).attr("data-id");
+      console.log(id);
+      $.ajax({
+        url: '{{ URL::to('admin/paythepayout') }}'+'/'+id,
+        data: null,
+        type: "GET",
+        context: this,
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(response){
+          location.reload();
+        }
+      });
+    });
+
+  });
+</script>
 @endsection

@@ -51,6 +51,10 @@ class MarketingController extends Controller
       //dd($request->file('id_proof_file'));
       $user->id_proof_file = $request->id_proof . '.' . $request->file('id_proof_file')->getClientOriginalName();
       $request->file('id_proof_file')->move(base_path() . '/public/images/id_proof/', $user->id_proof_file);
+      if($request->file('profile_pic')!=NULL){
+        $user->profile_pic = $request->profile_pic . '.' . $request->file('profile_pic')->getClientOriginalName();
+        $request->file('profile_pic')->move(base_path() . '/public/images/market/', $user->profile_pic);
+      }
       $user->phoneno = $request->phoneno;
       $user->password = md5($request->password);
       $user->bank_acc_no = $request->bank_acc_no;
@@ -125,10 +129,14 @@ class MarketingController extends Controller
       $user->max_discount_package = $request->max_discount_package;
       $user->max_discount_expert = $request->max_discount_expert;
       $user->id_proof = $request->id_proof;
-      //dd($request->file('id_proof_file'));
       if($request->file('id_proof_file')!=NULL){
         $user->id_proof_file = $request->id_proof . '.' . $request->file('id_proof_file')->getClientOriginalName();
         $request->file('id_proof_file')->move(base_path() . '/public/images/id_proof/', $user->id_proof_file);
+      }
+      if($request->file('profile_pic')!=NULL){
+        $user->profile_pic = $request->profile_pic . '.' . $request->file('profile_pic')->getClientOriginalName();
+        $request->file('profile_pic')->move(base_path() . '/public/images/market/', $user->profile_pic);
+        //dd($request->file('profile_pic'));
       }
       $user->phoneno = $request->phoneno;
       if($request->password!=NULL){
@@ -145,7 +153,7 @@ class MarketingController extends Controller
 
     public function marketingpayouts()
     {
-      $payouts = Market_Payout::all();
+      $payouts = Market_Payout::where('active',true)->get();
       return view('admin.pages.marketingpayouts',compact('payouts'));
     }
 

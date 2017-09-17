@@ -26,6 +26,7 @@
                                         <th>S No</th>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th>Amount</th>
                                         <th>Method</th>
                                         <th>Bank Details</th>
                                         <th>Phone no</th>
@@ -42,6 +43,7 @@
                                       <td>{{ ++$i }}</td>
                                       <td>{{ $payout->name }}</td>
                                       <td>{{ $payout->email }}</td>
+                                      <td> Rs. {{ $payout->amount }}</td>
                                       <td>{{ $payout->type }}</td>
 
 

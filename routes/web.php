@@ -146,6 +146,7 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
   Route::post('/createexpert','ExpertController@store_expert');
   Route::delete('/deleteexpert/{id}','ExpertController@destroy_expert');
   Route::put('/updateexpert/{id}','ExpertController@update_expert');
+  Route::post('/addExpertDescription','ExpertController@store_descrption');
 
 
   Route::get('/expertdescrption','ExpertController@list_expert_descrption');
@@ -208,4 +209,7 @@ Route::get('upload/image', function() {
 });
 
 Route::get('/questions','QuestionController@get_all_questions')->middleware(['api','cors']);
+Route::get('/samplequestionpage',function(){
+  return view('questionpage');
+});
 

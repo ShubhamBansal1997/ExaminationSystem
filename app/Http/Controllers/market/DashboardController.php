@@ -177,6 +177,10 @@ class DashboardController extends Controller
         $user->id_proof_file = $request->id_proof . '.' . $request->file('id_proof_file')->getClientOriginalName();
         $request->file('id_proof_file')->move(base_path() . '/public/images/id_proof/', $user->id_proof_file);
       }
+      if($request->file('profile_pic')!=NULL){
+        $user->profile_pic = $request->id_proof . '.' . $request->file('profile_pic')->getClientOriginalName();
+        $request->file('profile_pic')->move(base_path() . '/public/images/market/', $user->profile_pic);
+      }
       $user->phoneno = $request->phoneno;
       if($request->password!=NULL){
         $user->password = md5($request->password);

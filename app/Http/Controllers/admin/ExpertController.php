@@ -7,17 +7,15 @@ use App\Http\Controllers\Controller;
 use App\Expert;
 use App\Expert_descrption;
 use App\Expert_payouts;
-use Validator;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 
 
 class ExpertController extends Controller
 {
-    use ValidatesRequests; // here also...
+    // here also...
     /** function to show the list expert page */
     public function list_experts()
     {
-      $experts = Expert::latest()->where('status',true)->paginate(5);
+      $experts = Expert::where('status',true)->get();
 
       return view('admin.pages.list_experts',compact('experts'));
     }
@@ -36,6 +34,7 @@ class ExpertController extends Controller
       return response()->json($response);
     }
 
+    /** used in vue js as api call to store expert details */
     public function store_expert(Request $request)
     {
       $this->validate($request, [
@@ -60,6 +59,8 @@ class ExpertController extends Controller
       return response()->json($status);
     }
 
+    /** used in the vue js api call to update the expert basic details
+     */
     public function update_expert(Request $request,$id)
     {
       $this->validate($request, [
@@ -89,6 +90,11 @@ class ExpertController extends Controller
       return response()->json($status);
     }
 
+    /**
+     * used in vue js api call to remove the expert
+     * @param  integer $id expert_id
+     * @return json     done
+     */
     public function destroy_expert($id){
       $expert = Expert::where('id',$id)->first();
       $expert->status = false;
@@ -99,7 +105,17 @@ class ExpertController extends Controller
     /** function to show the page of descrptions of the experts */
     public function list_expert_descrption()
     {
-      return view('admin.pages.list_expert_descrption');
+      $expert_descrption = Expert_descrption::where('status', true)->get()->expert;
+      return view('admin.pages.list_expert_descrption',compact('expert_descrption'));
+    }
+
+    /**
+     * vue js to store the expert descrption
+     */
+    public function store_descrption(Request $request)
+    {
+      $reques = $request->all();
+      return response()->json($reques);
     }
 
     /** function to show the page of the  list of all expert payouts*/

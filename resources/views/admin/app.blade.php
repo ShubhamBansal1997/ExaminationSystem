@@ -170,7 +170,7 @@
                             <a href="{{ URL::to('admin/allcouponactivity') }}"><i class="fa fa-files-o fa-fw"></i> All Coupons Activity<span class="fa arrow"></span></a>
                         </li>
                         <li>
-                            <a href="{{ URL::to('admin/allpayouts') }}"><i class="fa fa-files-o fa-fw"></i> All Payouts<span class="fa arrow"></span></a>
+                            <a href="{{ URL::to('admin/allpayouts') }}"><i class="fa fa-files-o fa-fw"></i> All Payouts(Marketing)<span class="fa arrow"></span></a>
                         </li>
                         @endif
                     </ul>
