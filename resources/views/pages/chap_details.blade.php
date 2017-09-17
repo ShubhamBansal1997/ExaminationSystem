@@ -6,7 +6,7 @@
         <!--breadcrumbs start-->
         <div id="breadcrumbs-wrapper">
             <!-- Search for small screen -->
-            
+
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
@@ -27,21 +27,21 @@
 
         <!--start container-->
         <div class="container">
-          
+
 
 
           <div class="divider"></div>
           <!--Applying Waves-->
-          
 
 
-          
+
+
 
             <div class="row">
               <div class="col s12 m12 l12">
-                
+
                 <div class="collection waves-color-demo">
-                  
+
                   <div class="collection-item" style="font-size: 20px;">All Questions ({{ \App\Questions::a_ques($chap_id) }}/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/allques" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;margin-right:7px;margin-top: 10px;">Start</a>
                   </div>
                   <div class="collection-item" style="font-size: 20px;">Easy ({{ \App\Questions::e_ques($chap_id) }}/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/easy" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;margin-right:7px;margin-top: 10px;">Start</a>
@@ -51,33 +51,33 @@
                   <div class="collection-item" style="font-size: 20px;">Difficult ({{ \App\Questions::d_ques($chap_id) }}/{{ \App\Questions::a_ques($chap_id) }})<a href="{{ URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/difficult" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;margin-right:7px;margin-top: 10px;">Start</a>
                   </div>
                   <div class="collection-item" style="font-size: 20px;">Important ({{ \App\Questions::i_ques($chap_id) }}/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/imp" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;margin-right:7px;margin-top: 10px;">Start</a></div>
-                  <div class="collection-item" style="font-size: 20px;">A-R Questions (0/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/imp" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;margin-right:7px;margin-top: 10px;">Start</a></div>
-                  
+                  <div class="collection-item" style="font-size: 20px;">A-R Questions ({{ \App\Questions::ar_ques($chap_id) }}/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/imp" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;margin-right:7px;margin-top: 10px;">Start</a></div>
+
                   <div class="collection-item" style="font-size: 20px;">Unattempted (0/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/imp" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;margin-right:7px;margin-top: 10px;">Start</a></div>
 
-                  
+
                   <div class="collection-item" style="font-size: 20px;">Correct (0/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/imp" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;;margin-right:12px;margin-top: 10px;">View</a></div>
-                  
+
                   <div class="collection-item" style="font-size: 20px;">Incorrect (0/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/imp" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;margin-right:12px;margin-top: 10px;">View</a></div>
                   <div class="collection-item" style="font-size: 20px;">Marked for Review (0/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/imp" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;margin-right:12px;margin-top: 10px;">View</a></div>
                   <div class="collection-item" style="font-size: 20px; text-align: center"><a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/imp" class="waves-effect waves-light btn secondary-content purple darken-4" style="font-size: 18px;margin-top: 18px">Attempt The Whole Chapter Again</a></div>
 
 
-                                
-                  
-                  
+
+
+
                 </div>
               </div>
             </div>
-            
-            
+
+
           </div>
 
           <div class="divider"></div>
           <!--  Circle  -->
-          
+
           <!-- Floating Action Button -->
-            
+
             <!-- Floating Action Button -->
         </div>
         <!--end container-->
