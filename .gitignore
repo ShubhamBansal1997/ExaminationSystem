@@ -9,3 +9,5 @@ Homestead.json
 Homestead.yaml
 dbschema.mwb
 .DS_Store
+composer.json
+composer.lock
