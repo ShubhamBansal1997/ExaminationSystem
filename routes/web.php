@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Input;
 use App\Helpers;
 use App\Coupons;
 Route::get('/', 'IndexController@index');
+Route::get('/allexperts', 'IndexController@allexperts');
 Route::get('login','IndexController@login');
 Route::post('login','IndexController@postLogin')->middleware('web');
 Route::get('register','IndexController@register');
@@ -145,7 +146,7 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
   Route::get('/getexperts/{id}','ExpertController@index_experts');
   Route::post('/createexpert','ExpertController@store_expert');
   Route::delete('/deleteexpert/{id}','ExpertController@destroy_expert');
-  Route::put('/updateexpert/{id}','ExpertController@update_expert');
+  Route::post('/updateexpert/{id}','ExpertController@update_expert');
   Route::post('/addExpertDescription','ExpertController@store_descrption');
 
 

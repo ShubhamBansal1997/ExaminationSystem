@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Users;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
+use App\Expert;
 
 class IndexController extends Controller
 {
@@ -38,8 +39,8 @@ class IndexController extends Controller
               $this->validate($request, [
                 'mobile' => 'required|min:10|max:10'
                  ]);
-        
-        
+
+
             $phone = $request->mobile;
             $query = Users::where('mobile',$phone);
             $query= $query->first();           //comment the code and uncomment the if lines
@@ -82,13 +83,13 @@ class IndexController extends Controller
                 else
                 {
                   return Redirect::back();
-                }                  
+                }
             }
             else
             {
                 return Redirect::back();
             }*/
-        }   
+        }
     }
 
     public function register()
@@ -110,22 +111,22 @@ class IndexController extends Controller
                 'email' => 'required|email|max:75|unique:users',
                 'mobile' => 'required|min:10|max:10|unique:users'
                  ]);
-        
-        
-        
+
+
+
             /*if ($validator->fails())
             {
                 return redirect()->back()->withErrors($validator->messages());
-            }*/ 
-          
-       
+            }*/
+
+
             $user = new Users;
 
-            
-            $user->name = $request->name; 
-            $user->email = $request->email;       
-            $user->mobile = $request->mobile;      
-             
+
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->mobile = $request->mobile;
+
             $user->save();
             $phone = $request->mobile;
             $email = $request->email;
@@ -133,7 +134,7 @@ class IndexController extends Controller
             $baseUrl = "https://sendotp.msg91.com/api";
             $cc = +91;
             $data = array("countryCode" => $cc, "mobileNumber" => $phone,"getGeneratedOTP" => true);
-              
+
             $data_string = json_encode($data);
             $ch = curl_init($baseUrl.'/generateOTP');
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
@@ -161,12 +162,12 @@ class IndexController extends Controller
               else
               {
                 return Redirect::back();
-              }        	    	
+              }
         }
     }
     public function verifyotp(Request $request)
     {
-        
+
             $this->validate($request, [
                 'otp' => 'required',
                 ]);
@@ -181,7 +182,7 @@ class IndexController extends Controller
                 return redirect('home');
             }
             else
-                return Redirect::back();    
+                return Redirect::back();
     }
     public function logout()
     {
@@ -189,5 +190,10 @@ class IndexController extends Controller
         Session::flash('flash_message', 'You have been successfully Logout');
         return redirect('pages.login');
     }
-    
+
+    public function allexperts()
+    {
+      $expert = Expert::all();
+      return view('allexperts', compact('expert'));
+    }
 }

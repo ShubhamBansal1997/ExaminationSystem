@@ -210,7 +210,7 @@ new Vue({
     formErrors:{},
     formErrorsUpdate:{},
     newExpert: {'first_name':'', 'last_name':'', 'phone_number':'', 'email_id':'', 'password':'', 'id_proof_number':'', 'id_proof_file':''},
-    fillExpert: {'first_name':'', 'last_name':'', 'phone_number':'', 'email_id':'', 'password':'', 'id_proof_number':'', 'id_proof_file':'','id':''},
+    fillExpert: {'first_name':'', 'last_name':'', 'phone_number':'', 'email_id':'', 'password':'', 'id_proof_number':'', 'id_proof_file':'','id':'' },
   },
 
   methods: {

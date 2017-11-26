@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Expert;
 use App\Expert_descrption;
 use App\Expert_payouts;
+use Validator;
+
 
 
 class ExpertController extends Controller
@@ -52,6 +54,8 @@ class ExpertController extends Controller
       $expert->phone_number = $request->input('phone_number');
       $expert->password = md5($request->input('password'));
       $expert->id_proof_number = $request->id_proof_number;
+      $expert->neet_rank = $request->neet_rank;
+      $expert->aiims_rank = $request->aiims_rank;
       $expert->id_proof_file = $request->id_proof_number . '.' . $request->file('id_proof_file')->getClientOriginalName();
       $request->file('id_proof_file')->move(base_path() . '/public/images/id_proof_expert/', $expert->id_proof_file);
       $expert->status = true;
@@ -63,19 +67,13 @@ class ExpertController extends Controller
      */
     public function update_expert(Request $request,$id)
     {
-      $this->validate($request, [
-        'first_name' => 'required',
-        'phone_number' => 'request|max:10',
-        'email_id' => 'required',
-        'password' => 'required',
-        'id_proof_number' => 'required',
-        'id_proof_file' => 'required|file',
-      ]);
       $expert = Expert::where('id',$id)->first();
       $expert->first_name = $request->input('first_name');
       $expert->last_name = $request->input('last_name');
       $expert->email_id = $request->input('email_id');
       $expert->id_proof_number = $request->input('id_proof_number');
+      $expert->neet_rank = $request->input('neet_rank');
+      $expert->aiims_rank = $request->input('aiims_rank');
       $expert->status = true;
 
       if($request->input('password')!=NULL)
@@ -105,7 +103,7 @@ class ExpertController extends Controller
     /** function to show the page of descrptions of the experts */
     public function list_expert_descrption()
     {
-      $expert_descrption = Expert_descrption::where('status', true)->get()->expert;
+      $expert_descrption = Expert_descrption::where('status', true)->get();
       return view('admin.pages.list_expert_descrption',compact('expert_descrption'));
     }
 
