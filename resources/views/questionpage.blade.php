@@ -174,7 +174,7 @@
       <div class="testTool_btmBar_actionBtn testTool_btmBar_actionBtn_primary testTool_btmBar_actionBtn_primary-fullWidth js-primary-btn-bottom"
         v-else-if='bottombutton.submit==true' 
         v-on:click='submit_question_request()'>SUBMIT</div>
-      <div class="testTool_btmBar_loadingView hide js-loading-view-bottom">
+        <div class="testTool_btmBar_loadingView hide js-loading-view-bottom">
       </div>
     </div>
     <div class="testTool_loadingView table js-loading-view" v-show="loading===true">
@@ -364,7 +364,7 @@ new Vue({
           });
     },
     analyze: function(){
-      if(this.questions[this.questionIndex].ques_input!=null){
+      if(this.questions[this.questionIndex].ques_input!==null){
         if(this.questions[this.questionIndex].ques_level===1){
           this.level = 'EASY';
         }else if(this.questions[this.questionIndex].ques_level===2){
@@ -382,8 +382,6 @@ new Vue({
       }
     },
     next: function() {
-      console.log(this.questions.length);
-      console.log(this.questionIndex);
       if(this.questions.length > this.questionIndex+1){
         this.$nextTick(function() {
                       MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
@@ -402,26 +400,30 @@ new Vue({
       this.questionIndex--;
     },
     attempt: function(index) {
+        console.log(index);
         if(this.questions[this.questionIndex].ques_input===null){
-        this.selectans = {'ans1':false, 'ans2':false, 'ans3':false, 'ans4':false};
-        this.bottombutton =  {'nextgrey':true, 'submit':false,'nextsubmit':false};
-        if(index===1){
-          this.selectans.ans1 = true;
-          this.selected_ans = 1;
-        }
-        else if(index===2){
-          this.selectans.ans2 = true;
-          this.selected_ans = 2;
-        }
-        else if(index===3){
-          this.selectans.ans3 = true;
-          this.selected_ans = 3;
+          this.selectans = {'ans1':false, 'ans2':false, 'ans3':false, 'ans4':false};
+          this.bottombutton =  {'nextgrey':true, 'submit':false,'nextsubmit':false};
+          if(index===1){
+            this.selectans.ans1 = true;
+            this.selected_ans = 1;
+          }
+          else if(index===2){
+            this.selectans.ans2 = true;
+            this.selected_ans = 2;
+          }
+          else if(index===3){
+            this.selectans.ans3 = true;
+            this.selected_ans = 3;
+          }else{
+            this.selectans.ans4 = true;
+            this.selected_ans = 4;
+          }
+          this.bottombutton =  {'nextgrey':false, 'submit':true,'nextsubmit':false};
         }else{
-          this.selectans.ans4 = true;
-          this.selected_ans = 4;
+          this.selected_ans = this.questions[this.questionIndex].ques_input;
+          this.bottombutton =  {'nextgrey':true, 'submit':false,'nextsubmit':false};
         }
-        this.bottombutton =  {'nextgrey':false, 'submit':true,'nextsubmit':false};
-      }
     },
     submit_question_request: function(){
       this.pause();
@@ -453,6 +455,17 @@ new Vue({
     },
     submit_question: function(){
       var index = this.selected_ans;
+          if(index===1){
+            this.selectans.ans1 = true;
+          }
+          else if(index===2){
+            this.selectans.ans2 = true;
+          }
+          else if(index===3){
+            this.selectans.ans3 = true;
+          }else{
+            this.selectans.ans4 = true;
+          }
       if(this.questions[this.questionIndex].ques_ans!==this.selected_ans){
         if(index===1){
           this.incorrectans.ans1 = true;
@@ -484,18 +497,18 @@ new Vue({
 
     },
     reset: function() {
-      this.$data.state = "started";
-      this.$data.startTime = Date.now();
-      this.$data.currentTime = Date.now();
+      this.state = "started";
+      this.startTime = Date.now();
+      this.currentTime = Date.now();
     },
     pause: function() {
-        this.$data.state = "paused";
+        this.state = "paused";
     },
     resume: function() {
-        this.$data.state = "started";
+        this.state = "started";
     },
     updateCurrentTime: function() {
-        if (this.$data.state == "started") {
+        if (this.state === "started") {
             this.currentTime = Date.now();
         }
     },
