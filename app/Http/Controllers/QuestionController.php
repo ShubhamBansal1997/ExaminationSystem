@@ -216,8 +216,8 @@ class QuestionController extends Controller
     public function get_all_questions()
     {
         $data = array();
-        $sub_id = 1;
-        $chap_id = 3;
+        $sub_id = 2;
+        $chap_id = 60;
         $user_email = 'shubhambansal17@hotmail.com';
         $chap_name = Chapters::where('chap_id',$chap_id)->first();
         $chap_name = $chap_name->chap_name;
@@ -225,7 +225,7 @@ class QuestionController extends Controller
                             ->where('chap_id',$chap_id)
                             ->get();
         $user = Users::where('email',$user_email)->first();
-        $i=1;
+        $i=0;
         foreach($query as $question)
         {
             $ques = array();
@@ -277,4 +277,40 @@ class QuestionController extends Controller
 
 
     }
+    public function all_ques_pks()
+    {
+        $data = array();
+        $sub_id = 2;
+        $chap_id = 3;
+        $query = Questions::where('sub_id',$sub_id)
+                            ->where('chap_id',$chap_id)
+                            ->get();
+        foreach($query as $question){
+            array_push($data, $question->ques_id);
+        }
+        $response = [
+            'data' => $data
+        ];
+        return response()->json($response);
+    }
+    public function getsinglequestion(Request $request)
+    {
+        $ques_id = $request->input('ques_id');
+        $email = $request->input('email');
+        $question = Questions::where('ques_id', $ques_id)->first();
+        $attempt = Questions_attempt::where('ques_id',$ques_id)
+                                        ->where('user_email',$email)
+                                        ->first();
+        if($attempt!=NULL){
+            $question["ques_input"] = $attempt->ques_input;
+        }else{
+            $question["ques_input"] = null;
+        }
+        $response = [
+            'data' => $question
+        ];
+        return response()->json($response);
+
+    }
+    
 }

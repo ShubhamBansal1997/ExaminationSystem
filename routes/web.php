@@ -214,3 +214,7 @@ Route::get('/samplequestionpage',function(){
   return view('questionpage');
 });
 
+# api routes
+Route::get('/api/allpks', 'QuestionController@all_ques_pks');
+Route::post('/api/singlequestion', 'QuestionController@getsinglequestion');
+
