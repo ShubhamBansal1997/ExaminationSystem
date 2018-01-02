@@ -20,9 +20,10 @@
     }
   </style>
 <body >
-<img class="spinner" src="https://i1.wp.com/cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif" alt="Loading ..." v-show='loading==true'>
 
   <div id="starting">
+  <img class="spinner" src="https://i1.wp.com/cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif" alt="Loading ..." v-show='loading===true'>
+
     <!-- react-text: 2 -->
     <!-- /react-text -->
     <!-- react-text: 3 -->
@@ -61,22 +62,20 @@
           </button>
           <div class="testTool_topBar_timer js-header-timer" style="display: block;">
             <div class="testTool_topBar_timer_title js-timer-title">Time Elapsed</div>
-            <div class="testTool_topBar_timer_val">
-              <span class="js-test-timer-hours">1</span>
+            <div class="testTool_topBar_timer_val" v-html="time"  >
+              <span class="js-test-timer-hours"></span>
               <!-- react-text: 49 -->:
-              <!-- /react-text --><span class="js-test-timer-minutes">1</span>
+              <!-- /react-text --><span class="js-test-timer-minutes"></span>
               <!-- react-text: 51 -->:
-              <!-- /react-text --><span class="js-test-timer-seconds">59</span></div>
+              <!-- /react-text --><span class="js-test-timer-seconds">/span></div>
           </div>
-          <button v-if='currentQuestion.ques_level==1' class="testTool_topBar_stateBtn -strk js-btn-finish-assessment difficulty-btn">EASY</button>    
-          <button v-else-if='currentQuestion.ques_level==2' class="testTool_topBar_stateBtn -strk js-btn-finish-assessment difficulty-btn">MEDIUM</button>    
-          <button v-else class="testTool_topBar_stateBtn -strk js-btn-finish-assessment difficulty-btn">DIFFICULT</button>    
-          <button v-if='currentQuestion.ques_imp==1' class="testTool_topBar_stateBtn -strk js-btn-finish-assessment difficulty-btn">IMPORTANT</button>
-          <h1 class="testTool_topBar_title">@{{ basic.chap_name }}</h1>
+          <button class="testTool_topBar_stateBtn -strk js-btn-finish-assessment difficulty-btn">@{{{ level }}}</button>     
+          <button v-if='imp==1' class="testTool_topBar_stateBtn -strk js-btn-finish-assessment difficulty-btn">IMPORTANT</button>
+          <h1 class="testTool_topBar_title">@{{{ basic.chap_name }}}</h1>
         </div>
       </div>
     </div>
-    <div v-for='currentQuestion in questions'>
+    <div v-for='currentQuestion in questions' v-show='loading!==true'>
     <div class="testTool_contentArea js-content-area" v-show='currentQuestion.s_no == questionIndex'>
       <div class="testTool_quesWrapper pv-60 js-ques-wrapper">
         <div class="ques_item fade-out js-question fade-in" id="ques-1" data-id="250772" data-style="single correct" data-solution-available="0" data-already-attempted="0" data-correctly-answered="0" data-seen="0" data-action="true" data-n-selected-choices="0">
@@ -230,9 +229,42 @@ new Vue({
     bottombutton: {'nextgrey':true, 'submit':false,'nextsubmit':false},
     selected_ans: null,
     loading: false,
+    level: null,
+    imp: true,
+    state: "started",
+    startTime: Date.now(),
+    currentTime: Date.now(),
+    interval: null
   },
   mounted: function(){
     this.getQuestions();
+    this.interval = setInterval(this.updateCurrentTime, 1000);    
+  },
+  destroyed: function() {
+    clearInterval(this.interval)
+  },
+  computed: {
+    time: function() {
+        return this.hours + ':' + this.minutes + ':' + this.seconds;
+    },
+    milliseconds: function() {
+        return this.currentTime - this.$data.startTime;
+    },
+    hours: function() {
+        var lapsed = this.milliseconds;
+        var hrs = Math.floor((lapsed / 1000 / 60 / 60));
+        return hrs >= 10 ? hrs : '0' + hrs;
+    },
+    minutes: function() {
+        var lapsed = this.milliseconds;
+        var min = Math.floor((lapsed / 1000 / 60) % 60);
+        return min >= 10 ? min : '0' + min;
+    },
+    seconds: function() {
+        var lapsed = this.milliseconds;
+        var sec = Math.ceil((lapsed / 1000) % 60);
+        return sec >= 10 ? sec : '0' + sec;
+    }
   },
   methods: {
     getQuestions: function() {
@@ -244,6 +276,7 @@ new Vue({
             this.basic = response.data.basic;
             this.loading = false;
             this.analyze();
+            this.reset();
           })
           .catch((err) => {
             console.log(err);
@@ -252,6 +285,18 @@ new Vue({
     },
     analyze: function(){
       if(this.questions[this.questionIndex].ques_input!=null){
+        if(this.questions[this.questionIndex].ques_level===1){
+          this.level = 'EASY';
+        }else if(this.questions[this.questionIndex].ques_level===2){
+          this.level = 'MEDIUM';
+        }else{
+          this.level = 'DIFFICULT';
+        }
+        if(this.questions[this.questionIndex].ques_imp===1){
+          this.imp = 1;
+        }else{
+          this.imp = 0;
+        }
         this.attempt(this.questions[this.questionIndex].ques_input);
         this.submit_question();
       }
@@ -302,6 +347,7 @@ new Vue({
       }
     },
     submit_question_request: function(){
+      this.pause();
       this.questions[this.questionIndex].ques_input = this.selected_ans;
       if(this.questions[this.questionIndex].ques_ans!==this.selected_ans)
         var ques_status = 'correct';
@@ -321,6 +367,7 @@ new Vue({
           .then((response) => {
             
             this.submit_question();
+            this.resume();
           })
           .catch((err) => {
             this.loading = false;
@@ -358,7 +405,23 @@ new Vue({
       this.loading = false;
 
 
-    }
+    },
+    reset: function() {
+      this.$data.state = "started";
+      this.$data.startTime = Date.now();
+      this.$data.currentTime = Date.now();
+    },
+    pause: function() {
+        this.$data.state = "paused";
+    },
+    resume: function() {
+        this.$data.state = "started";
+    },
+    updateCurrentTime: function() {
+        if (this.$data.state == "started") {
+            this.currentTime = Date.now();
+        }
+    } 
 
 
   }
