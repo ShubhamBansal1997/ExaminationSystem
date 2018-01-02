@@ -11,29 +11,18 @@
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 </head>
-<style>
-    @font-face { font-family: Lato, "sans-serif"; }
-    .spinner {
-      margin: auto;
-      position: absolute;
-      top: 0; left: 0; bottom: 0; right: 0;
-    }
-  </style>
 <body >
 
   <div id="starting">
-  <img class="spinner" src="https://i1.wp.com/cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif" alt="Loading ..." v-show='loading===true'>
-
     <!-- react-text: 2 -->
     <!-- /react-text -->
     <!-- react-text: 3 -->
     <!-- /react-text -->
-    <div class="testTool_logoBlock"><img src="#" alt="Neet-guru-mantra Logo" style="height: 35px; margin-top: 12.5px;"></div>
+    <div class="testTool_logoBlock"><img src="{{ URL::asset('home/v2/topprweb/images/logo.png') }}" alt="Neet-guru-mantra Logo" style="height: 35px; margin-top: 12.5px;"></div>
     <div class="testTool_sideBar testTool_sideBar-tillBottom js-sidebar">
       <div class="goalsList mt-15 testTool_goalList js-goals-list pl-30">
         <div class="testTool_sideBar_sHeading mb-20">Goals</div>
         <div class="pr-30">
-
           <div v-for='currentQuestion in questions' class="goalsList_goal goalsList_goal-small goalsList_goal-animate js-goal" data-goal_id="63829" data-progress="0">
             <div class="goalsList_goal_num goalsList_goal_num-small">@{{{ currentQuestion.ques_id }}}</div>
             <div class="goalsList_goal_content goalsList_goal_content-small">
@@ -48,7 +37,6 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
       <div class="testTool_sideBar_overlay js-sidebar-overlay"></div>
@@ -56,7 +44,7 @@
     <div>
       <div class="testTool_topBar">
         <div class="testTool_topBar_container cf">
-          <button class="testTool_topBar_stateBtn -strk js-btn-finish-assessment">
+          <button class="testTool_topBar_stateBtn -strk js-btn-finish-assessment" v-on:click="pause_session()">
             <i class="fa fa-pause"></i>
             <span class="testTool_topBar_stateBtn_text">Pause</span>
           </button>
@@ -75,7 +63,7 @@
         </div>
       </div>
     </div>
-    <div v-for='currentQuestion in questions' v-show='loading!==true'>
+    <div v-for='currentQuestion in questions'>
     <div class="testTool_contentArea js-content-area" v-show='currentQuestion.s_no == questionIndex'>
       <div class="testTool_quesWrapper pv-60 js-ques-wrapper">
         <div class="ques_item fade-out js-question fade-in" id="ques-1" data-id="250772" data-style="single correct" data-solution-available="0" data-already-attempted="0" data-correctly-answered="0" data-seen="0" data-action="true" data-n-selected-choices="0">
@@ -187,13 +175,100 @@
         v-else-if='bottombutton.submit==true' 
         v-on:click='submit_question_request()'>SUBMIT</div>
       <div class="testTool_btmBar_loadingView hide js-loading-view-bottom">
-        <div class="loadingDots loadingDots-h15 ma testTool_btmBar_loadingView_dots">
-        <span class="loadingDots_dot loadingDots_dot-d1"></span>
-        <span class="loadingDots_dot loadingDots_dot-d2"></span>
-        <span class="loadingDots_dot loadingDots_dot-d3"></span>
-          <div class="clr"></div>
+      </div>
+    </div>
+    <div class="testTool_loadingView table js-loading-view" v-show="loading===true">
+      <div class="table-row">
+        <div class="table-cell am">
+          <div class="testTool_loadingView_modal p-20">
+            <h2 class="h3 ac js-loading-title">Loading Questions</h2>
+            <div class="loadingDots loadingDots-h10 ma mt-20 mb-10 js-loading-dots">
+              <span class="loadingDots_dot loadingDots_dot-d1"></span>
+              <span class="loadingDots_dot loadingDots_dot-d2"></span>
+              <span class="loadingDots_dot loadingDots_dot-d3"></span>
+              <div class="clr"></div>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+    <div v-show='pauseSession===true'>
+        <div class="mdOverlay is-visible" ref="modalOverlay"></div>
+        <div>
+          <div class="md mdTestPause js-test-pause-modal is-visible">
+            <div class="p-40 pt-35 js-content-area phn-p-20">
+              <h3 class="heading heading-bordered h3 bold">
+                <i class="fa fa-pause mr-5"></i> Session Paused
+              </h3>
+              <div class="js-loading mdTestPause_message ac mt-150 hide">
+                  Loading ...
+              </div>
+              <div class="js-hide">
+                <div class="mdTestPause_countsList mt-5 fl">
+                  <div class="mdTestPause_countsList_item pb-10">
+                    <div class="mdTestPause_countsList_title">Question</div>
+                  </div>
+                  <div class="mdTestPause_countsList_item">
+                    <div class="mdTestPause_countsList_label color-green">
+                        Answered Correct
+                    </div>
+                    <div class="mdTestPause_countsList_count js-correct-ans">@{{{correct}}}</div>
+                  </div>
+                  <div class="mdTestPause_countsList_item">
+                    <div class="mdTestPause_countsList_label color-orange">
+                        Answered Wrong
+                    </div>
+                    <div class="mdTestPause_countsList_count js-wrong-ans">@{{{incorrect}}}</div>
+                  </div>
+                  <div class="mdTestPause_countsList_item">
+                    <div class="mdTestPause_countsList_label color-base">Skipped</div>
+                    <div class="mdTestPause_countsList_count js-skip">@{{{skip}}}</div>
+                  </div>
+                </div>
+                <div class="mdTestPause_countsList mt-5 fr">
+                  <div class="mdTestPause_countsList_item pb-10">
+                    <div class="mdTestPause_countsList_title">Stats</div>
+                  </div>
+                  <div class="mdTestPause_countsList_item">
+                    <div class="icn icn-accuracy-48 fl"></div>
+                    <div class="mdTestPause_stats">
+                        <div class="mdTestPause_stats_content js-accuracy" >@{{{accuracy}}} %</div>
+                        <div class="mdTestPause_stats_label">Accuracy</div>
+                    </div>
+                  </div>
+                  <div class="mdTestPause_countsList_item">
+                    <div class="icn icn-speed-48 fl"></div>
+                    <div class="mdTestPause_stats">
+                        <div class="mdTestPause_stats_content js-avg-time" v-html="time">
+                            
+                        </div>
+                        <div class="mdTestPause_stats_label">
+                            Time Elapsed
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="clr"></div>
+                <div class="mdTestPause_message ac mt-20">
+                    <div>You have attempted <span class="js-ques-attempted"><strong>@{{{correct + incorrect}}}</strong> question</span>.</div>
+                    A topper attempts <strong>123</strong> questions in each session.
+                </div>
+              </div>
+            </div>
+            <div class="md_footer ph-40 pv-20 clearfix">
+                <a href="//portal.neetgurumantra.com/user/dashboard" class="button button-green button-big fr js-btn-finish">Back to Homepage</a>
+                <a class="button button-grey button-big fr mr-20 js-btn-resume" v-on:click="resume_session()">Resume Session</a>
+            </div>
+            <div class="md_loadingOverlay js-loading-overlay">
+              <div class="loadingDots loadingDots-h15">
+                <span class="loadingDots_dot loadingDots_dot-d1" />
+                <span class="loadingDots_dot loadingDots_dot-d2" />
+                <span class="loadingDots_dot loadingDots_dot-d3" />
+                <div class="clr"></div>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 <!-- jQuery -->
@@ -234,7 +309,12 @@ new Vue({
     state: "started",
     startTime: Date.now(),
     currentTime: Date.now(),
-    interval: null
+    interval: null,
+    pauseSession: false,
+    correct: null,
+    incorrect: null,
+    skip: null,
+    accuracy: null,
   },
   mounted: function(){
     this.getQuestions();
@@ -320,9 +400,6 @@ new Vue({
     // Go to previous question
     prev: function() {
       this.questionIndex--;
-    },
-    correct: function(index) {
-      return true;
     },
     attempt: function(index) {
         if(this.questions[this.questionIndex].ques_input===null){
@@ -421,7 +498,33 @@ new Vue({
         if (this.$data.state == "started") {
             this.currentTime = Date.now();
         }
-    } 
+    },
+    pause_session: function(){
+      this.pause();
+      var correct = 0, incorrect = 0, skip = 0;
+      for (var i = 0; i < this.questions.length; i++) {
+        if(this.questions[i].ques_input===null){
+          skip++;
+        }else{
+          if(this.questions[i].ques_input===this.questions[i].ques_ans){
+            correct++;
+          }else{
+            incorrect++;
+          }
+        }
+      }
+      this.pauseSession = true;
+      this.correct = correct;
+      this.incorrect = incorrect;
+      this.skip = skip;
+      this.accuracy = parseInt(((this.correct)/(this.correct+this.incorrect))*100);
+    },
+    resume_session: function(){
+      this.pauseSession = false;
+      this.resume();
+      this.updateCurrentTime();
+
+    }
 
 
   }
