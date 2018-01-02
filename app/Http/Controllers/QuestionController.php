@@ -217,7 +217,7 @@ class QuestionController extends Controller
     {
         $data = array();
         $sub_id = 2;
-        $chap_id = 60;
+        $chap_id = 59;
         $user_email = 'shubhambansal17@hotmail.com';
         $chap_name = Chapters::where('chap_id',$chap_id)->first();
         $chap_name = $chap_name->chap_name;
