@@ -201,29 +201,53 @@ class QuestionController extends Controller
                           ->get();
         return response()->json($query);
     }
-    public function question_page(Request $request)
+    public function question_page($sub_id, $chap_id, $ques_cat)
     {
-
-        $sub_id = $request->input('sub_id');
-        $chap_id = $request->input('chap_id');
-        $ques_cat = $request->input('ques_cat');
-        $email = "shubhambansal17@hotmail.com";
+        $email = Session::get('email');
         $query = Chapters::where('chap_id',$chap_id)->first();
         $chap_name = $query->chap_name;
         return view('pages.qpage',compact('sub_id','chap_id','ques_cat','email','chap_name'));
 
     }
-    public function get_all_questions()
+    public function get_all_questions(Request $request)
     {
         $data = array();
-        $sub_id = 2;
-        $chap_id = 59;
-        $user_email = 'shubhambansal17@hotmail.com';
+        $sub_id = $request->input('sub_id');
+        $chap_id = $request->input('chap_id');
+        $user_email = $request->input('user_email');
         $chap_name = Chapters::where('chap_id',$chap_id)->first();
         $chap_name = $chap_name->chap_name;
-        $query = Questions::where('sub_id',$sub_id)
-                            ->where('chap_id',$chap_id)
-                            ->get();
+        $ques_cat = $request->input('ques_cat');
+        if($ques_cat=='allques'){
+            $query = Question::where('sub_id',$sub_id)
+                                ->where('chap_id',$chap_id)
+                                ->get();
+        }elseif($ques_cat=='easy'){
+            $query = Question::where('sub_id',$sub_id)
+                                ->where('chap_id',$chap_id)
+                                ->where('ques_level',1)
+                                ->get();
+        }elseif($ques_cat=='medium'){
+            $query = Question::where('sub_id', $sub_id)
+                                -> where('chap_id', $chap_id)
+                                ->where('ques_level',2)
+                                ->get();
+        }elseif($ques_cat=='difficult'){
+            $query = Question::where('sub_id', $sub_id)
+                                ->where('chap_id', $chap_id)
+                                ->where('ques_level',3)
+                                ->get();
+        }elseif($ques_cat=='imp'){
+            $query = Question::where('sub_id', $sub_id)
+                                ->where('chap_id',$chap_id)
+                                ->where('ques_imp', 1)
+                                ->get();
+        }elseif($ques_cat=='ar'){
+            $query = Question::where('sub_id', $sub_id)
+                                ->where('chap_id', $chap_id)
+                                ->where('ques_ar', 1)
+                                ->get();
+        }
         $user = Users::where('email',$user_email)->first();
         $i=0;
         foreach($query as $question)
