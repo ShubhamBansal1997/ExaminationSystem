@@ -296,7 +296,7 @@ new Vue({
     email: '{{ $email }}',
     sub_id: {{ $sub_id }},
     chap_id: {{ $chap_id }},
-    ques_cat: {{ $ques_cat }},
+    ques_cat: '{{ $ques_cat }}',
     questions: {},
     question: {},
     question_attempt: {},
