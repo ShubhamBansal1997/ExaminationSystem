@@ -212,6 +212,7 @@ class QuestionController extends Controller
     public function get_all_questions($sub_id, $chap_id,$ques_cat)
     {
         $data = array();
+        $i=0;
         $user_email = Session::get('email');
         $chap_name = Chapters::where('chap_id',$chap_id)->first();
         $chap_name = $chap_name->chap_name;
