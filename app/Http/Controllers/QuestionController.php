@@ -281,7 +281,7 @@ class QuestionController extends Controller
             $user = Users::where('email',$user_email)->first();
             foreach($query as $question_attempt)
             {   
-                $question = Questions::where('ques_id',$question->ques_id)
+                $question = Questions::where('ques_id',$question_attempt->ques_id)
                                             ->first();
                 $ques = array();
                 $ques["s_no"] = $i;
