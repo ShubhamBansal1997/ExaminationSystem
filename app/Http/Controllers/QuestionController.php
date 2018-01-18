@@ -215,6 +215,112 @@ class QuestionController extends Controller
         $user_email = Session::get('email');
         $chap_name = Chapters::where('chap_id',$chap_id)->first();
         $chap_name = $chap_name->chap_name;
+        if($ques_cat=='correct'||$ques_cat=='incorrect'||$ques_cat=='unattempted'){
+            if($ques_cat=='correct'){
+                $query = Questions_attempt::where('sub_id', $sub_id)
+                                        ->where('chap_id', $chap_id)
+                                        ->where('user_email',$user_email)
+                                        ->where('ques_status','correct')
+                                        ->get();
+
+            }elseif($ques_cat=='incorrect'){
+                $query = Questions_attempt::where('sub_id', $sub_id)
+                                        ->where('chap_id', $chap_id)
+                                        ->where('user_email',$user_email)
+                                        ->where('ques_status','incorrect')
+                                        ->get();
+            }elseif($ques_cat=='unattempted'){
+                $query = Questions::where('sub_id', $sub_id)
+                                        ->where('chap_id', $chap_id)
+                                        ->get();
+                $user = Users::where('email',$user_email)->first();
+                foreach($query as $question){
+                    $attempt = Questions_attempt::where('ques_id',$question->ques_id)
+                                        ->where('user_email',$user_email)
+                                        ->first();
+                    if($attempt == null){
+                        $ques = array();
+                        $ques["s_no"] = $i;
+                        $i++;
+                        $ques["ques_id"] = $question->ques_id;
+                        if($question->o_id!=NULL)
+                            $ques["o_id"] = $question->o_id;
+                        else
+                            $ques["o_id"] = NULL;
+                        $ques["sub_id"] = $question->sub_id;
+                        $ques["chap_id"] = $question->chap_id;
+                        $ques["ques_exp"] = $question->ques_exp;
+                        $ques["ques_ans1"] = $question->ques_ans1;
+                        $ques["ques_ans2"] = $question->ques_ans2;
+                        $ques["ques_ans3"] = $question->ques_ans3;
+                        $ques["ques_ans4"] = $question->ques_ans4;
+                        $ques["ques_ans"] = $question->ques_ans;
+                        $ques["ques_sol"] = $question->ques_sol;
+                        $ques["ques_level"] = $question->ques_level;
+                        $ques["ques_imp"] = $question->ques_imp;
+                        $ques["ques_input"] = NULL;
+                        $ques["ques_cat"] = 'allques';
+                        $ques["user_id"] = $user->id;
+                        $ques["email"] = $user->email;
+                        $ques["mobile"] = $user->mobile;
+                        array_push($data, $ques);
+                    }
+                }
+                $response = [
+                    'data' => $data,
+                    'basic' => [
+                        'chap_name' => $chap_name,
+                        'subject' => 'Physics',
+                        'type' => 'Easy',
+                    ],
+                ];
+                return response()->json($response);
+
+            }
+            $user = Users::where('email',$user_email)->first();
+            foreach($query as $question_attempt)
+            {   
+                $question = Questions::where('ques_id',$question->ques_id)
+                                            ->first();
+                $ques = array();
+                $ques["s_no"] = $i;
+                $i++;
+                $ques["ques_id"] = $question->ques_id;
+                $ques["sub_id"] = $question->sub_id;
+                $ques["chap_id"] = $question->chap_id;
+                $ques["ques_exp"] = $question->ques_exp;
+                $ques["ques_ans1"] = $question->ques_ans1;
+                $ques["ques_ans2"] = $question->ques_ans2;
+                $ques["ques_ans3"] = $question->ques_ans3;
+                $ques["ques_ans4"] = $question->ques_ans4;
+                $ques["ques_ans"] = $question->ques_ans;
+                $ques["ques_sol"] = $question->ques_sol;
+                $ques["ques_level"] = $question->ques_level;
+                $ques["ques_imp"] = $question->ques_imp;
+                $ques["ques_input"] = $question->ques_input;
+                $ques["ques_cat"] = 'allques';
+                $ques["user_id"] = $user->id;
+                $ques["email"] = $user->email;
+                $ques["mobile"] = $user->mobile;
+                
+                
+                if($question->o_id!=NULL)
+                    $ques["o_id"] = $question->o_id;
+                else
+                    $ques["o_id"] = NULL;
+                $ques["ques_input"] = $question_attempt->ques_input;
+                array_push($data, $ques);
+            }
+            $response = [
+                'data' => $data,
+                'basic' => [
+                    'chap_name' => $chap_name,
+                    'subject' => 'Physics',
+                    'type' => 'Easy',
+                ],
+            ];
+            return response()->json($response);
+        }
         if($ques_cat=='allques'){
             $query = Questions::where('sub_id',$sub_id)
                                 ->where('chap_id',$chap_id)
