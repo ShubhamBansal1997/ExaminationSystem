@@ -216,31 +216,31 @@ class QuestionController extends Controller
         $chap_name = Chapters::where('chap_id',$chap_id)->first();
         $chap_name = $chap_name->chap_name;
         if($ques_cat=='allques'){
-            $query = Question::where('sub_id',$sub_id)
+            $query = Questions::where('sub_id',$sub_id)
                                 ->where('chap_id',$chap_id)
                                 ->get();
         }elseif($ques_cat=='easy'){
-            $query = Question::where('sub_id',$sub_id)
+            $query = Questions::where('sub_id',$sub_id)
                                 ->where('chap_id',$chap_id)
                                 ->where('ques_level',1)
                                 ->get();
         }elseif($ques_cat=='medium'){
-            $query = Question::where('sub_id', $sub_id)
+            $query = Questions::where('sub_id', $sub_id)
                                 -> where('chap_id', $chap_id)
                                 ->where('ques_level',2)
                                 ->get();
         }elseif($ques_cat=='difficult'){
-            $query = Question::where('sub_id', $sub_id)
+            $query = Questions::where('sub_id', $sub_id)
                                 ->where('chap_id', $chap_id)
                                 ->where('ques_level',3)
                                 ->get();
         }elseif($ques_cat=='imp'){
-            $query = Question::where('sub_id', $sub_id)
+            $query = Questions::where('sub_id', $sub_id)
                                 ->where('chap_id',$chap_id)
                                 ->where('ques_imp', 1)
                                 ->get();
         }elseif($ques_cat=='ar'){
-            $query = Question::where('sub_id', $sub_id)
+            $query = Questions::where('sub_id', $sub_id)
                                 ->where('chap_id', $chap_id)
                                 ->where('ques_ar', 1)
                                 ->get();
