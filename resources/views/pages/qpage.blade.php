@@ -353,7 +353,7 @@ new Vue({
     getQuestions: function() {
       self = this;
       this.loading = true;
-      this.$http.get(`/questions?sub_id=${this.sub_id}&chap_id=${this.chap_id}&user_email=${this.email}&ques_cat=${this.ques_cat}`)
+      this.$http.get(`/questions/${this.sub_id}/${this.chap_id}/${this.ques_cat}`)
           .then((response) => {
             this.questions = response.data.data;
             this.basic = response.data.basic;

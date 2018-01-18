@@ -209,7 +209,7 @@ Route::get('upload/image', function() {
     }
 });
 
-Route::get('/questions','QuestionController@get_all_questions')->middleware(['api','cors']);
+Route::get('/questions/{sub_id}/{chap_id}/{ques_cat}','QuestionController@get_all_questions')->middleware(['api','cors']);
 Route::get('/samplequestionpage',function(){
   return view('questionpage');
 });

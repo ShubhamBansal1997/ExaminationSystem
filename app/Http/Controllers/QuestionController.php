@@ -209,15 +209,12 @@ class QuestionController extends Controller
         return view('pages.qpage',compact('sub_id','chap_id','ques_cat','email','chap_name'));
 
     }
-    public function get_all_questions(Request $request)
+    public function get_all_questions($sub_id, $chap_id,$ques_cat)
     {
         $data = array();
-        $sub_id = $request->input('sub_id');
-        $chap_id = $request->input('chap_id');
-        $user_email = $request->input('user_email');
+        $user_email = Session::get('email');
         $chap_name = Chapters::where('chap_id',$chap_id)->first();
         $chap_name = $chap_name->chap_name;
-        $ques_cat = $request->input('ques_cat');
         if($ques_cat=='allques'){
             $query = Question::where('sub_id',$sub_id)
                                 ->where('chap_id',$chap_id)
