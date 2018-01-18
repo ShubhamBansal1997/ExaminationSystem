@@ -431,7 +431,7 @@ new Vue({
     submit_question_request: function(){
       this.pause();
       this.questions[this.questionIndex].ques_input = this.selected_ans;
-      if(this.questions[this.questionIndex].ques_ans!==this.selected_ans)
+      if(this.questions[this.questionIndex].ques_ans===this.selected_ans)
         var ques_status = 'correct';
       else
         var ques_status = 'incorrect';
