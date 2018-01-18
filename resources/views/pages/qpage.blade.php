@@ -293,7 +293,7 @@ new Vue({
   data: {
     currentQuestion: {},
     questionIndex: 0,
-    email: {{ $email }},
+    email: '{{ $email }}',
     sub_id: {{ $sub_id }},
     chap_id: {{ $chap_id }},
     ques_cat: {{ $ques_cat }},
