@@ -220,7 +220,6 @@ class DashboardController extends Controller
         'method' => 'required',
       ]);
     $user = Market::where('email',Session::get('memail'))->first();
-    return response()->json($user,200);
     $payout = new Market_Payout;
     $payout->name = $user->fname . ' ' . $user->lname;
     $payout->amount = $request->amount;
@@ -236,6 +235,11 @@ class DashboardController extends Controller
       'msg' => 'Payout request successfully generated' );
     return response()->json($msg, 200);
 
+  }
+
+  public function profile(Request $request) {
+    $user = Market::where('email', Session::get('memail'))->first();
+    return view('market.profile', compact('user'));
   }
 
 

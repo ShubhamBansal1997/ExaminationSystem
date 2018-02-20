@@ -172,6 +172,7 @@ Route::group(['namespace' => 'market', 'prefix' => 'marketing'], function () {
   Route::get('couponstatus/{id}','DashboardController@couponstatus');
   Route::get('deletecoupon/{id}','DashboardController@deletecoupon');
   Route::post('requestpayout','DashboardController@requestpayout')->middleware('web');
+  Route::get('profile','DashboardController@profile')->middleware('web');
 
 
 });
