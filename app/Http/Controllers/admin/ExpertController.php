@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Expert;
 use App\Expert_descrption;
 use App\Expert_payouts;
+use App\ExpertSlot;
+use App\ExpertBooking;
 use Validator;
 
 
@@ -46,6 +48,7 @@ class ExpertController extends Controller
           'password' => 'required',
           'id_proof_number' => 'required',
           'id_proof_file' => 'required|file',
+          'profile_pic' => 'required|file',
         ]);
       $expert = new Expert;
       $expert->first_name = $request->input('first_name');
@@ -57,6 +60,9 @@ class ExpertController extends Controller
       $expert->neet_rank = $request->neet_rank;
       $expert->aiims_rank = $request->aiims_rank;
       $expert->id_proof_file = $request->id_proof_number . '.' . $request->file('id_proof_file')->getClientOriginalName();
+      $expert->profile_pic = $request->id_proof_number . '.' . $request->file('profile_pic')->getClientOriginalName();
+
+      $request->file('profile_pic')->move(base_path() . '/public/images/profile_pic/', $expert->profile_pic);
       $request->file('id_proof_file')->move(base_path() . '/public/images/id_proof_expert/', $expert->id_proof_file);
       $expert->status = true;
       $status = $expert->save();
@@ -83,6 +89,11 @@ class ExpertController extends Controller
       {
         $expert->id_proof_file = $request->id_proof_number . '.' . $request->file('id_proof_file')->getClientOriginalName();
         $request->file('id_proof_file')->move(base_path() . '/public/images/id_proof_expert/', $expert->id_proof_file);
+      }
+      if($request->file('profile_pic')!=NULL)
+      {
+        $expert->profile_pic = $request->id_proof_number . '.' . $request->file('profile_pic')->getClientOriginalName();
+        $request->file('profile_pic')->move(base_path() . '/public/images/profile_pic/', $expert->profile_pic);
       }
       $status = $expert->save();
       return response()->json($status);
@@ -120,5 +131,32 @@ class ExpertController extends Controller
     public function list_expert_payouts()
     {
       return view('admin.pages.list_expert_payouts');
+    }
+
+    /** function to add the slot of the expert */
+    public function addslot(Request $request) {
+      $this->validate($request, [
+          'expert_id' => 'required',
+          'time' => 'required',
+        ]);
+      $expert = new ExpertSlot;
+      $expert->expert_id = $request->input('expert_id');
+      $expert->time = $request->input('time');
+      $status = $expert->save();
+      return response()->json($status);
+    }
+
+    /** function to delete the slot of the expert */
+    public function deleteSlot($id) {
+      $status = ExpertSlot::where('id', $id)->delete();
+      return response()->json($status);
+    }
+
+    /** function to fetch the slots of the
+    particular expert
+     */
+    public function fetchSlot($expert_id) {
+      $slots = ExpertSlot::where('expert_id', $expert_id)->get();
+      return response()->json($slots);
     }
 }

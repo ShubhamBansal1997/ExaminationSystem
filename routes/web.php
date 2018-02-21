@@ -11,17 +11,22 @@ use Illuminate\Support\Facades\Input;
 | to using a Closure or controller method. Build something great!
 |
 */
+
 use App\Helpers;
 use App\Coupons;
 Route::get('/', 'IndexController@index');
 Route::get('/allexperts', 'IndexController@allexperts');
+Route::get('/bookexpert/{name}/{pk}', 'IndexController@bookexpert');
 Route::get('login','IndexController@login');
 Route::post('login','IndexController@postLogin')->middleware('web');
 Route::get('register','IndexController@register');
 Route::get('logout','IndexController@logout');
 Route::post('register','IndexController@postregister')->middleware('web');
 Route::post('verifyotp','IndexController@verifyotp')->middleware('web');
-
+Route::get('neet', 'IndexController@neet')->middleware('web');
+Route::get('jipmer', 'IndexController@jipmer')->middleware('web');
+Route::get('aiims', 'IndexController@aiims')->middleware('web');
+Route::get('eamcet', 'IndexController@eamcet')->middleware('web');
 Route::get('payment','UserController@testing');
 Route::post('indipay/response','PaymentController@response');
 Route::get('paymentgateway/{price}/{couponcode?}','PaymentController@paymentgateway');
@@ -148,6 +153,9 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
   Route::delete('/deleteexpert/{id}','ExpertController@destroy_expert');
   Route::post('/updateexpert/{id}','ExpertController@update_expert');
   Route::post('/addExpertDescription','ExpertController@store_descrption');
+  Route::post('/addslot', 'ExpertController@addslot');
+  Route::get('/deleteslot/{id}', 'ExpertController@deleteSlot');
+  Route::get('/fetchslot/{id}', 'ExpertController@fetchSlot');
 
 
   Route::get('/expertdescrption','ExpertController@list_expert_descrption');

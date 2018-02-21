@@ -81,10 +81,10 @@
                     <li class="has_dropdown">
                         <a href="#" class="js-scroll-to-courses -strk" data-strk='{"e":"ui.tapped", "ui_element_name":"courses", "ui_context":"site_header"}'>Exams<span class="arrowDown"></span></a>
                         <ul class="topHeaderDropdownMenu">
-                            <li><a href="#" class="medical -ref -strk" data-ref="medtop" data-strk='{"e":"ui.tapped", "ui_element_name":"neet", "ui_context":"courses_site_header"}'>NEET</a></li>
-                            <li><a href="#" class="medical -ref -strk" data-ref="medtop" data-strk='{"e":"ui.tapped", "ui_element_name":"pre_medical", "ui_context":"courses_site_header"}'>AIIMS</a></li>
-                            <li><a href="#" class="medical -ref -strk" data-ref="medtop" data-strk='{"e":"ui.tapped", "ui_element_name":"aiims", "ui_context":"courses_site_header"}'>JIPMER</a></li>
-							<li><a href="#" class="medical -ref -strk" data-ref="medtop" data-strk='{"e":"ui.tapped", "ui_element_name":"aiims", "ui_context":"courses_site_header"}'>EAMCET</a></li>                        </ul>
+                            <li><a href="/neet" class="medical -ref -strk" data-ref="medtop" data-strk='{"e":"ui.tapped", "ui_element_name":"neet", "ui_context":"courses_site_header"}'>NEET</a></li>
+                            <li><a href="/aiims" class="medical -ref -strk" data-ref="medtop" data-strk='{"e":"ui.tapped", "ui_element_name":"pre_medical", "ui_context":"courses_site_header"}'>AIIMS</a></li>
+                            <li><a href="/jipmer" class="medical -ref -strk" data-ref="medtop" data-strk='{"e":"ui.tapped", "ui_element_name":"aiims", "ui_context":"courses_site_header"}'>JIPMER</a></li>
+							<li><a href="/eamcet" class="medical -ref -strk" data-ref="medtop" data-strk='{"e":"ui.tapped", "ui_element_name":"aiims", "ui_context":"courses_site_header"}'>EAMCET</a></li>                        </ul>
                     </li>
                     <li class="has_dropdown">
                         <a href="http://www.neetgurumantra.com/register" class="-ref -strk" data-ref="pricingtop" data-strk='{"e":"ui.tapped", "ui_element_name":"pricing", "ui_context":"site_header"}'>Pricing<span class="arrowDown"></span></a>

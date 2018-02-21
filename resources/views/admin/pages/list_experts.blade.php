@@ -52,6 +52,7 @@
                                         v-on:click.prevent="addDescription($event)">DESCRIPTION</button>
                                       <button data-id="{{ $expert->id }}" v-on:click.prevent="deleteExpert($event)" class="btn btn-xs btn-danger">DELETE</button>
                                       <button data-id="{{ $expert->id }}" v-on:click.prevent="editExpert($event)" class="btn btn-xs btn-warning">EDIT</button>
+                                      <button data-id="{{ $expert->id }}" v-on:click.prevent="fetchSlot($event)" class="btn btn-xs btn-info">Slot</button>
                                       </td>
                                     </tr>
                                     @endforeach
@@ -113,6 +114,14 @@
                                             <span v-if="formErrors['id_proof_file']" class="error text-danger">
                                             @{{ formErrors['id_proof_file'] }}</span>
                                           </div>
+
+                                          <div class="form-group">
+                                            <label for="profile_pic">Profile Pic:</label>
+                                            <input type="file" name="profile_pic" class="form-control" v-model="newExpert.profile_pic" />
+                                            <span v-if="formErrors['profile_pic']" class="error text-danger">
+                                            @{{ formErrors['profile_pic'] }}</span>
+                                          </div>
+
                                           <div class="form-group">
                                             <label for="neet_rank">Neet Rank</label>
                                             <input type="text" name="neet_rank" class="form-control" v-model="newExpert.neet_rank" />
@@ -353,6 +362,43 @@
                                     </div>
                                   </div>
                                   <!-- end of the add expert description modal -->
+                                  <!-- view  Expert Slots Modal -->
+                                  <div class="modal fade" id="view-slot" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                          <h4 class="modal-title" id="myModalLabel">Expert Slots</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                          <div class="row">
+                                            <div class="col-sm-12 nopadding" v-for="slot in slots">
+                                              <div class="form-group">
+                                                <div class="input-group">
+                                                  <input type="text" disabled="disabled" class="form-control" value="@{{ slot.time }}">
+                                                  <div class="input-group-btn">
+                                                    <button class="btn btn-danger" type="button"  v-on:click="removeSlot(slot.id)"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> </button>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="col-sm-12 nopadding">
+                                              <div class="form-group">
+                                                <div class="input-group">
+                                                  <input type="text" class="form-control" v-model="time" placeholder="1:00AM to 1:30AM">
+                                                  <div class="input-group-btn">
+                                                    <button class="btn btn-success" type="button"  v-on:click="addSlot()"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!-- end of the view expert slots modal -->
+                              </div>
 
                             </div>
                         </div>
@@ -402,11 +448,15 @@ new Vue({
     formErrors:{},
     formErrorsUpdate:{},
     formErrorsDescrption:{},
-    newExpert: {'first_name':'', 'last_name':'', 'phone_number':'', 'email_id':'', 'password':'', 'id_proof_number':'', 'id_proof_file':'', 'neet_rank':'', 'aiims_rank':'' },
+    newExpert: {'first_name':'', 'last_name':'', 'phone_number':'', 'email_id':'', 'password':'', 'id_proof_number':'', 'id_proof_file':'', 'neet_rank':'', 'aiims_rank':'', 'profile_pic': '' },
     fillExpert: {'first_name':'', 'last_name':'', 'phone_number':'', 'email_id':'', 'password':'', 'id_proof_number':'', 'id_proof_file':'','id':'', 'neet_rank':'', 'aiims_rank':'' },
     id: null,
     ExpertDescrption: {'expert_id':'', 'profile_pic':'', 'benefit_percentage':'', 'availability':'', 'bank_account_number':'', 'bank_ifsc_code':'', 'bank_type':'', 'quote':'', 'preferred_language':'', 'charges':'', 'details':''},
     loading: false,
+    slots: [],
+    expert_id: null,
+    time: null,
+
   },
 
   methods: {
@@ -416,7 +466,7 @@ new Vue({
       console.log(formData);
       //var input = JSON.stringify(this.newExpert);
       this.$http.post('/admin/createexpert', formData).then((response) => {
-          this.newExpert = {'first_name':'', 'last_name':'', 'phone_number':'', 'email_id':'', 'password':'', 'id_proof_number':'', 'id_proof_file':'', 'neet_rank':'', 'aiims_rank':'' };
+          this.newExpert = {'first_name':'', 'last_name':'', 'phone_number':'', 'email_id':'', 'password':'', 'id_proof_number':'', 'id_proof_file':'', 'neet_rank':'', 'aiims_rank':'', 'profile_pic': '' };
           $('#create-expert').modal('hide');
           toastr.success('Expert Created Successfully.', 'Success Alert', {timeOut: 5000});
           location.reload();
@@ -490,6 +540,43 @@ new Vue({
       }, (response) => {
           this.formErrors = response.data;
       });
+   },
+   dataSlot: function(id) {
+    this.$http.get(`/admin/fetchslot/${id}`)
+        .then((response) => {
+          this.slots = response.data;
+          $("#view-slot").modal('show');
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+   },
+   fetchSlot: function(event) {
+    this.expert_id = event.currentTarget.getAttribute('data-id');
+    $("#view-slot").modal('hide');
+    this.dataSlot(this.expert_id);
+   },
+   addSlot: function() {
+    let data = {
+      'expert_id': this.expert_id,
+      'time': this.time
+    };
+    this.$http.post('/admin/addslot', data)
+        .then((response) => {
+          this.dataSlot(this.expert_id);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+   },
+   removeSlot: function(id) {
+      this.$http.get(`/admin/deleteslot/${id}`)
+          .then((response) => {
+            this.dataSlot(this.expert_id);
+          })
+          .catch((err) => {
+            console.log(err);
+          })
    }
   }
 

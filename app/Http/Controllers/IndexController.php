@@ -8,6 +8,7 @@ use App\Users;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use App\Expert;
+use App\Expert_descrption;
 
 class IndexController extends Controller
 {
@@ -193,7 +194,32 @@ class IndexController extends Controller
 
     public function allexperts()
     {
-      $expert = Expert::all();
-      return view('allexperts', compact('expert'));
+      $experts = Expert::all();
+      return view('allexperts', compact('experts'));
     }
+
+    public function neet()
+    {
+      return view('pages.neet');
+    }
+
+    public function jipmer() {
+      return view('pages.jipmer');
+    }
+
+    public function aiims() {
+      return view('pages.aiims');
+    }
+
+    public function eamcet() {
+      return view('pages.eacmet');
+    }
+    public function bookexpert($name, $pk) {
+      $expert = Expert::where('id', $pk)->first();
+      $expert_descrption = Expert_descrption::where('expert_id', $pk)->firstOrFail();
+      $expert_slots = ExpertSlot::where('expert_id', $pk)->get();
+      return view('singleexpert', compact('expert', 'expert_descrption', 'expert_slots'));
+    }
+
 }
+

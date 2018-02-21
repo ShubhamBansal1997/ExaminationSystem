@@ -65,33 +65,65 @@
     </nav>
 
     <div class="container">
-        <div id='exam-heading' class="mt-5 ">
-      <h1 class="secondary-color display-4 mb-4">Book a guidence session by NEET/AIIMS Topper</h1>
-            <h4 class="grey-color mb-4">Choose your expert</h4>
+        <div id='exam-heading' class="mt-5">
+            <h1 class="secondary-color display-4">Guidance Session</h1>
         </div>
-        <!--div class="card" style="width: 20rem;">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-block">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div-->
-        <div class="row grey-color">
-            @foreach($experts as $expert)
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                <div class="card">
-                  <img class="card-img-top img-fluid" src="{{ $expert->profile_pic }}" alt="Card image cap">
-                  <div class="card-block">
-                    <h4 class="grey-color">{{ $expert->first_name }} {{ $expert->last_name }}</h4>
-                    <p class="mb-0 pb-0 grey-color font-9"><b>Rank in NEET: </b> {{ $expert->neet_rank }}</p>
-                    <p class="mt-0 pt-0 mb-0 pb-0 font-9"><b>Rank in AIIMS: </b> {{ $expert->aiims_rank }}</p>
-                    <p class="mt-0 pt-0 font-9"><b>Availability: </b> Available</p>
-                    <a class="btn btn-orange" href="{{ URL::to('bookexpert')}}/{{ $expert->first_name}}/{{ $expert->id }}">BOOK NOW</a>
-                  </div>
+
+        <div class="row mt-5 grey-color">
+            <div class='col-md-4'>
+                <div class="fixed">
+                    <div id='expert-img'>
+                        <img class="d-block img-fluid" src="{{ $expert->profile_pic }}" alt="First slide">
+                    </div>
+                    <h3 class="pt-2 mt-2">{{ $expert->first_name }} {{ $expert->last_name }}</h3>
+                    <p><b>Rank in NEET: </b> {{ $expert->neet_rank }}</p>
+                    <p><b>Rank in AIIMS: </b> {{ $expert->aiims_rank }}</p>
+                    <p><b>Preferred Langauge: </b> {{ $expert_description->preferred_language }}</p>
+                    <i>{{ $expert_description->quote }}</i>
                 </div>
             </div>
-            @endforeach
+            <div class='offset-md-1 col-md-7 grey-color'>
+                <div>
+                    <h4 class="mb-3">Book your slot now!</h4>
+
+                    <p><b>Guidance Session: </b> 30 minutes</p>
+                    <p><b>Cost: </b> Rs. {{ $expert_description->charges }}</p>
+
+                    <div class='form-group'>
+                        <label for="name">Name</label>
+                        <input type='text' class="form-control" id='name'>
+                    </div>
+                    <div class='form-group'>
+                        <label for="email">Email</label>
+                        <input type='text' class="form-control" id='email'>
+                    </div>
+                    <div class='form-group'>
+                        <label for="phone">Phone</label>
+                        <input type='text' class="form-control" id='phone'>
+                    </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class='form-group'>
+                                    <label for="phone">Date</label>
+                                    <input type="text" class="form-control" id="expert-date"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class='form-group'>
+                                    <label for="phone">Time</label>
+                                    <input type="text" id="expert-time" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    <div class='form-group'>
+                        <label for="phone">Add promo code</label>
+                        <input type='text' class="form-control" id='phone'>
+                    </div>
+                    <div class='form-group'>
+                        <input type='submit' value="Book Now" class="btn btn-orange">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

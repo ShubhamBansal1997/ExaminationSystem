@@ -8,7 +8,7 @@ class Expert extends Model
 {
     public $timestamps='true';
     protected $table='experts';
-    protected $fillable = ['first_name', 'last_name', 'phone_number', 'email_id', 'password', 'id_proof_number', 'id_proof_file', 'neet_rank', 'aiims_rank' ];
+    protected $fillable = ['first_name', 'last_name', 'phone_number', 'email_id', 'password', 'id_proof_number', 'id_proof_file', 'neet_rank', 'aiims_rank', 'profile_pic' ];
 
     public function expert_descrption()
     {
