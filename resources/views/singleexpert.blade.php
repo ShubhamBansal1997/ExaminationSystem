@@ -22,7 +22,8 @@
         <link rel="stylesheet" href="{{ asset('new_asset/bootstrap/dist/css/bootstrap.min.css') }}">
         <link href="{{ asset('new_asset/custom.css') }}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('new_asset/timepicker/jquery.timepicker.css') }}" rel="stylesheet" type="text/css"/>
-        <title>All Experts</title>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <title>Experts</title>
     </head>
     <body class="h-full">
 
@@ -88,40 +89,45 @@
 
                     <p><b>Guidance Session: </b> 30 minutes</p>
                     <p><b>Cost: </b> Rs. {{ $expert_description->charges }}</p>
-
+                <form v-on:submit.prevent="addBooking()">
                     <div class='form-group'>
                         <label for="name">Name</label>
-                        <input type='text' class="form-control" id='name'>
+                        <input class="form-control" v-model='newBooking.name' type="text" required="required">
                     </div>
                     <div class='form-group'>
                         <label for="email">Email</label>
-                        <input type='text' class="form-control" id='email'>
+                        <input type='text' class="form-control" v-model='newBooking.email' required="required">
                     </div>
                     <div class='form-group'>
                         <label for="phone">Phone</label>
-                        <input type='text' class="form-control" id='phone'>
+                        <input type='text' class="form-control" v-model='newBooking.phone' required="required">
                     </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class='form-group'>
                                     <label for="phone">Date</label>
-                                    <input type="text" class="form-control" id="expert-date"/>
+                                    <input type="text" class="form-control" v-model="newBooking.date" required="required" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class='form-group'>
                                     <label for="phone">Time</label>
-                                    <input type="text" id="expert-time" class="form-control" />
+                                    <select class="form-control" v-model='newBooking.time'>
+                                    @foreach($slots as $i => $slot)
+                                    <option value="{{ $slot->time }}">{{ $slot->time }}</option>
+                                    @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>
                     <div class='form-group'>
-                        <label for="phone">Add promo code</label>
-                        <input type='text' class="form-control" id='phone'>
+                        <label for="promo">Add promo code</label>
+                        <input type="text" class="form-control" v-model="newBookin.promo" required="required">
                     </div>
                     <div class='form-group'>
                         <input type='submit' value="Book Now" class="btn btn-orange">
                     </div>
+                </form>
                 </div>
             </div>
         </div>
@@ -161,6 +167,35 @@
         $('.carousel').carousel();
         $('#expert-time').timepicker();
         $('#expert-date').datepicker();
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/vue.resource/0.9.3/vue-resource.min.js"></script>
+    <script>
+        Vue.http.headers.common['X-CSRF-TOKEN'] = $("#token").attr("value");
+Vue.http.options.emulateJSON = true;
+Vue.http.interceptors.push((request, next) => {
+    next((response) => {
+    // modify response
+    response.data = response.json()
+  })
+})
+new Vue({
+  el: 'body',
+
+  data: {
+    newBooking : {'name': '', 'email':'', 'phone': '', 'date': '', 'time': '', 'promo': ''},
+    phoneapprove: false,
+    dateapprove: false,
+
+  },
+
+  methods: {
+
+  }
+
+});
+
+</script>
     </script>
   </body>
 </html>{{ asset('new_asset/
