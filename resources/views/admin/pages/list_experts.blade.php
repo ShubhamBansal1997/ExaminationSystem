@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="page-header">All Experts</h1>
-                    <button class="btn btn-sm btn-success pull-right" data-toggle="modal" data-target="#create-expert" >Create Expert</button>
+                    <a href="{{ URL::to('/admin/addeditexpertpage/')}}" class="btn btn-sm btn-success pull-right" target="_blank">Create Expert</a>
 
                 </div>
                 <!-- /.col-lg-12 -->
@@ -32,27 +32,41 @@
                                         <th>Name</th>
                                         <th>Phone</th>
                                         <th>Email</th>
-                                        <th>Id Proof</th>
+                                        <th>Benefit</th>
+                                        <th>Tax</th>
+                                        <th>Duration</th>
+                                        <th>Account No (Type)  (ISFC)</th>
+                                        <th>Amount</th>
+                                        <th>Timing</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-
-
-                                     @foreach($experts as $i => $expert)
+                                 @foreach($experts as $i => $expert)
                                     <tr  class="odd gradeX">
-                                      <td>{{ $i }}</td>
+                                      <td>{{ $i + 1 }}</td>
                                       <td>{{ $expert->first_name }} {{ $expert->last_name }}</td>
-                                      <td>{{ $expert->phone_number }}</td>
-                                      <td>{{ $expert->email_id }}</td>
-                                      <td><a href="{{ URL::to('images/id_proof_expert/') }}/{{$expert->id_proof_file}}" target="_blank">{{ $expert->id_proof_number }}</td>
+                                      <td>{{ $expert->phone }}</td>
+                                      <td>{{ $expert->email }}</td>
+                                      <td>{{ $expert->expert_benefit_percentage }}</td>
+                                      <td>{{ $expert->tax_payment_gateway_charges }}</td>
+                                      <td>{{ $expert->duration }}</td>
+                                      <td>{{ $expert->bank_account_number }} ( {{ $expert->type_of_account }} ) ( {{ $expert->bank_ifsc_code }} )</td>
+                                      <td>{{ $expert->amount_to_be_paid }}</td>
+                                      <td>{{ $expert->timing_available }}</td>
+                                      <td>
+                                        @if($expert->status==1)
+                                        <button data-id="{{ $expert->id }}" v-on:click.prevent="updateStatus($event)" class="btn btn-xs btn-success">AVAILABLE</button>
+                                        @else
+                                        <button data-id="{{ $expert->id }}" v-on:click.prevent="updateStatus($event)" class="btn btn-xs btn-danger">UNAVAILABLE</button>
+                                        @endif
+                                      </td>
+
 
                                       <td>
-                                      <button data-id="{{ $expert->id }}" class="btn btn-xs btn-default"
-                                        v-on:click.prevent="addDescription($event)">DESCRIPTION</button>
                                       <button data-id="{{ $expert->id }}" v-on:click.prevent="deleteExpert($event)" class="btn btn-xs btn-danger">DELETE</button>
-                                      <button data-id="{{ $expert->id }}" v-on:click.prevent="editExpert($event)" class="btn btn-xs btn-warning">EDIT</button>
-                                      <button data-id="{{ $expert->id }}" v-on:click.prevent="fetchSlot($event)" class="btn btn-xs btn-info">Slot</button>
+                                      <a href="{{ URL::to('/admin/addeditexpertpage/')}}/{{ $expert->id }}" class="btn btn-xs btn-warning" target="_blank">EDIT</a>
                                       </td>
                                     </tr>
                                     @endforeach
@@ -197,6 +211,13 @@
                                                 <input type="file" name="id_proof_file" class="form-control" />
                                                 <span v-if="formErrors['id_proof_file']" class="error text-danger">
                                                 @{{ formErrors['id_proof_file'] }}</span>
+                                              </div>
+
+                                              <div class="form-group">
+                                                <label for="profile_pic">Profile Pic:</label>
+                                                <input type="file" name="profile_pic" class="form-control" />
+                                                <span v-if="formErrors['profile_pic']" class="error text-danger">
+                                                @{{ formErrors['profile_pic'] }}</span>
                                               </div>
 
                                               <div class="form-group">
@@ -491,7 +512,7 @@ new Vue({
       this.$http.get('/admin/getexperts/'+id).then((response) => {
           //response.data = response.json();
           //console.log("data");
-          //console.log(response.data.id);
+          console.log(response);
           this.fillExpert.id = response.data.id;
           this.fillExpert.first_name = response.data.first_name;
           this.fillExpert.last_name = response.data.last_name;
@@ -577,6 +598,17 @@ new Vue({
           .catch((err) => {
             console.log(err);
           })
+   },
+   updateStatus: function(id) {
+     element = event.currentTarget
+      id = element.getAttribute('data-id');
+      this.$http.get(`/admin/updateExpertStatus/${id}`)
+        .then((response) => {
+          location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+        })
    }
   }
 

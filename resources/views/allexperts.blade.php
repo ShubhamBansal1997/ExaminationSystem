@@ -39,7 +39,7 @@
             <div class="collapse navbar-collapse" id="navbarsExampleContainer">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle primary-color" href="index.html" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Exams</a>
+                        <a class="nav-link dropdown-toggle primary-color" href="{{ URL::to('/') }}" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Exams</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown02">
                             <a class="dropdown-item primary-color" href="/neet">NEET</a>
                             <a class="dropdown-item primary-color" href="/aiims">AIIMS</a>
@@ -48,7 +48,7 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle primary-color" href="index.html" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pricing</a>
+                        <a class="nav-link dropdown-toggle primary-color" href="{{ URL::to('/') }}" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pricing</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown03">
                             <a class="dropdown-item primary-color" href="#">Test Series</a>
                             <a class="dropdown-item primary-color" href="#">PCB Package</a>
@@ -81,12 +81,17 @@
             @foreach($experts as $expert)
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                 <div class="card">
-                  <img class="card-img-top img-fluid" src="{{ $expert->profile_pic }}" alt="Card image cap">
+                  <img class="card-img-top img-fluid" src="/images/{{ $expert->photo_of_expert }}" alt="Card image cap">
                   <div class="card-block">
                     <h4 class="grey-color">{{ $expert->first_name }} {{ $expert->last_name }}</h4>
-                    <p class="mb-0 pb-0 grey-color font-9"><b>Rank in NEET: </b> {{ $expert->neet_rank }}</p>
-                    <p class="mt-0 pt-0 mb-0 pb-0 font-9"><b>Rank in AIIMS: </b> {{ $expert->aiims_rank }}</p>
-                    <p class="mt-0 pt-0 font-9"><b>Availability: </b> Available</p>
+                    {!! $expert->rank_in_various_exams !!}
+                    <p class="mt-0 pt-0 font-9"><b>Availability: </b>
+                    @if($expert->status==1)
+                     Available
+                    @else
+                     Not Available
+                    @endif
+                   </p>
                     <a class="btn btn-orange" href="{{ URL::to('bookexpert')}}/{{ $expert->first_name}}/{{ $expert->id }}">BOOK NOW</a>
                   </div>
                 </div>
@@ -121,14 +126,14 @@
         </div>
     </footer>
 
-    <script src={{ asset('new_asset/jquery/dist/jquery.min.js') }}" ></script>
-    <script src={{ asset('new_asset/tether/dist/js/tether.min.js') }}"></script>
-    <script src={{ asset('new_asset/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-    <script src={{ asset('new_asset/timepicker/jquery.timepicker.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('new_asset/jquery/dist/jquery.min.js') }}" ></script>
+    <script src="{{ asset('new_asset/tether/dist/js/tether.min.js') }}"></script>
+    <script src="{{ asset('new_asset/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('new_asset/timepicker/jquery.timepicker.min.js') }}" type="text/javascript"></script>
     <script>
         $('.carousel').carousel();
         $('#expert-time').timepicker();
         $('#expert-date').datepicker();
     </script>
   </body>
-</html>{{ asset('new_asset/
+</html>

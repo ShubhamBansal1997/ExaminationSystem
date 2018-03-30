@@ -24,6 +24,8 @@ class CreateExpertBookingsTable extends Migration
             $table->string('slot');
             $table->integer('price');
             $table->string('promo_code')->nullable();
+            $table->string('tr_id')->nullable();
+            $table->string('booking_id')->nullable();
             $table->boolean('status');
             $table->timestamps();
         });

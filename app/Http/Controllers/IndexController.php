@@ -9,6 +9,9 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use App\Expert;
 use App\Expert_descrption;
+use App\Coupons;
+use App\ExpertBooking;
+use Instamojo\Instamojo;
 
 class IndexController extends Controller
 {
@@ -216,10 +219,102 @@ class IndexController extends Controller
     }
     public function bookexpert($name, $pk) {
       $expert = Expert::where('id', $pk)->first();
-      $expert_descrption = Expert_descrption::where('expert_id', $pk)->firstOrFail();
-      $expert_slots = ExpertSlot::where('expert_id', $pk)->get();
       return view('singleexpert', compact('expert', 'expert_descrption', 'expert_slots'));
     }
+    /**
+     * Used to validate the Promo code and return the promo code details
+     * @param  [type] $code [description]
+     * @return [type]       [description]
+     */
+    public function checkPromoCode($code) {
+      $promo = Coupons::where('coupon_name', $code)->where('coupon_active','1')->where('coupon_delete', '0')->firstOrFail();
+      return response()->json($promo);
+
+    }
+    /**
+     * used to add booking from the frontend
+     * @param Request $request [description]
+     */
+    public function addBooking(Request $request) {
+      $this->validate($request, [
+        'expert_id' => 'required',
+        'date' => 'required',
+        'time' => 'required',
+        'name' => 'required',
+        'email' => 'required',
+        'phone' => 'required'
+      ]);
+      $booking = new ExpertBooking;
+      $booking->expert_id = $request->expert_id;
+      $expert = Expert::where('id', $request->expert_id)->first();
+      $booking->booking_expert_name = $expert->first_name;
+      //dd("test");
+      $booking->booking_date = $request->date;
+      $booking->booking_time = $request->time;
+      $booking->booking_charges = $expert->amount_to_be_paid;
+      $booking->booking_promo_off = 0;
+      if($request->booking_promo_code!=null){
+        $coupon = Coupons::where('coupon_name', $request->booking_promo_code)->where('coupon_active', '1')->where('coupon_delete', '0')->where('coupon_number','>',0)->first();
+        if($coupon!=null) {
+          //dd($coupon);
+          $booking->booking_promo_code = $coupon->coupon_name;
+          $booking->booking_promo_off = $coupon->coupon_percent;
+          $booking->booking_charges = ((100 - $coupon->coupon_percent)/100 * $expert->amount_to_be_paid);
+;        }
+      }
+      $booking->booking_expert_charges = $expert->amount_to_be_paid;
+      $booking->booking_user_name = $request->name;
+      $booking->booking_user_email = $request->email;
+      $booking->booking_user_phone = $request->phone;
+      $booking->save();
+      $response = $this->payment($booking);
+      $booking->booking_payment_gateway_id = $response['id'];
+      $booking->save();
+      return response()->json($response);
+
+
+    }
+    /**
+     * function used for the payment of particular booking
+     * @param  [type] $booking [description]
+     * @return [type]          [description]
+     */
+    function payment($booking) {
+      $api = new Instamojo('e59691ba3b8a310fd87596a1a26e81cb', 'abb022a56203e22ca5d9413fb31a292d');
+      try {
+      $response = $api->paymentRequestCreate(array(
+          "buyer_name" => $booking->booking_user_name,
+          "email" => $booking->booking_user_email,
+          "phone" => substr($booking->booking_user_phone, -10),
+          "purpose" => "Expert Guidance Session",
+          "amount" => $booking->booking_charges,
+          "send_email" => true,
+          "send_sms" => true,
+          "email" => $booking->booking_user_email,
+          "redirect_url" => "http://127.0.0.1:8000/handle_redirect",
+          "allow_repeated_payments" => false
+          ));
+          return $response;
+      }
+      catch (Exception $e) {
+          print('Error: ' . $e->getMessage());
+      }
+
+    }
+
+    function payment_redirect(Request $request) {
+      $api = new Instamojo('e59691ba3b8a310fd87596a1a26e81cb', 'abb022a56203e22ca5d9413fb31a292d');
+      try {
+        $response = $api->paymentRequestPaymentStatus($request->payment_request_id, $request->payment_id);
+        dd($response);
+    //print_r($response['purpose']);  // print purpose of payment request
+    //print_r($response['payment']['status']);  // print status of payment
+      }
+      catch (Exception $e) {
+          print('Error: ' . $e->getMessage());
+      }
+    }
+
 
 }
 

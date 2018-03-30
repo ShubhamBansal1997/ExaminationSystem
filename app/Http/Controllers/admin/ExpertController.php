@@ -10,6 +10,8 @@ use App\Expert_payouts;
 use App\ExpertSlot;
 use App\ExpertBooking;
 use Validator;
+use Illuminate\Support\Facades\Session;
+
 
 
 
@@ -19,7 +21,7 @@ class ExpertController extends Controller
     /** function to show the list expert page */
     public function list_experts()
     {
-      $experts = Expert::where('status',true)->get();
+      $experts = Expert::all();
 
       return view('admin.pages.list_experts',compact('experts'));
     }
@@ -36,6 +38,14 @@ class ExpertController extends Controller
 
 
       return response()->json($response);
+    }
+
+    /** function used to display the add or edit expert page */
+    public function expert($id=null) {
+      $expert = null;
+      if($id!=null)
+        $expert = Expert::where('id', $id)->first();
+      return view('admin.pages.addeditexpert', compact('expert'));
     }
 
     /** used in vue js as api call to store expert details */
@@ -100,6 +110,54 @@ class ExpertController extends Controller
     }
 
     /**
+     * [update_store_expert description]
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function update_store_expert(Request $request) {
+      //dd($request);
+      $expert = null;
+      if($request->id == NULL) {
+        $expert = new Expert;
+      } else {
+        $expert = Expert::where('id', $request->id)->first();
+      }
+      $expert->first_name = $request->first_name;
+      $expert->last_name = $request->last_name;
+      $expert->phone = $request->phone;
+      $expert->email = $request->email;
+      if($request->input('password')!=NULL)
+        $expert->password = md5($request->input('password'));
+      if($request->file('photo_of_expert')!=NULL)
+      {
+        $expert->photo_of_expert = $request->phone . '.' . $request->file('photo_of_expert')->getClientOriginalName();
+        $request->file('photo_of_expert')->move(base_path() . '/public/images/', $expert->photo_of_expert);
+      }
+      if($request->file('id_proof_file')!=NULL)
+      {
+        $expert->id_proof_file = $request->phone . '.' . $request->file('id_proof_file')->getClientOriginalName();
+        $request->file('id_proof_file')->move(base_path() . '/public/images/', $expert->id_proof_file);
+      }
+
+      $expert->id_proof_number = $request->id_proof_number;
+      $expert->expert_benefit_percentage = $request->expert_benefit_percentage;
+      $expert->tax_payment_gateway_charges = $request->tax_payment_gateway_charges;
+      $expert->duration = $request->duration;
+      $expert->bank_account_number = $request->bank_account_number;
+      $expert->bank_ifsc_code = $request->bank_ifsc_code;
+      $expert->type_of_account = $request->type_of_account;
+      $expert->timing_available = $request->timing_available;
+      $expert->rank_in_various_exams = $request->rank_in_various_exams;
+      $expert->quote = $request->quote;
+      $expert->preferred_language = $request->preferred_language;
+      $expert->amount_to_be_paid = $request->amount_to_be_paid;
+      $expert->save();
+      Session::flash('flash_message', 'Expert Data Updated!!');
+      return redirect()->back();
+
+    }
+
+    /**
      * used in vue js api call to remove the expert
      * @param  integer $id expert_id
      * @return json     done
@@ -107,7 +165,7 @@ class ExpertController extends Controller
     public function destroy_expert($id){
       $expert = Expert::where('id',$id)->first();
       $expert->status = false;
-      $expert->save();
+      $expert->delete();
       return response()->json(['done']);
 
     }
@@ -158,5 +216,16 @@ class ExpertController extends Controller
     public function fetchSlot($expert_id) {
       $slots = ExpertSlot::where('expert_id', $expert_id)->get();
       return response()->json($slots);
+    }
+
+    /**
+     * function to update the
+     * status of the expert
+     */
+    public function update_status($id) {
+      $expert = Expert::where('id',$id)->first();
+      $expert->status = ! $expert->status;
+      $expert->save();
+      return response()->json($expert);
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ExpertBooking extends Model
 {
-    public $timestamps = 'true';
-    protected $table = 'expert';
-    protected $fillable = ['id', 'expert_id', 'expert_name', 'student_name', 'student_email', 'student_phone', 'student_date', 'slot', 'price', 'promo_code', 'status']
+    public $timestamps = True;
+    protected $table = 'expertsbooking';
+    protected $fillable = [ 'expert_id', 'booking_expert_name', 'booking_date', 'booking_time', 'booking_charges', 'booking_promo_code', 'booking_promo_off', 'booking_expert_charges', 'booking_user_name', 'booking_user_email', 'booking_user_phone', 'booking_payment', 'booking_payment_gateway_id'];
 }

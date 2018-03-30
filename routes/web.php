@@ -30,7 +30,9 @@ Route::get('eamcet', 'IndexController@eamcet')->middleware('web');
 Route::get('payment','UserController@testing');
 Route::post('indipay/response','PaymentController@response');
 Route::get('paymentgateway/{price}/{couponcode?}','PaymentController@paymentgateway');
-
+Route::get('checkPromoCode/{code}', 'IndexController@checkPromoCode' );
+Route::post('addBooking', 'IndexController@addBooking');
+Route::get('handle_redirect', 'IndexController@payment_redirect');
 Route::get('home', 'UserDashboardController@home');
 Route::get('home/{sub_id}/{std}', 'UserDashboardController@chap_name');
 Route::get('home/{sub_id}/{std}/{chap_id}', 'UserDashboardController@chap_page');
@@ -150,12 +152,15 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
   Route::get('/addexpert','ExpertController@list_experts');
   Route::get('/getexperts/{id}','ExpertController@index_experts');
   Route::post('/createexpert','ExpertController@store_expert');
+  Route::get('/addeditexpertpage/{id?}', 'ExpertController@expert');
+  Route::post('/addeditexpert', 'ExpertController@update_store_expert');
   Route::delete('/deleteexpert/{id}','ExpertController@destroy_expert');
   Route::post('/updateexpert/{id}','ExpertController@update_expert');
   Route::post('/addExpertDescription','ExpertController@store_descrption');
   Route::post('/addslot', 'ExpertController@addslot');
   Route::get('/deleteslot/{id}', 'ExpertController@deleteSlot');
   Route::get('/fetchslot/{id}', 'ExpertController@fetchSlot');
+  Route::get('/updateExpertStatus/{id}', 'ExpertController@update_status');
 
 
   Route::get('/expertdescrption','ExpertController@list_expert_descrption');
