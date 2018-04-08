@@ -139,6 +139,9 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <li>
+                          <a href="{{ URL::to('admin/list_leads') }}"><i class="fa fa-wrench fa-fw"></i>Leads<span class="fa arrow"></span></a>
+                        </li>
 
                        <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Experts<span class="fa arrow"></span></a>

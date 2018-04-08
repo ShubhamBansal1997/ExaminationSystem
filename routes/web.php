@@ -31,7 +31,8 @@ Route::get('payment','UserController@testing');
 Route::post('indipay/response','PaymentController@response');
 Route::get('paymentgateway/{price}/{couponcode?}','PaymentController@paymentgateway');
 Route::get('checkPromoCode/{code}', 'IndexController@checkPromoCode' );
-Route::post('addBooking', 'IndexController@addBooking');
+Route::post('addBooking', 'IndexController@addLead');
+Route::get('success', 'IndexController@success');
 Route::get('handle_redirect', 'IndexController@payment_redirect');
 Route::get('home', 'UserDashboardController@home');
 Route::get('home/{sub_id}/{std}', 'UserDashboardController@chap_name');
@@ -148,6 +149,11 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
   Route::post('/editmarketuser','MarketingController@editmarketuser')->middleware('web');
   Route::get('/marketingpayouts','MarketingController@marketingpayouts');
 
+
+  // Lead Page
+  Route::get('/list_leads', 'LeadController@list_leads');
+  Route::post('/change_lead_status', 'LeadController@change_lead_status');  
+
   // experts page routes
   Route::get('/addexpert','ExpertController@list_experts');
   Route::get('/getexperts/{id}','ExpertController@index_experts');
@@ -186,6 +192,9 @@ Route::group(['namespace' => 'market', 'prefix' => 'marketing'], function () {
   Route::get('deletecoupon/{id}','DashboardController@deletecoupon');
   Route::post('requestpayout','DashboardController@requestpayout')->middleware('web');
   Route::get('profile','DashboardController@profile')->middleware('web');
+  Route::get('/list_leads', 'LeadController@list_leads');
+  Route::post('/add_market_to_lead', 'LeadController@add_market');
+  Route::post('/change_lead_status', 'LeadController@change_lead_status');  
 
 
 });

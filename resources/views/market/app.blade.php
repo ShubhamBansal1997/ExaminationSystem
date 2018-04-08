@@ -116,8 +116,11 @@
                         </li>
                         <li>
                             <a href="{{ URL::to('marketing/profile') }}"><i class="fa fa-tasks fa-fw"></i>  Profile<span class="fa arrow"></span></a>
-
+                            
                             <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                        <a href="{{ URL::to('marketing/list_leads') }}"><i class="fa fa-tasks fa-fw"></i>  Leads<span class="fa arrow"></span></a>
                         </li>
 
 

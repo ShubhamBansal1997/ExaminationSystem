@@ -11,6 +11,7 @@ use App\Expert;
 use App\Expert_descrption;
 use App\Coupons;
 use App\ExpertBooking;
+use App\Lead;
 use Instamojo\Instamojo;
 
 class IndexController extends Controller
@@ -267,9 +268,9 @@ class IndexController extends Controller
       $booking->booking_user_email = $request->email;
       $booking->booking_user_phone = $request->phone;
       $booking->save();
-      $response = $this->payment($booking);
-      $booking->booking_payment_gateway_id = $response['id'];
-      $booking->save();
+      //$response = $this->payment($booking);
+      //$booking->booking_payment_gateway_id = $response['id'];
+      //$booking->save();
       return response()->json($response);
 
 
@@ -306,6 +307,22 @@ class IndexController extends Controller
       $api = new Instamojo('e59691ba3b8a310fd87596a1a26e81cb', 'abb022a56203e22ca5d9413fb31a292d');
       try {
         $response = $api->paymentRequestPaymentStatus($request->payment_request_id, $request->payment_id);
+        $booking = ExpertBooking::where('booking_payment_gateway_id', $request->payment_request_id)->first();
+        if($response['payment']['status']=='Credit'){
+          $booking->booking_payment = True;
+          $booking->booking_final_payment_id = $response->payment_id;
+          $expert = Expert::where('expert_id', $booking->expert_id)->first();
+          $expert->total_earning = $expert->total_earning + $response['amount'];
+          $expert->total_amount_remaining = $expert->total_amount_remaining + $response['amount'];
+          $expert->save();
+          if($booking->booking_promo_code!=null){
+            $coupon = Coupons::where('coupon_name', $booking->booking_promo_code)->first();
+            $coupon->coupon_number = $coupon->coupon_number - 1;
+            $coupon->save();
+          }
+        } else {
+
+        }
         dd($response);
     //print_r($response['purpose']);  // print purpose of payment request
     //print_r($response['payment']['status']);  // print status of payment
@@ -313,6 +330,33 @@ class IndexController extends Controller
       catch (Exception $e) {
           print('Error: ' . $e->getMessage());
       }
+    }
+
+
+    /**
+     * [addLead description]
+     * @param Request $request [description]
+     */
+    function addLead(Request $request) {
+      $this->validate($request, [
+        'expert_id' => 'required',
+        'date' => 'required',
+        'time' => 'required',
+        'name' => 'required',
+        'email' => 'required',
+        'phone' => 'required'
+      ]);
+      $lead = new Lead;
+      $lead->expert_id = $request->expert_id;
+      $expert = Expert::where('id', $request->expert_id)->first();
+      $lead->expert_name = $expert->first_name;
+      $lead->user_name = $request->name;
+      $lead->user_phone = $request->phone;
+      $lead->user_date = $request->date;
+      $lead->user_time = $request->time;
+      $lead->user_charges = $expert->amount_to_be_paid;
+      $lead->user_email = $request->email;
+      $lead->save();
     }
 
 
