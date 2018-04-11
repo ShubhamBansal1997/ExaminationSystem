@@ -53,11 +53,9 @@
                                       <td>{{ $lead->lead_status }}</td>
                                       <td>
                                         <button class="btn btn-xs btn-warning" v-on:Click="change_status({{$lead->id}})">CHANGE STATUS</button>
-                                        @if($lead->market_name==null)
+                
                                         <button class="btn btn-xs btn-info" v-on:Click="add_market_to_lead({{$lead->id}})">ASSIGN LEAD</button>
-                                        @else
-                                        <button class="btn btn-xs btn-info" disabled>ASSIGN LEAD</button>
-                                        @endif
+                                        
                                       </td>
                                     </tr>
                                     @endforeach
