@@ -92,7 +92,11 @@
                      Not Available
                     @endif
                    </p>
+                   @if($expert->status==1)
                     <a class="btn btn-orange" href="{{ URL::to('bookexpert')}}/{{ $expert->first_name}}/{{ $expert->id }}">BOOK NOW</a>
+                   @else
+                    <a class="btn btn-orange" href="#">BOOK NOW</a>
+                   @endif
                   </div>
                 </div>
             </div>
