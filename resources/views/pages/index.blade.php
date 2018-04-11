@@ -288,7 +288,7 @@
 	<section class="ldg-section ldg-sectionFeatures">
                 <div class="container">
             <div class="ta-c">
-                <h3 class="ldg-section_title inline-block">
+                <h3 class="ldg-section_title inline-block" onclick="javascript:location.href='https://www.neetgurumantra.com/allexperts'">
                     Experts Team
                 </h3>
             </div>
