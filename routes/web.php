@@ -152,7 +152,9 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
 
   // Lead Page
   Route::get('/list_leads', 'LeadController@list_leads');
-  Route::post('/change_lead_status', 'LeadController@change_lead_status');  
+  Route::post('/change_lead_status', 'LeadController@change_lead_status'); 
+  Route::post('/add_market_to_lead', 'LeadController@add_market');
+  Route::post('/change_lead_status', 'LeadController@change_lead_status');   
 
   // experts page routes
   Route::get('/addexpert','ExpertController@list_experts');
