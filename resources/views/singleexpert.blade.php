@@ -79,13 +79,13 @@
                     <h3 class="pt-2 mt-2">{{ $expert->first_name }} {{ $expert->last_name }}</h3>
                     {!! $expert->rank_in_various_exams !!}
                     <p><b>Preferred Langauge: </b> {{ $expert->preferred_language }}</p>
-                    <i>{{ $expert->quote }}</i>
+                    <!-- <i>{{ $expert->quote }}</i> -->
                 </div>
             </div>
             <div class='offset-md-1 col-md-7 grey-color' v-if='booking_success===false'>
                 <div>
-                    <h4 class="mb-3">Book your slot now!</h4>
-                    <p><b>Guidance Session: </b> {{ $expert->duration }} minutes</p>
+                    <!-- <h4 class="mb-3">Book your slot now!</h4> -->
+                    <p><b>Duration of Guidance Session: </b> {{ $expert->duration }} minutes</p>
                     <p v-if="amount_changed!==null"><b>Cost: </b> <strike>Rs. @{{ amount }} </strike>@{{ amount_changed }}</p>
                     <p v-else><b>Cost: </b> Rs. @{{ amount }}</p>
                 <form v-on:submit.prevent="addBooking()">
