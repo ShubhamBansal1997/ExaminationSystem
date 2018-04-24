@@ -91,8 +91,8 @@
                     @if($expert->status!=1)
                     <p class="mt-0 pt-0 font-9"><b>Availability: </b>
                      Currently Unavailable
-                    @endif
                    </p>
+                    @endif
                    @if($expert->status==1)
                     <a class="btn btn-orange" href="{{ URL::to('bookexpert')}}/{{ $expert->first_name}}/{{ $expert->id }}">BOOK NOW</a>
                    @endif
