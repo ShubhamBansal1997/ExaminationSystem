@@ -104,7 +104,7 @@
                   <textarea class="form-control" name="rank_in_various_exams">{{isset($expert->rank_in_various_exams)?$expert->rank_in_various_exams: null}}</textarea>
                 </div>
                 <div class="form-group">
-                  <label> Quote</label>
+                  <label> College</label>
                   <input type="text" name="quote" class="form-control" value="{{ isset($expert->quote)?$expert->quote: null}}" />
                 </div>
                 <div class="form-group">
