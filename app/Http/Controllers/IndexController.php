@@ -220,7 +220,9 @@ class IndexController extends Controller
     }
     public function bookexpert($name, $pk) {
       $expert = Expert::where('id', $pk)->first();
-      return view('singleexpert', compact('expert', 'expert_descrption', 'expert_slots'));
+      $today = date("Y-m-d"); // 2012-01-30
+      $next_month = date("Y-m-d", strtotime("$today +1 month"));
+      return view('singleexpert', compact('expert', 'expert_descrption', 'expert_slots', 'next_month', 'today'));
     }
     /**
      * Used to validate the Promo code and return the promo code details

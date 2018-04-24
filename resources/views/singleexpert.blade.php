@@ -74,20 +74,26 @@
             <div class='col-md-4'>
                 <div class="fixed">
                     <div id='expert-img'>
-                        <img class="d-block img-fluid" src="/images/{{ $expert->photo_of_expert }}" alt="First slide">
+                        <img class="d-block img-fluid" src="/images/{{ $expert->photo_of_expert }}" alt="First slide" style="
+    height: 14em;
+    width: 14em;
+">
                     </div>
                     <h3 class="pt-2 mt-2">{{ $expert->first_name }} {{ $expert->last_name }}</h3>
                     {!! $expert->rank_in_various_exams !!}
-                    <p><b>Preferred Langauge: </b> {{ $expert->preferred_language }}</p>
+                    <p>{{ $expert->quote }}</p>
+                    <p><b>Preferred Langauges: </b> {{ $expert->preferred_language }}</p>
                     <!-- <i>{{ $expert->quote }}</i> -->
                 </div>
             </div>
             <div class='offset-md-1 col-md-7 grey-color' v-if='booking_success===false'>
                 <div>
                     <!-- <h4 class="mb-3">Book your slot now!</h4> -->
+                    <p><b>Preferred Langauges: </b> {{ $expert->preferred_language }}</p>
                     <p><b>Duration of Guidance Session: </b> {{ $expert->duration }} minutes</p>
                     <p v-if="amount_changed!==null"><b>Cost: </b> <strike>Rs. @{{ amount }} </strike>@{{ amount_changed }}</p>
                     <p v-else><b>Cost: </b> Rs. @{{ amount }}</p>
+                    <p><b>Available Timing: </b> {{ $expert->timing_available }}</p>
                 <form v-on:submit.prevent="addBooking()">
                     <div class='form-group'>
                         <label for="name">Name</label>
@@ -104,14 +110,20 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class='form-group'>
-                                    <label for="phone">Date</label>
-                                    <input type="date" class="form-control" v-model="newBooking.date" required="required"  id="expert-date" />
+                                    <label for="phone">Day</label>
+                                    <input type="date" class="form-control" v-model="newBooking.date" required="required"  id="expert-date" max="{{ $next_month }}" min="{{ $today }}"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class='form-group'>
-                                  <label for="phone">Timing</label>
-                                    <input class="form-control" v-model="newBooking.time" required="required"/>
+                                  <label for="phone">Slot</label>
+                                  <select class="form-control" v-model="newBooking.time" required="required" >
+                                    <option :value="02:00PM-02:30PM">02:00PM-02:30PM</option>
+                                    <option :value="02:30PM-03:00PM">02:30PM-03:00PM</option>
+                                    <option :value="03:00PM-03:30PM">03:00PM-03:30PM</option>
+                                    <option :value="03:30PM-04:00PM">03:30PM-04:00PM</option>
+                                  </select>
+                                    <!-- <input class="form-control" v-model="newBooking.time" required="required"/> -->
                                 </div>
                             </div>
                         </div>

@@ -81,7 +81,9 @@
             @foreach($experts as $expert)
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                 <div class="card">
-                  <img class="card-img-top img-fluid" src="/images/{{ $expert->photo_of_expert }}" alt="Card image cap">
+                  <img class="card-img-top img-fluid" src="/images/{{ $expert->photo_of_expert }}" alt="Card image cap" style="
+    height: 14em;
+">
                   <div class="card-block">
                     <h4 class="grey-color">{{ $expert->first_name }} {{ $expert->last_name }}</h4>
                     {!! $expert->rank_in_various_exams !!}
