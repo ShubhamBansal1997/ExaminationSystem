@@ -66,6 +66,7 @@ class ExpertController extends Controller
       $expert->email_id = $request->input('email_id');
       $expert->phone_number = $request->input('phone_number');
       $expert->password = md5($request->input('password'));
+      $expert->timings = $request->input('timings');
       $expert->id_proof_number = $request->id_proof_number;
       $expert->neet_rank = $request->neet_rank;
       $expert->aiims_rank = $request->aiims_rank;
@@ -90,6 +91,7 @@ class ExpertController extends Controller
       $expert->id_proof_number = $request->input('id_proof_number');
       $expert->neet_rank = $request->input('neet_rank');
       $expert->aiims_rank = $request->input('aiims_rank');
+      $expert->timings = $request->input('timings');
       $expert->status = true;
 
       if($request->input('password')!=NULL)
@@ -151,6 +153,7 @@ class ExpertController extends Controller
       $expert->quote = $request->quote;
       $expert->preferred_language = $request->preferred_language;
       $expert->amount_to_be_paid = $request->amount_to_be_paid;
+      $expert->timings = $request->timings;
       $expert->save();
       Session::flash('flash_message', 'Expert Data Updated!!');
       return redirect()->back();

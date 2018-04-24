@@ -73,7 +73,9 @@
         <div class="row mt-5 grey-color">
             <div class='col-md-4'>
                 <div class="fixed">
-                    <div id='expert-img'>
+                    <div id='expert-img' style="
+    width:  22em;
+    height:  51em">
                         <img class="d-block img-fluid" src="/images/{{ $expert->photo_of_expert }}" alt="First slide" style="
     height: 14em;
     width: 14em;
@@ -82,7 +84,6 @@
                     <h3 class="pt-2 mt-2">{{ $expert->first_name }} {{ $expert->last_name }}</h3>
                     {!! $expert->rank_in_various_exams !!}
                     <p><b>College : </b>{{ $expert->quote }}</p>
-                    <p><b>Preferred Langauges : </b> {{ $expert->preferred_language }}</p>
                     <!-- <i>{{ $expert->quote }}</i> -->
                 </div>
             </div>
@@ -92,7 +93,9 @@
                     <p><b>Duration of Guidance Session : </b> {{ $expert->duration }} minutes</p>
                     <p v-if="amount_changed!==null"><b>Cost : </b> <strike>Rs. @{{ amount }} </strike>@{{ amount_changed }}</p>
                     <p v-else><b>Cost : </b> Rs. @{{ amount }}</p>
-                    <p><b>Available Timing : </b> {{ $expert->timing_available }}</p>
+                    <p><b>Preferred Langauges : </b> {{ $expert->preferred_language }}</p>
+                    <p><b>Available On : </b> {{ $expert->timing_available }}</p>
+                    <p><b>Timing : </b> {{ $expert->timings }}</p>
                 <form v-on:submit.prevent="addBooking()">
                     <div class='form-group'>
                         <label for="name">Name</label>

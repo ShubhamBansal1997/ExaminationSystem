@@ -96,8 +96,12 @@
                   <input class="form-control" value="{{isset($expert->type_of_account)?$expert->type_of_account: null}}" placeholder="Type of Account" name="type_of_account" />
                 </div>
                 <div class="form-group">
+                  <label>Days Available</label>
+                  <input class="form-control" value="{{isset($expert->timing_available)?$expert->timing_available: null}}" placeholder="Days Available" name="timing_available" />
+                </div>
+                <div class="form-group">
                   <label>Timing Available</label>
-                  <input class="form-control" value="{{isset($expert->timing_available)?$expert->timing_available: null}}" placeholder="Timing Available" name="timing_available" />
+                  <input class="form-control" value="{{isset($expert->timing_available)?$expert->timing_available: null}}" placeholder="Timing Available" name="timings" />
                 </div>
                 <div class="form-group">
                   <label>Rank In Various Exams</label>
