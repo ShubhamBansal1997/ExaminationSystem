@@ -145,8 +145,7 @@
                 </div>
                 <div>
                     <h4 class="mb-3">Thank You!</h4>
-
-                    <p>Your Guidance Session is booked some one will shortly contact you from our team.</p>
+                    <p>Your Guidance Session is booked. Someone from our team will contact you shortly.</p>
                 </div>
             </div>
         </div>
