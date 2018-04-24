@@ -66,7 +66,7 @@
 
     <div class="container">
         <div id='exam-heading' class="mt-5 ">
-      <h1 class="secondary-color display-4 mb-4">Book a guidence session by NEET/AIIMS Topper</h1>
+      <h1 class="secondary-color display-4 mb-4">Book a Guidance Session by NEET/AIIMS Topper</h1>
             <h4 class="grey-color mb-4">Choose your expert</h4>
         </div>
         <!--div class="card" style="width: 20rem;">
@@ -85,17 +85,16 @@
                   <div class="card-block">
                     <h4 class="grey-color">{{ $expert->first_name }} {{ $expert->last_name }}</h4>
                     {!! $expert->rank_in_various_exams !!}
+                    {{ $expert->quote }}
                     <p class="mt-0 pt-0 font-9"><b>Availability: </b>
                     @if($expert->status==1)
                      Available
                     @else
-                     Not Available
+                     Currently Unavailable
                     @endif
                    </p>
                    @if($expert->status==1)
                     <a class="btn btn-orange" href="{{ URL::to('bookexpert')}}/{{ $expert->first_name}}/{{ $expert->id }}">BOOK NOW</a>
-                   @else
-                    <a class="btn btn-orange" href="#">BOOK NOW</a>
                    @endif
                   </div>
                 </div>
