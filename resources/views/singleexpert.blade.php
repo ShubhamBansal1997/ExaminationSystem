@@ -81,19 +81,18 @@
                     </div>
                     <h3 class="pt-2 mt-2">{{ $expert->first_name }} {{ $expert->last_name }}</h3>
                     {!! $expert->rank_in_various_exams !!}
-                    <p>{{ $expert->quote }}</p>
-                    <p><b>Preferred Langauges: </b> {{ $expert->preferred_language }}</p>
+                    <p><b>College : </b>{{ $expert->quote }}</p>
+                    <p><b>Preferred Langauges : </b> {{ $expert->preferred_language }}</p>
                     <!-- <i>{{ $expert->quote }}</i> -->
                 </div>
             </div>
             <div class='offset-md-1 col-md-7 grey-color' v-if='booking_success===false'>
                 <div>
                     <!-- <h4 class="mb-3">Book your slot now!</h4> -->
-                    <p><b>Preferred Langauges: </b> {{ $expert->preferred_language }}</p>
-                    <p><b>Duration of Guidance Session: </b> {{ $expert->duration }} minutes</p>
-                    <p v-if="amount_changed!==null"><b>Cost: </b> <strike>Rs. @{{ amount }} </strike>@{{ amount_changed }}</p>
-                    <p v-else><b>Cost: </b> Rs. @{{ amount }}</p>
-                    <p><b>Available Timing: </b> {{ $expert->timing_available }}</p>
+                    <p><b>Duration of Guidance Session : </b> {{ $expert->duration }} minutes</p>
+                    <p v-if="amount_changed!==null"><b>Cost : </b> <strike>Rs. @{{ amount }} </strike>@{{ amount_changed }}</p>
+                    <p v-else><b>Cost : </b> Rs. @{{ amount }}</p>
+                    <p><b>Available Timing : </b> {{ $expert->timing_available }}</p>
                 <form v-on:submit.prevent="addBooking()">
                     <div class='form-group'>
                         <label for="name">Name</label>
@@ -107,7 +106,7 @@
                         <label for="phone">Phone</label>
                         <input type='text' class="form-control" v-model='newBooking.phone' required="required">
                     </div>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-md-6">
                                 <div class='form-group'>
                                     <label for="phone">Day</label>
@@ -123,10 +122,10 @@
                                     <option :value="03:00PM-03:30PM">03:00PM-03:30PM</option>
                                     <option :value="03:30PM-04:00PM">03:30PM-04:00PM</option>
                                   </select>
-                                    <!-- <input class="form-control" v-model="newBooking.time" required="required"/> -->
+                                    <input class="form-control" v-model="newBooking.time" required="required"/>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     <!-- <div class='form-group form-inline'>
                         <input type="text" class="form-control" v-model="newBooking.promo" disabled=@{{promo_present}}>
                         <button class="btn btn-info" v-on:click.prevent="applyPromo($event)" v-if="promo_present===false">APPLY PROMO</button>
@@ -242,7 +241,7 @@ new Vue({
       this.promo_present = false;
     },
     addBooking: function(event) {
-      if(this.newBooking.date!==null&&this.newBooking.time!==null&&this.newBooking.name!==null&&this.newBooking.email!=null&&this.newBooking.phone!==null){
+      if(this.newBooking.name!==null&&this.newBooking.email!=null&&this.newBooking.phone!==null){
         let data = {
           'expert_id': this.expert_id,
           'date': this.newBooking.date,

@@ -241,8 +241,8 @@ class IndexController extends Controller
     public function addBooking(Request $request) {
       $this->validate($request, [
         'expert_id' => 'required',
-        'date' => 'required',
-        'time' => 'required',
+        // 'date' => 'required',
+        // 'time' => 'required',
         'name' => 'required',
         'email' => 'required',
         'phone' => 'required'
@@ -252,8 +252,8 @@ class IndexController extends Controller
       $expert = Expert::where('id', $request->expert_id)->first();
       $booking->booking_expert_name = $expert->first_name;
       //dd("test");
-      $booking->booking_date = $request->date;
-      $booking->booking_time = $request->time;
+      // $booking->booking_date = $request->date;
+      // $booking->booking_time = $request->time;
       $booking->booking_charges = $expert->amount_to_be_paid;
       $booking->booking_promo_off = 0;
       if($request->booking_promo_code!=null){
@@ -342,8 +342,8 @@ class IndexController extends Controller
     function addLead(Request $request) {
       $this->validate($request, [
         'expert_id' => 'required',
-        'date' => 'required',
-        'time' => 'required',
+        // 'date' => 'required',
+        // 'time' => 'required',
         'name' => 'required',
         'email' => 'required',
         'phone' => 'required'
@@ -354,8 +354,9 @@ class IndexController extends Controller
       $lead->expert_name = $expert->first_name;
       $lead->user_name = $request->name;
       $lead->user_phone = $request->phone;
-      $lead->user_date = $request->date;
-      $lead->user_time = $request->time;
+      $lead->user_date = date("Y-m-d");;
+      //$date = date('H:i:s');
+      $lead->user_time = date('H:i:s');;
       $lead->user_charges = $expert->amount_to_be_paid;
       $lead->user_email = $request->email;
       $lead->save();
