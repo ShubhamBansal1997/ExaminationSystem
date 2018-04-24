@@ -90,7 +90,7 @@
                     <p class="mt-0 pt-0 font-9"><b>College : </b>{{ $expert->quote }}</p>
                     @if($expert->status!=1)
                     <p class="mt-0 pt-0 font-9">
-                     Currently Unavailable
+                     <b>Currently Unavailable</b>
                    </p>
                     @endif
                    @if($expert->status==1)
