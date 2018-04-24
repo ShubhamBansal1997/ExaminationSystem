@@ -86,11 +86,12 @@
             </div>
             <div class='offset-md-1 col-md-7 grey-color' v-if='booking_success===false'>
                 <div>
+                    <p><b>Preferred Langauges : </b> {{ $expert->preferred_language }}</p>
                     <!-- <h4 class="mb-3">Book your slot now!</h4> -->
                     <p><b>Duration of Guidance Session : </b> {{ $expert->duration }} minutes</p>
                     <p v-if="amount_changed!==null"><b>Cost : </b> <strike>Rs. @{{ amount }} </strike>@{{ amount_changed }}</p>
                     <p v-else><b>Cost : </b> Rs. @{{ amount }}</p>
-                    <p><b>Preferred Langauges : </b> {{ $expert->preferred_language }}</p>
+
                     <p><b>Available On : </b> {{ $expert->timing_available }}</p>
                     <p><b>Timing : </b> {{ $expert->timings }}</p>
                 <form v-on:submit.prevent="addBooking()">
