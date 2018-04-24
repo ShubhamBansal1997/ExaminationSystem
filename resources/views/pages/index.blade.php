@@ -288,10 +288,10 @@
 	<section class="ldg-section ldg-sectionFeatures">
                 <div class="container">
             <div class="ta-c">
-                <h3 class="ldg-section_title inline-block" onclick="javascript:location.href='https://www.neetgurumantra.com/allexperts'" style="
+                <h3 class="button button-small button-green disable-text-select phn-hide -ct -trk -strk" onclick="javascript:location.href='https://www.neetgurumantra.com/allexperts'" style="
     cursor:  pointer;
-    background-color: #FFF;
-    color: #000080;
+    background-color: #28a9e4;
+    color: #f8f8f8;
 ">
                     Experts Team
                 </h3>
