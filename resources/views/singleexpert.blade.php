@@ -74,7 +74,7 @@
             <div class='col-md-4'>
                 <div class="fixed">
                     <div id='expert-img' style="
-    width:  22em;
+    width:  23em;
     height:  20em">
                         <img class="d-block img-fluid" src="/images/{{ $expert->photo_of_expert }}" alt="First slide">
                     </div>
