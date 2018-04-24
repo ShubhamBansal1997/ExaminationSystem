@@ -75,7 +75,7 @@
                 <div class="fixed">
                     <div id='expert-img' style="
     width:  23em;
-    height:  20em">
+    height:  21em">
                         <img class="d-block img-fluid" src="/images/{{ $expert->photo_of_expert }}" alt="First slide">
                     </div>
                     <h3 class="pt-2 mt-2">{{ $expert->first_name }} {{ $expert->last_name }}</h3>
