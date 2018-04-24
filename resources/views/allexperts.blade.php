@@ -87,7 +87,7 @@
                   <div class="card-block">
                     <h4 class="grey-color">{{ $expert->first_name }} {{ $expert->last_name }}</h4>
                     {!! $expert->rank_in_various_exams !!}
-                    {{ $expert->quote }}
+                    <p class="mt-0 pt-0 font-9">{{ $expert->quote }}</p>
                     @if($expert->status!=1)
                     <p class="mt-0 pt-0 font-9"><b>Availability: </b>
                      Currently Unavailable
