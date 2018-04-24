@@ -88,10 +88,8 @@
                     <h4 class="grey-color">{{ $expert->first_name }} {{ $expert->last_name }}</h4>
                     {!! $expert->rank_in_various_exams !!}
                     {{ $expert->quote }}
+                    @if($expert->status!=1)
                     <p class="mt-0 pt-0 font-9"><b>Availability: </b>
-                    @if($expert->status==1)
-                     Available
-                    @else
                      Currently Unavailable
                     @endif
                    </p>
