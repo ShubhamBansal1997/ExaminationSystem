@@ -75,11 +75,8 @@
                 <div class="fixed">
                     <div id='expert-img' style="
     width:  22em;
-    height:  51em">
-                        <img class="d-block img-fluid" src="/images/{{ $expert->photo_of_expert }}" alt="First slide" style="
-    height: 14em;
-    width: 14em;
-">
+    height:  20em">
+                        <img class="d-block img-fluid" src="/images/{{ $expert->photo_of_expert }}" alt="First slide">
                     </div>
                     <h3 class="pt-2 mt-2">{{ $expert->first_name }} {{ $expert->last_name }}</h3>
                     {!! $expert->rank_in_various_exams !!}
