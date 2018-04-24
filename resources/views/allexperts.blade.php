@@ -79,9 +79,8 @@
         </div-->
         <div class="row grey-color">
             @foreach($experts as $expert)
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                <div class="card" style="
-    width:  23em;">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 mb-4">
+                <div class="card">
                   <img class="card-img-top img-fluid" src="/images/{{ $expert->photo_of_expert }}" alt="Card image cap" style="
     height: 20em;
 ">
