@@ -162,7 +162,7 @@
           </div>
         </div>
         <button style="display: none;">Test</button><br>
-        <button type="button" class="btn" style="display: none; margin-top: 5px; padding: 10px 30px;">NEXT</button></div>
+        <button type="button" class="btn" style="display: none; margin-top: 5px; padding: 10px 30px;">SKIP</button></div>
     </div>
     </div>
     <div class="testTool_qNav">
