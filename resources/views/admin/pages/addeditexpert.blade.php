@@ -121,7 +121,7 @@
                 </div>
                 <input type="hidden" value="{{ isset($expert->id)?$expert->id : null }}" name="id">
                 <div class="modal-footer">
-                  <button type="submit" class="btn btn-primary">{{ isset($expert->id) ? "Edit":"Submit" }}</button>
+                  <button type="submit" class="btn btn-primary">Submit</button>
               </div>
                 </form>
 

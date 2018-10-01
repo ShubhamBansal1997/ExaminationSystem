@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
-use App\Admins
+use App\Admins;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class Employeecontroller extends Controller
 {
-    public function list_content()
+    public function contentwritter()
     {
     	$test = 2;
-    	return view('admin.pages.e_list',compact('test'));
+    	return view('admin.pages.contentwritter',compact('test'));
     }
     public function list_market()
     {

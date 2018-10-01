@@ -27,8 +27,9 @@ class IndexController extends Controller
     	$login_status = Session::get('Login_status');
     	if($login_status==true)
     	{
-    		return redirect('home');
-    	}
+    		return  view('pages.home');
+      }
+    	
     	else
     	{
     		return view('pages.login');
@@ -38,7 +39,7 @@ class IndexController extends Controller
     public function postLogin(Request $request)
     {
         if(Session::get('Login_status')==TRUE)
-            return redirect('home');
+            return view('pages.home');
         else
         {
               $this->validate($request, [
@@ -52,7 +53,7 @@ class IndexController extends Controller
             $email = $query->email;            //comment the code and uncomment the if lines
             Session::set('email',$email);      //comment the code and uncomment the if lines
             Session::set('Login_status',TRUE); //comment the code and uncomment the if lines
-            return redirect('home');           //comment the code and uncomment the if lines
+            return view('pages.home');           //comment the code and uncomment the if lines
             /*if($query->count())
             {
                 $query= $query->first();
@@ -193,7 +194,7 @@ class IndexController extends Controller
     {
         Session::flush();
         Session::flash('flash_message', 'You have been successfully Logout');
-        return redirect('pages.login');
+        return redirect('login');
     }
 
     public function allexperts()

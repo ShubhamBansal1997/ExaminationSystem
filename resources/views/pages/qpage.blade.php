@@ -4,14 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>NeetGuruMantra - Practice series</title>
   <link rel="stylesheet" href="{{ URL::asset('css/web.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
   <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body >
+<body onload="myFunction()">
 
   <div id="starting">
     <!-- react-text: 2 -->
@@ -21,7 +24,7 @@
     <div class="testTool_logoBlock"><img src="{{ URL::asset('home/v2/topprweb/images/logo.png') }}" alt="Neet-guru-mantra Logo" style="height: 35px; margin-top: 12.5px;"></div>
     <div class="testTool_sideBar testTool_sideBar-tillBottom js-sidebar">
       <div class="goalsList mt-15 testTool_goalList js-goals-list pl-30">
-        <div class="testTool_sideBar_sHeading mb-20">Goals</div>
+        <div class="testTool_sideBar_sHeading mb-20">Questions</div>
         <div class="pr-30">
           <div v-for='currentQuestion in questions' class="goalsList_goal goalsList_goal-small goalsList_goal-animate js-goal" data-goal_id="63829" data-progress="0">
             <div class="goalsList_goal_num goalsList_goal_num-small">@{{{ currentQuestion.ques_id }}}</div>
@@ -39,7 +42,7 @@
           </div>
         </div>
       </div>
-      <div class="testTool_sideBar_overlay js-sidebar-overlay"></div>
+     
     </div>
     <div>
       <div class="testTool_topBar">
@@ -55,9 +58,11 @@
               <!-- react-text: 49 -->:
               <!-- /react-text --><span class="js-test-timer-minutes"></span>
               <!-- react-text: 51 -->:
-              <!-- /react-text --><span class="js-test-timer-seconds">/span></div>
+              <!-- /react-text --><span class="js-test-timer-seconds"></span></div>
           </div>
-          <button class="testTool_topBar_stateBtn -strk js-btn-finish-assessment difficulty-btn">@{{{ level }}}</button>     
+        
+          <button v-on:click='getQuesId()'  data-toggle="modal" data-target="#myModal" type="button" class="testTool_topBar_stateBtn -strk js-btn-finish-assessment difficulty-btn btn btn btn-info btn-lg btn-danger">Report Error</button>     
+          <!-- <button class="testTool_topBar_stateBtn -strk js-btn-finish-assessment difficulty-btn">@{{{ level }}}</button>   -->   
           <button v-if='imp==1' class="testTool_topBar_stateBtn -strk js-btn-finish-assessment difficulty-btn">IMPORTANT</button>
           <h1 class="testTool_topBar_title">@{{{ basic.chap_name }}}</h1>
         </div>
@@ -73,7 +78,7 @@
                 <div class="ques_header cf">
                   <div class="ques_header_num"></div>
                   <div class="ques_header_vSeparator fl"></div>
-                  <div class="ques_header_id">@{{{ currentQuestion.ques_id }}}</div>
+                  <div class="ques_header_id">@{{{ currentQuestion.ques_id }}}&nbsp; @{{{ level }}}</div>
                 </div>
                 <div class="ques_text apply-mathjax" v-html='currentQuestion.ques_exp'>
                 </div>
@@ -161,19 +166,29 @@
             </div>
           </div>
         </div>
-        <button style="display: none;">Test</button><br>
+     
+      
         <button type="button" class="btn" style="display: none; margin-top: 5px; padding: 10px 30px;">NEXT</button></div>
     </div>
     </div>
     <div class="testTool_qNav">
-      <a class="testTool_qNav_arrow testTool_qNav_arrow-left js-qnav-prev "><i class="fa fa-angle-left"></i></a>
-      <a class="testTool_qNav_arrow testTool_qNav_arrow-right js-qnav-next"><i class="fa fa-angle-right"></i></a>
+      
     </div>
     <div class="testTool_btmBar">
+       <div class="row">
+        <div class="col-md-12">
+          <div class="col-md-6">
+<div v-on:click='prev()' class="testTool_btmBar_actionBtn testTool_btmBar_actionBtn_primary testTool_btmBar_actionBtn_primary-fullWidth js-primary-btn-bottom grey">BACK</div>
+        </div>
+      <div class="col-md-6">
+          
       <div v-if='bottombutton.nextgrey==true' v-on:click='next()' class="testTool_btmBar_actionBtn testTool_btmBar_actionBtn_primary testTool_btmBar_actionBtn_primary-fullWidth js-primary-btn-bottom grey">Next</div>
       <div class="testTool_btmBar_actionBtn testTool_btmBar_actionBtn_primary testTool_btmBar_actionBtn_primary-fullWidth js-primary-btn-bottom"
         v-else-if='bottombutton.submit==true' 
         v-on:click='submit_question_request()'>SUBMIT</div>
+</div>
+</div>
+
         <div class="testTool_btmBar_loadingView hide js-loading-view-bottom">
       </div>
     </div>
@@ -271,6 +286,42 @@
         </div>
     </div>
   </div>
+
+    <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">"Report error for Question" <span id="myText"></span></h4>
+        </div>
+        <div class="modal-body">
+         <form type="role" action="/submit_report" method="POST">
+    <div class="form-group">
+       <input type="hidden" class="form-control" id="myid" name="myid" value="" >
+      <label for="usr">Heading:</label>
+      <input type="text" class="form-control" id="heading" name="heading" required>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Description:</label>
+      <textarea class="form-control" id="description" name="description" required></textarea>
+    </div>
+       <button class="btn btn-success">SUBMIT</button>
+ <form>
+  
+        </div>
+        <div class="modal-footer">
+
+
+          
+        </div>
+      </div>
+     
+    </div>
+
+
 <!-- jQuery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
@@ -284,7 +335,9 @@
 <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 <script type="text/javascript" src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.5"></script>
+
 <script>
+
 Vue.http.headers.common['X-CSRF-TOKEN'] = $("#token").attr("value");
 new Vue({
   el: '#starting',
@@ -294,6 +347,7 @@ new Vue({
     currentQuestion: {},
     questionIndex: 0,
     email: '{{ $email }}',
+
     sub_id: {{ $sub_id }},
     chap_id: {{ $chap_id }},
     ques_cat: '{{ $ques_cat }}',
@@ -307,6 +361,8 @@ new Vue({
     bottombutton: {'nextgrey':true, 'submit':false,'nextsubmit':false},
     selected_ans: null,
     loading: false,
+
+
     level: null,
     imp: true,
     state: "started",
@@ -323,6 +379,8 @@ new Vue({
     this.getQuestions();
     this.interval = setInterval(this.updateCurrentTime, 1000);    
   },
+
+
   destroyed: function() {
     clearInterval(this.interval)
   },
@@ -385,6 +443,8 @@ new Vue({
       }
     },
     next: function() {
+
+   
       if(this.questions.length > this.questionIndex+1){
         this.$nextTick(function() {
                       MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
@@ -393,14 +453,37 @@ new Vue({
         this.correctans = {'ans1':false, 'ans2':false, 'ans3':false, 'ans4':false},
         this.incorrectans = {'ans1':false, 'ans2':false, 'ans3':false, 'ans4':false},
         this.bottombutton = {'nextgrey':true, 'submit':false, 'nextsubmit':false},
+      
         this.questionIndex++;
         this.analyze();
       }
-      
+    
     },
+     getQuesId: function(){
+
+     document.getElementById("myText").innerHTML = this.questions[this.questionIndex].ques_id;
+     document.getElementById("myid").value = this.questions[this.questionIndex].ques_id;
+
+  },
+
+
+
+
+
     // Go to previous question
     prev: function() {
-      this.questionIndex--;
+  if(this.questions.length != this.questionIndex+this.questions.length){
+        this.$nextTick(function() {
+                      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+                  });
+        this.selectans =  {'ans1':false, 'ans2':false, 'ans3':false, 'ans4':false},
+        this.correctans = {'ans1':false, 'ans2':false, 'ans3':false, 'ans4':false},
+        this.incorrectans = {'ans1':false, 'ans2':false, 'ans3':false, 'ans4':false},
+        this.bottombutton = {'nextgrey':true, 'submit':false, 'nextsubmit':false},
+        this.questionIndex--;
+        this.analyze();
+      }
+      
     },
     attempt: function(index) {
         console.log(index);
@@ -456,6 +539,30 @@ new Vue({
             console.log(err);
           });
     },
+
+submit_report_request: function(){
+      this.pause();
+     
+      var data = {
+        'heading': document.getElementById("heading").value,
+        'description': document.getElementById("description").value,
+       'ques_id': this.questions[this.questionIndex].ques_id,
+      };
+      alert(heading);
+      this.loading = true;
+      this.$http.post('/submit_report',data)
+          .then((response) => {
+            
+           
+            this.resume();
+          })
+          .catch((err) => {
+            this.loading = false;
+            console.log(err);
+          });
+    },
+
+
     submit_question: function(){
       var index = this.selected_ans;
           if(index===1){

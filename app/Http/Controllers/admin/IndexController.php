@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Session;
 use App\Admins;
+use App\Testseriessubject;
 
 class IndexController extends Controller
 {
@@ -21,7 +22,7 @@ class IndexController extends Controller
     public function postLogin(Request $request)
     {
 	    if(Session::get('admin_status')==TRUE)
-            return redirect('admin');
+           return redirect('admin/home');
         else
         {
               $this->validate($request, [
@@ -60,4 +61,104 @@ class IndexController extends Controller
         Session::flash('flash_message', 'You have been successfully Logout');
         return redirect('admin');
     }
+    public function defineneet()
+    {
+        $val= 1;
+        $subject = Testseriessubject::where('test_series_id',$val)->get();
+     
+        return view("admin.pages.definetestseriesneet", compact('subject'));
+        
+  
+    }
+      public function defineaiims()
+    {
+             $val= 2;
+        $subject = Testseriessubject::where('test_series_id',$val)->get();
+     
+        
+        return view("admin.pages.definetestseriesaiims", compact('subject'));
+        
+  
+    }
+      public function defineeamcet()
+    {
+                 $val= 3;
+        $subject = Testseriessubject::where('test_series_id',$val)->get();
+     
+        
+        
+        return view("admin.pages.definetestserieseamcet", compact('subject'));
+        
+  
+    }
+     
+     public function updateneet(Request $request)
+    {
+
+        $subject = new Testseriessubject;
+        $subject->subject_name = $request->subject1;
+        $subject->number_of_ques = $request->number1;
+        $subject->test_series_id = 1;
+        $subject->save();
+         $val= 1;
+        $subject = Testseriessubject::where('test_series_id',$val)->get();
+     
+             return Redirect::back();  
+
+    }
+    public function updateaiims(Request $request)
+    {
+        $subject = new Testseriessubject;
+        $subject->subject_name = $request->subject1;
+        $subject->number_of_ques = $request->number1;
+        $subject->test_series_id = 2;
+        $subject->save();
+               return Redirect::back();  
+        
+
+    }
+    public function updateeamcet(Request $request)
+    {
+        $subject = new Testseriessubject;
+        $subject->subject_name = $request->subject1;
+        $subject->number_of_ques = $request->number1;
+        $subject->test_series_id = 3;
+        $subject->save();
+
+           return Redirect::back();  
+    }
+        public function deletesubject($id)
+    {
+        $subject =  Testseriessubject::where('id', $id)->delete();
+       
+
+           return Redirect::back();  
+    }
+            public function editsubject($id)
+    {
+        $subject =  Testseriessubject::where('id', $id)->first();
+        return view("admin/pages/editsubject", compact('subject'));
+        
+
+         
+    }
+    public function updatesubject(Request $request,$id)
+    {
+
+        $subject = Testseriessubject::where('id',$id)->first();
+
+       
+        $subject->subject_name = $request->subject1;
+        $subject->number_of_ques = $request->number1;
+
+         
+
+       $subject->save();
+
+    
+          return Redirect::back();  
+    }
+    
+    
+    
 }

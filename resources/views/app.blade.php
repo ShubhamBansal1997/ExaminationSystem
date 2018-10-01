@@ -158,11 +158,11 @@
                         <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-av-my-library-books"></i>Test Series</a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="#">NEET </a>
+                                    <li><a href="{{ URL::to('home/1') }}">NEET </a>
                                     </li>
-                                    <li><a href="#">AIIMS </a>
+                                    <li><a href="{{ URL::to('home/2') }}">AIIMS </a>
                                     </li>
-                                    <li><a href="#">EAMCET </a>
+                                    <li><a href="{{ URL::to('home/3') }}">EAMCET </a>
                                     </li>
                                 </ul>
                             </div>
@@ -206,7 +206,7 @@
         <div class="footer-copyright">
             <div class="container">
                 Copyright © 2017 <a class="grey-text text-lighten-4" href="#" target="_blank">Neetgurumantra</a> All rights reserved.
-                <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="http://shubhambansal.me">Shubham Bansal</a></span>
+                <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="http://ankitcontriver.blogspot.com">Ankit Arora</a></span>
             </div>
         </div>
     </footer>

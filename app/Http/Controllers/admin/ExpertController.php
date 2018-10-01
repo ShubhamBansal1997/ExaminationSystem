@@ -169,7 +169,7 @@ class ExpertController extends Controller
       $expert = Expert::where('id',$id)->first();
       $expert->status = false;
       $expert->delete();
-      return response()->json(['done']);
+       return redirect()->back();
 
     }
     /** function to show the page of descrptions of the experts */
@@ -229,6 +229,10 @@ class ExpertController extends Controller
       $expert = Expert::where('id',$id)->first();
       $expert->status = ! $expert->status;
       $expert->save();
-      return response()->json($expert);
+      return redirect()->back();
     }
+   public function update_store_content()
+   {
+    echo("hv");
+   }
 }

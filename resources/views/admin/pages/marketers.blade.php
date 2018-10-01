@@ -16,7 +16,7 @@
                         <div class="panel-heading">
 
                             <button class="btn btn-primary btn-lg" id="adduserbutton">
-                                Add User
+                                Add Marketer
                             </button>
 
                             <!-- Modal -->
@@ -42,6 +42,7 @@
                                         <th>Unpaid </th>
                                         <th>Total </th>
                                         <th>Actions</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -55,13 +56,18 @@
                                       <td> <b>Acc no: </b>{{ $market->bank_acc_no }} <br/>
                                           <b>Bank Ifsc Code:</b> {{ $market->bank_ifsc_code }}</td>
                                       <td>{{ $market->id_proof }}</td>
-                                      <td><b>Package:</b> {{ $market->max_discount_package }} % <br/> <b>Expert:</b> {{ $market->max_discount_expert }} %</td>
+                                      <td><b>Package:</b> {{ $market->max_discount_package }} % <br/> <b>Expert:</b> {{ $market->max_discount_expert }} %
+<br/> <b>Guidance:</b> {{ $market->max_discount_expert }} %
+                                      </td>
                                       <td>Rs. {{ \App\Coupon_Activity::where('user_email',$market->email)->where('activity_status','UNPAID')->sum('admin_share') }}</td>
                                       <td>Rs. {{ \App\Coupon_Activity::where('user_email',$market->email)->sum('admin_share') }}</td>
                                       <td>
-                                          <button id="edit_market" data-id="{{ $market->id }}" class="btn btn-xs btn-primary">Edit</button><br/>
-                                          <button id="delete_market" data-id="{{ $market->id }}" class="btn btn-xs btn-danger">Delete</button><br/>
-                                        @if($market->active==true)
+                                          <button id="edit_content" data-id="{{ $market->id }}" class="btn btn-xs btn-primary">Edit</button><br/>
+                                          <button id="delete_content" data-id="{{ $market->id }}" class="btn btn-xs btn-danger">Delete</button><br/>
+                                       
+                                      </td>
+                                      <td>
+ @if($market->active==true)
                                         <button id="active_status" data-id="{{ $market->id }}" class="btn btn-xs btn-success">Active</button>
                                         @else
                                         <button id="active_status" data-id="{{ $market->id }}" class="btn btn-xs btn-danger">Inactive</button>
@@ -94,7 +100,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Add User </h4>
+                <h4 class="modal-title" id="myModalLabel">Edit User </h4>
             </div>
 
             <div class="modal-body">
@@ -146,6 +152,20 @@
                           <label>Bank IFSC Code</label>
                           <input class="form-control" name="bank_ifsc_code" required>
                         </div>
+                        <!--Added start-->
+                        <div class="form-group">
+                          <label>Tax And Payment Gateway Charges (percentage)</label>
+                          <input class="form-control" name="payment_gateway_percentage" required>
+                        </div>
+                        <div class="form-group">
+                          <label>Percentage for package</label>
+                          <input class="form-control" name="percentage_package" format="number" required>
+                        </div>
+                         <div class="form-group">
+                          <label>Percentage for guidance session</label>
+                          <input class="form-control" name="percentage_guidance_session" format="number" required>
+                        </div>
+                        <!--Added end-->
                         <div class="form-group">
                           <label>Phone No</label>
                           <input class="form-control" name="phoneno" placeholder="without +91" required>
@@ -289,9 +309,9 @@
       });
     });
 
-    /** function to delete the marketing user  */
+    /** function to delete the content writer  */
 
-    $('#dataTables-example').on('click','#delete_market', function(e){
+    $('#dataTables-example').on('click','#delete_content', function(e){
       e.preventDefault();
       var id = $(this).attr("data-id");
       var parent = $(this).parent();
@@ -311,8 +331,8 @@
       })
     });
 
-    /** function to toogle the edit marketing user form */
-    $('#dataTables-example').on('click','#edit_market', function(e){
+    /** function to toogle the edit content form */
+    $('#dataTables-example').on('click','#edit_content', function(e){
       e.preventDefault();
       var marketid = $(this).attr("data-id");
       //var response = getuserdata(marketid);

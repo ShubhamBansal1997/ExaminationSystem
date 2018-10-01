@@ -57,15 +57,16 @@
                                       <td>{{ $expert->timing_available }}</td>
                                       <td>
                                         @if($expert->status==1)
-                                        <button data-id="{{ $expert->id }}" v-on:click.prevent="updateStatus($event)" class="btn btn-xs btn-success">AVAILABLE</button>
+                                        <a href="{{ URL:: to('/admin/updateExpertStatus')}}/{{$expert->id}}" class="btn btn-xs btn-success">AVAILABLE</a>
                                         @else
-                                        <button data-id="{{ $expert->id }}" v-on:click.prevent="updateStatus($event)" class="btn btn-xs btn-danger">UNAVAILABLE</button>
+                                        <a href="{{ URL:: to('/admin/updateExpertStatus')}}/{{$expert->id}}"  class="btn btn-xs btn-danger">UNAVAILABLE</a>
                                         @endif
                                       </td>
 
 
                                       <td>
-                                      <button data-id="{{ $expert->id }}" v-on:click.prevent="deleteExpert($event)" class="btn btn-xs btn-danger">DELETE</button>
+                                    <a href="{{ URL:: to('admin/deleteexpert')}}/{{$expert->id}}"  class="btn btn-xs btn-danger">DELETE</a>
+                                      </br>
                                       <a href="{{ URL::to('/admin/addeditexpertpage/')}}/{{ $expert->id }}" class="btn btn-xs btn-warning" target="_blank">EDIT</a>
                                       </td>
                                     </tr>

@@ -108,7 +108,7 @@
 
                 <div class="buttonsBlock">
                     @if( Session::get('Login_status')==TRUE)
-                    <a target="_blank" href="{{ URL::to('home') }}"  class="button button-small button-green disable-text-select phn-hide -ct -trk -strk">Home</a>
+                    <a target="_blank" href="{{ URL::to('userhome') }}"  class="button button-small button-green disable-text-select phn-hide -ct -trk -strk">User Home</a>
 
                     <a href="{{ URL::to('logout') }}" class="button button-small button-green disable-text-select phn-hide -ct -trk ml-10 -strk">Logout</a>
                     @else
@@ -912,8 +912,7 @@
             <div class="grid-one-fourth alpha tab-grid-one-fourth phn-grid-full">
                 <div class="ldg-footer__copyright fl mt-10 phn-fn ">
                     <br/><div style="font-size:20px;">&copy; 2016 NeetGurumantra</div>
-
-                </div>
+          </div>
 
             </div>
 <!--             <div class="grid-one-fourth alpha tab-grid-one-fourth phn-grid-full">
@@ -928,11 +927,16 @@
                     <br/><div style="font-size:20px;position: relative;top: -18px;"><i class="fa fa-phone fa-lg"></i>+91-9582448819
                 <a href="https://www.facebook.com/neetgurumantra" target="_blank" ><img src="{{ asset('home/v2/images/f.png')}}" height="50px" width="50px" style="position: relative;right:-100px;top: 18px"></a></div>
             </div>
+ <br/> <br/> <br/> <br/> <br/>
+      <div style="font-size:20px;">Designed and developed by <a target="blank" href="http://ankitcontriver.blogspot.com">Ankit Arora</a></div>
 
+      
                 <div class="clr"></div>
             </div>
 
             <div class="clr"></div>
+
+
         </div>
     </footer>
 

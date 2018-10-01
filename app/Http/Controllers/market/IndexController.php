@@ -16,15 +16,15 @@ class IndexController extends Controller
 {
     public function index()
     {
-      if(Session::get('m_status')==TRUE)
-        return view('market.home');
+      if(Session::get('market_status')==TRUE)
+        return view('market.profile');
       else
         return view("market.login");
     }
     public function postLogin(Request $request)
     {
       if(Session::get('market_status')==TRUE)
-            return redirect('market/home');
+            return redirect('market/profile');
         else
         {
               $this->validate($request, [
@@ -40,9 +40,9 @@ class IndexController extends Controller
             //dd($query);
             if($query!=null){
                 //var_dump("asdasda");
-                Session::set('m_status',TRUE);
+                Session::set('market_status',TRUE);
                 Session::set('memail',$query->email);
-                return redirect('marketing/home');
+                return redirect('marketing/profile');
             }
             else
             {
@@ -57,5 +57,20 @@ class IndexController extends Controller
         Session::flash('flash_message', 'You have been successfully Logout');
         return redirect('marketing');
     }
+  public function changePWD(Request $request)
+    {
+        $pwd=md5($request->oldpwd);
+     
+      $user = Market::where('email', Session::get('memail'))->where('password',$pwd)->where('active','1')->where('delete','0')->first();
+  
+   if($user!=null){
+
+        $user->password=md5($request->newpwd);
+         $user->save();
+         return redirect('marketing/logout');
+    }
+
+    }
+
 
 }

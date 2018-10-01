@@ -22,21 +22,28 @@
                                 Add coupon
                                 </button>
                                 <br/>
-                                <b>Maximum Discount Package:</b>{{ isset($user->max_discount_package)?$user->max_discount_package:null }}
+                              <!--   <b>Maximum Discount Package:</b>{{ isset($user->max_discount_package)?$user->max_discount_package:null }} -->
                               </div>
-                              <div class="col-lg-3">
+                            <!--   <div class="col-lg-3">
                                 <button class="btn btn-primary btn-lg" id="editprofile">
                                 Update Profile
                                 </button>
                                 <br/>
                                 <b>Maximum Discount Expert :</b>{{ isset($user->max_discount_expert)?$user->max_discount_expert:null }}
-                              </div>
-                              <div class="col-lg-3">
+                              </div> -->
+                           <!--    <div class="col-lg-3">
                                 <b>Unpaid: </b>{{ \App\Coupon_Activity::where('user_email',$user->email)->where('activity_status','UNPAID')->sum('admin_share') }}
                               </div>
                               <div class="col-lg-3">
                                 <b>Total: </b>{{ \App\Coupon_Activity::where('user_email',$user->email)->sum('admin_share') }}
+                              </div> -->
+
+                              <div class="col-lg-3">
+                                <b>( {{$user->max_discount_package}}% ) for Package</b><!-- {{ \App\Coupon_Activity::where('user_email',$user->email)->where('activity_status','UNPAID')->sum('admin_share') }} -->
                               </div>
+                              <div class="col-lg-3">
+                                <b>( {{$user->max_discount_expert}}% ) for Guidance Session</b><!-- {{ \App\Coupon_Activity::where('user_email',$user->email)->sum('admin_share') }}
+                              </div> - -->
                             </div>
                             <!-- Add Coupon Modal -->
                             <div class="modal fade" id="addcouponmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -56,34 +63,54 @@
                                                 </ul>
                                             </div>
                                         @endif
-                                        <form method="post" id="addcouponform">
+                                        <form method="POST" action="{{ URL::to('marketing/addcoupon')}}">
                                             {{ csrf_field() }}
-                                            <input type="hidden" name="id" value="{{ $user->id }}">
+                                           
                                             <div class="form-group">
                                                 <label>Coupon Name</label>
                                                 <input class="form-control" name="coupon_name" required>
                                             </div>
                                             <div class="form-group">
                                                  <label id="maximum_discount"></label>
-                                                 <input class="form-control" name="coupon_percent">
+<select name="max_discount" class="form-control" required>
+<?php if($user->max_discount_expert >= $user->max_discount_package)
+{
+$iterator = $user->max_discount_expert;
+}
+else
+{
+  $iterator = $user->max_discount_package;
+}
+
+for( $i = 0 ; $i<= $iterator;$i++)
+{?>
+<option value="<?php echo $i; ?>"><?php echo $i;?></option>
+<?php
+}?>
+
+</select>
+
 
                                             </div>
+
+                                            
+
                                             <div class="form-group">
-                                                <label>Coupon Number</label>
-                                                <input class="form-control" name="coupon_number">
+                                                <label>Number Of Coupon</label>
+                                                <input class="form-control" name="coupon_number" required>
                                             </div>
                                             <div class="form-group">
                                               <label>Coupon Sale Type</label>
-                                              <select name="coupon_type" class="form-control">
+                                              <select name="coupon_type" class="form-control" required>
                                                 <option value="PACKAGE">PACKAGE</option>
-                                                <option value="EXPERT">GUIDANCE SESSION</option>
+                                                <option value="GUIDANCE SESSION">GUIDANCE SESSION</option>
                                               </select>
                                             </div>
 
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                            <button type="submit" class="btn btn-primary">Create Coupon</button>
                                         </div>
                                         </form>
                                     </div>
@@ -245,36 +272,45 @@
                                 <thead>
                                     <tr>
                                         <th>S No</th>
-                                        <th>Coupon Name</th>
-                                        <th>Discount</th>
-                                        <th>Number</th>
-                                        <th>Type</th>
-                                        <th>Active</th>
-                                        <th>Action</th>
+                                        <th>Sale Type</th>
+                                        <th>Coupon code name</th>
+                                        <th>Discount Percentage</th>
+                                        <th>Benefit percentage</th>
+                                        <th>Total number coupon generated</th>
+                                        <th>Remaining number of coupons</th>
+                                        <th>Actions</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
 
-                                     @foreach($coupons as $i => $coupon)
+                                   <!--   @foreach($coupons as $i => $coupon) -->
                                     <tr  class="odd gradeX">
                                       <td>{{ $i }}</td>
+                                       <td>{{ $coupon->coupon_type }}</td>
                                       <td>{{ $coupon->coupon_name }}</td>
-                                      <td>{{ $coupon->coupon_percent }}</td>
+                                      <td>{{ $coupon->coupon_percent }}%</td>
+                                      @if($coupon->coupon_type == "PACKAGE")
+                                      <td>{{($user->max_discount_package) -  ($coupon->coupon_percent) }}%</td>
+                                      @else
+                                       <td>{{($user->max_discount_expert-$coupon->coupon_percent) }}%</td>
+                                       @endif
                                       <td>{{ $coupon->coupon_number }}</td>
-                                      <td>{{ $coupon->coupon_type }}</td>
+                                     <td></td>
+                                    
                                       <td>
+                                        <button id="deletecoupon" data-id="{{ $coupon->id }}" class="btn btn-xs btn-danger">Delete</button>
+                                      </td>
+                                        <td>
                                       @if($coupon->coupon_active==true)
                                         <button id="activeinactivestatus" data-id="{{ $coupon->id }}" class="btn btn-xs btn-success">Active</button>
                                       @else
                                         <button id="activeinactivestatus" data-id="{{ $coupon->id }}" class="btn btn-xs btn-danger">Inactive</button>
                                       @endif
                                       </td>
-                                      <td>
-                                        <button id="deletecoupon" data-id="{{ $coupon->id }}" class="btn btn-xs btn-danger">Delete</button>
-                                      </td>
                                     </tr>
-                                    @endforeach
+                                  <!--   @endforeach -->
 
 
                                 </tbody>
@@ -301,30 +337,7 @@
       $('#addcouponmodal').modal('toggle');
     });
 
-    $('#addcouponform').submit(function(e){
-      e.preventDefault();
-      var discount = $('#addcouponform input[name=coupon_discount]').val();
-      //console.log(response);
-      var data = $(this).serialize();
-      console.log(data);
-      console.log(data);
-      $.ajax({
-        url: '{{ URL::to('marketing/addcoupon')}}',
-        data: data,
-        type: "POST",
-        context: this,
-        headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr("content")
-        },
-        success: function(response){
-          location.reload();
-        },
-        error: function(response){
-          $('#errormodal').modal('toggle');
-        },
-      });
-    });
-
+   
     /** show the edit profile form */
     $('#editprofile').click(function(e){
       e.preventDefault();

@@ -4,6 +4,9 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Questions;
+use App\Testseriesquestion;
+use App\Testseriessubject;
+
 use App\Chapters;
 use Illuminate\Support\Facades\Redirect;
 
@@ -19,6 +22,7 @@ class QuestionController extends Controller
     {
     	return view('admin.pages.addeditquestion',compact('sub_id','std'));
     }
+
     public function addquestion(Request $request)
     {
     	$this->validate($request, [
@@ -47,6 +51,7 @@ class QuestionController extends Controller
         	$question->ques_imp = $request->ques_imp;
         	$question->ques_level = $request->ques_level;
           $question->ques_ar = $request->ques_ar;
+            $question->email =  Session::get('aemail');
         	$question->save();
         	Session::flash('flash_message', 'Your Question has been successfully added');
         }
@@ -66,6 +71,7 @@ class QuestionController extends Controller
             $question->ques_imp = $request->ques_imp;
             $question->ques_level = $request->ques_level;
             $question->ques_ar = $request->ques_ar;
+            $question->email =  Session::get('aemail');
             $question->save();
             Session::flash('flash_message', 'Your Question has been successfully edited');
         }
@@ -155,4 +161,209 @@ class QuestionController extends Controller
         $question = Questions::where('ques_id',$ques_id)->first();
         return view('admin.pages.qpage2',compact('question'));
     }
+    public function addneetseries()
+    {
+        
+        return view('admin.pages.addneetques');
+    
+    
+}
+    public function addaiimsseries()
+    {
+      
+        return view('admin.pages.addaiimsques');
+    
+    
+}
+    public function addeamcetseries()
+    {
+        
+        return view('admin.pages.addeamcetques');
+    
+    
+}
+  public function addeamcetques(Request $Request)
+{
+    $total = Testseriessubject:: where('test_series_id','3')->where('subject_name',$Request->subject_name)->first();
+    $totalquestion = $total->number_of_ques;
+    $validate = Testseriesquestion:: where('test_series_id','3')->where('mock_test_id',$Request->mock_test_id)->where('subject_name',$Request->subject_name)->get();
+$i = 0;
+
+foreach ($validate as $k) {
+    $i++;
+}
+if($totalquestion==$i)
+{
+ Session::flash('flash_message', 'Maximum Number of question already present');
+}
+else
+{
+
+    $question = new Testseriesquestion;    
+    $question->test_series_id =1;
+    $question->subject_name = $Request->subject_name;
+    $question->mock_test_id = $Request->mock_test_id;
+    $question->ques_exp = $Request->ques_exp;
+    $question->ques_ans1 = $Request->ques_ans1;
+    $question->ques_ans2 = $Request->ques_ans2;
+    $question->ques_ans3 = $Request->ques_ans3;
+    $question->ques_ans4 = $Request->ques_ans4;
+    $question->ques_ans = $Request->ques_ans;
+    $question->ques_sol = $Request->ques_sol;
+    $question->email = Session::get('aemail');
+$question->save();
+ Session::flash('flash_message', 'Your Question has been successfully added');
+
+}
+return Redirect::back();
+}
+
+
+
+
+
+
+
+  public function addaiimsques(Request $Request)
+{
+    $total = Testseriessubject:: where('test_series_id','2')->where('subject_name',$Request->subject_name)->first();
+    $totalquestion = $total->number_of_ques;
+    $validate = Testseriesquestion:: where('test_series_id','2')->where('mock_test_id',$Request->mock_test_id)->where('subject_name',$Request->subject_name)->get();
+$i = 0;
+
+foreach ($validate as $k) {
+    $i++;
+}
+if($totalquestion==$i)
+{
+ Session::flash('flash_message', 'Maximum Number of question already present');
+}
+else
+{
+
+    $question = new Testseriesquestion;    
+    $question->test_series_id =1;
+    $question->subject_name = $Request->subject_name;
+    $question->mock_test_id = $Request->mock_test_id;
+    $question->ques_exp = $Request->ques_exp;
+    $question->ques_ans1 = $Request->ques_ans1;
+    $question->ques_ans2 = $Request->ques_ans2;
+    $question->ques_ans3 = $Request->ques_ans3;
+    $question->ques_ans4 = $Request->ques_ans4;
+    $question->ques_ans = $Request->ques_ans;
+    $question->ques_sol = $Request->ques_sol;
+    $question->email = Session::get('aemail');
+$question->save();
+ Session::flash('flash_message', 'Your Question has been successfully added');
+
+}
+return Redirect::back();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  public function addneetques(Request $Request)
+{
+    $total = Testseriessubject:: where('test_series_id','1')->where('subject_name',$Request->subject_name)->first();
+    $totalquestion = $total->number_of_ques;
+    $validate = Testseriesquestion:: where('test_series_id','1')->where('mock_test_id',$Request->mock_test_id)->where('subject_name',$Request->subject_name)->get();
+$i = 0;
+
+foreach ($validate as $k) {
+    $i++;
+}
+if($totalquestion==$i)
+{
+ Session::flash('flash_message', 'Maximum Number of question already present');
+}
+else
+{
+
+    $question = new Testseriesquestion;    
+    $question->test_series_id =1;
+    $question->subject_name = $Request->subject_name;
+    $question->mock_test_id = $Request->mock_test_id;
+    $question->ques_exp = $Request->ques_exp;
+    $question->ques_ans1 = $Request->ques_ans1;
+    $question->ques_ans2 = $Request->ques_ans2;
+    $question->ques_ans3 = $Request->ques_ans3;
+    $question->ques_ans4 = $Request->ques_ans4;
+    $question->ques_ans = $Request->ques_ans;
+    $question->ques_sol = $Request->ques_sol;
+    $question->email = Session::get('aemail');
+$question->save();
+ Session::flash('flash_message', 'Your Question has been successfully added');
+
+}
+return Redirect::back();
+}
+
+
+    public function view_ques_test($id)
+    {
+
+        return view('admin.pages.view_ques_test',compact('id'));
+    }
+   public function viewquestest($id,Request $Request)
+    {
+
+
+        $data = Testseriesquestion::where('test_series_id',$id)->where('subject_name',$Request->subject_name)->where('mock_test_id',$Request->mock_test_id)->get();
+return view('admin.pages.view_ques_test_series',compact('id','data'));
+    }
+
+  public function editquestiontest($ques_id)
+    {
+        $question = Testseriesquestion::where('id',$ques_id)->first();
+        return view('admin.pages.addeditquestiontest',compact('question'));
+    }
+      public function updatequestiontest($ques_id,Request $Request)
+    {
+        $question = Testseriesquestion::where('id',$ques_id)->first();
+$question->subject_name = $Request->subject_name;
+$question->mock_test_id = $Request->mock_test_id;
+$question->ques_exp = $Request->ques_exp;
+$question->ques_ans1= $Request->ques_ans1;
+$question->ques_ans2= $Request->ques_ans2;
+$question->ques_ans3= $Request->ques_ans3;
+$question->ques_ans4= $Request->ques_ans4;
+$question->ques_ans= $Request->ques_ans;
+$question->ques_sol= $Request->ques_sol;
+$question->save();
+
+        return Redirect::back();
+    }
+     public function deletequestest($ques_id)
+    {
+        $ques=Testseriesquestion::where('id',$ques_id)->first();
+        $ques->delete();
+         return Redirect::back();
+    }
+  public function view_look_test($ques_id)
+    {
+      $question = Testseriesquestion::where('id',$ques_id)->first();
+ 
+        return view('admin.pages.qpage',compact('question'));
+    }
+    public function view_look_test1($ques_id)
+    {
+        $question = Testseriesquestion::where('id',$ques_id)->first();
+ 
+        return view('admin.pages.qpage1',compact('question'));
+    }public function view_look_test2($ques_id)
+    {
+        $question = Testseriesquestion::where('id',$ques_id)->first();
+        return view('admin.pages.qpage2',compact('question'));
+    }
+
 }

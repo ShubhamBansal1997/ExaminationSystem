@@ -92,19 +92,20 @@
 
                                         <th>Order</th>
                                         <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Amount(After Deduction)</th>
-                                        <th>Type</th>
-                                        <th>Bank IFSC Code</th>
-                                        <th>Bank Account Number</th>
-                                        <th>Phone no</th>
+                                        <th>Total Earning Of Marketer</th>
+                                        <th>Tax &amp; Payment Gateway Charges (Percentage)</th>
+                                        <th>Net earnings</th>
+                                        <th>Total Paid Amount</th>
+                                        <th>Total Amount remaining</th>
+                                        <th>Requested payout</th>
                                         <th>Action</th>
+                                        <th>Status Of Requested Payout</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                     @foreach($payouts as $i=>$payout)
+                                <thead>
+                                  <!--   @foreach($payouts as $i=>$payout)-->
                                     <tr  class="odd gradeX">
-                                      <td>{{ $i++ }}</td>
+                                   <!--   <td>{{ $i++ }}</td>
                                       <td>{{ $payout->name }}</td>
                                       <td>{{ $payout->email }}</td>
                                       <td> Rs. {{ $payout->amount }}</td>
@@ -112,12 +113,22 @@
                                       <td> {{ $payout->bank_ifsc_code }}</td>
                                       <td>{{ $payout->bank_acc_no }}</td>
                                       <td>Rs.{{ $payout->phoneno }}</td>
-                                      <td><button class="btn btn-xs btn-primary" >Make Payout</button></td>
+                                      -->
+                                      <td>12154</td>
+                                      <td>Rahul</td>
+                                      <td> Rs. 10000</td>
+                                      <td> 10%</td>
+                                      <td> Rs. 9000</td>
+                                      <td> Rs. 8000</td>
+                                      <td> Rs. 1000</td>
+                                      <td> Rs. 9000</td>
+                                      <td><button class="btn btn-xs btn-primary">Make Payout</button></td>
+                                      <td><button class="btn btn-xs btn-primary">Paid/Unpaid/Processing</button></td>
                                     </tr>
-                                  @endforeach
+                                 <!-- @endforeach-->
 
 
-                                </tbody>
+                                </thead>
                             </table>
                             </div>
                         </div>

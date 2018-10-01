@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Neetgurumantra-Marketing</title>
+    <title>Neetgurumantra-Market</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('admin_assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -55,6 +55,9 @@
                 </button>
                 <a class="navbar-brand" href="index.html">Neetgurumantra - Marketing</a>
             </div>
+                        <form  role="form" method="get" action="{{ URL::to('marketing/logout') }}" >
+              <button class="btn btn-success btn-lg">logout</button>
+      </form>
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
@@ -74,8 +77,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li> -->
                         <li class="divider"></li>
-                        <li><a href="{{ URL::to('/marketing/logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
+                     
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
@@ -97,31 +99,36 @@
                             </div>
                             <!-- /input-group -->
                         </li>
-                        <li>
-                            <a href="{{ URL::to('/marketing/home') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="{{ URL::to('marketing/coupons') }}"><i class="fa fa-tasks fa-fw"></i>  Coupons<span class="fa arrow"></span></a>
-                            <!-- /.nav-second-level -->
-                        </li>
+                      
+<!--                        
+                   
                         <li>
                             <a href="{{ URL::to('marketing/couponconversion') }}"><i class="fa fa-tasks fa-fw"></i>  Coupons Conversion<span class="fa arrow"></span></a>
 
-                            <!-- /.nav-second-level -->
+                            /.nav-second-level 
                         </li>
                         <li>
                             <a href="{{ URL::to('marketing/payouts') }}"><i class="fa fa-tasks fa-fw"></i>  Payouts<span class="fa arrow"></span></a>
 
-                            <!-- /.nav-second-level -->
-                        </li>
+                             /.nav-second-level 
+                        </li> -->
                         <li>
                             <a href="{{ URL::to('marketing/profile') }}"><i class="fa fa-tasks fa-fw"></i>  Profile<span class="fa arrow"></span></a>
                             
                             <!-- /.nav-second-level -->
                         </li>
+                       
                         <li>
-                        <a href="{{ URL::to('marketing/list_leads') }}"><i class="fa fa-tasks fa-fw"></i>  Leads<span class="fa arrow"></span></a>
+                            <a href="{{ URL::to('marketing/coupons') }}"><i class="fa fa-tasks fa-fw"></i>Add/Generate Coupons<span class="fa arrow"></span></a>
+                           
                         </li>
+                        <li>
+                            <a href="{{ URL::to('marketing/allcouponactivities') }}"><i class="fa fa-tasks fa-fw"></i> All coupon activities<span class="fa arrow"></span></a>
+                           
+                        </li>
+ 
+
+
 
 
                     </ul>

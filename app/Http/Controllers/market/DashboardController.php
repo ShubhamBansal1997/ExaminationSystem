@@ -36,6 +36,7 @@ class DashboardController extends Controller
   /** function to add coupons to database */
   public function addcoupon(Request $request)
   {
+    echo"dfghj";
     $this->validate($request, [
         'coupon_name' => 'required|unique:coupons',
         'coupon_number' => 'required',
@@ -47,60 +48,18 @@ class DashboardController extends Controller
 
         $coupon = new Coupons;
         $coupon->coupon_name = strtoupper($request->coupon_name);
-        $coupon->coupon_percent = $request->coupon_percent;
+        $coupon->coupon_percent = $request->max_discount;
         $coupon->coupon_number = $request->coupon_number;
-        $coupon->coupon_active = true;
-        if(Session::get('memail')!=NULL)
-          $coupon->admin_email = $user->email;
-        else
-          $coupon->admin_email = Session::get('aemail');
         $coupon->coupon_type = $request->coupon_type;
-        if(Session::get('memail')!=NULL){
-          if($request->coupon_type=='PACKAGE'){
-            if($user->max_discount_package>=$request->coupon_percent){
-              $coupon->save();
-              $msg = array(
-              'status' => 'success',
-              'message' => 'new coupon added successfully' );
-              return response()->json($msg,200);
-            }
-            else{
-              $msg = array(
-                'status' => 'failure',
-                'message' => 'coupon not added successfully' );
-              return response()->json($msg,404);
-            }
-          }
-          elseif($request->coupon_type=='EXPERT'){
-            if($user->max_discount_expert>=$request->coupon_percent){
-              $coupon->save();
-              $msg = array(
-                'status' => 'success',
-                'message' => 'new coupon added successfully' );
-              return response()->json($msg,200);
-            }
-            else{
-              $msg = array(
-                'status' => 'failure',
-                'message' => 'coupon not added successfully' );
-              return response()->json($msg,404);
-            }
-          }
-        } else{
-          if($request->coupon_percent<=100){
-            $coupon->save();
-            $msg = array(
-              'status' => 'success',
-              'message' => 'Coupon added successfully' );
-            return response()->json($msg, 200);
-          } else{
-            $msg = array(
-              'status' => 'faliure',
-              'message' => 'max discount cannot excced 100' );
-            return response()->json($msg, 404);
-          }
-        }
-  }
+
+
+        $coupon->coupon_active = true;
+      
+        $coupon->admin_email = Session::get('memail');
+        $coupon->save();
+        return Redirect::back();
+   }
+
 
 
   /** function  to change the status of the coupon*/
@@ -200,6 +159,13 @@ class DashboardController extends Controller
     $coupons = Coupon_Activity::where('admin_email',Session::get('memail'))->where('active',1)->get();
     $user = Market::where('email',Session::get('memail'))->first();
     return view('market.couponconversion',compact('coupons','user'));
+  }
+    /** function to disply all coupon activities */
+  public function allcouponactivities()
+  {
+    $coupons = Coupon_Activity::where('admin_email',Session::get('memail'))->where('active',1)->get();
+    $user = Market::where('email',Session::get('memail'))->first();
+    return view('market.allcouponactivities',compact('coupons','user'));
   }
 
   /** function to display the payouts */

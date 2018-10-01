@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session;
+
 use App\Http\Requests;
+use App\Testseries;
+use App\Timer;
 use App\Chapters;
+use App\Testseriesquestion;
 use App\Questions;
+use App\Testseriessubject;
 use App\Questions_attempt;
 use Illuminate\Support\Facades\Redirect;
 
@@ -14,8 +19,10 @@ class UserDashboardController extends Controller
 {
    	public function home()
    	{
+
    		if(Session::get('Login_status')==TRUE)
-            return view('pages.home');
+           
+            return view('pages.login');
          else
             return redirect('login');
    	}
@@ -124,6 +131,61 @@ class UserDashboardController extends Controller
             //dd("great");
             return view('pages.year1');
          }
+      }
+
+      public function test_info($id)
+      {
+           $dur = Timer::where('id',1)->first();
+      $duration = $dur->timer;
+        Session::set('duration',$duration);
+           Session::set('start_time',date("H:i:s"));
+          $endTime =$endTime= date('H:i:s',strtotime('+'.Session::get('duration').'minutes',strtotime( Session::get('start_time'))));
+         Session::set('end_time',$endTime);
+         $test = Testseries::where('test_series_id',$id)->first();
+         $testinfo = Testseriessubject::where('test_series_id',$id)->get();
+           return view('pages.testinfo',compact('test','testinfo'));
+      }
+  public function test_page($test_id,$mock_test_id)
+      {
+      //   $dur = Timer::where('id',1)->first();
+      // $duration = $dur->timer;
+      //   Session::set('duration',$duration);
+      //      Session::set('start_time',date("H:i:s"));
+      //     $endTime =$endTime= date('H:i:s',strtotime('+'.Session::get('duration').'minutes',strtotime( Session::get('start_time'))));
+      //    Session::set('end_time',$endTime);
+        $email = Session::get('email');
+        $testseries = Testseries::where('test_series_id',$test_id)->first();
+        $data = Testseriesquestion::where('test_series_id',$test_id)->where('mock_test_id',$mock_test_id)->get();
+   $subject = Testseriessubject::where('test_series_id',$test_id)->get();
+ $i=0;
+
+         return view('pages.qpagetest',compact('data','email','subject','test_id','mock_test_id','testseries','i'));
+      }
+      public function duration()
+      {
+$from_time1=date('H:i:s');
+        
+         $to_time1 = Session::get('end_time');
+
+          $timefirst = strtotime($from_time1);
+          $timesecond = strtotime($to_time1);
+          $difference = $timesecond - $timefirst;
+            // $msg=gmdate("H:i:s",$difference);
+    $msg = "This is a simple message.";
+      return response()->json(array('msg'=> gmdate("H:i:s",$difference)), 200);
+      }
+    public function getQues()
+      {
+ $id=$_GET['name'];
+   
+       $data = Testseriesquestion::where('id',$id)->first();
+   $ques=   $data['ques_exp'];
+   $ans1=   $data['ques_ans1'];
+   $ans2=   $data['ques_ans2'];
+   $ans3=   $data['ques_ans3'];
+   $ans4=   $data['ques_ans4'];
+$quesid=   $data['id'];
+return response()->json(array('quesid'=>  $quesid,'ques'=>  $ques,'optionA'=>  $ans1,'optionB'=>  $ans2,'optionC'=>  $ans3,'optionD'=>  $ans4, 20000));
       }
 
 }
