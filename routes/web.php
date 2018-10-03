@@ -38,7 +38,9 @@ Route::get('handle_redirect', 'IndexController@payment_redirect');
 Route::get('home/{sub_id}/{std}', 'UserDashboardController@chap_name');
 Route::get('home/{sub_id}/{std}/{chap_id}', 'UserDashboardController@chap_page');
 Route::get('home/{test_id}', 'UserDashboardController@test_info');
-Route::get('qpagetest/{test_name}/{mock_test_id}', 'UserDashboardController@test_page');
+Route::get('qpagetest/{test_name}/{mock_test_id}/{subject_id}/{ques_id}', 'UserDashboardController@test_page');
+Route::get('prev', 'UserDashboardController@previous');
+Route::get('next', 'UserDashboardController@next');
 
 Route::get('home/askadoubt',function(){
     return view('pages.askadoubt');
@@ -92,8 +94,14 @@ Route::post('ques_prev_sub','QuestionController@ques_prev_sub');
 //Route::get('qpage/{sub_id}/{chap_id}/{ques_cat}','QuestionController@question_page');
 Route::get('qpage/{sub_id}/{chap_id}/{ques_cat}','QuestionController@question_page');
 Route::get('qpagetest/{test_id}/{mock_test_id}', 'QuestionControllerTest@test_page');
+
+Route::get('result/{test_id}/{mock_test_id}', 'QuestionControllerTest@result_page');
 Route::get('/timercode', 'UserDashboardController@duration');
 Route::get('/getQues', 'UserDashboardController@getQues');
+Route::get('/markforreview', 'UserDashboardController@markforreview');
+Route::get('/unmarkforreview', 'UserDashboardController@unmarkforreview');
+Route::get('/submitAns', 'UserDashboardController@submitAns');
+
 Route::get('social/login/redirect/{provider}', ['uses' => 'Auth\AuthController@redirectToProvider', 'as' => 'social.login']);
 Route::get('social/login/{provider}', 'Auth\AuthController@handleProviderCallback');
 
