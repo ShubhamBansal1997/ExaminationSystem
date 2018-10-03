@@ -13,8 +13,13 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="{{ URL::asset('css/web.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 </head>
-<body onload="myFunction()">
+<body onload="myFunction()" style="overflow-x:hidden;">
 
   <div id="starting">
     <!-- react-text: 2 -->
@@ -78,7 +83,7 @@
                 <div class="ques_header cf">
                   <div class="ques_header_num"></div>
                   <div class="ques_header_vSeparator fl"></div>
-                  <div class="ques_header_id">@{{{ currentQuestion.ques_id }}}&nbsp; @{{{ level }}}</div>
+                  <div class="ques_header_id">@{{{ questionIndex+1 }}}&nbsp; @{{{ level }}}</div>
                 </div>
                 <div class="ques_text apply-mathjax" v-html='currentQuestion.ques_exp'>
                 </div>
@@ -92,14 +97,38 @@
                         <p><span style="font-size:18px" v-html="currentQuestion.ques_ans1"></span></p>
                       </div>
                     </div>
-                    <div class="ques_option_result">
-                      <i class="fa fa-check-circle ques_option_result_iconCorrect"></i>
-                      <i class="fa fa-times-circle ques_option_result_iconWrong"></i>
-                      <div class="ques_option_result_text">Your Answer</div>
+                    <div v-show='ques_status!=null' >
+                    <div class="ques_option_result"v-show='ques_status==incorrect'>
+                     <i class="fa fa-check-circle ques_option_result_iconWrong">&nbsp;&nbsp;Incorrect Answer</i>
+                 
                       <div class="clr"></div>
                     </div>
+                     <div class="ques_option_result"v-show='ques_status==correct'>
+                     <i class="fa fa-check-circle ques_option_result_iconCorrect">&nbsp;&nbsp;Correct Answer</i>
+                 
+                      <div class="clr"></div>
+                    </div>
+                  </div>
+                     <div class="ques_option_result"v-show='ques_status==null'>
+                     <i class="fa fa-check-circle ques_option_result_iconCorrect">&nbsp;&nbsp;&nbsp;&nbsp;Your Answer</i>
+                 
+                      <div class="clr"></div>
+                    </div>
+
                     <input type="checkbox" class="hide" name="choices" value="825133">
                     <div class="clr"></div>
+                      <div class="solution_text_container js-solution-text" style="padding-left:0px; margin-left:0px;" v-show='correctans.ans1==true'>
+                        <div class="solution_heading">Solution</div>
+                        <div class="js-solution-content">
+                          <div class="testTool_qSolution_text solution_text apply-mathjax" v-html='currentQuestion.ques_sol'></div>
+                        </div>
+                        <div class="ques_option_result">
+                      
+                 <i class="fa fa-check-circle ques_option_result_iconCorrect">&nbsp;&nbsp;Correct Answer</i>
+                   <div class="ques_option_result_text">Correct Answer</div>
+                      <div class="clr"></div>
+                    </div>
+                      </div>
                   </div>
                   <div class="ques_option is-clickable apply-mathjax js-ques-list-option-item" 
                     v-on:click='attempt(2)'
@@ -118,6 +147,12 @@
                     </div>
                     <input type="checkbox" class="hide" name="choices" value="825133">
                     <div class="clr"></div>
+                      <div class="solution_text_container js-solution-text" style="padding-left:0px; margin-left:0px;" v-show='correctans.ans2==true'>
+                        <div class="solution_heading">Solution</div>
+                        <div class="js-solution-content">
+                          <div class="testTool_qSolution_text solution_text apply-mathjax" v-html='currentQuestion.ques_sol'></div>
+                        </div>
+                      </div>
                   </div>
                   <div class="ques_option is-clickable apply-mathjax js-ques-list-option-item"
                     v-on:click='attempt(3)'
@@ -130,12 +165,19 @@
                       </div>
                       <div class="ques_option_result">
                         <i class="fa fa-check-circle ques_option_result_iconCorrect"></i>
+
                         <i class="fa fa-times-circle ques_option_result_iconWrong"></i>
                         <div class="ques_option_result_text">Your Answer</div>
                         <div class="clr"></div>
                       </div>
                       <input type="checkbox" class="hide" name="choices" value="825133">
                       <div class="clr"></div>
+                        <div class="solution_text_container js-solution-text" style="padding-left:0px; margin-left:0px;" v-show='correctans.ans3==true'>
+                        <div class="solution_heading">Solution</div>
+                        <div class="js-solution-content">
+                          <div class="testTool_qSolution_text solution_text apply-mathjax" v-html='currentQuestion.ques_sol'></div>
+                        </div>
+                      </div>
                   </div>
                   <div class="ques_option is-clickable apply-mathjax js-ques-list-option-item"
                     v-on:click='attempt(4)'
@@ -154,7 +196,7 @@
                     </div>
                     <input type="checkbox" class="hide" name="choices" value="825133">
                     <div class="clr"></div>
-                    <div class="solution_text_container js-solution-text" v-show='currentQuestion.ques_input!=null'>
+                    <div class="solution_text_container js-solution-text" style="padding-left:0px; margin-left:0px;" v-show='correctans.ans4==true'>
                         <div class="solution_heading">Solution</div>
                         <div class="js-solution-content">
                           <div class="testTool_qSolution_text solution_text apply-mathjax" v-html='currentQuestion.ques_sol'></div>
@@ -168,7 +210,7 @@
         </div>
      
       
-        <button type="button" class="btn" style="display: none; margin-top: 5px; padding: 10px 30px;">NEXT</button></div>
+       
     </div>
     </div>
     <div class="testTool_qNav">
@@ -176,17 +218,17 @@
     </div>
     <div class="testTool_btmBar">
        <div class="row">
-        <div class="col-md-12">
-          <div class="col-md-6">
-<div v-on:click='prev()' class="testTool_btmBar_actionBtn testTool_btmBar_actionBtn_primary testTool_btmBar_actionBtn_primary-fullWidth js-primary-btn-bottom grey">BACK</div>
+    
+          <div class="col-xs-6">
+<div v-on:click='prev()' class="testTool_btmBar_actionBtn testTool_btmBar_actionBtn_primary testTool_btmBar_actionBtn_primary-fullWidth js-primary-btn-bottom green" v-show='questionIndex!=0'>Previous</div>
+       
         </div>
-      <div class="col-md-6">
+      <div class="col-xs-6">
           
       <div v-if='bottombutton.nextgrey==true' v-on:click='next()' class="testTool_btmBar_actionBtn testTool_btmBar_actionBtn_primary testTool_btmBar_actionBtn_primary-fullWidth js-primary-btn-bottom grey">Next</div>
       <div class="testTool_btmBar_actionBtn testTool_btmBar_actionBtn_primary testTool_btmBar_actionBtn_primary-fullWidth js-primary-btn-bottom"
         v-else-if='bottombutton.submit==true' 
         v-on:click='submit_question_request()'>SUBMIT</div>
-</div>
 </div>
 
         <div class="testTool_btmBar_loadingView hide js-loading-view-bottom">
@@ -344,6 +386,7 @@ new Vue({
   delimiters: ['@{{{', '}}}'],
 
   data: {
+    ques_status:null,
     currentQuestion: {},
     questionIndex: 0,
     email: '{{ $email }}',
@@ -514,6 +557,7 @@ new Vue({
     submit_question_request: function(){
       this.pause();
       this.questions[this.questionIndex].ques_input = this.selected_ans;
+     var ques_status = 'null';
       if(this.questions[this.questionIndex].ques_ans===this.selected_ans)
         var ques_status = 'correct';
       else
