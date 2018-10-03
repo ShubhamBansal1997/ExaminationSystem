@@ -7,7 +7,7 @@ use Session;
 use App\Http\Requests;
 use App\Questions;
 use App\Questions_attempt;
-use App\Chapters;
+use App\Chapters;use App\Testseries;
 use App\Users;
 //use Session;
 class QuestionControllerTest extends Controller
@@ -439,6 +439,12 @@ class QuestionControllerTest extends Controller
         ];
         return response()->json($response);
 
+    }
+    public function result_page($test_id,$mock_test_id)
+    {
+        $testname=Testseries::where('test_series_id',$test_id)->first();
+
+        return view('pages.resulttest',compact('testname','mock_test_id'));
     }
     
 }

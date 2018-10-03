@@ -200,7 +200,7 @@ else
 {
 
     $question = new Testseriesquestion;    
-    $question->test_series_id =1;
+    $question->test_series_id =3;
     $question->subject_name = $Request->subject_name;
     $question->mock_test_id = $Request->mock_test_id;
     $question->ques_exp = $Request->ques_exp;
@@ -242,7 +242,7 @@ else
 {
 
     $question = new Testseriesquestion;    
-    $question->test_series_id =1;
+    $question->test_series_id =2;
     $question->subject_name = $Request->subject_name;
     $question->mock_test_id = $Request->mock_test_id;
     $question->ques_exp = $Request->ques_exp;

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Testseries extends Model
 {
-    public $timestamps = True;
+    public $timestamps = False;
     protected $table = 'testseries';
     protected $fillable = 
     

@@ -98,11 +98,14 @@ class IndexController extends Controller
         $subject = new Testseriessubject;
         $subject->subject_name = $request->subject1;
         $subject->number_of_ques = $request->number1;
+        $subject->num_of_mocktest = $request->number2;
+
         $subject->test_series_id = 1;
         $subject->save();
          $val= 1;
-        $subject = Testseriessubject::where('test_series_id',$val)->get();
-     
+        $sub = Testseries::where('test_series_id',$val)->get();
+     $sub->num_of_mocktest = $request->number2;
+$sub->save();
              return Redirect::back();  
 
     }
@@ -111,6 +114,8 @@ class IndexController extends Controller
         $subject = new Testseriessubject;
         $subject->subject_name = $request->subject1;
         $subject->number_of_ques = $request->number1;
+        $subject->num_of_mocktest = $request->number2;
+
         $subject->test_series_id = 2;
         $subject->save();
                return Redirect::back();  
@@ -122,6 +127,8 @@ class IndexController extends Controller
         $subject = new Testseriessubject;
         $subject->subject_name = $request->subject1;
         $subject->number_of_ques = $request->number1;
+        $subject->num_of_mocktest = $request->number2;
+
         $subject->test_series_id = 3;
         $subject->save();
 
