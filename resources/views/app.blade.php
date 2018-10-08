@@ -117,64 +117,25 @@
                     </div>
                 </div>
                 </li>
-                <li class="bold active"><a href="{{ URL::to('home') }}" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Home</a>
+                <li class="bold active"><a href="{{ URL::to('userhome') }}" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Home</a>
                 </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-av-my-library-books"></i>Physics</a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="{{ URL::to('home/1/11') }}">11th </a>
-                                    </li>
-                                    <li><a href="{{ URL::to('home/1/12') }}">12th </a>
-                                    </li>
-                                </ul>
-                            </div>
+                        <li class="bold active"><a href="{{ URL::to('logout') }}" class="waves-effect waves-cyan"><i class="mdi-hardware-keyboard-tab"></i>Logout</a>
+                        
+                            
                         </li>
-                    
                 
+                    </ul>
+                         <ul class="collapsible collapsible-accordion">
+                        <li class="bold active"><a href="#" class="waves-effect waves-cyan"><i class="mdi-action-face-unlock"></i>Profile</a>
+                        
+                            
+                        </li>
                 
-                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-av-my-library-books"></i>Chemistry</a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="{{ URL::to('home/2/11') }}">11th </a>
-                                    </li>
-                                    <li><a href="{{ URL::to('home/2/12') }}">12th </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-av-my-library-books"></i>Biology</a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="{{ URL::to('home/3/11') }}">11th </a>
-                                    </li>
-                                    <li><a href="{{ URL::to('home/3/12') }}">12th </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-            
-                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-av-my-library-books"></i>Test Series</a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="{{ URL::to('home/1') }}">NEET </a>
-                                    </li>
-                                    <li><a href="{{ URL::to('home/2') }}">AIIMS </a>
-                                    </li>
-                                    <li><a href="{{ URL::to('home/3') }}">EAMCET </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
                     </ul>
                 </li>
-                <li class="bold active"><a href="#" class="waves-effect waves-cyan"><i class="mdi-social-school"></i> Experts</a>
-                </li>
-                <li class="bold active"><a href="{{ URL::to('home/askadoubt') }}" class="waves-effect waves-cyan"><i class="mdi-action-question-answer"></i> Ask a DOUBT</a>
-                </li>
-                <li class="bold active"><a href="{{ URL::to('package/') }}" class="waves-effect waves-cyan"><i class="mdi-editor-attach-money"></i> Purchase</a>
-                </li>
+              
                 
                 
                 

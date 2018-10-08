@@ -214,6 +214,9 @@
                         <li>
                             <a href="{{ URL::to('admin/allpayouts') }}"><i class="fa fa-files-o fa-fw"></i> All Payouts(Marketing)<span class="fa arrow"></span></a>
                         </li>
+                         <li>
+                            <a href="{{ URL::to('admin/allerror') }}"><i class="fa fa-files-o fa-fw"></i>Errors reported<span class="fa arrow"></span></a>
+                        </li>
 
                         @endif
                     </ul>

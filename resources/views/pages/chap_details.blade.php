@@ -60,7 +60,7 @@
 
                   <div class="collection-item" style="font-size: 20px;">Incorrect ({{$data['incorrect']}}/{{$data['attempt']}})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/incorrect" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;margin-right:12px;margin-top: 10px;">View</a></div>
                   <div class="collection-item" style="font-size: 20px;">Marked for Review (0/{{ \App\Questions::a_ques($chap_id) }})<a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/imp" class="waves-effect waves-light btn secondary-content" style="font-size: 15px;margin-right:12px;margin-top: 10px;">View</a></div>
-                  <div class="collection-item" style="font-size: 20px; text-align: center"><a href="{{URL::to('qpage')}}/{{ $sub_id }}/{{ $chap_id }}/imp" class="waves-effect waves-light btn secondary-content purple darken-4" style="font-size: 18px;margin-top: 18px">Attempt The Whole Chapter Again</a></div>
+                  <div class="collection-item" style="font-size: 20px; text-align: center"><a onClick="myfun()" href="#" class="waves-effect waves-light btn secondary-content purple darken-4" style="font-size: 18px;margin-top: 18px">Attempt The Whole Chapter Again</a></div>
 
 
 
@@ -85,3 +85,17 @@
       </section>
       <!-- END CONTENT -->
 @endsection
+<?php
+use Illuminate\Support\Facades\Input;
+?>
+<script>
+function myfun()
+{
+ var a =confirm("All the previous progress will be deleted?");
+ if(a)
+ {
+  alert("All of the progess is deleted after a defined duration.");
+ }
+ 
+}
+</script>

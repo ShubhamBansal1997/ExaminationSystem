@@ -23,6 +23,7 @@
                            Profile
                         </div>
                     </div>
+                    
                 </div>
             </a>
                 <div class="clr"></div>
@@ -182,7 +183,7 @@
                           Competitor
                         </div>
                     </div>
-                </div></a><a href="{{ URL::to('home/3') }}">
+                </div></a><a href="{{ URL::to('package/') }}" >
                 <div class="clr"></div>
                 <div class="col s12 m6 l3">
                    <div class="card">

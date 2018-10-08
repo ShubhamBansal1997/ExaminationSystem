@@ -1,4 +1,4 @@
-@extends('market.app')
+@extends('content.app')
 @section('content')
 <div id="page-wrapper">
             <div class="row">

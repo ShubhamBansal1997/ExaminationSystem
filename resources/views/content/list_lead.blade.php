@@ -1,4 +1,4 @@
-@extends('market.app')
+@extends('content.app')
 @section('content')
 <div v-if="loading" v-cloak>
     <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>

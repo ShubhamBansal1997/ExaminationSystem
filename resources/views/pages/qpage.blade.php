@@ -208,9 +208,6 @@
             </div>
           </div>
         </div>
-     
-      
-       
     </div>
     </div>
     <div class="testTool_qNav">
@@ -220,7 +217,7 @@
        <div class="row">
     
           <div class="col-xs-6">
-<div v-on:click='prev()' class="testTool_btmBar_actionBtn testTool_btmBar_actionBtn_primary testTool_btmBar_actionBtn_primary-fullWidth js-primary-btn-bottom green" v-show='questionIndex!=0'>Previous</div>
+<div v-on:click='prev()' class="testTool_btmBar_actionBtn testTool_btmBar_actionBtn_primary testTool_btmBar_actionBtn_primary-fullWidth js-primary-btn-bottom green" style="background-color:grey; size:40px;border-radius:130xp;" v-show='questionIndex!=0'>Previous</div>
        
         </div>
       <div class="col-xs-6">

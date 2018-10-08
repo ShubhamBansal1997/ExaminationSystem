@@ -108,11 +108,11 @@
 
                 <div class="buttonsBlock">
                     @if( Session::get('Login_status')==TRUE)
-                    <a target="_blank" href="{{ URL::to('userhome') }}"  class="button button-small button-green disable-text-select phn-hide -ct -trk -strk">User Home</a>
+                    <a  href="{{ URL::to('userhome') }}"  class="button button-small button-green disable-text-select phn-hide -ct -trk -strk">User Home</a>
 
                     <a href="{{ URL::to('logout') }}" class="button button-small button-green disable-text-select phn-hide -ct -trk ml-10 -strk">Logout</a>
                     @else
-                    <a target="_blank" href="{{ URL::to('login') }}"  class="button button-small button-green disable-text-select phn-hide -ct -trk -strk">Login</a>
+                    <a  href="{{ URL::to('login') }}"  class="button button-small button-green disable-text-select phn-hide -ct -trk -strk">Login</a>
 
                     <a href="{{ URL::to('register') }}" class="button button-small button-green disable-text-select phn-hide -ct -trk ml-10 -strk">Signup</a>
 					@endif
