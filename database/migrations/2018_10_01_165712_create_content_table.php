@@ -24,7 +24,7 @@ class CreateContentTable extends Migration
             $table->string('id_proof')->nullable();
             $table->string('id_proof_file')->nullable();
             $table->string('section')->nullable();
-            $table->boolean('status')->default(1);
+            $table->boolean ('status')->default(1);
             
             $table->boolean('delete')->default(0);
             $table->timestamps();
