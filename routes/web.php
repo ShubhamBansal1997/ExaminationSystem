@@ -282,6 +282,9 @@ Route::get('addeamcetques','QuestionController@addeamcetques');
   Route::get('allpayouts',function(){
     return view('admin.pages.allpayouts');
   });
+  Route::get('allerror',function(){
+    return view('admin.pages.allerrors');
+  });
   Route::get('paythepayout/{id}','MarketingController@paythepayout');
 Route::post('/addcontentwritter','ContentWritterController@index')->middleware('web');
   Route::post('/adduser','MarketingController@adduser')->middleware('web');
